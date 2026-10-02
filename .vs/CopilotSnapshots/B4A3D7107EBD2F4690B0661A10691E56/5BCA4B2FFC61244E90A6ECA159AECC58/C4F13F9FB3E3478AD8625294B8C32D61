@@ -1,0 +1,290 @@
+﻿<?php
+/**
+ * Edit member shortcode implementation.
+ * Shortcode: [Edit_member]
+ * Allows administrators and the user themselves to edit a user's profile (front-end).
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+function shortcode_Edit_member( $atts ) {
+	if ( ! is_user_logged_in() ) {
+		return '<p>Restricted</p>';
+	}
+
+	$current = wp_get_current_user();
+
+	// Determine target user: admins may pass ?user_id=; otherwise edit current user
+	$target_user_id = 0;
+	if ( current_user_can( 'manage_options' ) && isset( $_GET['user_id'] ) ) {
+		$target_user_id = intval( $_GET['user_id'] );
+	} else {
+		$target_user_id = get_current_user_id();
+	}
+
+	if ( ! $target_user_id ) {
+		return '<p>No user specified.</p>';
+	}
+
+	// Permission check: admins or the user themselves
+	if ( ! ( current_user_can( 'manage_options' ) || ( get_current_user_id() === $target_user_id ) ) ) {
+		return '<p>Restricted</p>';
+	}
+
+	$user = get_user_by( 'id', $target_user_id );
+	if ( ! $user ) {
+		return '<p>User not found.</p>';
+	}
+
+	$messages = array( 'errors' => array(), 'success' => '' );
+
+	if ( isset( $_POST['edit_member_submit'] ) ) {
+		if ( ! isset( $_POST['edit_member_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['edit_member_nonce'] ), 'edit_member_action' ) ) {
+			$messages['errors'][] = 'Invalid form submission.';
+		} else {
+			$first_name = isset( $_POST['first_name'] ) ? sanitize_text_field( wp_unslash( $_POST['first_name'] ) ) : '';
+			$last_name  = isset( $_POST['last_name'] ) ? sanitize_text_field( wp_unslash( $_POST['last_name'] ) ) : '';
+			$company    = isset( $_POST['company'] ) ? sanitize_text_field( wp_unslash( $_POST['company'] ) ) : '';
+			$phone      = isset( $_POST['phone'] ) ? sanitize_text_field( wp_unslash( $_POST['phone'] ) ) : '';
+			$email      = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+			$website    = isset( $_POST['website'] ) ? esc_url_raw( wp_unslash( $_POST['website'] ) ) : '';
+			$biography  = isset( $_POST['biography'] ) ? wp_kses_post( wp_unslash( $_POST['biography'] ) ) : '';
+			$password   = isset( $_POST['password'] ) ? $_POST['password'] : '';
+			$password_confirm = isset( $_POST['password_confirm'] ) ? $_POST['password_confirm'] : '';
+			// Role only editable by admins
+			$role = isset( $_POST['role'] ) ? sanitize_text_field( wp_unslash( $_POST['role'] ) ) : '';
+
+			// Basic validations
+			if ( $email && ! is_email( $email ) ) {
+				$messages['errors'][] = 'Invalid email address.';
+			}
+
+			// If email changed, ensure not taken by another user
+			if ( $email && $email !== $user->user_email ) {
+				if ( email_exists( $email ) ) {
+					$messages['errors'][] = 'Email already registered.';
+				}
+			}
+
+			if ( $password !== '' ) {
+				if ( $password !== $password_confirm ) {
+					$messages['errors'][] = 'Passwords do not match.';
+				}
+			}
+
+			// Allowed roles
+			$allowed_roles = array( 'administrator', 'editor', 'subscriber' );
+			if ( $role && ! in_array( $role, $allowed_roles, true ) ) {
+				$role = '';
+			}
+
+			if ( empty( $messages['errors'] ) ) {
+				$userdata = array( 'ID' => $target_user_id );
+				if ( $email !== '' ) $userdata['user_email'] = $email;
+				$userdata['first_name'] = $first_name;
+				$userdata['last_name']  = $last_name;
+				$userdata['user_url']   = $website;
+				$userdata['display_name'] = trim( $first_name . ' ' . $last_name );
+
+				if ( $password !== '' ) {
+					$userdata['user_pass'] = $password;
+				}
+
+				$updated = wp_update_user( $userdata );
+				if ( is_wp_error( $updated ) ) {
+					$messages['errors'][] = $updated->get_error_message();
+				} else {
+					// Update meta fields
+					if ( $company !== '' ) {
+						update_user_meta( $target_user_id, 'company', $company );
+					} else {
+						delete_user_meta( $target_user_id, 'company' );
+					}
+					if ( $phone !== '' ) {
+						update_user_meta( $target_user_id, 'phone', $phone );
+					} else {
+						delete_user_meta( $target_user_id, 'phone' );
+					}
+					if ( $biography !== '' ) {
+						update_user_meta( $target_user_id, 'description', $biography );
+					} else {
+						delete_user_meta( $target_user_id, 'description' );
+					}
+
+					// Role change by admin
+					if ( current_user_can( 'manage_options' ) && $role ) {
+						$wp_user = new WP_User( $target_user_id );
+						$wp_user->set_role( $role );
+					}
+
+					// Handle uploads
+					require_once ABSPATH . 'wp-admin/includes/file.php';
+					require_once ABSPATH . 'wp-admin/includes/image.php';
+					require_once ABSPATH . 'wp-admin/includes/media.php';
+
+					// Profile picture
+					if ( ! empty( $_FILES['profile_picture_file']['name'] ) ) {
+						$file = $_FILES['profile_picture_file'];
+						$max_size = 2 * 1024 * 1024; // 2MB
+						$allowed_mimes = array( 'image/jpeg', 'image/png', 'image/gif', 'image/webp' );
+						if ( $file['size'] > $max_size ) {
+							$messages['errors'][] = 'Profilbilden är för stor. Max 2MB.';
+						} else {
+							$finfo_mime = false;
+							if ( function_exists( 'finfo_open' ) ) {
+								$finfo = finfo_open( FILEINFO_MIME_TYPE );
+								$finfo_mime = finfo_file( $finfo, $file['tmp_name'] );
+								finfo_close( $finfo );
+							}
+							$mime = $finfo_mime ? $finfo_mime : ( isset( $file['type'] ) ? $file['type'] : '' );
+							if ( ! in_array( $mime, $allowed_mimes, true ) ) {
+								$messages['errors'][] = 'Profilbilden måste vara en JPG, PNG, GIF eller WEBP.';
+							} else {
+								$overrides = array( 'test_form' => false );
+								$movefile = wp_handle_upload( $file, $overrides );
+								if ( isset( $movefile['error'] ) ) {
+									$messages['errors'][] = 'Profilbilds uppladdning misslyckades: ' . esc_html( $movefile['error'] );
+								} elseif ( isset( $movefile['file'] ) ) {
+									$filename = $movefile['file'];
+									$filetype = wp_check_filetype( basename( $filename ), null );
+									$attachment = array(
+										'post_mime_type' => $filetype['type'],
+										'post_title'     => sanitize_file_name( basename( $filename ) ),
+										'post_content'   => '',
+										'post_status'    => 'inherit',
+									);
+									$attach_id = wp_insert_attachment( $attachment, $filename );
+									$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+									wp_update_attachment_metadata( $attach_id, $attach_data );
+
+									$old = get_user_meta( $target_user_id, 'profile_picture', true );
+									update_user_meta( $target_user_id, 'profile_picture', intval( $attach_id ) );
+									if ( $old && intval( $old ) !== intval( $attach_id ) ) {
+										wp_delete_attachment( intval( $old ), true );
+									}
+								}
+							}
+						}
+					}
+
+					// Cover photo
+					if ( ! empty( $_FILES['cover_photo_file']['name'] ) ) {
+						$file = $_FILES['cover_photo_file'];
+						$max_size = 3 * 1024 * 1024; // 3MB
+						$allowed_mimes = array( 'image/jpeg', 'image/png', 'image/gif', 'image/webp' );
+						if ( $file['size'] > $max_size ) {
+							$messages['errors'][] = 'Logotypbilden är för stor. Max 3MB.';
+						} else {
+							$finfo_mime = false;
+							if ( function_exists( 'finfo_open' ) ) {
+								$finfo = finfo_open( FILEINFO_MIME_TYPE );
+								$finfo_mime = finfo_file( $finfo, $file['tmp_name'] );
+								finfo_close( $finfo );
+							}
+							$mime = $finfo_mime ? $finfo_mime : ( isset( $file['type'] ) ? $file['type'] : '' );
+							if ( ! in_array( $mime, $allowed_mimes, true ) ) {
+								$messages['errors'][] = 'Logotypbilden måste vara en JPG, PNG, GIF eller WEBP.';
+							} else {
+								$overrides = array( 'test_form' => false );
+								$movefile = wp_handle_upload( $file, $overrides );
+								if ( isset( $movefile['error'] ) ) {
+									$messages['errors'][] = 'Logotyp uppladdning misslyckades: ' . esc_html( $movefile['error'] );
+								} elseif ( isset( $movefile['file'] ) ) {
+									$filename = $movefile['file'];
+									$filetype = wp_check_filetype( basename( $filename ), null );
+									$attachment = array(
+										'post_mime_type' => $filetype['type'],
+										'post_title'     => sanitize_file_name( basename( $filename ) ),
+										'post_content'   => '',
+										'post_status'    => 'inherit',
+									);
+									$attach_id = wp_insert_attachment( $attachment, $filename );
+									$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+									wp_update_attachment_metadata( $attach_id, $attach_data );
+
+									$old = get_user_meta( $target_user_id, 'profile_cover', true );
+									update_user_meta( $target_user_id, 'profile_cover', intval( $attach_id ) );
+									if ( $old && intval( $old ) !== intval( $attach_id ) ) {
+										wp_delete_attachment( intval( $old ), true );
+									}
+								}
+							}
+						}
+					}
+
+					$messages['success'] = 'Medlemmen är uppdaterad.';
+				}
+			}
+		}
+	}
+
+	// Prepare form values
+	$vals = array(
+		'username'   => $user->user_login,
+		'first_name' => get_user_meta( $target_user_id, 'first_name', true ) ?: $user->first_name,
+		'last_name'  => get_user_meta( $target_user_id, 'last_name', true ) ?: $user->last_name,
+		'company'    => get_user_meta( $target_user_id, 'company', true ),
+		'phone'      => get_user_meta( $target_user_id, 'phone', true ),
+		'email'      => $user->user_email,
+		'website'    => $user->user_url,
+		'biography'  => get_user_meta( $target_user_id, 'description', true ),
+		'role'       => implode( ',', (array) $user->roles ),
+	);
+
+	// If POST values exist (on error) override
+	$fields = array( 'first_name','last_name','company','phone','email','website','biography','role' );
+	foreach ( $fields as $f ) {
+		if ( isset( $_POST[ $f ] ) ) {
+			$vals[ $f ] = esc_attr( wp_unslash( $_POST[ $f ] ) );
+		}
+	}
+
+	$out = '';
+	if ( ! empty( $messages['errors'] ) ) {
+		$out .= '<div class="ppmd-errors"><ul>';
+		foreach ( $messages['errors'] as $e ) {
+			$out .= '<li>' . esc_html( $e ) . '</li>';
+		}
+		$out .= '</ul></div>';
+	}
+	if ( $messages['success'] ) {
+		$out .= '<div class="ppmd-success">' . esc_html( $messages['success'] ) . '</div>';
+	}
+
+	$out .= '<form method="post" enctype="multipart/form-data" class="edit-member-form">';
+	$out .= wp_nonce_field( 'edit_member_action', 'edit_member_nonce', true, false );
+	$out .= '<input type="hidden" name="target_user_id" value="' . esc_attr( $target_user_id ) . '" />';
+	$out .= '<table class="form-table">';
+	$out .= '<tr><th><label>Användarnamn: &nbsp;</label></th><td><input name="username" value="' . esc_attr( $vals['username'] ) . '" readonly /></td></tr>';
+
+	// Role selector for admins
+	if ( current_user_can( 'manage_options' ) ) {
+		$out .= '<tr><th><label>Roll: &nbsp;</label></th><td><select name="role">';
+		$out .= '<option value="subscriber"' . ( $vals['role'] === 'subscriber' ? ' selected' : '' ) . '>Subscriber</option>';
+		$out .= '<option value="editor"' . ( strpos( $vals['role'], 'editor' ) !== false ? ' selected' : '' ) . '>Editor</option>';
+		$out .= '<option value="administrator"' . ( strpos( $vals['role'], 'administrator' ) !== false ? ' selected' : '' ) . '>Administrator</option>';
+		$out .= '</select></td></tr>';
+	}
+
+	$out .= '<tr><th><label>Förnamn: &nbsp;</label></th><td><input name="first_name" value="' . esc_attr( $vals['first_name'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Efternamn: &nbsp;</label></th><td><input name="last_name" value="' . esc_attr( $vals['last_name'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Företag: &nbsp;</label></th><td><input name="company" value="' . esc_attr( $vals['company'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Telefon: &nbsp;</label></th><td><input name="phone" value="' . esc_attr( $vals['phone'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Epost: &nbsp;</label></th><td><input type="email" name="email" value="' . esc_attr( $vals['email'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Nytt lösenord (valfritt): &nbsp;</label></th><td><input type="password" name="password" /></td></tr>';
+	$out .= '<tr><th><label>Bekräfta lösenord: &nbsp;</label></th><td><input type="password" name="password_confirm" /></td></tr>';
+	$out .= '<tr><th><label>Webbplats: &nbsp;</label></th><td><input name="website" value="' . esc_attr( $vals['website'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Biografi: &nbsp;</label></th><td><textarea name="biography">' . esc_textarea( $vals['biography'] ) . '</textarea></td></tr>';
+
+	$out .= '<tr><th><label>Profilbild: &nbsp;</label></th><td><input type="file" name="profile_picture_file" /></td></tr>';
+	$out .= '<tr><th><label>Logotyp: &nbsp;</label></th><td><input type="file" name="cover_photo_file" /></td></tr>';
+
+	$out .= '</table>';
+	$out .= '<p><button type="submit" name="edit_member_submit">Spara</button></p>';
+	$out .= '</form>';
+
+	return $out;
+}
+add_shortcode( 'Edit_member', 'shortcode_Edit_member' );

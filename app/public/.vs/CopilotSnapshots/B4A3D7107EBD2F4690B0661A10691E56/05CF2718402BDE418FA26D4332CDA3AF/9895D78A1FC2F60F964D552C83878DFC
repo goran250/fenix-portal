@@ -1,0 +1,248 @@
+﻿<?php
+
+add_action( 'wp_enqueue_scripts', 'ollie_child_enqueue_styles' );
+
+/**
+ * Enqueue Ollie child theme styles and scripts.
+ *
+ * @return void
+ */
+function ollie_child_enqueue_styles(): void {
+	wp_enqueue_style( 'ollie-child-style', get_stylesheet_uri(), array( 'ollie' ), wp_get_theme()->get( 'Version' ) );
+
+	// Responsive fixes – laddas sist så den vinner i specificitet
+	wp_enqueue_style( 'ollie-child-responsive-fixes', get_stylesheet_directory_uri() . '/responsive-fixes.css', array( 'ollie-child-style' ), wp_get_theme()->get( 'Version' ) );
+
+	// Header scroll effect
+	wp_enqueue_script( 'header-scroll', get_stylesheet_directory_uri() . '/header-scroll.js', array(), wp_get_theme()->get( 'Version' ), true );
+}
+
+// Footer marker for debugging to confirm child theme functions.php is loaded
+add_action( 'wp_footer', 'fp_footer_marker' );
+function fp_footer_marker() {
+    echo "<!-- fp_nav_filter_loaded -->";
+}
+
+
+// Registrera Custom Post Type - Medlemmar
+function fenix_register_member_cpt() {
+    $labels = array(
+        'name'               => 'Medlemmar',
+        'singular_name'      => 'Medlem',
+        'add_new'            => 'Lägg till ny',
+        'add_new_item'       => 'Lägg till ny medlem',
+        'edit_item'          => 'Redigera medlem',
+        'new_item'           => 'Ny medlem',
+        'view_item'          => 'Visa medlem',
+        'search_items'       => 'Sök medlemmar',
+        'not_found'          => 'Inga medlemmar hittades',
+        'not_found_in_trash' => 'Inga medlemmar i papperskorgen',
+        'menu_name'          => 'Medlemmar',
+    );
+
+    $args = array(
+        'labels'       => $labels,
+        'public'       => true,
+        'has_archive'  => false,
+        'show_in_rest' => true,
+        'supports'     => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+        'menu_icon'    => 'dashicons-groups',
+        'rewrite'      => array( 'slug' => 'medlemmar' ),
+    );
+
+    register_post_type( 'member', $args );
+}
+add_action( 'init', 'fenix_register_member_cpt' );
+
+
+// Registrera metafält för Medlemmar
+function fenix_register_member_meta() {
+    $string_fields = array( 'fenix_name', 'fenix_title', 'fenix_email', 'fenix_phone', 'fenix_address', 'fenix_website' );
+
+    foreach ( $string_fields as $field ) {
+        register_post_meta( 'member', $field, array(
+            'show_in_rest'  => true,
+            'single'        => true,
+            'type'          => 'string',
+            'auth_callback' => function() {
+                return current_user_can( 'edit_posts' );
+            },
+        ));
+    }
+}
+add_action( 'init', 'fenix_register_member_meta' );
+
+add_shortcode( 'fenix_website_link', function() {
+    $url = get_post_meta( get_the_ID(), 'fenix_website', true );
+    if ( ! $url ) return '';
+    return '<a href="' . esc_url( $url ) . '" target="_blank" class="fenix-website-link">' . esc_html( $url ) . '</a>';
+});
+
+
+// Visa logotyp i arkivet istället för porträtt
+function fenix_swap_logo_in_archive( $block_content, $block ) {
+    if ( $block['blockName'] !== 'core/post-featured-image' ) {
+        return $block_content;
+    }
+
+    // På single-sidan matchar queried object ID med post ID i loopen
+    if ( (int) get_queried_object_id() === (int) get_the_ID() ) {
+        return $block_content;
+    }
+
+    $post_id = get_the_ID();
+    if ( ! $post_id ) return $block_content;
+
+    $logo_id = get_post_meta( $post_id, 'logo_id', true );
+    if ( ! $logo_id ) return $block_content;
+
+    $logo_url = wp_get_attachment_image_url( $logo_id, 'full' );
+    if ( ! $logo_url ) return $block_content;
+
+    $block_content = preg_replace( '/(<img[^>]+src=")[^"]*(")/i', '$1' . esc_url( $logo_url ) . '$2', $block_content );
+$block_content = preg_replace( '/\s*srcset="[^"]*"/i', '', $block_content );
+$block_content = preg_replace( '/\s*sizes="[^"]*"/i', '', $block_content );
+$block_content = preg_replace( '/\s*style="[^"]*"/i', '', $block_content );
+$block_content = preg_replace( '/\s*width="\d+"/i', '', $block_content );
+$block_content = preg_replace( '/\s*height="\d+"/i', '', $block_content );
+
+    return $block_content;
+}
+add_filter( 'render_block', 'fenix_swap_logo_in_archive', 10, 2 );
+
+
+function fenix_linkedin_link_shortcode( $atts ) {
+    $linkedin = get_post_meta( get_the_ID(), 'fenix_linkedin', true );
+    if ( ! $linkedin ) return '';
+
+    return sprintf(
+        '<a href="%s" target="_blank" rel="noopener noreferrer" class="fenix-linkedin-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span>LinkedIn</span>
+        </a>',
+        esc_url( $linkedin )
+    );
+}
+add_shortcode( 'fenix_linkedin_link', 'fenix_linkedin_link_shortcode' );
+
+// Shortcode för klickbar e-postlänk
+add_shortcode( 'fenix_email_link', function() {
+    $email = get_post_meta( get_the_ID(), 'fenix_email', true );
+    if ( ! $email ) return '';
+    return '<a href="mailto:' . antispambot( $email ) . '" class="fenix-email-link">' . antispambot( $email ) . '</a>';
+});
+
+// Shortcode för klickbar telefonlänk
+add_shortcode( 'fenix_phone_link', function() {
+    $phone = get_post_meta( get_the_ID(), 'fenix_phone', true );
+    if ( ! $phone ) return '';
+    // Rensa bort mellanslag etc för tel:-länken men visa originalet
+    $tel = preg_replace( '/[^+0-9]/', '', $phone );
+    return '<a href="tel:' . esc_attr( $tel ) . '" class="fenix-phone-link">' . esc_html( $phone ) . '</a>';
+});
+
+
+// Hide Navigation block items with class "admin-only" from non-admins (for FSE / Navigation block)
+add_filter( 'render_block', 'fp_filter_navigation_block_admin_only', 10, 2 );
+function fp_filter_navigation_block_admin_only( $block_content, $block ) {
+    if ( empty( $block['blockName'] ) || $block['blockName'] !== 'core/navigation' ) {
+        return $block_content;
+    }
+
+    // Let administrators see everything
+    if ( current_user_can( 'manage_options' ) ) {
+        return $block_content;
+    }
+
+    // Navigation block can either include innerBlocks directly, or reference a saved
+    // navigation (attrs.ref) which stores its block content in a post. Normalize
+    // to $innerBlocks so we can filter consistently.
+    $innerBlocks = ! empty( $block['innerBlocks'] ) ? $block['innerBlocks'] : array();
+
+    // If no innerBlocks present but a ref is set, try to load the navigation post
+    if ( empty( $innerBlocks ) && ! empty( $block['attrs']['ref'] ) ) {
+        $ref = (int) $block['attrs']['ref'];
+        $nav_post = get_post( $ref );
+        if ( $nav_post && ! empty( $nav_post->post_content ) ) {
+            $parsed = parse_blocks( $nav_post->post_content );
+            // Debug: log parsed navigation post structure to help find admin-only class
+            $debug_parsed = array();
+            foreach ( $parsed as $pb ) {
+                $debug_parsed[] = array(
+                    'blockName' => isset( $pb['blockName'] ) ? $pb['blockName'] : null,
+                    'attrs' => isset( $pb['attrs'] ) ? $pb['attrs'] : null,
+                    'innerBlocks' => array_map( function( $b ) { return isset($b['blockName']) ? $b['blockName'] : null; }, $pb['innerBlocks'] ?? array() ),
+                );
+            }
+            // Flatten parsed blocks into innerBlocks array
+            $innerBlocks = array();
+            foreach ( $parsed as $pb ) {
+                if ( ! empty( $pb['innerBlocks'] ) ) {
+                    $innerBlocks = array_merge( $innerBlocks, $pb['innerBlocks'] );
+                } else {
+                    $innerBlocks[] = $pb;
+                }
+            }
+        }
+    }
+
+    if ( empty( $innerBlocks ) ) {
+        return $block_content;
+    }
+
+    $filtered = fp_filter_nav_inner_blocks_recursive( $innerBlocks );
+
+    // If nothing changed, return original content
+    if ( $filtered === $block['innerBlocks'] ) {
+        return $block_content;
+    }
+
+    // Render the navigation block with the filtered innerBlocks
+    remove_filter( 'render_block', 'fp_filter_navigation_block_admin_only', 10, 2 );
+    $new_html = render_block( array(
+        'blockName'   => $block['blockName'],
+        'attrs'       => isset( $block['attrs'] ) ? $block['attrs'] : array(),
+        'innerBlocks' => $filtered,
+    ) );
+    add_filter( 'render_block', 'fp_filter_navigation_block_admin_only', 10, 2 );
+
+    return $new_html;
+}
+
+function fp_filter_nav_inner_blocks_recursive( $innerBlocks ) {
+    $out = array();
+    foreach ( $innerBlocks as $ib ) {
+        // Collect potential class values from common locations
+        $class_parts = array();
+        if ( isset( $ib['className'] ) && is_string( $ib['className'] ) ) {
+            $class_parts[] = $ib['className'];
+        }
+        if ( isset( $ib['attrs'] ) && is_array( $ib['attrs'] ) ) {
+            if ( isset( $ib['attrs']['className'] ) && is_string( $ib['attrs']['className'] ) ) {
+                $class_parts[] = $ib['attrs']['className'];
+            }
+            if ( isset( $ib['attrs']['class'] ) && is_string( $ib['attrs']['class'] ) ) {
+                $class_parts[] = $ib['attrs']['class'];
+            }
+        }
+
+        $class = implode( ' ', $class_parts );
+        if ( $class && strpos( $class, 'admin-only' ) !== false ) {
+            continue;
+        }
+
+        // Fallback: some blocks may include the class in innerHTML
+        if ( isset( $ib['innerHTML'] ) && strpos( $ib['innerHTML'], 'admin-only' ) !== false ) {
+            continue;
+        }
+
+        if ( ! empty( $ib['innerBlocks'] ) ) {
+            $ib['innerBlocks'] = fp_filter_nav_inner_blocks_recursive( $ib['innerBlocks'] );
+        }
+
+        $out[] = $ib;
+    }
+    return $out;
+}

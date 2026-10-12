@@ -775,18 +775,18 @@ div.events-success-delete {
   margin: 0 0 20px 50px;
 }
 
-.events-list .edit-button, .events-list .delete-button {
-  margin: 0 20px 30px 0;
-  padding: 4px 10px!important;
-  border-radius: 6px!important;
-  border: 1px solid #888;
-}
-
 div.events-list {
   clear: both;
   margin: 0 auto 0;
   width: 100%;
   max-width: 450px;
+}
+
+div.events-list .edit-button, div .events-list .delete-button {
+  margin: 0 20px 30px 0;
+  padding: 4px 10px!important;
+  border-radius: 6px!important;
+  border: 1px solid #888;
 }
 
 div.event-item {
@@ -822,6 +822,13 @@ div.event-item-right img {
 
 div.event-item div { 
   margin-bottom: 8px;
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-icon {
+  margin-top: 2px;
+  top: -2px;
+  height: 37px;
+  width: 50px;
 }
 
 @media (max-width: 1320px) {

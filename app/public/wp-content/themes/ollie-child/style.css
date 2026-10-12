@@ -544,7 +544,8 @@ body.admin-bar header.wp-block-template-part {
      box-sizing: border-box;
     -webkit-font-smoothing: antialiased !important
 }
-.member-photo a img {
+
+.member-photo img, .member-photo a img {
     display: inline;
     border: 5px solid #ffffff;
     background: #ffffff;
@@ -552,7 +553,7 @@ body.admin-bar header.wp-block-template-part {
     width: 90px;
     height: 90px;
     position: relative;
-    top: -35px;
+    top: -30px;
     margin-bottom: -45px;
     float: none;
 }

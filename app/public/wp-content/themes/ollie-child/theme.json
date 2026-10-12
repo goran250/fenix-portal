@@ -1,0 +1,106 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "layout": {
+      "contentSize": "1260px",
+      "wideSize": "1260px"
+    },
+    "color": {
+      "palette": [
+        
+        {
+          "slug": "orange",
+          "name": "Orange",
+          "color": "#FF8731"
+        },
+        {
+          "slug": "cream",
+          "name": "Cream",
+          "color": "#FFFBF5"
+        },
+        {
+          "slug": "almostblack",
+          "name": "Almost Black",
+          "color": "#151515"
+        },
+        {
+          "slug": "almostwhite",
+          "name": "Almost White",
+          "color": "#FFFCF8"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#FFFFFF"
+        },
+        {
+          "slug": "newalmostblack",
+          "name": "V2 Almost Black",
+          "color": "#111619"
+        },
+        {
+           "slug": "newgrey",
+          "name": "V2 Grey",
+          "color": "#555555"
+        },
+        {
+          "slug": "newdark",
+          "name": "V2 Mörkgröngrå",
+          "color": "#588790"
+        },
+        {
+          "slug": "newmid",
+          "name": "V2 Ljusare mörkgrönblå",
+          "color": "#708D93"
+        },
+        {
+          "slug": "newlightblue",
+          "name": "V2 Ljusblå",
+          "color": "#E2EEF0"
+        },
+        {
+          "slug": "newlightbluedark",
+          "name": "V2 Ljusblå mörkare",
+          "color": "#E6EEEF"
+        },
+         {
+          "slug": "lightbkg",
+          "name": "V2 Ljus bakgrund",
+          "color": "#F9FBFB"
+        },
+        {
+          "slug": "newlabel",
+          "name": "V2 Mellanblå (eyebrow)",
+          "color": "#A2BDC3"
+        },
+        
+        {
+          "slug": "neworange",
+          "name": "V2 Orange",
+          "color": "#EDAB5A"
+        },
+        {
+          "slug": "darkorange",
+          "name": "V2 Dark Orange",
+          "color": "#e98d1b"
+        },       
+        {
+          "slug": "neworangelight",
+          "name": "V2 Orange transparent",
+          "color": "#F2D2AE"
+        },
+         {
+          "slug": "newwhite",
+          "name": "V2 White",
+          "color": "#FFFFFF"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#FFFBF5"
+    }
+  }
+}

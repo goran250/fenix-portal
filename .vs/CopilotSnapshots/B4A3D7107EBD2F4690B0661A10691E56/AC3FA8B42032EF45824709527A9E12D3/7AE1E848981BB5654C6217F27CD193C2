@@ -1,0 +1,130 @@
+﻿;(function(){
+  function initEditForm(){
+    const editForm = document.getElementById('events-edit-form');
+    if(!editForm) return;
+
+    // When an edit button is clicked open and populate the form
+    document.querySelectorAll('.edit-button').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('data-event-id');
+        const name = this.getAttribute('data-event-name');
+        const date = this.getAttribute('data-event-date');
+        const time = this.getAttribute('data-event-time');
+        const location = this.getAttribute('data-event-location');
+        const description = this.getAttribute('data-event-description');
+        const nbr = this.getAttribute('data-event-nbr');
+        const notif = this.getAttribute('data-event-notification');
+        var f;
+        f = editForm.querySelector('input[name="event_id"]'); if(f) f.value = id;
+        f = editForm.querySelector('input[name="event_name_edit"]'); if(f) f.value = name;
+        f = editForm.querySelector('input[name="event_date_edit"]'); if(f) f.value = date;
+        f = editForm.querySelector('input[name="event_time_edit"]'); if(f) f.value = time;
+        f = editForm.querySelector('input[name="event_location_edit"]'); if(f) f.value = location;
+        f = editForm.querySelector('textarea[name="event_description_edit"]'); if(f) f.value = description;
+        f = editForm.querySelector('input[name="event_nbrOfParticipants_edit"]'); if(f) f.value = nbr;
+        var radios = editForm.querySelectorAll('input[name="event_notification_edit"]');
+        radios.forEach(function(r){ r.checked = (r.value === notif); });
+        editForm.style.display = 'block';
+
+        var successLabel = document.getElementById('events-success-edit');
+        if(successLabel)
+          successLabel.remove();
+
+        editForm.scrollIntoView({behavior: 'smooth'});
+      });
+    });
+
+    // Close button clears and hides
+    var close = editForm.querySelector('#events-edit-close');
+    if(close) {
+      close.addEventListener('click', function(e){
+        e.preventDefault();
+        var inputs = editForm.querySelectorAll('input');
+        inputs.forEach(function(i){
+          if(!i.name) return;
+          if(i.type === 'hidden'){
+            if(i.name === 'event_id') i.value = '';
+            return;
+          }
+          if(i.type === 'radio'){
+            i.checked = false;
+          } else {
+            i.value = '';
+          }
+        });
+ 
+        editForm.style.display = 'none';
+        window.scrollTo(0, 50);
+      });
+    }
+  }
+  // Fallback: delegation in case direct handler not attached (works if elements are re-rendered)
+  document.addEventListener('click', function(e){
+    var target = e.target || e.srcElement;
+    if (!target) 
+      return;
+    if (target.id === 'events-edit-close') {
+      var editForm = document.getElementById('events-edit-form');
+      if (!editForm) 
+        return;
+      e.preventDefault();
+      var inputs = editForm.querySelectorAll('input');
+      inputs.forEach(function(i){
+      if(!i.name) 
+        return;
+      if(i.type === 'hidden'){
+        if(i.name === 'event_id') i.value = '';
+          return;
+        }
+        if(i.type === 'radio'){
+          i.checked = false;
+        } else {
+          i.value = '';
+        }
+      });
+      editForm.style.display = 'none';
+    }
+  }, false);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEditForm);
+  } else {
+    initEditForm();
+  }
+  // expose a global close function so inline onclick can call it
+  window.ollie_close_edit_form = function(){
+    var editForm = document.getElementById('events-edit-form');
+    if(!editForm) return false;
+    var inputs = editForm.querySelectorAll('input');
+    inputs.forEach(function(i){
+      if(!i.name) 
+        return;
+      if(i.type === 'hidden'){
+        if(i.name === 'event_id') i.value = '';
+          return;
+      }
+      if(i.type === 'radio'){
+        i.checked = false;
+      } 
+      else{
+        i.value = '';
+      }
+    });
+
+    editForm.style.display = 'none';
+    return false;
+  };
+})();
+
+function ShowDescription(id){ 
+  var description = document.getElementById(id);
+  if(description){
+    if(description.style.display === 'none'){
+      description.style.display = 'block';
+    } 
+    else {
+      description.style.display = 'none';
+    }
+  }
+}

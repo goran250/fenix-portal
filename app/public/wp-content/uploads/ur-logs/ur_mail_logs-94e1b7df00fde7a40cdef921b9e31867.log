@@ -1,0 +1,96 @@
+2026-09-25T16:17:35+00:00 NOTICE =============== Email Sending Start ================
+2026-09-25T16:17:35+00:00 DEBUG Email details:
+{
+    "to": "goran.ros@gmail.com",
+    "subject": "Welcome to Fenix-Portal!",
+    "template_id": null
+}
+2026-09-25T16:17:35+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-09-25T16:17:35+00:00 NOTICE =============== Email Sending Start ================
+2026-09-25T16:17:35+00:00 DEBUG Email details:
+{
+    "to": "goran.rosenberg@tomelilla.nu",
+    "subject": "A Member registration: Goran subscriber ",
+    "template_id": null
+}
+2026-09-25T16:17:35+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-09-28T14:10:39+00:00 NOTICE =============== Email Sending Start ================
+2026-09-28T14:10:39+00:00 DEBUG Email details:
+{
+    "to": "goran.rosenberg2@gmail.com",
+    "subject": "Welcome to Fenix-Portal!",
+    "template_id": null
+}
+2026-09-28T14:10:39+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-09-28T14:10:39+00:00 NOTICE =============== Email Sending Start ================
+2026-09-28T14:10:39+00:00 DEBUG Email details:
+{
+    "to": "goran.rosenberg@tomelilla.nu",
+    "subject": "A Member registration: sven ",
+    "template_id": null
+}
+2026-09-28T14:10:39+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-09-28T14:29:56+00:00 NOTICE =============== Email Sending Start ================
+2026-09-28T14:29:56+00:00 DEBUG Email details:
+{
+    "to": "jan.rosenberg3@gmail.com",
+    "subject": "Welcome to Fenix-Portal!",
+    "template_id": null
+}
+2026-09-28T14:29:56+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-09-28T14:29:56+00:00 NOTICE =============== Email Sending Start ================
+2026-09-28T14:29:56+00:00 DEBUG Email details:
+{
+    "to": "goran.rosenberg@tomelilla.nu",
+    "subject": "A Member registration: Jan ",
+    "template_id": null
+}
+2026-09-28T14:29:56+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-09-28T14:54:32+00:00 NOTICE =============== Email Sending Start ================
+2026-09-28T14:54:32+00:00 DEBUG Email details:
+{
+    "to": "gertie.rosenberg@gmail.com",
+    "subject": "Welcome to Fenix-Portal!",
+    "template_id": null
+}
+2026-09-28T14:54:32+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-09-28T14:54:32+00:00 NOTICE =============== Email Sending Start ================
+2026-09-28T14:54:32+00:00 DEBUG Email details:
+{
+    "to": "goran.rosenberg@tomelilla.nu",
+    "subject": "A Member registration: Gertie ",
+    "template_id": null
+}
+2026-09-28T14:54:32+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-10-01T08:13:47+00:00 NOTICE =============== Email Sending Start ================
+2026-10-01T08:13:47+00:00 DEBUG Email details:
+{
+    "to": "osse@mandaq.se",
+    "subject": "Welcome to Fenix-Portal!",
+    "template_id": null
+}
+2026-10-01T08:13:47+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-10-01T08:13:47+00:00 NOTICE =============== Email Sending Start ================
+2026-10-01T08:13:47+00:00 DEBUG Email details:
+{
+    "to": "goran.rosenberg@tomelilla.nu",
+    "subject": "A Member registration: Bosse Stibeck ",
+    "template_id": null
+}
+2026-10-01T08:13:47+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-10-01T08:26:03+00:00 NOTICE =============== Email Sending Start ================
+2026-10-01T08:26:03+00:00 DEBUG Email details:
+{
+    "to": "christoffer@seesafe.se",
+    "subject": "Welcome to Fenix-Portal!",
+    "template_id": null
+}
+2026-10-01T08:26:03+00:00 SUCCESS =============== Email send request completed successfully ===============
+2026-10-01T08:26:03+00:00 NOTICE =============== Email Sending Start ================
+2026-10-01T08:26:03+00:00 DEBUG Email details:
+{
+    "to": "goran.rosenberg@tomelilla.nu",
+    "subject": "A Member registration: christoffer ",
+    "template_id": null
+}
+2026-10-01T08:26:03+00:00 SUCCESS =============== Email send request completed successfully ===============

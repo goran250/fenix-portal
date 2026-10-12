@@ -1,0 +1,412 @@
+﻿<?php
+/**
+ * Events list & admin add form
+ * Shortcode: [events_list]
+ * Shows events (Name, Date, Location). Administrators see a form to add events.
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Register CPT for events
+add_action( 'init', function() {
+	$labels = array(
+		'name' => 'Events',
+		'singular_name' => 'Event',
+	);
+	$args = array(
+		'labels' => $labels,
+		'public' => false,
+		'show_ui' => false,
+		'supports' => array( 'title' ),
+		'has_archive' => false,
+		'show_in_rest' => false,
+	);
+	register_post_type( 'event', $args );
+} );
+
+function shortcode_events_list( $atts ) {
+	$atts = shortcode_atts( array( 'per_page' => 50 ), $atts, 'events_list' );
+	
+	$out = '<div class="events-list-wrap">';
+	
+	$messages = array( 'errors' => array(), 'success-add' => '', 'success-edit' => '', 'success-delete' => '' );
+
+
+
+	// Handle deletion (admin only)
+	if ( isset( $_GET['delete_event'] ) ) {
+		if ( current_user_can( 'manage_options' ) ) {
+		   
+				$del_id = intval( $_GET['delete_event'] );
+				$post = get_post( $del_id );
+				if ( ! $post || $post->post_type !== 'event' ) {
+					$messages['error-delete'][] = 'Event hittades inte.';
+				} else {
+					wp_delete_post( $del_id, true );
+					$messages['success-delete'] = 'Event raderat.';
+				}
+			
+		}
+	}
+
+	// Handle admin add submission
+	if ( isset( $_POST['events_add_submit'] ) && current_user_can( 'manage_options' ) ) {
+		if ( ! isset( $_POST['events_add_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['events_add_nonce'] ), 'events_add_action' ) ) {
+			$messages['errors'][] = 'Invalid form submission.';
+		} else {
+			$name = isset( $_POST['event_name'] ) ? sanitize_text_field( wp_unslash( $_POST['event_name'] ) ) : '';
+			$date = isset( $_POST['event_date'] ) ? sanitize_text_field( wp_unslash( $_POST['event_date'] ) ) : '';
+			$time = isset( $_POST['event_time'] ) ? sanitize_text_field( wp_unslash( $_POST['event_time'] ) ) : '';
+			$nbrOfParticipants = isset( $_POST['event_nbrOfParticipants'] ) ? sanitize_text_field( wp_unslash( $_POST['event_nbrOfParticipants'] ) ) : '';
+			$location = isset( $_POST['event_location'] ) ? sanitize_text_field( wp_unslash( $_POST['event_location'] ) ) : '';
+			$notification = isset( $_POST['event_notification'] ) ? $_POST['event_notification'] : '';
+			$description = isset( $_POST['event_description'] ) ? sanitize_text_field( wp_unslash( $_POST['event_description'] ) ) : '';
+			// Handle uploaded picture (from file input event_picture)
+			$picture_id = '';
+
+			if ( $name === '' ) 
+				$messages['errors'][] = 'Namn är obligatoriskt.';
+			if ( $date === '' ) 
+				$messages['errors'][] = 'Datum är obligatoriskt.';
+			if ( $time === '' ) 
+				$messages['errors'][] = 'Tid är obligatoriskt.';
+
+			// Validate date (expect YYYY-MM-DD)
+			if ( $date !== '' ) {
+				$d = DateTime::createFromFormat( 'Y-m-d', $date );
+				if ( ! $d || $d->format( 'Y-m-d' ) !== $date ) {
+					$messages['errors'][] = 'Datum måste vara i formatet YYYY-MM-DD.';
+				}
+			}
+
+			if ( empty( $messages['errors'] ) ) {
+				$postarr = array(
+					'post_title' => $name,
+					'post_type' => 'event',
+					'post_status' => 'publish',
+				);
+				$post_id = wp_insert_post( $postarr );
+				
+				if ( is_wp_error( $post_id ) || ! $post_id ) {
+					$messages['errors'][] = 'Misslyckades att skapa eventet.';
+				} else {
+					update_post_meta( $post_id, 'event_date', $date );
+					update_post_meta( $post_id, 'event_time', $time );
+					update_post_meta( $post_id, 'event_nbrOfParticipants', $nbrOfParticipants );
+					update_post_meta( $post_id, 'event_location', $location );					
+					update_post_meta( $post_id, 'event_notification', $notification );
+					update_post_meta( $post_id, 'event_description', $description );
+					// process file upload if provided
+					if ( ! empty( $_FILES['event_picture'] ) && ! empty( $_FILES['event_picture']['name'] ) ) {
+						require_once ABSPATH . 'wp-admin/includes/file.php';
+						require_once ABSPATH . 'wp-admin/includes/image.php';
+						require_once ABSPATH . 'wp-admin/includes/media.php';
+						$file = wp_handle_upload( $_FILES['event_picture'], array( 'test_form' => false ) );
+						if ( isset( $file['error'] ) ) {
+							$messages['errors'][] = 'Bilduppladdning misslyckades: ' . esc_html( $file['error'] );
+						} else {
+							// Insert into media library and attach to post
+							$wp_filetype = wp_check_filetype( $file['file'], null );
+							$attachment = array(
+								'post_mime_type' => $wp_filetype['type'],
+								'post_title' => sanitize_file_name( basename( $file['file'] ) ),
+								'post_content' => '',
+								'post_status' => 'inherit'
+							);
+							$attach_id = wp_insert_attachment( $attachment, $file['file'], $post_id );
+							if ( ! is_wp_error( $attach_id ) ) {
+								$attach_data = wp_generate_attachment_metadata( $attach_id, $file['file'] );
+								wp_update_attachment_metadata( $attach_id, $attach_data );
+								$picture_id = $attach_id;
+								update_post_meta( $post_id, 'event_picture', $picture_id );
+							}
+						}
+					}
+					// if no file uploaded, still save empty meta to be consistent
+					if ( empty( $picture_id ) ) {
+						update_post_meta( $post_id, 'event_picture', '' );
+					}
+					$messages['success-add'] = 'Event tillagt.';
+				}
+			}
+		}
+	}
+	// Handle admin edit submission
+	if ( ( isset( $_POST['events_edit_submit'] ) || isset( $_POST['event_id'] ) ) && current_user_can( 'manage_options' ) ) {
+		if ( ! isset( $_POST['events_edit_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['events_edit_nonce'] ), 'events_edit_action' ) ) {
+			$messages['errors'][] = 'Invalid edit submission.';
+		} else {
+			$edit_id = isset( $_POST['event_id'] ) ? intval( $_POST['event_id'] ) : 0;
+			$name = isset( $_POST['event_name_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_name_edit'] ) ) : '';
+			$date = isset( $_POST['event_date_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_date_edit'] ) ) : '';
+			$time = isset( $_POST['event_time_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_time_edit'] ) ) : '';
+			$nbrOfParticipants = isset( $_POST['event_nbrOfParticipants_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_nbrOfParticipants_edit'] ) ) : '';
+			$location = isset( $_POST['event_location_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_location_edit'] ) ) : '';
+			$notification = isset( $_POST['event_notification_edit'] ) ? $_POST['event_notification_edit'] : '';
+			$description = isset( $_POST['event_description_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_description_edit'] ) ) : '';
+			$picture = isset( $_POST['event_picture_edit'] ) ? $_POST['event_picture_edit'] : '';
+
+			// (debug logging uses error_log; do not add debug messages to errors array here)
+
+			if ( $edit_id <= 0 ) {
+				$messages['errors'][] = 'Invalid event id.';
+			}
+			if ( $name === '' ) $messages['errors'][] = 'Namn är obligatoriskt.';
+			if ( $date === '' ) $messages['errors'][] = 'Datum är obligatoriskt.';
+			if ( $time === '' ) $messages['errors'][] = 'Tid är obligatoriskt.';
+
+			if ( $date !== '' ) {
+				$d = DateTime::createFromFormat( 'Y-m-d', $date );
+				if ( ! $d || $d->format( 'Y-m-d' ) !== $date ) {
+					$messages['errors'][] = 'Datum måste vara i formatet YYYY-MM-DD.';
+				}
+			}
+
+			if ( empty( $messages['errors'] ) ) {
+				$post = get_post( $edit_id );
+				if ( ! $post || $post->post_type !== 'event' ) {
+					$messages['errors'][] = 'Event not found.';
+				} else {
+					// Update post title and metas
+					wp_update_post( array( 'ID' => $edit_id, 'post_title' => $name ) );
+					update_post_meta( $edit_id, 'event_date', $date );
+					update_post_meta( $edit_id, 'event_time', $time );
+					update_post_meta( $edit_id, 'event_nbrOfParticipants', $nbrOfParticipants );
+					update_post_meta( $edit_id, 'event_location', $location );
+				    delete_post_meta( $edit_id, 'event_notification' );
+					update_post_meta( $edit_id, 'event_notification', $notification );
+					update_post_meta( $edit_id, 'event_description', $description );
+					update_post_meta( $edit_id, 'event_picture', $picture );
+
+					// Read back stored meta for debug/UI
+					$stored_date = get_post_meta( $edit_id, 'event_date', true );
+					$stored_time = get_post_meta( $edit_id, 'event_time', true );
+					$stored_loc = get_post_meta( $edit_id, 'event_location', true );
+					$stored_nbr = get_post_meta( $edit_id, 'event_nbrOfParticipants', true );
+					$stored_notif = get_post_meta( $edit_id, 'event_notification', true );
+					$stored_descr = get_post_meta( $edit_id, 'event_description', true );
+					$stored_picture = get_post_meta( $edit_id, 'event_picture', true );
+					// Production success message
+					$messages['success-edit'] = 'Event uppdaterat.';
+					// preserve saved values to pre-fill the edit form and keep it open
+					$edit_saved = array(
+						'event_id' => $edit_id,
+						'event_name_edit' => $name,
+						'event_date_edit' => $date,
+						'event_time_edit' => $time,
+						'event_location_edit' => $location,
+						'event_nbrOfParticipants_edit' => $nbrOfParticipants,
+						'event_notification_edit' => $notification,
+						'event_description_edit' => $description,
+						'event_picture_edit' => $picture
+					);
+				}
+			}
+		}
+	}
+
+
+	// Admin add form
+	if ( current_user_can( 'manage_options' ) ) {
+		$out .= '<form method="post" enctype="multipart/form-data" class="events-add-form">';
+		$out .= wp_nonce_field( 'events_add_action', 'events_add_nonce', true, false );
+		$out .= '<div class="form-header">Skapa nytt event:</div>
+		        <div style="float:left; margin-right: 20px; clear: both;">
+		            <label>Namn:</label>
+		            <input name="event_name" required />
+				</div>
+		        <div style="float:left; margin-right: 20px;">
+		          	<label>Datum (YYYY-MM-DD):</label>
+					<input name="event_date" type="date" required />
+				 </div>
+				<div style="float:left; margin-right:  20px;">
+		          	<label>Tid</label>
+					<input name="event_time" type="time" required />					
+				 </div>
+				 <div style="float:left; margin-right: 20px;">
+					<label>Plats:</label>
+					<input name="event_location" />
+				</div>
+				<div style="float:left; margin-right: 20px;">
+		          	<label>Max antal deltagare:</label>
+					<input class="event-nbrOfParticipants" name="event_nbrOfParticipants" type="text" />
+				</div>
+				<div style="float:left; margin: 20px 0 0 0; width: 135px;">
+				    <label style="display: inline;">Föranmälan:</label>
+					<input type="radio" checked name="event_notification" value="Föranmälan" />
+					<label style="display: inline; clear:both;">Avanmälan:</label>
+					<input style="margin-left: 6px;" type="radio" name="event_notification" value="Avanmälan" />
+				</div>
+				<div style="float:left; margin-right: 20px;">
+		          	<label>Beskrivning:</label>
+					<textarea class="event-description" name="event_description"></textarea>
+				 </div>
+				<div style="float:left; margin-right: 20px;">
+				    <label>Bild:</label>
+					<input type="file" name="event_picture" />
+				</div>
+				<div style="clear:both;">
+				<button class="submit-button" type="submit" name="events_add_submit" value="1">Lägg till event</button>';
+		
+			    if ( $messages['success-add'] ) {
+					$out .= '<div class="events-success">' . esc_html( $messages['success-add'] ) . '</div>';
+				}
+				$out .= '</div>
+			</form>';
+
+			if ( $messages['success-delete'] ) {
+				$out .= '<div class="events-success-delete">' . esc_html( $messages['success-delete'] ) . '</div>';
+			}
+	}
+
+	// Admin edit form 
+	if ( current_user_can( 'manage_options' ) ) {
+		$edit_display = ( isset( $edit_saved ) && is_array( $edit_saved ) ) ? 'block' : 'none';
+		$es = isset( $edit_saved ) && is_array( $edit_saved ) ? $edit_saved : array();
+
+		$out .= '<form method="post" class="events-edit-form" enctype="multipart/form-data" id="events-edit-form" style="display:' . esc_attr( $edit_display ) . '; margin-top:20px;">';
+		$out .= wp_nonce_field( 'events_edit_action', 'events_edit_nonce', true, false );
+		$out .= '<input type="hidden" name="event_id" value="' . esc_attr( isset( $es['event_id'] ) ? $es['event_id'] : '' ) . '" />';
+		$out .= '<div class="form-header">Ändra event:<button type="button" id="events-edit-close" class="cancel-button">X</button></div>
+		         <div style="float:left; margin-right: 20px; clear: both;">
+					<label>Namn:</label>
+					<input name="event_name_edit" required value="' . esc_attr( isset( $es['event_name_edit'] ) ? $es['event_name_edit'] : '' ) . '" />
+				 </div>
+				 <div style="float:left; margin-right: 20px;">
+					<label>Datum (YYYY-MM-DD):</label>
+					<input name="event_date_edit" type="date" required value="' . esc_attr( isset( $es['event_date_edit'] ) ? $es['event_date_edit'] : '' ) . '" />
+				 </div>
+				 <div style="float:left; margin-right:  20px;">
+					<label>Tid</label>
+					<input name="event_time_edit" type="time" required value="' . esc_attr( isset( $es['event_time_edit'] ) ? $es['event_time_edit'] : '' ) . '" />					
+				 </div>
+				 <div style="float:left; margin-right: 20px;">
+					<label>Plats:</label>
+					<input name="event_location_edit" value="' . esc_attr( isset( $es['event_location_edit'] ) ? $es['event_location_edit'] : '' ) . '" />
+				 </div>
+				 <div style="float:left; margin-right: 20px;">
+					<label>Max antal deltagare:</label>
+					<input class="event-nbrOfParticipants" name="event_nbrOfParticipants_edit" type="text" value="' . esc_attr( isset( $es['event_nbrOfParticipants_edit'] ) ? $es['event_nbrOfParticipants_edit'] : '' ) . '" />
+				 </div>
+				 <div style="float:left; margin: 20px 0 0 0; width: 135px;">
+					<label style="display: inline;">Föranmälan:</label>
+					<input type="radio" name="event_notification_edit" value="Föranmälan" ' . ( isset( $es['event_notification_edit'] ) && $es['event_notification_edit'] === 'Föranmälan' ? 'checked' : '' ) . ' />
+					<label style="display: inline; clear:both;">Avanmälan:</label>
+					<input style="margin-left: 6px;" type="radio" name="event_notification_edit" value="Avanmälan" ' . ( isset( $es['event_notification_edit'] ) && $es['event_notification_edit'] === 'Avanmälan' ? 'checked' : '' ) . ' />
+				 </div>
+				 <div style="float:left; margin-right: 20px;">
+		          	<label>Beskrivning:</label>
+					<textarea class="event-description" name="event_description_edit">' . esc_attr( isset( $es['event_description_edit'] ) ? $es['event_description_edit'] : '' ) . '</textarea>
+				 </div>
+				 <div style="float:left; margin-right: 20px;">
+				    <label>Bild:</label>
+					<input type="file" name="event_picture_edit" />
+				 </div>
+				<div style="clear:both;">
+				<button class="submit-button" type="submit" name="events_edit_submit" value="1">Spara ändringar</button>';				
+				if ( $messages['success-edit'] ) {
+					$out .= '<div id="events-success-edit" class="events-success">' . esc_html( $messages['success-edit'] ) . '</div>';
+				}
+				$out .= '</div>
+			</form>';
+	}
+
+	if ( ! empty( $messages['errors'] ) ) {
+		$out .= '<div class="events-errors"><ul>';
+		foreach ( $messages['errors'] as $e ) {
+			$out .= '<li>' . esc_html( $e ) . '</li>';
+		}
+		$out .= '</ul></div>';
+	}
+
+	
+	// List events sorted by event_date
+	$per_page = intval( $atts['per_page'] );
+	$args = array(
+		'post_type' => 'event',
+		'posts_per_page' => $per_page,
+		'meta_key' => 'event_date',
+		'orderby' => 'meta_value',
+		'order' => 'ASC',
+	);
+	$q = new WP_Query( $args );
+	if ( ! $q->have_posts() ) {
+		$out .= '<p>Inga events hittades.</p>';
+		return $out;
+	}
+
+	$out .= '<div class="events-list">';
+
+				while ( $q->have_posts() ) {	
+					$q->the_post();
+					$id = get_the_ID();
+					$name = get_the_title();	
+					$date = get_post_meta( $id, 'event_date', true );
+					$time = get_post_meta( $id, 'event_time', true );
+					$location = get_post_meta( $id, 'event_location', true );					
+					$nbrOfParticipants = get_post_meta( $id, 'event_nbrOfParticipants', true );
+					$description = get_post_meta( $id, 'event_description', true );
+					$picture = get_post_meta( $id, 'event_picture', true );
+
+					IF( ! $nbrOfParticipants ) {
+						$nbrOfParticipants = '0';
+					}
+
+					$notification = get_post_meta( $id, 'event_notification', true );
+				
+					$out .= '<div class="event-item">
+					            <div class="event-item-left"> 
+									<div><strong>' . esc_html( $name ) . '</strong></div>
+									<div>' . esc_html( $date ) . ', kl ' . esc_html( $time ) . '</div>								
+									<div>' . esc_html( $location ) . '</div>'; 
+									
+									if ( $description ) {
+										$out .= '<div onclick="ShowDescription(' . '\'event-description-' . esc_attr( $id )  . '\'' . ')" style="text-decoration:underline; cursor:pointer;">
+													Beskrivning:
+												</div>
+												<div id="event-description-' . esc_attr( $id ) . '" style="text-align:left; margin-bottom:10px; display:none;">' . 
+													esc_html( $description ) . 
+												'</div>';
+									}
+									else {
+										$out .= '<div>Beskrivning ej tillgänglig.</div>';
+									}
+									$out .= '<div>' . esc_html( $nbrOfParticipants ) . ' deltagare</div>
+									<div><a href="mailto:susanne.eneroth@pinkdogmedia.se">' . esc_html( $notification ) . '</a></div> 	
+								</div>
+								<div class="event-item-right">';
+									if ( $picture ) {
+										$out .= '<div><img src="' . esc_url( $picture ) . '" alt="Event Picture" style="max-width:160px; max-height:160px;" /></div>';
+									}
+								$out .= '</div>
+								
+							 </div>';
+
+							if ( current_user_can( 'manage_options' ) ) {
+								// Edit button triggers JS to populate and show the edit form
+								$out .= ' <button class="edit-button" data-event-id="' . esc_attr( $id ) . '" data-event-name="' . esc_attr( $name ) . '" data-event-date="' . 
+								              esc_attr( $date ) . '" data-event-time="' . esc_attr( $time ) . '" data-event-location="' . esc_attr( $location ) .
+											  '" data-event-description="' . esc_attr( $description ) .  '" data-event-nbr="' .  esc_attr( $nbrOfParticipants ) . 
+											  '" data-event-notification="' . esc_attr( $notification ) . '">Ändra</button>';
+
+							    $del_url = add_query_arg( array( 'delete_event' => $id, '_ev_nonce' => wp_create_nonce( 'events_delete_action' ) ) );
+								$out .= ' <a href="' . esc_url( $del_url ) . '" onclick="return confirm(\'Radera detta event?\');" >
+											<button class="delete-button" name="events_delete">Radera</button>
+										  </a>';								
+							}
+				}
+				wp_reset_postdata(); 
+
+              $out .= '</div>';
+
+	// Inline script to handle edit button clicks (only for admins)
+
+	// load external JS from theme child folder
+	$script_url = get_stylesheet_directory_uri() . '/js/events-edit.js';
+	$out .= '<script src="' . esc_url( $script_url ) . '"></script>';
+
+	return $out;
+}
+add_shortcode( 'events_list', 'shortcode_events_list' );

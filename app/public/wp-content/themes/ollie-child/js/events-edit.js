@@ -105,12 +105,15 @@
       // small timeout to allow layout to settle
       setTimeout(function(){
         try
-        { editForm.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        { 
+          editForm.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+        }
         catch(e){ window.scrollTo(0, editForm.offsetTop || 0); }
           // focus first input for convenience
           var first = editForm.querySelector('input, textarea, select');
-          if(first) first.focus();
-        }, 50);
+          if(first) 
+            first.focus();
+        }, 400);
     }
   }
   // Run the scroll check now and also on DOMContentLoaded in case init ran early
@@ -153,5 +156,13 @@ function ShowDescription(id){
     else {
       description.style.display = 'none';
     }
+  }
+}
+
+
+function ScrollIntoEventView(id){
+  var element = document.getElementById(id);
+  if(element){
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }

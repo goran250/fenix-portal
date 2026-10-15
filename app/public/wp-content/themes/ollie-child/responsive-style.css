@@ -1,0 +1,327 @@
+@media (max-width: 1300px) {
+  .members-grid {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+}
+
+/* Fix: Innehåll får padding, inte blocken själva – endast på inner-gruppen */
+@media (max-width: 1280px) {
+    .footer-inner {
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
+}
+
+/* ============================================
+   FENIX NAVBAR - Breakpoint: 1079px
+   Hamburger-meny visas vid max-width: 1079px
+   ============================================ */
+
+@media (min-width: 1080px) {
+  /* ── 3. CTA-knapp (Besök nätverket-knappen i headern) ──  Visa på desktop */
+  .navbar-cta {
+    display: flex !important;
+  }
+
+  /* ── 1. mobile-only menypost (Besök nätverket i nav) ──  Dölj på desktop */
+  li.mobile-only-menu-item {
+    display: none !important;
+  }
+
+  /* ── 2. Hamburger-meny logik ──  Desktop: visa full nav, dölj hamburger */
+  .wp-block-navigation .wp-block-navigation__responsive-container-open {
+    display: none !important;
+  }
+
+  .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) {
+    display: flex !important;
+    position: static !important;
+    background: transparent !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .wp-block-navigation {
+    margin-left: 0 !important;
+  }
+}
+
+/* Mobil/tablet: visa hamburger, dölj full nav */
+@media (max-width: 1079px) {
+  /* Visa i hamburger-meny */
+  li.mobile-only-menu-item {
+    display: block !important;
+    margin-top: 0 !important;
+  }
+
+  li.mobile-only-menu-item {
+      display: block !important;
+      margin-top: -40px !important;
+  }
+
+  .site-header .wp-block-buttons {
+      order: 999 !important;
+  }
+
+  .site-header .navbar-cta {
+      display: none !important;
+  }
+
+  /* Dölj på mobil/tablet */
+  .navbar-cta {
+    display: none !important;
+  }
+
+  .wp-block-navigation .wp-block-navigation__responsive-container-open {
+    display: flex !important;
+  }
+
+  .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) {
+    display: none !important;
+  }
+
+  /* Tryck hamburger-ikonen till höger */
+  .wp-block-navigation {
+    margin-left: auto !important;
+  }
+}
+
+@media (max-width: 782px) {
+  
+  /* ── 6. Hero-sektioner – responsiv padding ── */
+  .hero-responsive {
+    padding-top: 160px !important;
+    padding-bottom: 25px !important;
+  }
+  
+  .hero-wrap {
+    padding-top: 155px !important;
+    min-height: 700px !important;
+  }
+
+  .hero-icons-columns.wp-block-columns {
+    gap: 1rem !important;
+  }
+
+  .hero-icons-columns .wp-block-column {
+    max-width: 150px;
+    flex: 1 1 0% !important;
+    display: flex;
+    justify-content: left;
+  }
+
+  .hero-icons-content {
+    padding-left: 25px !important;
+    margin: 66px auto 0px auto !important;
+  }
+  
+  .members-grid {
+    column-count: 2 !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+
+  .responsive-margin-top {
+    margin-top: 40px !important;
+  }
+
+  body.admin-bar .site-header,
+  body.admin-bar header.wp-block-template-part {
+    top: 46px;
+  }
+}
+
+@media (max-width: 781px) {
+  header .wp-block-navigation__responsive-container-open {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  header .wp-block-buttons {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .members-grid {
+    column-count: 1 !important;
+  }
+}
+
+
+@media (max-width: 580px) {
+  .fenix-feature-grid .has-newdark-background-color * {
+    text-align: center !important;
+    justify-content: center !important;
+    padding-bottom: 15px !important;
+  }
+
+  .mini-cta-center {
+    text-align: center !important;
+  }
+}
+
+
+@media (max-width: 560px) {
+  .fenix-feature-grid.is-layout-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .fenix-feature-grid.is-layout-grid > .wp-block-group {
+    flex: 1 1 260px;
+  }
+
+  .fenix-feature-grid.is-layout-grid > .wp-block-group {
+    flex: 1 1 100%;
+  }
+}
+
+/* ── 7. Hero-ikoner – layout på riktigt små skärmar ── */
+@media (max-width: 389px) {
+  .hero-icons-columns .wp-block-column {
+    max-width: 120px;
+    flex: 1 1 0% !important;
+    display: flex;
+    justify-content: left;
+  }
+
+  .hero-icons-columns .wp-block-column p {
+    font-size: clamp(0.8rem, 1.5vw, 1rem) !important;
+  }
+
+  .hero-icons-content {
+    padding-left: 35px !important;
+    margin: 66px auto 0 auto !important;
+  }
+
+  .hero-icons-columns .wp-block-column {
+    max-width: 120px;
+    flex: 1 1 0% !important;
+    display: flex;
+    justify-content: left;
+  }  
+}
+
+
+/* ── 5. Logotyp – krymper på riktigt små skärmar ── */
+@media (max-width: 375px) {
+  header .wp-block-site-logo img {
+    max-height: 40px;
+    width: auto;
+  }
+}
+
+
+/***************************************************************************************
+Görans css
+****************************************************************************************/
+
+
+
+@media (max-width: 1320px) {
+  .all-members-inner-wrap {
+    width: 930px;
+  }
+  
+  form.events-add-form {
+    margin-left: 0px!important;
+  }
+}
+
+@media (max-width: 1080px) {
+  form.events-add-form {
+    width: 355px;
+  }
+
+  form.events-add-form input[type="time"],
+  form.events-add-form .event-nbrOfParticipants {
+    width: 310px;
+  }
+}
+
+@media (max-width: 1020px) {
+  div.events-list {  
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 978px) {
+  .all-members-inner-wrap {
+    width: 620px;
+  }
+}
+
+@media (max-width: 690px) {
+  .all-members-inner-wrap {
+      width: 320px;
+  }
+}
+
+
+@media (max-width: 560px) {
+  
+  .register-member-form .form-table td input, .edit-member-form .form-table td input{
+      width: 200px;
+  }
+
+  .register-member-form .form-table td select, .edit-member-form .form-table td select{
+    width: 200px;
+  }
+
+  .register-member-form .form-table td textarea, .edit-member-form .form-table td textarea{
+    width: 200px;
+  } 
+
+  .form-table {
+    margin-left: -8px;
+  }
+
+  form.events-add-form {
+    width: 330px;
+  }
+
+  form.events-add-form input,
+  form.events-add-form input[type="time"],
+  form.events-add-form .event-nbrOfParticipants,
+  form.events-add-form .event-description, form.events-edit-form .event-description {  
+    width: 290px;
+  }
+}
+
+@media (max-width:520px) {
+
+  div.event-item-outer {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  div.event-item { 
+    flex-direction: column; 
+    align-items: center; 
+  } 
+  
+  div.event-item-left { 
+    margin-right: 0; 
+    margin-bottom: 20px!important; 
+    text-align: center; 
+
+  }
+  
+  div.event-item-right {
+    width: 100%;
+    flex: 0 0 auto;
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+  div.event-item-right img {
+    margin: 0;
+    display: block;
+  }
+}
+
+

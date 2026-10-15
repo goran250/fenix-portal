@@ -10,13 +10,180 @@ add_action( 'wp_enqueue_scripts', 'ollie_child_enqueue_styles' );
 function ollie_child_enqueue_styles(): void {
 	wp_enqueue_style( 'ollie-child-style', get_stylesheet_uri(), array( 'ollie' ), wp_get_theme()->get( 'Version' ) );
 
-	// Responsive fixes – laddas sist så den vinner i specificitet
-	wp_enqueue_style( 'ollie-child-responsive-fixes', get_stylesheet_directory_uri() . '/responsive-fixes.css', array( 'ollie-child-style' ), wp_get_theme()->get( 'Version' ) );
+	// Responsive style – laddas sist så den vinner i specificitet
+	wp_enqueue_style( 'ollie-child-responsive-style', get_stylesheet_directory_uri() . '/responsive-style.css', array( 'ollie-child-style' ), wp_get_theme()->get( 'Version' ) );
 
 	// Header scroll effect
 	wp_enqueue_script( 'header-scroll', get_stylesheet_directory_uri() . '/header-scroll.js', array(), wp_get_theme()->get( 'Version' ), true );
 }
 
+/**
+ * Handle Avanmalning (user cancellation) requests.
+ * Accepts POST or GET with event_id and records the current user as cancelled for that event.
+ * Accessible via admin-post.php?action=avanmalning
+ */
+function avanmalning_handler() {
+    // verify nonce to avoid CSRF
+    if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), 'avanmalning_action' ) ) {
+        wp_safe_redirect( site_url( '/avanmalan/?status=nonce' ) );
+        exit;
+    }
+
+    // require logged in user
+    if ( ! is_user_logged_in() ) {
+        wp_safe_redirect( wp_login_url( site_url( '/avanmalan/' ) ) );
+        exit;
+    }
+
+    $event_id = 0;
+    if ( isset( $_REQUEST['event_id'] ) ) {
+        $event_id = intval( wp_unslash( $_REQUEST['event_id'] ) );
+    }
+
+    if ( $event_id <= 0 ) {
+        wp_safe_redirect( site_url( '/avanmalan/' ) );
+        exit;
+    }
+
+    $user_id = get_current_user_id();
+
+    // ensure post exists and is an event
+    $post = get_post( $event_id );
+    if ( ! $post || $post->post_type !== 'event' ) {
+        wp_safe_redirect( site_url( '/avanmalan/?status=invalid' ) );
+        exit;
+    }
+
+    // store cancellations as an array of user IDs in post meta 'event_cancellations'
+    $cancellations = get_post_meta( $event_id, 'event_cancellations', true );
+    if ( ! is_array( $cancellations ) ) {
+        $cancellations = array();
+    }
+
+    if ( ! in_array( $user_id, $cancellations, true ) ) {
+        $cancellations[] = $user_id;
+        update_post_meta( $event_id, 'event_cancellations', $cancellations );
+    }
+
+    // optionally also record on user meta for quick lookup
+    $user_cancelled = get_user_meta( $user_id, 'cancelled_events', true );
+    if ( ! is_array( $user_cancelled ) ) {
+        $user_cancelled = array();
+    }
+    if ( ! in_array( $event_id, $user_cancelled, true ) ) {
+        $user_cancelled[] = $event_id;
+        update_user_meta( $user_id, 'cancelled_events', $user_cancelled );
+    }
+
+    // set a short-lived transient to indicate success for this user+event (one-time display)
+    if ( $user_id && $event_id ) {
+        set_transient( 'events_success_avan_' . intval( $user_id ) . '_' . intval( $event_id ), 1, 30 );
+    }
+
+    // Redirect back to referring page (clean URL). Transient contains one-time success flag.
+    $redirect = wp_get_referer();
+    if ( ! $redirect ) {
+        $redirect = site_url( '/avanmalan/' );
+    }
+    // remove any success/query parameters that may have been present in the referrer
+    $parts = wp_parse_url( $redirect );
+    $clean_url = $redirect;
+    if ( ! empty( $parts['query'] ) ) {
+        wp_parse_str( $parts['query'], $q );
+        // keys to remove
+        $remove_keys = array( 'avanmald', 'foranmald', 'event_id', 'delete_event', '_ev_nonce', '_wpnonce' );
+        foreach ( $remove_keys as $k ) {
+            if ( isset( $q[ $k ] ) ) {
+                unset( $q[ $k ] );
+            }
+        }
+        $clean_query = ! empty( $q ) ? '?' . build_query( $q ) : '';
+        $clean_url = $parts['scheme'] . '://' . $parts['host'] . ( ! empty( $parts['path'] ) ? $parts['path'] : '' ) . $clean_query;
+        if ( ! empty( $parts['port'] ) ) {
+            $clean_url = $parts['scheme'] . '://' . $parts['host'] . ':' . $parts['port'] . ( ! empty( $parts['path'] ) ? $parts['path'] : '' ) . $clean_query;
+        }
+    }
+    wp_safe_redirect( $clean_url );
+    exit;
+}
+add_action( 'admin_post_avanmalning', 'avanmalning_handler' );
+add_action( 'admin_post_nopriv_avanmalning', 'avanmalning_handler' );
+
+/**
+ * Handle Foranmalning (user registration) requests.
+ * Accepts POST or GET with event_id and records the current user as registered for that event.
+ * Accessible via admin-post.php?action=foranmalning
+ */
+function foranmalning_handler() {
+    // verify nonce to avoid CSRF
+    if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), 'foranmalning_action' ) ) {
+        wp_safe_redirect( site_url( '/foranmalan/?status=nonce' ) );
+        exit;
+    }
+
+    // require logged in user
+    if ( ! is_user_logged_in() ) {
+        wp_safe_redirect( wp_login_url( site_url( '/foranmalan/' ) ) );
+        exit;
+    }
+
+    $event_id = 0;
+    if ( isset( $_REQUEST['event_id'] ) ) {
+        $event_id = intval( wp_unslash( $_REQUEST['event_id'] ) );
+    }
+
+    if ( $event_id <= 0 ) {
+        wp_safe_redirect( site_url( '/foranmalan/' ) );
+        exit;
+    }
+
+    $user_id = get_current_user_id();
+
+    // ensure post exists and is an event
+    $post = get_post( $event_id );
+    if ( ! $post || $post->post_type !== 'event' ) {
+        wp_safe_redirect( site_url( '/foranmalan/?status=invalid' ) );
+        exit;
+    }
+
+    // store registrations as an array of user IDs in post meta 'event_registrations'
+    $registrations = get_post_meta( $event_id, 'event_registrations', true );
+    if ( ! is_array( $registrations ) ) {
+        $registrations = array();
+    }
+
+    if ( ! in_array( $user_id, $registrations, true ) ) {
+        $registrations[] = $user_id;
+        update_post_meta( $event_id, 'event_registrations', $registrations );
+    }
+
+    // optionally also record on user meta for quick lookup
+    $user_registered = get_user_meta( $user_id, 'registered_events', true );
+    if ( ! is_array( $user_registered ) ) {
+        $user_registered = array();
+    }
+    if ( ! in_array( $event_id, $user_registered, true ) ) {
+        $user_registered[] = $event_id;
+        update_user_meta( $user_id, 'registered_events', $user_registered );
+    }
+
+    // set a short-lived transient to indicate success for this user+event (one-time display)
+    if ( $user_id && $event_id ) {
+        set_transient( 'events_success_foran_' . intval( $user_id ) . '_' . intval( $event_id ), 1, 30 );
+    }
+
+    // Redirect back to referring page or Foranmalan with success flag
+    $redirect = wp_get_referer();
+    if ( ! $redirect ) {
+        $redirect = site_url( '/foranmalan/' );
+    }
+    // include event_id in redirect so the shortcode can show a message under that event
+    $redirect = add_query_arg( array( 'foranmald' => '1', 'event_id' => $event_id ), $redirect );
+    wp_safe_redirect( $redirect );
+    exit;
+}
+add_action( 'admin_post_foranmalning', 'foranmalning_handler' );
+add_action( 'admin_post_nopriv_foranmalning', 'foranmalning_handler' );
 
 /**
  * Show Company field on user profile and edit screens (editable) and save it to user meta.
@@ -338,6 +505,100 @@ function shortcode_all_users( $atts )
                 
                 return $out; 
     } 
+    // Placeholder for upcoming shortcode additions.
+/**
+ * Shortcode [anmalningar_list]
+ * Shows list of members for a given event who are either cancelled (avanmälda)
+ * or registered (föranmälda) depending on querystring parameters.
+ * Expected querystring: ?event_id=123&status=cancelled  OR  ?event_id=123&status=registered
+ * Swedish synonyms are accepted for status: 'avan', 'foran', 'avanmalda', 'foranmalda', etc.
+ */
+function shortcode_anmalningar( $atts ) {
+    // Only allow administrators to view the signups list
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return '<div>Du måste vara administratör för att se anmälningar.</div>';
+    }
+
+    $event_id = isset( $_GET['event_id'] ) ? intval( wp_unslash( $_GET['event_id'] ) ) : 0;
+    $status_raw = isset( $_GET['status'] ) ? sanitize_text_field( wp_unslash( $_GET['status'] ) ) : '';
+    $status = strtolower( trim( $status_raw ) );
+
+    // normalize Swedish/English synonyms
+    $cancel_values = array( 'cancelled', 'cancel', 'avan', 'avanmalda', 'avanmald', 'avanmälda', 'avanmäld' );
+    $reg_values = array( 'registered', 'reg', 'foran', 'foranmalda', 'foranmald', 'föranmälda', 'föranmäld' );
+
+    if ( in_array( $status, $cancel_values, true ) ) {
+        $which = 'cancelled';
+    } 
+    else if ( in_array( $status, $reg_values, true ) ) {
+        $which = 'registered';
+    } 
+    else {
+        return '<div>Ogiltigt statusvärde. Ange status=cancelled eller status=registered i querystring.</div>';
+    }
+
+    if ( $event_id <= 0 ) {
+        return '<div>Event-id saknas eller ogiltigt. Ange event_id i querystring.</div>';
+    }
+
+    $post = get_post( $event_id );
+    if ( ! $post || $post->post_type !== 'event' ) {
+        return '<div>Eventet hittades inte.</div>';
+    }
+
+    if ( $which === 'cancelled' ) {
+        $user_ids = get_post_meta( $event_id, 'event_cancellations', true );
+        $heading = 'Avanmälningar';
+    } else {
+        $user_ids = get_post_meta( $event_id, 'event_registrations', true );
+        $heading = 'Föranmälningar';
+    }
+
+    if ( ! is_array( $user_ids ) ) {
+        $user_ids = array();
+    }
+    $date = get_post_meta( $event_id, 'event_date', true );
+
+    $out = '<div class="anmalningar-list">';
+    $out .= '<h4 style="margin-bottom: 40px;">' . esc_html( $heading ) . ' för "' . esc_html( get_the_title( $event_id ) ) . '" ' . esc_html( $date ) . '</h4>';
+
+    if ( empty( $user_ids ) ) {
+        $out .= '<div>Inga medlemmar hittades.</div>';
+        $out .= '</div>';
+        return $out;
+    }
+
+    $out .= '<div class="anmalningar-members">';
+    foreach ( $user_ids as $uid ) {
+        $u = get_userdata( intval( $uid ) );
+        if ( ! $u ) continue;
+
+        // avatar / profile picture if available
+        $profilePhoto = '';
+        $att_id = get_user_meta( $u->ID, 'profile_picture', true );
+        if ( $att_id ) {
+            $profilePhoto = wp_get_attachment_image( $att_id, array( 64, 64 ), false, array( 'class' => 'avatar' ) );
+        } else {
+            $profilePhoto = get_avatar( $u->ID, 64 );
+        }
+
+    
+        $out .= '<div class="member-wrap">';
+        $out .= '<div class="member-photo">' . $profilePhoto . '</div>';
+        $out .= '<div class="member-info">';
+        $out .= '<div class="member-name">' . esc_html( $u->display_name ) . '</div>';                
+        $out .= '<div class="member-email">' . esc_html( $u->user_email ) . '</div>';
+        $out .= '<div class="member-company">' . esc_html( get_user_meta( $u->ID, 'company', true ) ) . '</div>';
+        $out .= '</div>'; // member-info
+        $out .= '</div>'; // member-wrap
+    }
+    $out .= '</div>'; // anmalningar-members
+    $out .= '</div>'; // anmalningar-list
+
+    return $out;
+}
+add_shortcode( 'anmalningar_list', 'shortcode_anmalningar' );
+
     
     add_shortcode( 'all_users', 'shortcode_all_users' );
 

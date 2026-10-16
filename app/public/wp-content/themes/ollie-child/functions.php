@@ -419,96 +419,99 @@ add_action( 'wp_head', function() {
 } );
 
 
-function shortcode_all_users( $atts )
+function shortcode_all_members( $atts )
 {
-    // Public members listing — do not restrict page visibility. Capability checks are handled
+    // Public members listing — Visibility restricted to logged-in users. Capability checks are handled
     // where actions require them (edit links, admin-only controls).
-    $atts = shortcode_atts( array( 'per_page' => 20 ), $atts, 'all_users' );
-        $per_page = intval( $atts['per_page'] );
-        $paged = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) ); 
-        $offset = ( $paged - 1 ) * $per_page; 
-        $args = array( 'number'  => $per_page, 'offset'  => $offset, 'orderby' => 'registered', 'order'   => 'DESC', 'fields'  => 'all', ); 
-       
-        $q = new WP_User_Query( $args ); 
-        $users = $q->get_results(); 
+    if ( ! is_user_logged_in() ) {
+        return '<p style="color: green;"><strong>Du måste vara inloggad för att se medlemmar.</strong></p>';
+    }
+
+    $atts = shortcode_atts( array( 'per_page' => 20 ), $atts, 'all_members' );
+    $per_page = intval( $atts['per_page'] );
+    $paged = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) ); 
+    $offset = ( $paged - 1 ) * $per_page; 
+    $args = array( 'number'  => $per_page, 'offset'  => $offset, 'orderby' => 'registered', 'order'   => 'DESC', 'fields'  => 'all', ); 
+    
+    $q = new WP_User_Query( $args ); 
+    $users = $q->get_results(); 
+    
+    if ( empty( $users ) ) 
+    { 
+        error_log( 'all_members shortcode: no members. Query vars: ' . print_r( $q->query_vars, true ) . ' total:' . $q->get_total() ); 
         
-        if ( empty( $users ) ) 
-        { 
-            error_log( 'all_users shortcode: no users. Query vars: ' . print_r( $q->query_vars, true ) . ' total:' . $q->get_total() ); 
-           
-            return '<p>No users found in db.</p>'; 
+        return '<p>No members found in db.</p>'; 
+    }
+
+    $out = '<div class="all-members-wrap">
+            
+                <div class="all-members-inner-wrap">' .
+              
+    $i = ""; // Ta inte bort denna variabel, då kraschar sidan.
+    
+    foreach ( $users as $u ) {                     
+        $profilePhoto = '';
+        $att_id = get_user_meta($u->ID, 'profile_picture', true );
+
+        if ( $att_id ) {
+            $profilePhoto = wp_get_attachment_image( $att_id, array( 64, 64 ), false, array( 'class' => 'avatar' ) );
+        } 
+        else {
+            $profilePhoto = get_avatar($u->ID, 64 );
         }
-  
-        $out = '<div class="all-members-wrap">
-               
-                    <div class="all-members-inner-wrap">' .
-              
-                $i = ""; // Ta inte bort denna variabel, då kraschar sidan.
-              
-                foreach ( $users as $u ) {                     
-                    $profilePhoto = '';
-                    $att_id = get_user_meta($u->ID, 'profile_picture', true );
 
-                    if ( $att_id ) {
-                        $profilePhoto = wp_get_attachment_image( $att_id, array( 64, 64 ), false, array( 'class' => 'avatar' ) );
-                    } 
-                    else {
-                        $profilePhoto = get_avatar($u->ID, 64 );
-                    }
+        // Resolve cover image URL (if present) and build inline style only when available
+        $cover_url = '';
+        if ( function_exists( 'ollie_get_user_cover_url' ) ) {
+            $cover_url = ollie_get_user_cover_url( $u->ID, 'full' );
+        } else {
+            $cover_att = get_user_meta( $u->ID, 'profile_cover', true );
+            if ( $cover_att ) {
+                $cover_url = wp_get_attachment_image_url( $cover_att, 'full' );
+            }
+        }
 
-                    // Resolve cover image URL (if present) and build inline style only when available
-                    $cover_url = '';
-                    if ( function_exists( 'ollie_get_user_cover_url' ) ) {
-                        $cover_url = ollie_get_user_cover_url( $u->ID, 'full' );
-                    } else {
-                        $cover_att = get_user_meta( $u->ID, 'profile_cover', true );
-                        if ( $cover_att ) {
-                            $cover_url = wp_get_attachment_image_url( $cover_att, 'full' );
-                        }
-                    }
+        $cover_style = 'background-image:url(' . esc_url( $cover_url ) . ')';
+        
+        $email = isset( $u->user_email ) ? $u->user_email : '';
+        $website = isset( $u->user_url ) ? $u->user_url : get_user_meta( $u->ID, 'user_url', true );
+        $company =  get_user_meta( $u->ID, 'company', true );
+        $biography= isset( $u->description ) ? $u->description : get_user_meta( $u->ID, 'description', true );
+        
+        $out .= '<div class="member-wrap">';
+        $out .= '<div class="member-cover"' . ( $cover_style ? ' style="' . $cover_style . '"' : '' ) . '></div>';
+        // Resolve the edit-member page permalink by path if it exists, fallback to the slug URL.
+        $edit_page = get_page_by_path( 'andra-medlem' );
+        $base = $edit_page ? get_permalink( $edit_page->ID ) : site_url( '/andra-medlem/' );
+        $edit_link = esc_url( add_query_arg( array( 'user_id' => $u->ID ), $base ) );
+        
 
-                    $cover_style = 'background-image:url(' . esc_url( $cover_url ) . ')';
-                    
-                    $email = isset( $u->user_email ) ? $u->user_email : '';
-                    $website = isset( $u->user_url ) ? $u->user_url : get_user_meta( $u->ID, 'user_url', true );
-                    $company =  get_user_meta( $u->ID, 'company', true );
-                    $biography= isset( $u->description ) ? $u->description : get_user_meta( $u->ID, 'description', true );
-                   
-                    $out .= '<div class="member-wrap">';
-                    $out .= '<div class="member-cover"' . ( $cover_style ? ' style="' . $cover_style . '"' : '' ) . '></div>';
-                    // Resolve the edit-member page permalink by path if it exists, fallback to the slug URL.
-                    $edit_page = get_page_by_path( 'andra-medlem' );
-                    $base = $edit_page ? get_permalink( $edit_page->ID ) : site_url( '/andra-medlem/' );
-                    $edit_link = esc_url( add_query_arg( array( 'user_id' => $u->ID ), $base ) );
-                    
+        $out .= '<div class="member-card">';
+    
+        if ( current_user_can( 'manage_options' ) ) {
+            $out .= '<div class="member-photo"><a href="' . $edit_link . '">' . $profilePhoto . '</a></div>';
+            $out .= '<div class="member profile-display-name"><a href="' . $edit_link . '">' . esc_html( $u->display_name ) . '</a></div>';
+        } else {
+            $out .= '<div class="member-photo">' . $profilePhoto . '</div>';
+            $out .= '<div class="member profile-display-name">' . esc_html( $u->display_name ) . '</div>';
+        }
 
-                    $out .= '<div class="member-card">';
-                
-                    if ( current_user_can( 'manage_options' ) ) {
-                        $out .= '<div class="member-photo"><a href="' . $edit_link . '">' . $profilePhoto . '</a></div>';
-                        $out .= '<div class="member profile-display-name"><a href="' . $edit_link . '">' . esc_html( $u->display_name ) . '</a></div>';
-                    } else {
-                        $out .= '<div class="member-photo">' . $profilePhoto . '</div>';
-                        $out .= '<div class="member profile-display-name">' . esc_html( $u->display_name ) . '</div>';
-                    }
-
-                    $out .= '<div class="member-item-wrap">' . esc_html( $u->user_login ) . '</div>';
-                    $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Epost: </span>' . esc_html( $email ) . '</div>';
-                    $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Företag: </span>' . esc_html( $company ) . '</div>';
-                    $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Webbplats: </span><a href="' . esc_url( $website ) . '" target="_blank" rel="noopener">' . esc_html( $website ) . '</a></div>';
-                    $out .= '<div class="member-item-wrap profile-bio">' . wp_kses_post( wpautop( $biography ) ) . '</div>';
-                    $out .= '</div>'; // member-card
-                    $out .= '</div>'; // member-wrap
-                    
-                } 
-                $out .= '</div>
-                         </div>'; 
-                
-                return $out; 
+        $out .= '<div class="member-item-wrap">' . esc_html( $u->user_login ) . '</div>';
+        $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Epost: </span>' . esc_html( $email ) . '</div>';
+        $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Företag: </span>' . esc_html( $company ) . '</div>';
+        $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Webbplats: </span><a href="' . esc_url( $website ) . '" target="_blank" rel="noopener">' . esc_html( $website ) . '</a></div>';
+        $out .= '<div class="member-item-wrap profile-bio">' . wp_kses_post( wpautop( $biography ) ) . '</div>';
+        $out .= '</div>'; // member-card
+        $out .= '</div>'; // member-wrap
+        
     } 
-    // Placeholder for upcoming shortcode additions.
+    $out .= '</div>
+                </div>'; 
+    
+    return $out; 
+} 
+   
 /**
- * Shortcode [anmalningar_list]
  * Shows list of members for a given event who are either cancelled (avanmälda)
  * or registered (föranmälda) depending on querystring parameters.
  * Expected querystring: ?event_id=123&status=cancelled  OR  ?event_id=123&status=registered
@@ -517,7 +520,7 @@ function shortcode_all_users( $atts )
 function shortcode_anmalningar( $atts ) {
     // Only allow administrators to view the signups list
     if ( ! current_user_can( 'manage_options' ) ) {
-        return '<div>Du måste vara administratör för att se anmälningar.</div>';
+        return '<div style="color: green;"><strong>Du måste vara administratör för att se anmälningar.</strong></div>';
     }
 
     $event_id = isset( $_GET['event_id'] ) ? intval( wp_unslash( $_GET['event_id'] ) ) : 0;
@@ -601,7 +604,7 @@ function shortcode_anmalningar( $atts ) {
 add_shortcode( 'anmalningar_list', 'shortcode_anmalningar' );
 
     
-    add_shortcode( 'all_users', 'shortcode_all_users' );
+    add_shortcode( 'all_members', 'shortcode_all_members' );
 
 // Save company/business custom field from User Registration forms to user meta
 add_action( 'user_registration_after_register_user_action', 'ollie_save_company_from_ur', 10, 3 );

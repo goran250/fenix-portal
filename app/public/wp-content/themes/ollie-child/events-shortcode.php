@@ -32,7 +32,7 @@ function shortcode_events_list( $atts ) {
 	$out = '<div class="events-list-wrap">';
 
 	if ( !is_user_logged_in() ) {
-		$out = '<div>Du måste vara inloggad för att se eventen.</div>';
+		$out = '<div style="color: green;"><strong>Du måste vara inloggad för att se eventen.</strong></div>';
 		return $out;
 	}
 
@@ -442,17 +442,18 @@ function shortcode_events_list( $atts ) {
 						$filename = strval( $existing_picture );
 					}
 				}
-					// Preserve existing picture value in a hidden input so it isn't lost when the form is submitted
+				// Preserve existing picture value in a hidden input so it isn't lost when the form is submitted
 				// store existing picture in a field that won't conflict with the file input
 				$out .= '<input type="hidden" name="event_picture_existing" value="' . esc_attr( $existing_picture ) . '" />';
 				// also keep legacy name for compatibility (not the file input)
 				$out .= '<input type="hidden" name="event_picture_edit_fallback" value="' . esc_attr( $existing_picture ) . '" />';
-					$out .= '<div class="event-picture-preview">Nuvarande fil: ' . esc_html( $filename ) . '</div>';
+				$out .= '<div class="event-picture-preview">Nuvarande bild: <strong>' . esc_html( $filename ) . '</strong></div>';
 			}
-						// close picture column and continue building output
-						$out .= '</div>';
-						$out .= '<div style="clear:both;">';
-						$out .= '<button class="submit-button" type="submit" name="events_edit_submit" value="1">Spara ändringar</button>';
+						
+				$out .= '</div>';
+				$out .= '<div style="clear:both;">';
+				$out .= '<button class="submit-button" type="submit" name="events_edit_submit" value="1">Spara ändringar</button>';
+
 				if ( $messages['success-edit'] ) {
 					$out .= '<div id="events-success-edit" class="events-success">' . esc_html( $messages['success-edit'] ) . '</div>';
 				}

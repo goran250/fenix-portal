@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function shortcode_Edit_member( $atts ) {
 	if ( ! is_user_logged_in() ) {
-		// Don't output a blocking message for unauthorized visitors; return empty so pages remain visible.
-		return '';
+		$out = '<div style="color: green;"><strong>Du måste vara inloggad för att ändra din profil.</strong></div>';
+		return $out;
 	}
 
 	$current = wp_get_current_user();
@@ -35,6 +35,18 @@ function shortcode_Edit_member( $atts ) {
 		return '';
 	}
 
+	if (get_current_user_id() != $target_user_id ) {
+		echo '<script> 
+		        
+				document.addEventListener("DOMContentLoaded", function () {
+					var header_title = document.querySelector(".wp-block-post-title");
+					if (header_title) {
+						header_title.innerHTML = "Ändra medlem";
+					}
+				});
+			</script>';
+	}
+	
 	$user = get_user_by( 'id', $target_user_id );
 	if ( ! $user ) {
 		return '<p>User not found.</p>';
@@ -307,7 +319,7 @@ function shortcode_Edit_member( $atts ) {
 	$out .= '<input type="file" name="profile_picture_file" />';
 	if ( $profile_att > 0 ) {
 		$out .= '<input type="hidden" name="profile_picture_existing" value="' . esc_attr( $profile_att ) . '" />';
-		$out .= '<div class="member-picture-preview">Nuvarande fil: ' . esc_html( $profile_label ) . '</div>';
+		$out .= '<div class="member-picture-preview">Nuvarande bild: <strong>' . esc_html( $profile_label ) . '</strong></div>';
 	}
 	$out .= '</td></tr>';
 
@@ -324,7 +336,7 @@ function shortcode_Edit_member( $atts ) {
 	$out .= '<input type="file" name="cover_photo_file" />';
 	if ( $cover_att > 0 ) {
 		$out .= '<input type="hidden" name="cover_photo_existing" value="' . esc_attr( $cover_att ) . '" />';
-		$out .= '<div class="member-cover-preview">Nuvarande fil: ' . esc_html( $cover_label ) . '</div>';
+		$out .= '<div class="member-cover-preview">Nuvarande bild: <strong>' . esc_html( $cover_label ) . '</strong></div>';
 	}
 	$out .= '</td></tr>';
 

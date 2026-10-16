@@ -161,11 +161,12 @@ function shortcode_Edit_member( $atts ) {
 									$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
 									wp_update_attachment_metadata( $attach_id, $attach_data );
 
-									$old = get_user_meta( $target_user_id, 'profile_picture', true );
-									update_user_meta( $target_user_id, 'profile_picture', intval( $attach_id ) );
-									if ( $old && intval( $old ) !== intval( $attach_id ) ) {
-										wp_delete_attachment( intval( $old ), true );
-									}
+								// If new uploaded, save attach id and remove old
+								$old = get_user_meta( $target_user_id, 'profile_picture', true );
+								update_user_meta( $target_user_id, 'profile_picture', intval( $attach_id ) );
+								if ( $old && intval( $old ) !== intval( $attach_id ) ) {
+									wp_delete_attachment( intval( $old ), true );
+								}
 								}
 							}
 						}
@@ -216,7 +217,21 @@ function shortcode_Edit_member( $atts ) {
 						}
 					}
 
-					$messages['success'] = 'Medlemmen är uppdaterad.';
+						// Preserve existing attachments when no new upload was submitted
+						if ( empty( $_FILES['profile_picture_file']['name'] ) && isset( $_POST['profile_picture_existing'] ) ) {
+							$existing = intval( $_POST['profile_picture_existing'] );
+							if ( $existing > 0 ) {
+								update_user_meta( $target_user_id, 'profile_picture', $existing );
+							}
+						}
+						if ( empty( $_FILES['cover_photo_file']['name'] ) && isset( $_POST['cover_photo_existing'] ) ) {
+							$existing = intval( $_POST['cover_photo_existing'] );
+							if ( $existing > 0 ) {
+								update_user_meta( $target_user_id, 'profile_cover', $existing );
+							}
+						}
+
+						$messages['success'] = 'Medlemmen är uppdaterad.';
 				}
 			}
 		}
@@ -280,8 +295,39 @@ function shortcode_Edit_member( $atts ) {
 	$out .= '<tr><th><label>Webbplats:</label></th><td><input name="website" value="' . esc_attr( $vals['website'] ) . '" /></td></tr>';
 	$out .= '<tr><th><label>Biografi:</label></th><td><textarea name="biography">' . esc_textarea( $vals['biography'] ) . '</textarea></td></tr>';
 
-	$out .= '<tr><th><label>Profilbild:</label></th><td><input type="file" name="profile_picture_file" /></td></tr>';
-	$out .= '<tr><th><label>Logotyp:</label></th><td><input type="file" name="cover_photo_file" /></td></tr>';
+	// Profile picture: show current filename (attachment ID only) and include hidden existing field
+	$profile_att = intval( get_user_meta( $target_user_id, 'profile_picture', true ) );
+	$profile_label = '';
+	if ( $profile_att > 0 ) {
+		$profile_url = wp_get_attachment_url( $profile_att );
+		if ( $profile_url ) {
+			$profile_label = wp_basename( $profile_url );
+		}
+	}
+	$out .= '<tr><th><label>Profilbild:</label></th><td>';
+	$out .= '<input type="file" name="profile_picture_file" />';
+	if ( $profile_att > 0 ) {
+		$out .= '<input type="hidden" name="profile_picture_existing" value="' . esc_attr( $profile_att ) . '" />';
+		$out .= '<div class="member-picture-preview">Nuvarande fil: ' . esc_html( $profile_label ) . '</div>';
+	}
+	$out .= '</td></tr>';
+
+	// Cover photo (profile cover)
+	$cover_att = intval( get_user_meta( $target_user_id, 'profile_cover', true ) );
+	$cover_label = '';
+	if ( $cover_att > 0 ) {
+		$cover_url = wp_get_attachment_url( $cover_att );
+		if ( $cover_url ) {
+			$cover_label = wp_basename( $cover_url );
+		}
+	}
+	$out .= '<tr><th><label>Logotyp:</label></th><td>';
+	$out .= '<input type="file" name="cover_photo_file" />';
+	if ( $cover_att > 0 ) {
+		$out .= '<input type="hidden" name="cover_photo_existing" value="' . esc_attr( $cover_att ) . '" />';
+		$out .= '<div class="member-cover-preview">Nuvarande fil: ' . esc_html( $cover_label ) . '</div>';
+	}
+	$out .= '</td></tr>';
 
 	$out .= '</table>';
 	$out .= '<p><button type="submit" name="edit_member_submit" class="submit-button" >Spara</button></p>';

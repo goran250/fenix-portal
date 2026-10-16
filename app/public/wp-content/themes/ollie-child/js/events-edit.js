@@ -15,6 +15,8 @@
         const description = this.getAttribute('data-event-description');
         const nbr = this.getAttribute('data-event-nbr');
         const notif = this.getAttribute('data-event-notification');
+        const pictureLabel = this.getAttribute('data-event-picture-label') || '';
+        const pictureValue = this.getAttribute('data-event-picture-value') || '';
         var f;
         f = editForm.querySelector('input[name="event_id"]'); if(f) f.value = id;
         f = editForm.querySelector('input[name="event_name_edit"]'); if(f) f.value = name;
@@ -23,6 +25,51 @@
         f = editForm.querySelector('input[name="event_location_edit"]'); if(f) f.value = location;
         f = editForm.querySelector('textarea[name="event_description_edit"]'); if(f) f.value = description;
         f = editForm.querySelector('input[name="event_nbrOfParticipants_edit"]'); if(f) f.value = nbr;
+        // populate picture preview label if present
+        var picPreview = editForm.querySelector('.event-picture-preview');
+        if (!picPreview) {
+          picPreview = document.createElement('div');
+          picPreview.className = 'event-picture-preview';
+          var fileInput = editForm.querySelector('input[type=file][name="event_picture_edit"]');
+          if (fileInput && fileInput.parentNode) {
+            fileInput.parentNode.appendChild(picPreview);
+          } else {
+            editForm.appendChild(picPreview);
+          }
+        }
+        if (pictureLabel) {
+          picPreview.textContent = 'Nuvarande fil: ' + pictureLabel;
+        } else {
+          picPreview.textContent = '';
+        }
+        // ensure hidden existing-field matches the value from the row (attachment ID only)
+        var hiddenExisting = editForm.querySelector('input[name="event_picture_existing"]');
+        if (!hiddenExisting) {
+          hiddenExisting = document.createElement('input');
+          hiddenExisting.type = 'hidden';
+          hiddenExisting.name = 'event_picture_existing';
+          var fileInput = editForm.querySelector('input[type=file][name="event_picture_edit"]');
+          if (fileInput && fileInput.parentNode) {
+            fileInput.parentNode.appendChild(hiddenExisting);
+          } else {
+            editForm.appendChild(hiddenExisting);
+          }
+        }
+        hiddenExisting.value = pictureValue ? parseInt(pictureValue, 10) || '' : '';
+        // ensure hidden existing-field matches the value from the row
+        var hiddenExisting = editForm.querySelector('input[name="event_picture_existing"]');
+        if (!hiddenExisting) {
+          hiddenExisting = document.createElement('input');
+          hiddenExisting.type = 'hidden';
+          hiddenExisting.name = 'event_picture_existing';
+          var fileInput = editForm.querySelector('input[type=file][name="event_picture_edit"]');
+          if (fileInput && fileInput.parentNode) {
+            fileInput.parentNode.appendChild(hiddenExisting);
+          } else {
+            editForm.appendChild(hiddenExisting);
+          }
+        }
+        hiddenExisting.value = pictureValue;
         var radios = editForm.querySelectorAll('input[name="event_notification_edit"]');
         radios.forEach(function(r){ r.checked = (r.value === notif); });
         editForm.style.display = 'block';

@@ -403,3 +403,55 @@ Stack trace:
 [14-Oct-2026 07:12:29 UTC] PHP Parse error:  Unclosed '{' on line 467 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 470
 [14-Oct-2026 07:13:03 UTC] PHP Parse error:  Unclosed '{' on line 467 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 470
 [14-Oct-2026 07:13:03 UTC] PHP Parse error:  Unclosed '{' on line 467 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 470
+[15-Oct-2026 18:04:48 UTC] PHP Warning:  Undefined variable $picture in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 410
+[15-Oct-2026 18:08:30 UTC] PHP Parse error:  syntax error, unexpected token "." in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 410
+[15-Oct-2026 18:08:30 UTC] PHP Parse error:  syntax error, unexpected token "." in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 410
+[15-Oct-2026 18:08:58 UTC] PHP Parse error:  syntax error, unexpected token "." in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 410
+[15-Oct-2026 18:13:26 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "post_title" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php:411
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_events_list(Array, '', 'events_list')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(events...', 'do_shortcode_ta...', '[events_list]\n')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('[events_list]\n')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('[events_list]\n', Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:shortco...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:shortco...', Object(WP_Block))
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#19 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 411
+[15-Oct-2026 18:37:54 UTC] PHP Parse error:  Unclosed '{' on line 25 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 110
+[15-Oct-2026 18:37:54 UTC] PHP Parse error:  Unclosed '{' on line 25 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 110
+[15-Oct-2026 18:40:09 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 109
+[15-Oct-2026 19:11:15 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 19:11:16 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 19:13:29 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 19:13:29 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 19:13:31 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 19:13:31 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:42:19 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 414
+[15-Oct-2026 20:42:19 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 414
+[15-Oct-2026 20:42:55 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 414
+[15-Oct-2026 20:42:56 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 414
+[15-Oct-2026 20:47:01 UTC] PHP Parse error:  Unclosed '{' on line 29 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 643
+[15-Oct-2026 20:47:01 UTC] PHP Parse error:  Unclosed '{' on line 29 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 643
+[15-Oct-2026 20:50:55 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:50:55 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:50:57 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:50:57 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:51:32 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:51:32 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:52:43 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:52:44 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:52:47 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413
+[15-Oct-2026 20:52:47 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 413

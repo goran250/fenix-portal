@@ -104,6 +104,7 @@ function avanmalning_handler() {
         }
     }
     wp_safe_redirect( $clean_url );
+
     exit;
 }
 add_action( 'admin_post_avanmalning', 'avanmalning_handler' );

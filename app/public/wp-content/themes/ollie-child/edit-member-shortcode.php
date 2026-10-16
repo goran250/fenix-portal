@@ -280,7 +280,6 @@ function shortcode_Edit_member( $atts ) {
 	if ( current_user_can( 'manage_options' ) ) {
 		$out .= '<tr><th><label>Roll:</label></th><td><select name="role">';
 		$out .= '<option value="subscriber"' . ( $vals['role'] === 'subscriber' ? ' selected' : '' ) . '>Subscriber</option>';
-		$out .= '<option value="editor"' . ( strpos( $vals['role'], 'editor' ) !== false ? ' selected' : '' ) . '>Editor</option>';
 		$out .= '<option value="administrator"' . ( strpos( $vals['role'], 'administrator' ) !== false ? ' selected' : '' ) . '>Administrator</option>';
 		$out .= '</select></td></tr>';
 	}

@@ -443,9 +443,16 @@ function shortcode_all_members( $atts )
         return '<p>No members found in db.</p>'; 
     }
 
-    $out = '<div class="all-members-wrap">
-            
-                <div class="all-members-inner-wrap">' .
+        $out = '<div class="all-members-wrap">
+                <div class="member-search-wrap">
+                    <input
+                        type="text"
+                        id="memberSearch"
+                        placeholder="🔍 Sök medlem, företag eller e-post..."
+                    >
+                </div>
+               
+                    <div class="all-members-inner-wrap">' .
               
     $i = ""; // Ta inte bort denna variabel, då kraschar sidan.
     
@@ -478,7 +485,12 @@ function shortcode_all_members( $atts )
         $company =  get_user_meta( $u->ID, 'company', true );
         $biography= isset( $u->description ) ? $u->description : get_user_meta( $u->ID, 'description', true );
         
-        $out .= '<div class="member-wrap">';
+    //  $out .= '<div class="member-wrap">';
+                          $out .= '<div class="member-wrap"
+                        data-name="' . esc_attr( $u->display_name ) . '"
+                        data-company="' . esc_attr( $company ) . '"
+                        data-email="' . esc_attr( $email ) . '"
+                        data-username="' . esc_attr( $u->user_login ) . '">';
         $out .= '<div class="member-cover"' . ( $cover_style ? ' style="' . $cover_style . '"' : '' ) . '></div>';
         // Resolve the edit-member page permalink by path if it exists, fallback to the slug URL.
         $edit_page = get_page_by_path( 'andra-medlem' );
@@ -507,6 +519,42 @@ function shortcode_all_members( $atts )
     } 
     $out .= '</div>
                 </div>'; 
+
+    // Sökfunktionalitet 
+                        $out .= '
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+
+                        const searchInput = document.getElementById("memberSearch");
+
+                        if (!searchInput) return;
+
+                        searchInput.addEventListener("keyup", function() {
+
+                            const searchTerm = this.value.toLowerCase();
+
+                            document.querySelectorAll(".member-wrap").forEach(function(member) {
+
+                                const searchText =
+                                    (
+                                        member.dataset.name + " " +
+                                        member.dataset.company + " " +
+                                        member.dataset.email + " " +
+                                        member.dataset.username
+                                    ).toLowerCase();
+
+                                if (searchText.includes(searchTerm)) {
+                                    member.style.display = "";
+                                } else {
+                                    member.style.display = "none";
+                                }
+
+                            });
+
+                        });
+
+                    });
+                    </script>';
     
     return $out; 
 } 

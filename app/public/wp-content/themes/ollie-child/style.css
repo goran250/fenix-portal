@@ -900,3 +900,23 @@ div.event-item div {
 .page-id-228 .member-name, .page-id-228 .member-email {
   margin-bottom: 5px;
 }
+.member-search-wrap {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+#memberSearch {
+    width: 100%;
+    max-width: 600px;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    background: #fff;
+}
+
+#memberSearch:focus {
+    border-color: #f59e0b;
+    outline: none;
+    box-shadow: 0 0 8px rgba(245,158,11,.25);
+}

@@ -1,0 +1,264 @@
+.gutena-froms#gutena-forms__root {
+  .gutena-forms__meta-box-container.gutena-forms__auto-responder-settings {
+    .gutena-forms__page-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      padding-right: 0;
+    }
+
+    .gutena-forms__settings-meta-box-desc {
+      color: #424d55;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: normal;
+      margin: 0 0 16px;
+    }
+
+    .gutena-forms__auto-responder-notice {
+      align-items: flex-start;
+      background: #e8f2ff;
+      border: 1px solid #2271b15c;
+      border-radius: 6px;
+      display: flex;
+      gap: 10px;
+      margin: 0 0 16px;
+      max-width: 540px;
+      padding: 12px 14px;
+
+      .dashicons {
+        color: #2271b1;
+        flex-shrink: 0;
+        font-family: dashicons !important;
+        font-size: 27px;
+        height: 27px;
+        margin-top: 1px;
+        width: 27px;
+      }
+
+      p {
+        color: #1d2327;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.5;
+        margin: 0;
+
+        strong {
+          color: #2271b1;
+          font-weight: 700;
+        }
+
+        a {
+          color: #2271b1;
+          font-weight: 600;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .gutena-forms__settings-meta-box {
+      max-width: 540px;
+      padding: 20px;
+    }
+
+    .gutena-forms__settings-meta-box .gutena-forms__field-container {
+      margin-bottom: 20px;
+    }
+
+    .gutena-forms__settings-meta-box .gutena-forms__field-container:last-child {
+      margin-bottom: 0;
+    }
+
+    .gutena-forms__toggle-control-input .components-toggle-control__label {
+      font-size: 14px !important;
+      font-weight: 700 !important;
+    }
+
+    .gutena-forms__toggle-control-input .components-toggle-control__help {
+      color: #424d55;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .gutena-forms__text-control .components-base-control__label,
+    .gutena-forms__textarea-control .components-base-control__label {
+      color: #000;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 6px;
+      text-transform: none;
+    }
+
+    .gutena-forms__textarea-control .components-base-control__label {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .gutena-forms__text-control .components-text-control__input,
+    .gutena-forms__textarea-control .gutena-forms__textarea-control-input {
+      border: 1px solid #e2e2e2;
+      border-radius: 4px;
+      box-shadow: none;
+      color: #2c3338;
+      font-family: "Satoshi", sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: normal;
+      padding: 7px 15px;
+
+      // Same focus outline as Weekly Forms Summary (WP TextControl accent).
+      &:focus {
+        border-color: var(--wp-components-color-accent, var(--wp-admin-theme-color, #2271b1));
+        box-shadow: 0 0 0 1px var(--wp-components-color-accent, var(--wp-admin-theme-color, #2271b1));
+        outline: 2px solid transparent;
+      }
+
+      // Same disabled look as Weekly Forms Summary fields.
+      &:disabled {
+        background: #f5f6f7;
+        border-color: #e2e4e7;
+        box-shadow: none;
+        color: #8a8f98;
+        cursor: not-allowed;
+      }
+    }
+
+    .gutena-forms__text-control .components-text-control__input {
+      height: 35px;
+    }
+
+    .gutena-forms__textarea-control .gutena-forms__textarea-control-input {
+      min-height: 122px;
+      resize: vertical;
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .gutena-forms__merge-tags {
+      margin-top: 0;
+    }
+
+    .gutena-forms__merge-tags-label {
+      color: #424d55;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: normal;
+      margin: 7px 0;
+    }
+
+    .gutena-forms__merge-tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .gutena-forms__merge-tag-pill {
+      background: #f0fffc;
+      border: none;
+      border-radius: 4px;
+      color: #424d55;
+      cursor: pointer;
+      font-family: "Satoshi", sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: normal;
+      padding: 6px;
+    }
+
+    .gutena-forms__merge-tag-pill:hover:not(:disabled) {
+      background: #dff8f2;
+    }
+
+    .gutena-forms__merge-tags.is-disabled .gutena-forms__merge-tag-pill,
+    .gutena-forms__merge-tag-pill:disabled {
+      background: #f5f6f7;
+      color: #8a8f98;
+      cursor: not-allowed;
+    }
+
+    .gutena-forms__submit-button {
+      margin-top: 8px;
+    }
+
+    .gutena-forms__submit-button button {
+      border-radius: 4px;
+      background: #0da88c;
+      color: #fff;
+      font-family: 'Satoshi', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      height: auto;
+      padding: 8px 16px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+
+      &:hover {
+        background: #0E826D;
+      }
+
+      &:active {
+        background: #0da88c;
+      }
+
+      &:focus-visible {
+        background: #0da88c;
+        outline: 2px solid #0E826D;
+        outline-offset: 0;
+      }
+
+      &:disabled,
+      &[disabled] {
+        background: #E2E2E2;
+        color: #ABABAD;
+        cursor: not-allowed;
+        outline: none;
+      }
+    }
+  }
+
+  .gutena-forms__auto-responder-save {
+    display: inline-block;
+    padding: 8px 16px;
+    height: auto;
+    border-radius: 4px;
+    background: #0DA88C;
+    color: #FFF;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background: #0E826D;
+    }
+
+    &:active {
+      background: #0DA88C;
+    }
+
+    &:focus-visible {
+      background: #0DA88C;
+      outline: 2px solid #0E826D;
+      outline-offset: 0;
+    }
+
+    &:disabled,
+    &[disabled] {
+      background: #E2E2E2;
+      color: #ABABAD;
+      cursor: not-allowed;
+      outline: none;
+    }
+  }
+}

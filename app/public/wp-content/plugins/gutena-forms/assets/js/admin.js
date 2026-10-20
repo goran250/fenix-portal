@@ -1,0 +1,71 @@
+document.addEventListener( 'DOMContentLoaded', function () {
+	class GutenaFormsAdmin {
+		constructor() {
+			if (
+				'undefined' !== typeof gutenaFormsAdminNotice &&
+				null !== gutenaFormsAdminNotice &&
+				'' !== gutenaFormsAdminNotice
+			) {
+				this.dismissAdminNotice();
+			}
+		}
+
+		isEmpty( data ) {
+			return 'undefined' === typeof data || null === data || '' === data;
+		}
+
+		getParents( el, query ) {
+			let parents = [];
+			while ( el && el.parentNode !== document.body ) {
+				el.matches( query ) && parents.push( el );
+				el = el.parentNode;
+			}
+			return 0 < parents.length ? parents[ 0 ] : false;
+		}
+
+		dismissAdminNotice() {
+			// Event delegation: WP may inject .notice-dismiss after DOMContentLoaded.
+			document.addEventListener( 'click', ( event ) => {
+				const dismissBtn = event.target.closest(
+					'.gutena-forms-admin-notice .notice-dismiss'
+				);
+				if ( ! dismissBtn ) {
+					return;
+				}
+
+				const notice = this.getParents(
+					dismissBtn,
+					'.gutena-forms-admin-notice'
+				);
+				if ( this.isEmpty( notice ) ) {
+					return;
+				}
+
+				const noticeId = notice.getAttribute( 'id' );
+				fetch( gutenaFormsAdminNotice.ajax_url, {
+					method: 'POST',
+					credentials: 'same-origin',
+					headers: {
+						'Content-Type':
+							'application/x-www-form-urlencoded',
+						Accept: 'application/json',
+					},
+					body: new URLSearchParams( {
+						action: gutenaFormsAdminNotice.dismiss_notice_action,
+						gfnonce: gutenaFormsAdminNotice.nonce,
+						notice_id: noticeId,
+					} ),
+				} )
+					.then( ( response ) => response.json() )
+					.then( () => {
+						notice.remove();
+					} )
+					.catch( ( error ) => {
+						console.error( 'Error:', error );
+					} );
+			} );
+		}
+	}
+
+	new GutenaFormsAdmin();
+} );

@@ -520,6 +520,51 @@ li.mobile-only-menu-item {
 
 
 
+/***************************************************************************************
+Görans css
+****************************************************************************************/
+
+:root {
+    --wp--style--global--content-size: 1320px;
+    --wp--style--global--wide-size: 1320px;
+}
+.wp-block-navigation__responsive-container:not(.is-menu-open) :where(.wp-block-navigation__submenu-container) li:first-child {
+   padding-top: 0;
+}
+
+.wp-block-navigation__responsive-container:not(.is-menu-open) :where(.wp-block-navigation__submenu-container) li:last-child {
+   padding-bottom: 0;
+}
+
+ul.wp-block-navigation__submenu-container.wp-block-navigation-submenu {
+  margin-left: 0!important;
+}
+
+footer .wp-block-group.wp-elements-3.wp-container-core-group-is-layout-63f1d60a.wp-block-group-is-layout-constrained {
+  padding-top: 50px!important;
+}
+
+footer li.wp-block-navigation-item.wp-block-navigation-link {
+  width: 150px!important;
+  padding: 8px 16px;
+}
+                 
+footer .wp-block-navigation li.wp-block-navigation-item{
+    background-color: white !important;
+    border: #ccc solid 1px;
+    border-radius: 6px;
+    margin-right: -25px;
+    padding: 8px 16px !important;
+}
+
+footer .wp-block-navigation .wp-block-navigation-submenu li.wp-block-navigation-item { 
+   width: 220px !important;
+   padding: 0px !important;
+}
+
+footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-color.wp-elements-4.is-layout-flow.wp-block-group-is-layout-flow {
+  padding-top: 0!important;
+}
 
 /********* Start All members page *********/
 .all-members-wrap {
@@ -543,7 +588,7 @@ li.mobile-only-menu-item {
     margin-bottom: 30px;
     margin-right: 20px;
     border: 1px solid #dddddd;
-    width: 290px;
+    width: 305px;
     height: 650px;
 
     box-sizing: border-box;

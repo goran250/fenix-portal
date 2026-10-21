@@ -36,8 +36,8 @@ function shortcode_events_list( $atts ) {
 				<input
 					type="text"
 					id="events-search"
+					class="events-search-input"
 					placeholder="Sök event..."
-					style="width:100%; max-width:400px; padding:10px;"
 				/>
 			</div>';
 

@@ -468,3 +468,7 @@ Stack trace:
 [20-Oct-2026 11:52:12 UTC] PHP Parse error:  syntax error, unexpected token "-", expecting "(" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 425
 [20-Oct-2026 11:53:22 UTC] PHP Parse error:  syntax error, unexpected token "-", expecting "(" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 425
 [20-Oct-2026 19:28:12 UTC] PHP Parse error:  Unclosed '{' on line 12 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\edit-member-shortcode.php on line 379
+[21-Oct-2026 10:05:10 UTC] PHP Warning:  Undefined property: stdClass::$id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 769
+[21-Oct-2026 10:05:10 UTC] PHP Warning:  Undefined property: stdClass::$post_parent in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 772
+[21-Oct-2026 11:14:01 UTC] PHP Warning:  Undefined property: stdClass::$id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 769
+[21-Oct-2026 11:14:01 UTC] PHP Warning:  Undefined property: stdClass::$post_parent in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 772

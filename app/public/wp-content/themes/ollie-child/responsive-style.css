@@ -13,12 +13,59 @@
     }
 }
 
+
+/* Mobil/tablet: visa hamburger, dölj full nav */
+@media (max-width: 1140px) {
+  /* Visa i hamburger-meny */
+  li.mobile-only-menu-item {
+    display: block !important;
+    margin-top: 0 !important;
+  }
+
+  li.mobile-only-menu-item {
+      display: block !important;
+      margin-top: -40px !important;
+  }
+
+  .site-header .wp-block-buttons {
+      order: 999 !important;
+  }
+
+  /* Dölj på mobil/tablet */
+  .site-header .navbar-cta {
+    display: none !important;
+  }
+
+  .wp-block-navigation .wp-block-navigation__responsive-container-open {
+    display: flex !important;
+  }
+
+  footer .wp-block-navigation .wp-block-navigation__responsive-container-open {
+    display: none !important;
+  }
+
+
+  .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) {
+    display: none !important;
+  }
+
+             
+  footer .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) {
+    display: flex !important;
+  }
+
+  /* Tryck hamburger-ikonen till höger */
+  .wp-block-navigation {
+    margin-left: auto !important;
+  }
+}
+
 /* ============================================
-   FENIX NAVBAR - Breakpoint: 1079px
-   Hamburger-meny visas vid max-width: 1079px
+   FENIX NAVBAR - Breakpoint: 1140px
+   Hamburger-meny visas vid max-width: 1140px
    ============================================ */
 
-@media (min-width: 1080px) {
+@media (min-width: 1140px) {
   /* ── 3. CTA-knapp (Besök nätverket-knappen i headern) ──  Visa på desktop */
   .navbar-cta {
     display: flex !important;
@@ -46,56 +93,6 @@
 
   .wp-block-navigation {
     margin-left: 0 !important;
-  }
-}
-
-/* Mobil/tablet: visa hamburger, dölj full nav */
-@media (max-width: 1295px) {
-  /* Visa i hamburger-meny */
-  li.mobile-only-menu-item {
-    display: block !important;
-    margin-top: 0 !important;
-  }
-
-  li.mobile-only-menu-item {
-      display: block !important;
-      margin-top: -40px !important;
-  }
-
-  .site-header .wp-block-buttons {
-      order: 999 !important;
-  }
-
-  .site-header .navbar-cta {
-      display: none !important;
-  }
-
-  /* Dölj på mobil/tablet */
-  .navbar-cta {
-    display: none !important;
-  }
-
-  .wp-block-navigation .wp-block-navigation__responsive-container-open {
-    display: flex !important;
-  }
-
-  footer .wp-block-navigation .wp-block-navigation__responsive-container-open {
-    display: none !important;
-  }
-
-
-  .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) {
-    display: none !important;
-  }
-
-             
-  footer .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) {
-    display: flex !important;
-  }
-
-  /* Tryck hamburger-ikonen till höger */
-  .wp-block-navigation {
-    margin-left: auto !important;
   }
 }
 
@@ -262,6 +259,11 @@ Görans css
   form.events-add-form .event-nbrOfParticipants {
     width: 310px;
   }
+
+  /** Bilden på Om fenix-sidan */
+  .wp-block-image.about-fenix-image {
+    max-width: 500px;
+  }
 }
 
 @media (max-width: 1020px) {
@@ -270,12 +272,30 @@ Görans css
   }
 }
 
+
+
 @media (max-width: 1008px) {
   .all-members-inner-wrap {
     width: 650px;
   }
+
+  /** Bilden på Om fenix-sidan */
+  .wp-block-image.about-fenix-image {
+    max-width: 450px;
+  }
 }
 
+@media (max-width: 900px) {
+   /**Containern för textrutan och bilden på Om fenix-sidan */
+  .about-fenix-container {
+    flex-wrap: wrap;
+  }
+
+  /** Textrutan och bilden på Om fenix-sidan */
+  .wp-block-group.about-fenix-text, .wp-block-image.about-fenix-image {
+    max-width: 700px;
+  }
+}
 
 @media (max-width: 705px) {
   .all-members-inner-wrap {
@@ -346,6 +366,9 @@ Görans css
     margin: 0;
     display: block;
   }
+  .page-id-2 main div.wp-block-group h1.wp-block-post-title {      
+    font-size: 30px;
+  } 
 }
 
 

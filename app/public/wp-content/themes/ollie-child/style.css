@@ -540,8 +540,9 @@ footer .wp-block-group.wp-elements-3.wp-container-core-group-is-layout-63f1d60a.
   padding-top: 50px!important;
 }
 
-footer li.wp-block-navigation-item.wp-block-navigation-link {
-  width: 150px!important;
+footer li.wp-block-navigation-item.wp-block-navigation-link, 
+footer li.wp-block-navigation-item.wp-block-navigation-submenu {
+  width: 155px!important;
   padding: 8px 16px;
 }
                  
@@ -748,7 +749,7 @@ li.wp-block-navigation-item.wp-block-navigation-link {
   background-color: white!important;
   border: #ccc solid 1px;
   border-radius: 6px;
-  margin-right: -25px;
+  margin-right: -28px;
 }
 
 
@@ -756,7 +757,7 @@ li.wp-block-navigation-item.has-child.open-on-click  {
   background-color: white!important;
   border: #ccc solid 1px;
   border-radius: 6px;
-  margin-right: -25px;
+  margin-right: -28px;
   padding: 8px 16px;
 }
 
@@ -766,7 +767,7 @@ ul.user-files-list {
 }
 
 ul.user-files-list li {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 16px;
 }
 
@@ -958,28 +959,79 @@ div.event-item div {
 }
 /*************   End Events-sidan ***************/
 
-/** page-id-2 = startsidan, page-id-22 = Registrera medlemssidan, page-id-73 =  Ändra medlemssidan, page-id-281 = Kontaktsidan */
+
+.page-id-280 h1.wp-block-post-title {
+    font-size: 20px;
+    color: #E98D1C;
+}
+
+/** Bilden på Om fenix-sidan */
+.wp-block-group.about-fenix-text, .wp-block-image.about-fenix-image {
+  max-width: 598px;
+  width: 100%;
+}
+
+
+
+/** page-id-2 = Startsidan, 
+    page-id-22 = Registrera medlemssidan, 
+    page-id-73 = Ändra medlemssidan,    
+    page-id-281 = Kontaktsidan */
 .page-id-2 main, .page-id-22 main, .page-id-73 main, .page-id-281 main {
    max-width: 800px;
    width: 100%;
    margin: 0 auto;
 }
+/** page-id-120 = Dokumentsidan */
+.page-id-120 main {
+   max-width: 900px;
+   width: 100%;
+   margin: 0 auto;
+}
 
+/** page-id-328 = Integritetspolicysidan */
+.page-id-328 main, .page-id-280 main {
+   max-width: 1000px;
+   width: 100%;
+   margin: 0 auto;
+}
+
+/** page-id-328 = Integritetspolicysidan */
+.page-id-328 .entry-content.alignwide.wp-block-post-content.has-global-padding.is-layout-constrained.wp-block-post-content-is-layout-constrained {
+   max-width: 800px !important;
+   width: 100%;
+   margin: 30px 0 0;
+}
+
+ .page-id-280 main {
+   max-width: 1260px;
+   width: 100%;
+   margin: 0 auto;
+}
 /** page-id-2 = startsidan */
-.page-id-2 main div.wp-block-group h1.wp-block-post-title {    
+.page-id-2 main h1.wp-block-post-title {    
     margin: 80px auto 0 !important;
+    font-size: 40px;
 } 
 
 /** page-id-2 = startsidan */
 .page-id-2 main .wp-custom-css-747bb645 {
   max-width: 800px;
   width: 100%;
+  margin-left: 0px !important;
 }
 
 /** page-id-281 = Kontaktsidan */
 .page-id-281 .wp-block-gutena-forms.gutena-forms-contact-form {
   margin-top: -50px;
 }
+
+/** Hamburger-knappens storlek ändrad från 24px till 30px */
+.wp-block-navigation__responsive-container-close svg, .wp-block-navigation__responsive-container-open svg {
+  width: 30px;
+  height: 30px;
+}
+
 
 
 

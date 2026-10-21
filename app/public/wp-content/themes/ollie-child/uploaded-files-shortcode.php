@@ -9,6 +9,66 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+function uf_user_can_download_attachment( $attachment_id ) {
+	$attachment_id = intval( $attachment_id );
+	if ( $attachment_id <= 0 ) {
+		return false;
+	}
+
+	$all_users = get_users( array( 'fields' => 'ID' ) );
+	foreach ( $all_users as $u ) {
+		$u_files = get_user_meta( $u, 'user_files', true );
+		if ( empty( $u_files ) || ! is_array( $u_files ) ) {
+			continue;
+		}
+		foreach ( $u_files as $fid ) {
+			if ( intval( $fid ) === $attachment_id ) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+function uf_handle_file_download() {
+	if ( ! is_user_logged_in() ) {
+		wp_die( esc_html__( 'Du måste vara inloggad för att ladda ner filen.', 'ollie-child' ) );
+	}
+
+	$file_id = isset( $_GET['file_id'] ) ? intval( $_GET['file_id'] ) : 0;
+	$nonce   = isset( $_GET['_uf_download_nonce'] ) ? wp_unslash( $_GET['_uf_download_nonce'] ) : '';
+
+	if ( ! $file_id || ! wp_verify_nonce( $nonce, 'uf_download_' . $file_id ) ) {
+		wp_die( esc_html__( 'Ogiltig nedladdningsbegäran.', 'ollie-child' ) );
+	}
+
+	if ( ! uf_user_can_download_attachment( $file_id ) ) {
+		wp_die( esc_html__( 'Filen hittades inte.', 'ollie-child' ) );
+	}
+
+	$file_path = get_attached_file( $file_id );
+	if ( ! $file_path || ! file_exists( $file_path ) ) {
+		wp_die( esc_html__( 'Filen saknas på servern.', 'ollie-child' ) );
+	}
+
+	$file_name = basename( $file_path );
+	$mime_type = get_post_mime_type( $file_id );
+	if ( ! $mime_type ) {
+		$mime_type = 'application/octet-stream';
+	}
+
+	nocache_headers();
+	header( 'Content-Description: File Transfer' );
+	header( 'Content-Type: ' . $mime_type );
+	header( 'Content-Disposition: attachment; filename="' . $file_name . '"' );
+	header( 'Content-Length: ' . filesize( $file_path ) );
+	header( 'X-Content-Type-Options: nosniff' );
+	readfile( $file_path );
+	exit;
+}
+add_action( 'admin_post_uf_download_file', 'uf_handle_file_download' );
+
 
 
 /**
@@ -288,9 +348,18 @@ function shortcode_uploaded_files( $atts ) {
 			// Show ISO date YYYY-MM-DD
 			$date = get_the_date( 'Y-m-d', $fid );
 			$owner_name = get_the_author_meta( 'display_name', $owner_id );
+			$download_url = add_query_arg(
+				array(
+					'action'             => 'uf_download_file',
+					'file_id'            => $fid,
+					'_uf_download_nonce' => wp_create_nonce( 'uf_download_' . $fid ),
+				),
+				admin_url( 'admin-post.php' )
+			);
 
-			$out .= '<li><strong>' . esc_html( $title ) . '</strong> <span class="uf-meta">&nbsp; - &nbsp;Uppladdad av ' . esc_html( $owner_name ) . ' ' . esc_html( $date ) . '</span>';
-			$out .= '&nbsp; - &nbsp;<a href="' . esc_url( $url ) . '" target="_blank" rel="noopener" style="color: #126512;">Ladda ner</a>';
+			$out .= '<li><strong><a href="' . esc_url( $url ) . '" target="_blank" rel="noopener" style="color: #126512;">' . esc_html( $title ) . '</a></strong> 
+			         <span class="uf-meta">&nbsp; - &nbsp;Uppladdad av ' . esc_html( $owner_name ) . ' ' . esc_html( $date ).'</span>
+		             &nbsp; - &nbsp;<a href="' . esc_url( $download_url ) . '" style="color: #126512;">Ladda ner</a>';
 
 			// Delete link only for owner or admin
 			if ( intval( $owner_id ) === intval( $user_id ) || current_user_can( 'manage_options' ) ) {

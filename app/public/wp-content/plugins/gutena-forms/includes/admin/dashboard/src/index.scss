@@ -1,0 +1,94 @@
+$gfp_body_color: #50575E;
+$gfp_border_color:#E5E7EB;
+$gfp_heading_color: #2C3338;
+$gfp_primary_color: #0EA489;
+$gfp_secondary_color: #EEF8F6;
+$gfp_wp_primary_color: #2271b1;
+$gfp_red_color: #E83737;
+$gfp_orange_color: #E35D3F;
+$gfp_white_color: #fff;
+$gfp_input_border: 1px solid rgba(0,0,0,.1);
+
+@import "./satoshi.css";
+@import "react-loading-skeleton/dist/skeleton.css";
+@import "./scss/styles.scss";
+
+#wpcontent {
+	padding-left: 0 !important;
+}
+
+#wpwrap {
+	background: #FAFAFA !important;
+}
+
+.gutena-froms#gutena-forms__root {
+	.gutena-forms__accordion {
+		.gutena-forms__accordion-header {
+			.gutena-forms__accordion-icon,
+			.gutena-forms__accordion-title {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+.gutena-froms#gutena-forms__root {
+	.gutena-froms__mcp-configuration {
+		h6 {
+			color: #000;
+			font-size: 14px;
+			font-weight: 700;
+			margin: 20px 0 10px 0;
+		}
+
+		ol {
+			li {
+				color: #000;
+				font-size: 12px;
+				font-weight: 400;
+			}
+		}
+
+		pre {
+			background: #F3F4F6;
+			color: #4B5563;
+			border-radius: 5px;
+			padding: 10px;
+			tab-size: 2;
+			position: relative;
+		}
+
+		.gutena-forms__copy-icon {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			width: 30px;
+			height: 30px;
+			background: #fff;
+			border-radius: 5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+		}
+	}
+
+	.gutena-forms__mcp-wrapper {
+		p {
+			margin-top: 0;
+		}
+
+		ol {
+			li {
+				a {
+					font-weight: 600;
+					color: #0da88c;
+				}
+			}
+		}
+
+		.gutena-forms__primary-button {
+			font-size: 12px;
+		}
+	}
+}

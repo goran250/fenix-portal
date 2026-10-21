@@ -217,7 +217,7 @@ function shortcode_Register_member( $atts ) {
 	$out .= '<tr><th><label>Telefon</label></th><td><input name="phone" value="' . $vals['phone'] . '" /></td></tr>';
 	$out .= '<tr><th><label>Epost *</label></th><td><input type="email" name="email" value="' . $vals['email'] . '" required /></td></tr>';
 	$out .= '<tr><th><label>Lösenord *</label></th><td><input type="password" name="password" required /></td></tr>';
-	$out .= '<tr><th><label>Bekräfta lösenord *</label></th><td><input type="password" name="password_confirm" required /></td></tr>';
+	$out .= '<tr><th><label style="padding-left: 25px;">Bekräfta lösenord *</label></th><td><input type="password" name="password_confirm" required /></td></tr>';
 	$out .= '<tr><th><label>Webbplats</label></th><td><input name="website" value="' . $vals['website'] . '" /></td></tr>';
 	$out .= '<tr><th><label>Biografi</label></th><td><textarea name="biography">' . $vals['biography'] . '</textarea></td></tr>';
 	$out .= '<tr><th><label>Profilbild</label></th><td><input type="file" name="profile_picture_file" /></td></tr>';

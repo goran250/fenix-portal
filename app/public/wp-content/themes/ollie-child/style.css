@@ -513,15 +513,56 @@ li.mobile-only-menu-item {
     color: #588790;
 }
 
-.page-id-2 main div.wp-block-group h1.wp-block-post-title {    
-    margin: 80px auto 0 !important;
-    width: 800px;
-} 
 
 
 
+/***************************************************************************************
+Görans css
+****************************************************************************************/
 
-/********* Start All members page *********/
+:root {
+    --wp--style--global--content-size: 1320px;
+    --wp--style--global--wide-size: 1320px;
+}
+.wp-block-navigation__responsive-container:not(.is-menu-open) :where(.wp-block-navigation__submenu-container) li:first-child {
+   padding-top: 0;
+}
+
+.wp-block-navigation__responsive-container:not(.is-menu-open) :where(.wp-block-navigation__submenu-container) li:last-child {
+   padding-bottom: 0;
+}
+
+ul.wp-block-navigation__submenu-container.wp-block-navigation-submenu {
+  margin-left: 0!important;
+}
+
+footer .wp-block-group.wp-elements-3.wp-container-core-group-is-layout-63f1d60a.wp-block-group-is-layout-constrained {
+  padding-top: 50px!important;
+}
+
+footer li.wp-block-navigation-item.wp-block-navigation-link {
+  width: 150px!important;
+  padding: 8px 16px;
+}
+                 
+footer .wp-block-navigation li.wp-block-navigation-item{
+    background-color: white !important;
+    border: #ccc solid 1px;
+    border-radius: 6px;
+    margin-right: -25px;
+    padding: 8px 16px !important;
+}
+
+footer .wp-block-navigation .wp-block-navigation-submenu li.wp-block-navigation-item { 
+   width: 220px !important;
+   padding: 0px !important;
+}
+
+footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-color.wp-elements-4.is-layout-flow.wp-block-group-is-layout-flow {
+  padding-top: 0!important;
+}
+
+/********* Start Alla medlemmar-sidan *********/
 .all-members-wrap {
     position: relative;
     width: 100%;
@@ -543,7 +584,7 @@ li.mobile-only-menu-item {
     margin-bottom: 30px;
     margin-right: 20px;
     border: 1px solid #dddddd;
-    width: 290px;
+    width: 305px;
     height: 650px;
 
     box-sizing: border-box;
@@ -615,7 +656,29 @@ li.mobile-only-menu-item {
     display: block;
 }
 
-/********* End All members page *********/
+/** Sökfunktionen på Alla medlemmar-sidan */
+.member-search-wrap {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+#memberSearch {
+    width: 100%;
+    max-width: 600px;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    background: #fff;
+}
+
+#memberSearch:focus {
+    border-color: #f59e0b;
+    outline: none;
+    box-shadow: 0 0 8px rgba(245,158,11,.25);
+}
+
+/********* End Alla medlemmar-sidan *********/
 
 
 
@@ -654,11 +717,16 @@ li.mobile-only-menu-item {
   padding: 5px 12px!important;
   border-radius: 6px!important;
   border: 1px solid #888;
-  margin-right: -25px;
+  margin: 20px 0  0 190px;
 }
 
 .member-success, .file-success {
-    color: green;
+  width: fit-content;
+  background-color: green;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 6px;
+  margin-left: 0px!important;
 }
 
 .member-errors, .file-errors, .events-errors {
@@ -804,7 +872,6 @@ div.events-success-delete {
 }
 
 div.event-cancelled, div.event-registered {
-
   width: fit-content;
   background-color: green;
   color: white;
@@ -891,32 +958,32 @@ div.event-item div {
 }
 /*************   End Events-sidan ***************/
 
-
-.page-id-228 .member-wrap {
-  height: auto;
-  padding-bottom: 20px;
+/** page-id-2 = startsidan, page-id-22 = Registrera medlemssidan, page-id-73 =  Ändra medlemssidan, page-id-281 = Kontaktsidan */
+.page-id-2 main, .page-id-22 main, .page-id-73 main, .page-id-281 main {
+   max-width: 800px;
+   width: 100%;
+   margin: 0 auto;
 }
 
-.page-id-228 .member-name, .page-id-228 .member-email {
-  margin-bottom: 5px;
-}
-.member-search-wrap {
-    text-align: center;
-    margin-bottom: 35px;
+/** page-id-2 = startsidan */
+.page-id-2 main div.wp-block-group h1.wp-block-post-title {    
+    margin: 80px auto 0 !important;
+} 
+
+/** page-id-2 = startsidan */
+.page-id-2 main .wp-custom-css-747bb645 {
+  max-width: 800px;
+  width: 100%;
 }
 
-#memberSearch {
-    width: 100%;
-    max-width: 600px;
-    padding: 14px 20px;
-    font-size: 16px;
-    border: 1px solid #d8d8d8;
-    border-radius: 8px;
-    background: #fff;
+/** page-id-281 = Kontaktsidan */
+.page-id-281 .wp-block-gutena-forms.gutena-forms-contact-form {
+  margin-top: -50px;
 }
 
-#memberSearch:focus {
-    border-color: #f59e0b;
-    outline: none;
-    box-shadow: 0 0 8px rgba(245,158,11,.25);
-}
+
+
+
+
+
+

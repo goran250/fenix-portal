@@ -30,6 +30,16 @@ function shortcode_events_list( $atts ) {
 	$atts = shortcode_atts( array( 'per_page' => 50 ), $atts, 'events_list' );
 	
 	$out = '<div class="events-list-wrap">';
+	  // Search input for filtering events
+	$out .= '
+			<div class="events-search-wrap" style="margin-bottom:20px;">
+				<input
+					type="text"
+					id="events-search"
+					placeholder="Sök event..."
+					style="width:100%; max-width:400px; padding:10px;"
+				/>
+			</div>';
 
 	if ( !is_user_logged_in() ) {
 		$out = '<div style="color: green;"><strong>Du måste vara inloggad för att se eventen.</strong></div>';
@@ -512,7 +522,18 @@ function shortcode_events_list( $atts ) {
 				$notification = get_post_meta( $id, 'event_notification', true );
 				
 			// Render event item left and right columns
-			$out .= '<div class="event-item-outer">';
+			//$out .= '<div class="event-item-outer">';
+				$search_text = strtolower(
+				$name . ' ' .
+				$date . ' ' .
+				$time . ' ' .
+				$location . ' ' .
+				$description
+			);
+
+			$out .= '<div class="event-item-outer event-search-item"
+				data-search="' . esc_attr( $search_text ) . '">';
+
 			$out .= '<div id="event-item-' . esc_attr( $id ) . '" class="event-item">';
 			// left column
 			$out .= '<div class="event-item-left">';
@@ -639,6 +660,42 @@ function shortcode_events_list( $atts ) {
 	// load external JS from theme child folder
 	$script_url = get_stylesheet_directory_uri() . '/js/events-edit.js';
 	$out .= '<script src="' . esc_url( $script_url ) . '"></script>';
+
+	// Inline script to handle search filtering
+	$out .= "
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+
+		const searchInput = document.getElementById('events-search');
+
+		if (!searchInput) {
+			return;
+		}
+
+		searchInput.addEventListener('keyup', function() {
+
+			const value = this.value.toLowerCase().trim();
+
+			document.querySelectorAll('.event-search-item').forEach(function(item) {
+
+				const searchableText =
+					item.getAttribute('data-search').toLowerCase();
+
+				if (
+					searchableText.indexOf(value) > -1 ||
+					value === ''
+				) {
+					item.style.display = '';
+				} else {
+					item.style.display = 'none';
+				}
+
+			});
+
+		});
+
+	});
+	</script>";
 
 	return $out;
 }

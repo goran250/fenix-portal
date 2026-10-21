@@ -243,7 +243,6 @@ add_action( 'edit_user_profile_update', 'ollie_save_user_company_profile' );
  * Filters the profile meta fields shown by the User Registration plugin and removes any field
  * whose label or field_key looks like a company/företag field.
  */
-/** 
 add_filter( 'user_registration_profile_meta_fields', 'ollie_filter_ur_profile_meta_fields', 10, 1 );
 function ollie_filter_ur_profile_meta_fields( $fields ) {
     if ( empty( $fields ) || ! is_array( $fields ) ) {
@@ -276,7 +275,6 @@ function ollie_filter_ur_profile_meta_fields( $fields ) {
 
     return $fields;
 }
-*/
 
 
 // Registrera Custom Post Type - Medlemmar
@@ -421,31 +419,6 @@ add_action( 'wp_head', function() {
 } );
 
 
-// Hide Navigation block items with class "logged-in-only" from not-logged users (for FSE / Navigation block)
-add_filter( 'render_block', 'fp_filter_navigation_block_logged_in_only', 10, 2 );
-function fp_filter_navigation_block_logged_in_only( $block_content, $block ) {
-    if ( empty( $block['blockName'] ) || $block['blockName'] !== 'core/navigation' ) {
-        return $block_content;
-    }
-    // Don't modify HTML structure here — hide logged-in-only items with CSS instead so nested
-    // submenu markup remains intact. This avoids removing nodes and breaking submenus.
-    return $block_content;
-}
-
-// Output CSS in the head to hide elements that have the logged-in-only class for not-logged-in users.
-add_action( 'wp_head', function() {
-    if ( is_user_logged_in() ) {
-        return;
-    }
-
-    echo "<style>/* hide logged-in-only navigation items for not-logged-in users */\n",
-         ".wp-block-navigation .logged-in-only , .wp-block-navigation li.logged-in-only , .wp-block-navigation .wp-block-navigation-item.logged-in-only { display: none !important; }\n",
-         ".wp-block-navigation__submenu-container .logged-in-only { display: none !important; }\n",
-         "</style>";
-} );
-
-
-
 function shortcode_all_members( $atts )
 {
     // Public members listing — Visibility restricted to logged-in users. Capability checks are handled
@@ -470,9 +443,16 @@ function shortcode_all_members( $atts )
         return '<p>No members found in db.</p>'; 
     }
 
-    $out = '<div class="all-members-wrap">
-            
-                <div class="all-members-inner-wrap">' .
+        $out = '<div class="all-members-wrap">
+                <div class="member-search-wrap">
+                    <input
+                        type="text"
+                        id="memberSearch"
+                        placeholder="🔍 Sök medlem, företag eller e-post..."
+                    >
+                </div>
+               
+                    <div class="all-members-inner-wrap">' .
               
     $i = ""; // Ta inte bort denna variabel, då kraschar sidan.
     
@@ -505,7 +485,12 @@ function shortcode_all_members( $atts )
         $company =  get_user_meta( $u->ID, 'company', true );
         $biography= isset( $u->description ) ? $u->description : get_user_meta( $u->ID, 'description', true );
         
-        $out .= '<div class="member-wrap">';
+    //  $out .= '<div class="member-wrap">';
+                          $out .= '<div class="member-wrap"
+                        data-name="' . esc_attr( $u->display_name ) . '"
+                        data-company="' . esc_attr( $company ) . '"
+                        data-email="' . esc_attr( $email ) . '"
+                        data-username="' . esc_attr( $u->user_login ) . '">';
         $out .= '<div class="member-cover"' . ( $cover_style ? ' style="' . $cover_style . '"' : '' ) . '></div>';
         // Resolve the edit-member page permalink by path if it exists, fallback to the slug URL.
         $edit_page = get_page_by_path( 'andra-medlem' );
@@ -534,6 +519,42 @@ function shortcode_all_members( $atts )
     } 
     $out .= '</div>
                 </div>'; 
+
+    // Sökfunktionalitet 
+                        $out .= '
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+
+                        const searchInput = document.getElementById("memberSearch");
+
+                        if (!searchInput) return;
+
+                        searchInput.addEventListener("keyup", function() {
+
+                            const searchTerm = this.value.toLowerCase();
+
+                            document.querySelectorAll(".member-wrap").forEach(function(member) {
+
+                                const searchText =
+                                    (
+                                        member.dataset.name + " " +
+                                        member.dataset.company + " " +
+                                        member.dataset.email + " " +
+                                        member.dataset.username
+                                    ).toLowerCase();
+
+                                if (searchText.includes(searchTerm)) {
+                                    member.style.display = "";
+                                } else {
+                                    member.style.display = "none";
+                                }
+
+                            });
+
+                        });
+
+                    });
+                    </script>';
     
     return $out; 
 } 

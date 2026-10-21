@@ -30,8 +30,6 @@
   }
 
   /* ── 2. Hamburger-meny logik ──  Desktop: visa full nav, dölj hamburger */
-
- 
   .wp-block-navigation .wp-block-navigation__responsive-container-open {
     display: none !important;
   }
@@ -50,7 +48,7 @@
 }
 
 /* Mobil/tablet: visa hamburger, dölj full nav */
-@media (max-width: 1295px) {
+@media (max-width: 1079px) {
   /* Visa i hamburger-meny */
   li.mobile-only-menu-item {
     display: block !important;
@@ -79,18 +77,8 @@
     display: flex !important;
   }
 
-  footer .wp-block-navigation .wp-block-navigation__responsive-container-open {
-    display: none !important;
-  }
-
-
   .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) {
     display: none !important;
-  }
-
-             
-  footer .wp-block-navigation .wp-block-navigation__responsive-container:not(.is-menu-open) {
-    display: flex !important;
   }
 
   /* Tryck hamburger-ikonen till höger */
@@ -159,19 +147,8 @@
   .members-grid {
     column-count: 1 !important;
   }
-
-  footer p.meny-header {
-    display: none !important;
-  }
-
-  footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-color.wp-elements-4.is-layout-flow.wp-block-group-is-layout-flow {
-    margin-top: -30px!important;
-  }
-
-  footer nav.is-responsive.wp-block-navigation {
-    display: none !important;
-  }
 }
+
 
 @media (max-width: 580px) {
   .fenix-feature-grid .has-newdark-background-color * {
@@ -243,9 +220,9 @@ Görans css
 
 
 
-@media (max-width: 1380px) {
+@media (max-width: 1320px) {
   .all-members-inner-wrap {
-    width: 975px;
+    width: 930px;
   }
   
   form.events-add-form {
@@ -270,16 +247,15 @@ Görans css
   }
 }
 
-@media (max-width: 1008px) {
+@media (max-width: 978px) {
   .all-members-inner-wrap {
-    width: 650px;
+    width: 620px;
   }
 }
 
-
-@media (max-width: 705px) {
+@media (max-width: 690px) {
   .all-members-inner-wrap {
-      width: 335px;
+      width: 320px;
   }
 }
 
@@ -345,15 +321,6 @@ Görans css
   div.event-item-right img {
     margin: 0;
     display: block;
-  }
-}
-
-
-/* ── 5. Logotyp – krymper på riktigt små skärmar ── */
-@media (max-width: 375px) {
-  header .wp-block-site-logo img {
-    max-height: 50px;
-    width: auto;
   }
 }
 

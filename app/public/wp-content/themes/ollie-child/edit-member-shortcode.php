@@ -54,26 +54,6 @@ function shortcode_Edit_member( $atts ) {
 
 	$messages = array( 'errors' => array(), 'success' => '' );
 
-	if ( isset( $_POST['delete_member_submit'] ) ) {
-		if ( ! isset( $_POST['edit_member_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['edit_member_nonce'] ), 'edit_member_action' ) ) {
-			$messages['errors'][] = 'Invalid form submission.';
-		} 
-		elseif ( ! current_user_can( 'manage_options' ) ) {
-			$messages['errors'][] = 'Du har inte behörighet att ta bort medlemmar.';
-		} 
-		elseif ( get_current_user_id() === $target_user_id ) {
-			$messages['errors'][] = 'Du kan inte ta bort ditt eget konto.';
-		} 
-		else {
-			require_once ABSPATH . 'wp-admin/includes/user.php';
-			$deleted = wp_delete_user( $target_user_id );
-			if ( $deleted ) {
-				return '<div class="member-success">Medlemmen har tagits bort.</div>';
-			}
-			$messages['errors'][] = 'Kunde inte ta bort medlemmen.';
-		}
-	}
-
 	if ( isset( $_POST['edit_member_submit'] ) ) {
 		if ( ! isset( $_POST['edit_member_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['edit_member_nonce'] ), 'edit_member_action' ) ) {
 			$messages['errors'][] = 'Invalid form submission.';
@@ -249,26 +229,21 @@ function shortcode_Edit_member( $atts ) {
 						}
 					}
 
-					// Preserve existing attachments when no new upload was submitted
-					if ( empty( $_FILES['profile_picture_file']['name'] ) && isset( $_POST['profile_picture_existing'] ) ) {
-						$existing = intval( $_POST['profile_picture_existing'] );
-						if ( $existing > 0 ) {
-							update_user_meta( $target_user_id, 'profile_picture', $existing );
+						// Preserve existing attachments when no new upload was submitted
+						if ( empty( $_FILES['profile_picture_file']['name'] ) && isset( $_POST['profile_picture_existing'] ) ) {
+							$existing = intval( $_POST['profile_picture_existing'] );
+							if ( $existing > 0 ) {
+								update_user_meta( $target_user_id, 'profile_picture', $existing );
+							}
 						}
-					}
-					if ( empty( $_FILES['cover_photo_file']['name'] ) && isset( $_POST['cover_photo_existing'] ) ) {
-						$existing = intval( $_POST['cover_photo_existing'] );
-						if ( $existing > 0 ) {
-							update_user_meta( $target_user_id, 'profile_cover', $existing );
+						if ( empty( $_FILES['cover_photo_file']['name'] ) && isset( $_POST['cover_photo_existing'] ) ) {
+							$existing = intval( $_POST['cover_photo_existing'] );
+							if ( $existing > 0 ) {
+								update_user_meta( $target_user_id, 'profile_cover', $existing );
+							}
 						}
-					}
-					
-					if (get_current_user_id() === $target_user_id ) {
-						$messages['success'] = 'Din profil är uppdaterad.';
-					}
-					else {
+
 						$messages['success'] = 'Medlemmen är uppdaterad.';
-					}
 				}
 			}
 		}
@@ -366,12 +341,7 @@ function shortcode_Edit_member( $atts ) {
 	$out .= '</td></tr>';
 
 	$out .= '</table>';
-	$out .= '<p>';
-	$out .= '<button type="submit" name="edit_member_submit" class="submit-button">Spara</button>';
-	if ( current_user_can( 'manage_options' ) && get_current_user_id() !== $target_user_id ) {
-		$out .= ' <button type="submit" name="delete_member_submit" class="submit-button delete-button" onclick="return confirm(\'Är du säker på att du vill ta bort medlemmen?\');">Ta bort medlem</button>';
-	}
-	$out .= '</p>';
+	$out .= '<p><button type="submit" name="edit_member_submit" class="submit-button" >Spara</button></p>';
 	$out .= '</form>';
 
 	return $out;

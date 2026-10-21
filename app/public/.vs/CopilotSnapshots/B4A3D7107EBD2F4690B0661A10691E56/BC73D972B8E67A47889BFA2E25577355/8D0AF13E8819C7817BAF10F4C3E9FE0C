@@ -1,0 +1,651 @@
+﻿<?php
+
+add_action( 'wp_enqueue_scripts', 'ollie_child_enqueue_styles' );
+
+/**
+ * Enqueue Ollie child theme styles and scripts.
+ *
+ * @return void
+ */
+function ollie_child_enqueue_styles(): void {
+	wp_enqueue_style( 'ollie-child-style', get_stylesheet_uri(), array( 'ollie' ), wp_get_theme()->get( 'Version' ) );
+
+	// Responsive fixes – laddas sist så den vinner i specificitet
+	wp_enqueue_style( 'ollie-child-responsive-fixes', get_stylesheet_directory_uri() . '/responsive-fixes.css', array( 'ollie-child-style' ), wp_get_theme()->get( 'Version' ) );
+
+	// Header scroll effect
+	wp_enqueue_script( 'header-scroll', get_stylesheet_directory_uri() . '/header-scroll.js', array(), wp_get_theme()->get( 'Version' ), true );
+}
+
+
+/**
+ * Show Company field on user profile and edit screens (editable) and save it to user meta.
+ */
+function ollie_user_company_profile_field( $user ) {
+    if ( ! current_user_can( 'edit_users' ) ) {
+        return;
+    }
+
+    $company = get_user_meta( $user->ID, 'company', true );
+
+    wp_nonce_field( 'ollie_save_company', 'ollie_company_nonce' );
+    ?>
+    <h2><?php esc_html_e( 'Company', 'ollie-child' ); ?></h2>
+    <table class="form-table">
+        <tr>
+            <th><label for="company"><?php esc_html_e( 'Company', 'ollie-child' ); ?></label></th>
+            <td>
+                <input type="text" name="company" id="company" value="<?php echo esc_attr( $company ); ?>" class="regular-text" />
+                <p class="description"><?php esc_html_e( 'Company name for this user.', 'ollie-child' ); ?></p>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+add_action( 'show_user_profile', 'ollie_user_company_profile_field' );
+add_action( 'edit_user_profile', 'ollie_user_company_profile_field' );
+
+function ollie_save_user_company_profile( $user_id ) {
+    if ( ! current_user_can( 'edit_user', $user_id ) ) {
+        return false;
+    }
+
+    if ( empty( $_POST ) ) {
+        return false;
+    }
+
+    if ( ! isset( $_POST['ollie_company_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['ollie_company_nonce'] ), 'ollie_save_company' ) ) {
+        return false;
+    }
+
+    if ( isset( $_POST['company'] ) ) {
+        $company = sanitize_text_field( wp_unslash( $_POST['company'] ) );
+        if ( $company === '' ) {
+            delete_user_meta( $user_id, 'company' );
+        } else {
+            update_user_meta( $user_id, 'company', $company );
+        }
+    }
+}
+add_action( 'personal_options_update', 'ollie_save_user_company_profile' );
+add_action( 'edit_user_profile_update', 'ollie_save_user_company_profile' );
+
+/**
+ * Remove or hide User Registration "User Extra Information" company field to avoid duplication.
+ * Filters the profile meta fields shown by the User Registration plugin and removes any field
+ * whose label or field_key looks like a company/företag field.
+ */
+add_filter( 'user_registration_profile_meta_fields', 'ollie_filter_ur_profile_meta_fields', 10, 1 );
+function ollie_filter_ur_profile_meta_fields( $fields ) {
+    if ( empty( $fields ) || ! is_array( $fields ) ) {
+        return $fields;
+    }
+
+    foreach ( $fields as $group_key => $group ) {
+        if ( empty( $group['fields'] ) || ! is_array( $group['fields'] ) ) {
+            continue;
+        }
+
+        foreach ( $group['fields'] as $key => $field ) {
+            $label = isset( $field['label'] ) ? $field['label'] : '';
+            $field_key = isset( $field['field_key'] ) ? $field['field_key'] : $key;
+
+            // Candidate identifiers for company field
+            $company_identifiers = array( 'billing_company', 'business_name', 'company', 'company_name', 'företag', 'foretag' );
+
+            if ( $label && ( stripos( $label, 'företag' ) !== false || stripos( $label, 'foretag' ) !== false ) ) {
+                unset( $fields[ $group_key ]['fields'][ $key ] );
+                continue;
+            }
+
+            if ( in_array( strtolower( $field_key ), $company_identifiers, true ) ) {
+                unset( $fields[ $group_key ]['fields'][ $key ] );
+                continue;
+            }
+        }
+    }
+
+    return $fields;
+}
+
+
+// Registrera Custom Post Type - Medlemmar
+function fenix_register_member_cpt() {
+    $labels = array(
+        'name'               => 'Medlemmar',
+        'singular_name'      => 'Medlem',
+        'add_new'            => 'Lägg till ny',
+        'add_new_item'       => 'Lägg till ny medlem',
+        'edit_item'          => 'Redigera medlem',
+        'new_item'           => 'Ny medlem',
+        'view_item'          => 'Visa medlem',
+        'search_items'       => 'Sök medlemmar',
+        'not_found'          => 'Inga medlemmar hittades',
+        'not_found_in_trash' => 'Inga medlemmar i papperskorgen',
+        'menu_name'          => 'Medlemmar',
+    );
+
+    $args = array(
+        'labels'       => $labels,
+        'public'       => true,
+        'has_archive'  => false,
+        'show_in_rest' => true,
+        'supports'     => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+        'menu_icon'    => 'dashicons-groups',
+        'rewrite'      => array( 'slug' => 'medlemmar' ),
+    );
+
+    register_post_type( 'member', $args );
+}
+add_action( 'init', 'fenix_register_member_cpt' );
+
+
+// Registrera metafält för Medlemmar
+function fenix_register_member_meta() {
+    $string_fields = array( 'fenix_name', 'fenix_title', 'fenix_email', 'fenix_phone', 'fenix_address', 'fenix_website' );
+
+    foreach ( $string_fields as $field ) {
+        register_post_meta( 'member', $field, array(
+            'show_in_rest'  => true,
+            'single'        => true,
+            'type'          => 'string',
+            'auth_callback' => function() {
+                return current_user_can( 'edit_posts' );
+            },
+        ));
+    }
+}
+
+
+
+// Show admin notice on user profile/edit pages with saved company
+add_action( 'admin_notices', 'ollie_show_company_admin_notice' );
+function ollie_show_company_admin_notice() {
+    if ( ! is_admin() ) {
+        return;
+    }
+
+    // Only show on user edit/profile pages
+    if ( ! in_array( basename( filter_input( INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING ) ), array( 'user-edit.php', 'profile.php' ), true ) ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'edit_users' ) ) {
+        return;
+    }
+
+    $user_id = 0;
+    if ( isset( $_GET['user_id'] ) ) {
+        $user_id = intval( $_GET['user_id'] );
+    } else {
+        $user_id = get_current_user_id();
+    }
+
+    if ( ! $user_id ) {
+        return;
+    }
+
+    $company = get_user_meta( $user_id, 'company', true );
+    if ( empty( $company ) ) {
+        // try billing_company
+        $company = get_user_meta( $user_id, 'billing_company', true );
+    }
+
+    if ( empty( $company ) ) {
+        return;
+    }
+
+    printf(
+        '<div class="notice notice-info is-dismissible"><p><strong>%s</strong> %s</p></div>',
+        esc_html__( 'Company:', 'ollie-child' ),
+        esc_html( $company )
+    );
+}
+add_action( 'init', 'fenix_register_member_meta' );
+
+add_shortcode( 'fenix_website_link', function() {
+    $url = get_post_meta( get_the_ID(), 'fenix_website', true );
+    if ( ! $url ) return '';
+    return '<a href="' . esc_url( $url ) . '" target="_blank" class="fenix-website-link">' . esc_html( $url ) . '</a>';
+});
+
+/**
+// Visa logotyp i arkivet istället för porträtt
+function fenix_swap_logo_in_archive( $block_content, $block ) {
+    if ( $block['blockName'] !== 'core/post-featured-image' ) {
+        return $block_content;
+    }
+
+    // På single-sidan matchar queried object ID med post ID i loopen
+    if ( (int) get_queried_object_id() === (int) get_the_ID() ) {
+        return $block_content;
+    }
+
+    $post_id = get_the_ID();
+    if ( ! $post_id ) return $block_content;
+
+    $logo_id = get_post_meta( $post_id, 'logo_id', true );
+    if ( ! $logo_id ) return $block_content;
+
+    $logo_url = wp_get_attachment_image_url( $logo_id, 'full' );
+    if ( ! $logo_url ) return $block_content;
+
+    $block_content = preg_replace( '/(<img[^>]+src=")[^"]*(")/i', '$1' . esc_url( $logo_url ) . '$2', $block_content );
+$block_content = preg_replace( '/\s*srcset="[^"]*"/i', '', $block_content );
+$block_content = preg_replace( '/\s*sizes="[^"]*"/i', '', $block_content );
+$block_content = preg_replace( '/\s*style="[^"]*"/i', '', $block_content );
+$block_content = preg_replace( '/\s*width="\d+"/i', '', $block_content );
+$block_content = preg_replace( '/\s*height="\d+"/i', '', $block_content );
+
+    return $block_content;
+}
+add_filter( 'render_block', 'fenix_swap_logo_in_archive', 10, 2 );
+
+
+function fenix_linkedin_link_shortcode( $atts ) {
+    $linkedin = get_post_meta( get_the_ID(), 'fenix_linkedin', true );
+    if ( ! $linkedin ) return '';
+
+    return sprintf(
+        '<a href="%s" target="_blank" rel="noopener noreferrer" class="fenix-linkedin-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span>LinkedIn</span>
+        </a>',
+        esc_url( $linkedin )
+    );
+}
+add_shortcode( 'fenix_linkedin_link', 'fenix_linkedin_link_shortcode' );
+*/
+
+// Shortcode för klickbar e-postlänk
+add_shortcode( 'fenix_email_link', function() {
+    $email = get_post_meta( get_the_ID(), 'fenix_email', true );
+    if ( ! $email ) return '';
+    return '<a href="mailto:' . antispambot( $email ) . '" class="fenix-email-link">' . antispambot( $email ) . '</a>';
+});
+
+// Shortcode för klickbar telefonlänk
+add_shortcode( 'fenix_phone_link', function() {
+    $phone = get_post_meta( get_the_ID(), 'fenix_phone', true );
+    if ( ! $phone ) return '';
+    // Rensa bort mellanslag etc för tel:-länken men visa originalet
+    $tel = preg_replace( '/[^+0-9]/', '', $phone );
+    return '<a href="tel:' . esc_attr( $tel ) . '" class="fenix-phone-link">' . esc_html( $phone ) . '</a>';
+});
+
+
+// Hide Navigation block items with class "admin-only" from non-admins (for FSE / Navigation block)
+add_filter( 'render_block', 'fp_filter_navigation_block_admin_only', 10, 2 );
+function fp_filter_navigation_block_admin_only( $block_content, $block ) {
+    if ( empty( $block['blockName'] ) || $block['blockName'] !== 'core/navigation' ) {
+        return $block_content;
+    }
+
+    // Let administrators see everything
+    if ( current_user_can( 'manage_options' ) ) {
+        return $block_content;
+    }
+
+    // Remove any rendered list item that has the admin-only class
+    $pattern = '/<li\\b[^>]*\\bclass=["\\\'][^"\\\']*admin-only[^"\\\']*["\\\'][^>]*>.*?<\\/li>/is';
+    $new = preg_replace( $pattern, '', $block_content );
+    return $new === null ? $block_content : $new;
+}
+
+
+function shortcode_all_users( $atts )
+    { 
+        if ( ! current_user_can( 'list_users' ) ) 
+            return '<p>Restricted</p>';
+      
+        $atts = shortcode_atts( array( 'per_page' => 20 ), $atts, 'all_users' );
+        $per_page = intval( $atts['per_page'] );
+        $paged = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) ); 
+        $offset = ( $paged - 1 ) * $per_page; 
+        $args = array( 'number'  => $per_page, 'offset'  => $offset, 'orderby' => 'registered', 'order'   => 'DESC', 'fields'  => 'all', ); 
+       
+        $q = new WP_User_Query( $args ); 
+        $users = $q->get_results(); 
+        
+        if ( empty( $users ) ) 
+        { 
+            error_log( 'all_users shortcode: no users. Query vars: ' . print_r( $q->query_vars, true ) . ' total:' . $q->get_total() ); 
+           
+            return '<p>No users found in db.</p>'; 
+        }
+  
+        $out = '<div class="ppmd-members-wrap">
+                    <div class="ppmd-member-gutter"></div>';
+
+                foreach ( $users as $u ) { 
+                 
+               
+                    $profilePhoto = '';
+                    $att_id = get_user_meta($u->ID, 'profile_picture', true );
+                    if ( $att_id ) {
+                        $profilePhoto = wp_get_attachment_image( $att_id, array( 64, 64 ), false, array( 'class' => 'avatar' ) );
+                    } else {
+                        $profilePhoto = get_avatar($u->ID, 64 );
+                    }
+
+                    $cover_url = '';
+                    if ( function_exists( 'ollie_get_user_cover_url' ) ) {
+                        $cover_url = ollie_get_user_cover_url( $u->ID, 'full' );
+                    } else {
+                        $cover_url = wp_get_attachment_image_url( get_user_meta( $u->ID, 'profile_cover', true ), 'full' );
+                    }
+
+                    $cover_url = 'background-image:url(' . esc_url( $cover_url ) . ')';
+
+                    $email = isset( $u->user_email ) ? $u->user_email : '';
+                    $website = isset( $u->user_url ) ? $u->user_url : get_user_meta( $u->ID, 'user_url', true );
+                    $company =  get_user_meta( $u->ID, 'company', true );
+                    $biography= isset( $u->description ) ? $u->description : get_user_meta( $u->ID, 'description', true );
+                   
+
+    
+                    $out .= '<br/><br/>
+                            <div class="ppmd-member-wrap subscriber">
+                               
+
+
+                                <div class="member-cover" style="' . $cover_url . '"></div>
+
+                                <div class="ppmd-member-photo">
+                                    <a href="http://localhost/wordpress/profile/' . $u->user_login . '">' . $profilePhoto . '</a> 
+                                </div>
+
+                                
+                                <div class="ppmd-member-card">                                    
+                                    <div class="ppress-md-profile-item-wrap profile-display-name">
+                                        <a href="http://localhost/wordpress/profile/' . $u->user_login . '">' . esc_html( $u->display_name ) . '</a>
+                                    </div>
+                                    
+                                    <div class="ppress-md-profile-item-wrap profile-username">' . esc_html( $u->user_login ) . '</div>
+                                    
+                                    <div class="ppress-md-profile-item-wrap profile-email">
+                                        <span class="ppress-md-profile-item-title">Epost: </span>' . 
+                                        esc_html( $email ) .
+                                    '</div>
+                                    
+                                    <div class="ppress-md-profile-item-wrap profile-company"><span class="ppress-md-profile-item-title">Företag: </span>' . $company . '</div>
+                                    
+                                    <div class="ppress-md-profile-item-wrap profile-web-site">
+                                        <span class="ppress-md-profile-item-title">Webbplats: </span>' .                                    
+                                        '<a href="' . esc_url( $website ) . '" target="_blank" rel="noopener">' . esc_html($website) . '</a>' . 
+                                    '</div>
+                                    
+                                    <div class="ppress-md-profile-item-wrap profile-bio">' . wp_kses_post( wpautop( $biography ) ) .'</div>
+                                    
+
+                                    
+
+                                    
+                                    
+                                    
+                                </div>
+                            </div>'; 
+                } 
+                $out .= '</div>'; 
+                    return $out; 
+    } 
+    
+    add_shortcode( 'all_users', 'shortcode_all_users' );
+
+// Save company/business custom field from User Registration forms to user meta
+add_action( 'user_registration_after_register_user_action', 'ollie_save_company_from_ur', 10, 3 );
+function ollie_save_company_from_ur( $valid_form_data, $form_id, $user_id ) {
+    if ( empty( $valid_form_data ) || empty( $user_id ) ) {
+        return;
+    }
+
+    // Candidate field keys that may be used for "Företag" in different forms
+    $company_keys = array( 'billing_company', 'shipping_company', 'business_name', 'company', 'company_name', 'företag', 'foretag' );
+
+    foreach ( $company_keys as $key ) {
+        if ( isset( $valid_form_data[ $key ] ) ) {
+            $value = is_object( $valid_form_data[ $key ] ) && isset( $valid_form_data[ $key ]->value ) ? $valid_form_data[ $key ]->value : ( is_scalar( $valid_form_data[ $key ] ) ? $valid_form_data[ $key ] : '' );
+            if ( $value !== '' ) {
+                update_user_meta( $user_id, 'company', sanitize_text_field( $value ) );
+                return; // stop after first match
+            }
+        }
+    }
+
+    // Fallback: some forms (User Registration plugin) store extra fields under meta keys prefixed
+    // with 'user_registration_'. If we didn't find a company key in $valid_form_data, inspect
+    // usermeta for likely company values and copy one to 'company'. This avoids duplicate form
+    // fields being shown while ensuring company is available on the user record.
+    $all_meta = get_user_meta( $user_id );
+    if ( ! empty( $all_meta ) && is_array( $all_meta ) ) {
+        foreach ( $all_meta as $meta_key => $meta_values ) {
+            // skip already stored company
+            if ( $meta_key === 'company' ) {
+                continue;
+            }
+            // look for plugin-stored keys
+            if ( strpos( $meta_key, 'user_registration_' ) === 0 || stripos( $meta_key, 'business' ) !== false || stripos( $meta_key, 'company' ) !== false || stripos( $meta_key, 'företag' ) !== false || stripos( $meta_key, 'foretag' ) !== false ) {
+                $val = is_array( $meta_values ) ? $meta_values[0] : $meta_values;
+                if ( is_array( $val ) ) {
+                    $val = maybe_unserialize( $val );
+                    if ( is_array( $val ) ) {
+                        $val = reset( $val );
+                    }
+                }
+                $val = is_scalar( $val ) ? trim( (string) $val ) : '';
+                if ( $val !== '' ) {
+                    update_user_meta( $user_id, 'company', sanitize_text_field( $val ) );
+                    return;
+                }
+            }
+        }
+    }
+}
+
+// Also migrate UR extra-information to 'company' when a user profile is updated in admin
+add_action( 'personal_options_update', 'ollie_migrate_ur_company_on_update', 20 );
+add_action( 'edit_user_profile_update', 'ollie_migrate_ur_company_on_update', 20 );
+function ollie_migrate_ur_company_on_update( $user_id ) {
+    if ( ! $user_id ) {
+        return;
+    }
+    // If company already set, nothing to do
+    $existing = get_user_meta( $user_id, 'company', true );
+    if ( ! empty( $existing ) ) {
+        return;
+    }
+
+    $all_meta = get_user_meta( $user_id );
+    if ( empty( $all_meta ) || ! is_array( $all_meta ) ) {
+        return;
+    }
+
+    foreach ( $all_meta as $meta_key => $meta_values ) {
+        if ( strpos( $meta_key, 'user_registration_' ) === 0 || stripos( $meta_key, 'business' ) !== false || stripos( $meta_key, 'company' ) !== false || stripos( $meta_key, 'företag' ) !== false || stripos( $meta_key, 'foretag' ) !== false ) {
+            $val = is_array( $meta_values ) ? $meta_values[0] : $meta_values;
+            if ( is_array( $val ) ) {
+                $val = maybe_unserialize( $val );
+                if ( is_array( $val ) ) {
+                    $val = reset( $val );
+                }
+            }
+            $val = is_scalar( $val ) ? trim( (string) $val ) : '';
+            if ( $val !== '' ) {
+                update_user_meta( $user_id, 'company', sanitize_text_field( $val ) );
+                return;
+            }
+        }
+    }
+}
+
+add_action( 'init', function() {
+    if ( ! class_exists( 'WP_Roles' ) ) {
+        return;
+    }
+    global $wp_roles;
+    if ( ! isset( $wp_roles ) ) {
+        $wp_roles = new WP_Roles();
+    }
+
+    // Change display name only (role key remains 'subscriber')
+    $new_name = 'Medlem';
+    if ( isset( $wp_roles->roles['subscriber'] ) ) {
+        $wp_roles->roles['subscriber']['name'] = $new_name;
+    }
+    if ( isset( $wp_roles->role_names['subscriber'] ) ) {
+        $wp_roles->role_names['subscriber'] = $new_name;
+    }
+} );
+
+
+// Show upload field for profile-picture on profile pages
+add_action( 'show_user_profile', 'ollie_profile_picture_field' );
+add_action( 'edit_user_profile', 'ollie_profile_picture_field' );
+function ollie_profile_picture_field( $user ) {
+    wp_nonce_field( 'ollie_save_profile_picture', 'ollie_profile_picture_nonce' );
+    $att_id = get_user_meta( $user->ID, 'profile_picture', true );
+    $img = $att_id ? wp_get_attachment_image( $att_id, array(96,96) ) : '';
+    ?>
+    <h2><?php esc_html_e( 'Profile picture', 'ollie-child' ); ?></h2>
+    <table class="form-table">
+    <tr>
+      <th><label for="profile_picture"><?php esc_html_e( 'Upload', 'ollie-child' ); ?></label></th>
+      <td>
+        <?php echo $img; ?><br/>
+        <input type="file" name="profile_picture_file" id="profile_picture_file" /><br/>
+        <span class="description"><?php esc_html_e( 'Upload an image to use instead of Gravatar.', 'ollie-child' ); ?></span>
+      </td>
+    </tr>
+    </table>
+    <?php
+}
+
+// Handle saving/upload
+add_action( 'personal_options_update', 'ollie_save_profile_picture' );
+add_action( 'edit_user_profile_update', 'ollie_save_profile_picture' );
+function ollie_save_profile_picture( $user_id ) {
+    if ( ! current_user_can( 'edit_user', $user_id ) ) return;
+    if ( ! isset( $_POST['ollie_profile_picture_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['ollie_profile_picture_nonce'] ), 'ollie_save_profile_picture' ) ) return;
+
+    if ( ! empty( $_FILES['profile_picture_file']['name'] ) ) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        require_once ABSPATH . 'wp-admin/includes/media.php';
+
+        $file = $_FILES['profile_picture_file'];
+        $overrides = array( 'test_form' => false );
+        $movefile = wp_handle_upload( $file, $overrides );
+        if ( isset( $movefile['file'] ) ) {
+            $filename = $movefile['file'];
+            $filetype = wp_check_filetype( basename( $filename ), null );
+            $attachment = array(
+                'post_mime_type' => $filetype['type'],
+                'post_title'     => sanitize_file_name( basename( $filename ) ),
+                'post_content'   => '',
+                'post_status'    => 'inherit'
+            );
+            $attach_id = wp_insert_attachment( $attachment, $filename );
+            $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+            wp_update_attachment_metadata( $attach_id, $attach_data );
+
+            // Save attachment ID as user meta
+            update_user_meta( $user_id, 'profile_picture', intval( $attach_id ) );
+        }
+    }
+}
+
+// Use uploaded image for get_avatar()
+add_filter( 'get_avatar', 'ollie_get_local_avatar', 10, 5 );
+function ollie_get_local_avatar( $avatar, $id_or_email, $size, $default, $alt = '' ) {
+    $user = false;
+    if ( is_numeric( $id_or_email ) ) {
+        $user = get_user_by( 'id', (int) $id_or_email );
+    } elseif ( is_object( $id_or_email ) && ! empty( $id_or_email->user_id ) ) {
+        $user = get_user_by( 'id', (int) $id_or_email->user_id );
+    } elseif ( is_string( $id_or_email ) ) {
+        $user = get_user_by( 'email', $id_or_email );
+    }
+
+    if ( $user ) {
+        $att_id = get_user_meta( $user->ID, 'profile_picture', true );
+        if ( $att_id ) {
+            $src = wp_get_attachment_image_url( $att_id, array( $size, $size ) );
+            if ( $src ) {
+                $alt = esc_attr( $alt ? $alt : $user->display_name );
+                return "<img src=\"" . esc_url( $src ) . "\" alt=\"{$alt}\" class=\"avatar avatar-{$size} photo\" height=\"{$size}\" width=\"{$size}\" />";
+            }
+        }
+    }
+    return $avatar;
+}
+
+
+// Show upload field for cover photo on profile pages
+add_action( 'show_user_profile', 'ollie_profile_cover_field' );
+add_action( 'edit_user_profile', 'ollie_profile_cover_field' );
+function ollie_profile_cover_field( $user ) {
+    wp_nonce_field( 'ollie_save_cover', 'ollie_cover_nonce' );
+    $att_id = get_user_meta( $user->ID, 'profile_cover', true );
+    $img = $att_id ? wp_get_attachment_image( $att_id, 'medium' ) : '';
+    ?>
+    <h2><?php esc_html_e( 'Cover photo', 'ollie-child' ); ?></h2>
+    <table class="form-table">
+    <tr>
+      <th><label for="profile_cover"><?php esc_html_e( 'Upload', 'ollie-child' ); ?></label></th>
+      <td>
+        <?php echo $img; ?><br/>
+        <input type="file" name="cover_photo_file" id="cover_photo_file" /><br/>
+        <span class="description"><?php esc_html_e( 'Upload a cover image for this user.', 'ollie-child' ); ?></span>
+      </td>
+    </tr>
+    </table>
+    <?php
+}
+
+// Handle saving/upload for cover photo
+add_action( 'personal_options_update', 'ollie_save_profile_cover' );
+add_action( 'edit_user_profile_update', 'ollie_save_profile_cover' );
+function ollie_save_profile_cover( $user_id ) {
+    if ( ! current_user_can( 'edit_user', $user_id ) ) return;
+    if ( ! isset( $_POST['ollie_cover_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['ollie_cover_nonce'] ), 'ollie_save_cover' ) ) return;
+
+    if ( ! empty( $_FILES['cover_photo_file']['name'] ) ) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        require_once ABSPATH . 'wp-admin/includes/media.php';
+
+        $file = $_FILES['cover_photo_file'];
+        $overrides = array( 'test_form' => false );
+        $movefile = wp_handle_upload( $file, $overrides );
+        if ( isset( $movefile['file'] ) ) {
+            $filename = $movefile['file'];
+            $filetype = wp_check_filetype( basename( $filename ), null );
+            $attachment = array(
+                'post_mime_type' => $filetype['type'],
+                'post_title'     => sanitize_file_name( basename( $filename ) ),
+                'post_content'   => '',
+                'post_status'    => 'inherit'
+            );
+            $attach_id = wp_insert_attachment( $attachment, $filename );
+            $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+            wp_update_attachment_metadata( $attach_id, $attach_data );
+
+            // Save attachment ID as user meta for cover
+            update_user_meta( $user_id, 'profile_cover', intval( $attach_id ) );
+        }
+    }
+}
+
+/**
+ * Helper: get user cover image URL
+ */
+function ollie_get_user_cover_url( $user_id, $size = 'full' ) {
+    $att_id = get_user_meta( $user_id, 'profile_cover', true );
+    if ( ! $att_id ) {
+        return '';
+    }
+    return wp_get_attachment_image_url( $att_id, $size );
+}
+

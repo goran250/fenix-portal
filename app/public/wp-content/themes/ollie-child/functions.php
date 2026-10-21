@@ -448,11 +448,11 @@ function shortcode_all_members( $atts )
                     <input
                         type="text"
                         id="memberSearch"
-                        placeholder="🔍 Sök medlem, företag eller e-post..."
+                        placeholder="🔍 Sök medlem."
                     >
                 </div>
                
-                    <div class="all-members-inner-wrap">' .
+                <div class="all-members-inner-wrap">' .
               
     $i = ""; // Ta inte bort denna variabel, då kraschar sidan.
     
@@ -485,11 +485,12 @@ function shortcode_all_members( $atts )
         $company =  get_user_meta( $u->ID, 'company', true );
         $biography= isset( $u->description ) ? $u->description : get_user_meta( $u->ID, 'description', true );
         
-    //  $out .= '<div class="member-wrap">';
-                          $out .= '<div class="member-wrap"
+        $out .= '<div class="member-wrap"
                         data-name="' . esc_attr( $u->display_name ) . '"
                         data-company="' . esc_attr( $company ) . '"
                         data-email="' . esc_attr( $email ) . '"
+                        data-website="' . esc_attr( $website ) . '"
+                        data-description="' . esc_attr( $biography ) . '"
                         data-username="' . esc_attr( $u->user_login ) . '">';
         $out .= '<div class="member-cover"' . ( $cover_style ? ' style="' . $cover_style . '"' : '' ) . '></div>';
         // Resolve the edit-member page permalink by path if it exists, fallback to the slug URL.
@@ -540,6 +541,8 @@ function shortcode_all_members( $atts )
                                         member.dataset.name + " " +
                                         member.dataset.company + " " +
                                         member.dataset.email + " " +
+                                        member.dataset.website + " " +
+                                        member.dataset.description + " " +
                                         member.dataset.username
                                     ).toLowerCase();
 

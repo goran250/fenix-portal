@@ -448,11 +448,6 @@ add_action( 'wp_head', function() {
 
 function shortcode_all_members( $atts )
 {
-    // Public members listing — Visibility restricted to logged-in users. Capability checks are handled
-    // where actions require them (edit links, admin-only controls).
-    if ( ! is_user_logged_in() ) {
-        return '<p style="color: green;"><strong>Du måste vara inloggad för att se medlemmar.</strong></p>';
-    }
 
     $atts = shortcode_atts( array( 'per_page' => 20 ), $atts, 'all_members' );
     $per_page = intval( $atts['per_page'] );

@@ -714,11 +714,23 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
     width: 300px;
 }
 
-.register-member-form .submit-button, .edit-member-form .submit-button, .user-files-form .submit-button {
+.register-member-form .submit-button, .edit-member-form .submit-button, .user-files-form .submit-button, .gutena-forms-submit-buttons button {
   padding: 5px 12px!important;
   border-radius: 6px!important;
   border: 1px solid #888;
   margin: 20px 0  0 190px;
+}
+
+.gutena-forms-submit-buttons button {
+  padding: 6px 16px!important;
+  border-radius: 6px!important;
+  border: 1px solid #888!important;
+  margin: 20px 0  0 0;
+  background-color: #F0F0F0!important;
+  outline: none!important;
+  outline-offset: 0!important;
+  font-size: 18px;
+  font-weight: 450;
 }
 
 .member-success, .file-success {
@@ -977,7 +989,7 @@ div.event-item div {
     page-id-22 = Registrera medlemssidan, 
     page-id-73 = Ändra medlemssidan,    
     page-id-281 = Kontaktsidan */
-.page-id-2 main, .page-id-22 main, .page-id-73 main, .page-id-281 main {
+.page-id-2 main, .page-id-22 main, .page-id-73 main {
    max-width: 800px;
    width: 100%;
    margin: 0 auto;
@@ -989,8 +1001,11 @@ div.event-item div {
    margin: 0 auto;
 }
 
-/** page-id-328 = Integritetspolicysidan */
-.page-id-328 main, .page-id-280 main {
+/** page-id-328 = Integritetspolicysidan 
+    page-id-280 = Om fenix-sidan
+    page-id-281 = Kontaktsidan
+*/
+.page-id-328 main, .page-id-280 main, .page-id-281 main {
    max-width: 1000px;
    width: 100%;
    margin: 0 auto;
@@ -1015,7 +1030,7 @@ div.event-item div {
 } 
 
 /** page-id-2 = startsidan */
-.page-id-2 main .wp-custom-css-747bb645 {
+.page-id-2 main .start-text-container {
   max-width: 800px;
   width: 100%;
   margin-left: 0px !important;

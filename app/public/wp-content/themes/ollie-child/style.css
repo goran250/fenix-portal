@@ -229,11 +229,6 @@ body.admin-bar header.wp-block-template-part {
   flex-direction: column !important;
 }
 
-.wp-block-navigation__responsive-container.is-menu-open
-.wp-block-navigation-item__content {
-  padding: 0.5rem 1rem !important;
-}
-
 /* Dölj Kontakt-länk på desktop */
 li.mobile-only-menu-item {
     display: none !important;
@@ -535,6 +530,11 @@ Görans css
 ul.wp-block-navigation__submenu-container.wp-block-navigation-submenu {
   margin-left: 0!important;
 }
+
+ul.wp-block-navigation__submenu-container a.wp-block-navigation-item__content {
+  padding: 12px 16px !important;
+}
+
 
 footer .wp-block-group.wp-elements-3.wp-container-core-group-is-layout-63f1d60a.wp-block-group-is-layout-constrained {
   padding-top: 50px!important;
@@ -977,7 +977,7 @@ div.event-item div {
     color: #E98D1C;
 }
 
-/** Bilden på Om fenix-sidan */
+/** Textrutan och bilden på Om fenix-sidan */
 .wp-block-group.about-fenix-text, .wp-block-image.about-fenix-image {
   max-width: 598px;
   width: 100%;
@@ -1029,12 +1029,7 @@ div.event-item div {
     font-size: 40px;
 } 
 
-/** page-id-2 = startsidan */
-.page-id-2 main .start-text-container {
-  max-width: 800px;
-  width: 100%;
-  margin-left: 0px !important;
-}
+
 
 /** page-id-281 = Kontaktsidan */
 .page-id-281 .wp-block-gutena-forms.gutena-forms-contact-form {
@@ -1046,6 +1041,8 @@ div.event-item div {
   width: 30px;
   height: 30px;
 }
+
+12px 16px!important
 
 
 

@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\wp-content",
-    "\\wp-content\\themes",
-    "\\wp-content\\themes\\ollie-child"
+    "\\wp-content\\themes"
   ],
-  "SelectedNode": "\\navigation.html",
   "PreviewInSolutionExplorer": false
 }

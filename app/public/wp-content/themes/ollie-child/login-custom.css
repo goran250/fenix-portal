@@ -1,0 +1,37 @@
+
+body.login h1.wp-login-logo a {
+	background-image: url('/wp-content/uploads/2026/10/login-logotype-fenix.webp') !important;
+	background-size: 220px;
+	height: 106px;
+	width: 220px;
+}
+body.login #login {
+	width: 100%;
+	max-width: 420px;
+}
+body.login form {
+	padding: 30px 28px;
+	border-radius: 10px;
+	margin: 24px 15px;
+}
+
+body.login #wp-submit {
+	border-radius: 8px;
+}
+
+body.login .message, body.login .notice, body.login .success {
+	margin: 0 15px 20px;
+}
+
+@media screen and (max-width: 400px) {
+    body.login .language-switcher .button {
+        display: inline-block;
+        margin: 0 auto; 
+    }
+}
+
+@media screen and (max-width: 298px) {
+    body.login .language-switcher .button {
+        margin: 8px auto 0; 
+    }
+}

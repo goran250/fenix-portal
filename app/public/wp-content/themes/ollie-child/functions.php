@@ -17,6 +17,25 @@ function ollie_child_enqueue_styles(): void {
 	wp_enqueue_script( 'header-scroll', get_stylesheet_directory_uri() . '/header-scroll.js', array(), wp_get_theme()->get( 'Version' ), true );
 }
 
+// Load custom CSS on WordPress login page
+add_action('login_enqueue_scripts', function () {
+	$file_path = get_stylesheet_directory() . '/login-custom.css';
+	$file_url  = get_stylesheet_directory_uri() . '/login-custom.css';
+	$ver       = file_exists($file_path) ? filemtime($file_path) : wp_get_theme()->get('Version');
+
+	wp_enqueue_style('ollie-child-login', $file_url, array(), $ver);
+});
+
+// Change login logo link URL
+add_filter('login_headerurl', function () {
+	return home_url('/');
+});
+
+// Change login logo link title/tooltip
+add_filter('login_headertext', function () {
+	return get_bloginfo('name');
+});
+
 /** Mailfunktion */
 add_action('init', function () {
 	if (isset($_POST['send_simple_mail'])) {

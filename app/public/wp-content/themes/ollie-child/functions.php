@@ -17,6 +17,20 @@ function ollie_child_enqueue_styles(): void {
 	wp_enqueue_script( 'header-scroll', get_stylesheet_directory_uri() . '/header-scroll.js', array(), wp_get_theme()->get( 'Version' ), true );
 }
 
+/** Mailfunktion */
+add_action('init', function () {
+	if (isset($_POST['send_simple_mail'])) {
+		$to      = sanitize_email($_POST['to'] ?? '');
+		$subject = sanitize_text_field($_POST['subject'] ?? '');
+		$message = wp_kses_post($_POST['message'] ?? '');
+
+		if ($to && is_email($to) && $subject && $message) {
+			$headers = array('Content-Type: text/html; charset=UTF-8');
+			wp_mail($to, $subject, nl2br($message), $headers);
+		}
+	}
+});
+
 /**
  * Handle Avanmalning (user cancellation) requests.
  * Accepts POST or GET with event_id and records the current user as cancelled for that event.

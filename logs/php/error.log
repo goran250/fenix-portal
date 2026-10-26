@@ -472,3 +472,4 @@ Stack trace:
 [21-Oct-2026 10:05:10 UTC] PHP Warning:  Undefined property: stdClass::$post_parent in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 772
 [21-Oct-2026 11:14:01 UTC] PHP Warning:  Undefined property: stdClass::$id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 769
 [21-Oct-2026 11:14:01 UTC] PHP Warning:  Undefined property: stdClass::$post_parent in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\rest-api\endpoints\class-wp-rest-posts-controller.php on line 772
+[23-Oct-2026 14:37:09 UTC] Cron reschedule event error for hook: action_scheduler_run_queue, Error code: invalid_schedule, Error message: Event schedule does not exist., Data: {"schedule":"every_minute","args":["WP Cron"],"interval":60}

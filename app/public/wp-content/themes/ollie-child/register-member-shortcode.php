@@ -16,6 +16,44 @@ function shortcode_Register_member( $atts ) {
 	}
 
 	$messages = array( 'errors' => array(), 'success' => '' );
+	$new_member_id = 0;
+	$password_setup_url = home_url( '/set-password/' );
+	$mail_debug_notice = '';
+
+	if ( isset( $_POST['send_new_member_email_submit'] ) ) {
+		if ( ! isset( $_POST['send_new_member_email_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['send_new_member_email_nonce'] ), 'send_new_member_email_action' ) ) {
+			$messages['errors'][] = 'Invalid form submission.';
+		} else {
+			$target_user_id = isset( $_POST['new_member_user_id'] ) ? intval( $_POST['new_member_user_id'] ) : 0;
+			$new_member_id = $target_user_id;
+			$target_user = $target_user_id ? get_user_by( 'id', $target_user_id ) : false;
+			if ( ! $target_user || empty( $target_user->user_email ) ) {
+				$messages['errors'][] = 'Kunde inte hitta medlemmens e-postadress.';
+			} else {
+				$subject = 'Välkommen - välj ditt lösenord';
+				$message = "Hej!\n\nVälkommen till nätverket Fenix medlemsportal.Du är nu antagen som medlem.\n\nVälj ett lösenord via länken nedan:\n" . $password_setup_url;
+				$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
+				$mail_error_message = '';
+				$wp_mail_failed_handler = function( $wp_error ) use ( &$mail_error_message ) {
+					if ( is_wp_error( $wp_error ) ) {
+						$mail_error_message = $wp_error->get_error_message();
+					}
+				};
+				add_action( 'wp_mail_failed', $wp_mail_failed_handler );
+				$sent = wp_mail( $target_user->user_email, $subject, $message, $headers );
+				remove_action( 'wp_mail_failed', $wp_mail_failed_handler );
+				$mail_debug_notice = 'Mail debug: wp_mail returned ' . ( $sent ? 'true' : 'false' ) . '.';
+				if ( ! $sent && $mail_error_message ) {
+					$mail_debug_notice .= ' Fel: ' . $mail_error_message;
+				}
+				if ( $sent ) {
+					$messages['success'] = 'Meddelandet har skickats till medlemmen.';
+				} else {
+					$messages['errors'][] = 'Kunde inte skicka meddelandet.';
+				}
+			}
+		}
+	}
 
 	if ( isset( $_POST['register_member_submit'] ) ) {
 		if ( ! isset( $_POST['register_member_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['register_member_nonce'] ), 'register_member_action' ) ) {
@@ -84,6 +122,7 @@ function shortcode_Register_member( $atts ) {
 				if ( is_wp_error( $user_id ) ) {
 					$messages['errors'][] = $user_id->get_error_message();
 				} else {
+					$new_member_id = intval( $user_id );
 					if ( $company !== '' ) update_user_meta( $user_id, 'company', $company );
 					if ( $phone !== '' ) update_user_meta( $user_id, 'phone', $phone );
 					if ( $biography !== '' ) update_user_meta( $user_id, 'description', $biography );
@@ -200,6 +239,9 @@ function shortcode_Register_member( $atts ) {
 	if ( $messages['success']  && empty( $messages['errors'] )) {
 		$out .= '<div class="member-success">' . esc_html( $messages['success'] ) . '</div>';
 	}
+	if ( $mail_debug_notice !== '' ) {
+		$out .= '<div class="member-success">' . esc_html( $mail_debug_notice ) . '</div>';
+	}
 
 	$out .= '<form method="post" enctype="multipart/form-data" class="register-member-form">';
 	$out .= wp_nonce_field( 'register_member_action', 'register_member_nonce', true, false );
@@ -225,6 +267,14 @@ function shortcode_Register_member( $atts ) {
 	$out .= '</table>';
 	$out .= '<p><button type="submit" name="register_member_submit" class="submit-button">Skapa medlem</button></p>';
 	$out .= '</form>';
+
+	if ( $new_member_id > 0 && empty( $messages['errors'] ) ) {
+		$out .= '<form method="post" class="send-member-email-form">';
+		$out .= wp_nonce_field( 'send_new_member_email_action', 'send_new_member_email_nonce', true, false );
+		$out .= '<input type="hidden" name="new_member_user_id" value="' . esc_attr( $new_member_id ) . '" />';
+		$out .= '<p><button type="submit" name="send_new_member_email_submit" class="submit-button">Skicka meddelande till ny medlem</button></p>';
+		$out .= '</form>';
+	}
 
 	
 

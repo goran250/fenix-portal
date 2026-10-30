@@ -36,6 +36,14 @@ add_filter('login_headertext', function () {
 	return get_bloginfo('name');
 });
 
+// Show admin bar only for administrators
+add_filter( 'show_admin_bar', function( $show ) {
+    if ( current_user_can( 'manage_options' ) ) {
+        return true;
+    }
+    return false;
+} );
+
 /** Mailfunktion */
 add_action('init', function () {
 	if (isset($_POST['send_simple_mail'])) {
@@ -483,13 +491,24 @@ function shortcode_all_members( $atts )
 {
 
     $atts = shortcode_atts( array( 'per_page' => 20 ), $atts, 'all_members' );
-    $per_page = intval( $atts['per_page'] );
-    $paged = max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) ); 
+    $default_per_page = max( 1, intval( $atts['per_page'] ) );
+    $query_per_page = isset( $_GET['members_per_page'] ) ? intval( wp_unslash( $_GET['members_per_page'] ) ) : 0;
+    $per_page = $query_per_page > 0 ? min( 100, $query_per_page ) : $default_per_page;
+    $members_page = isset( $_GET['members_page'] ) ? intval( wp_unslash( $_GET['members_page'] ) ) : 0;
+    $paged = max( 1, $members_page, get_query_var( 'paged' ), get_query_var( 'page' ) ); 
     $offset = ( $paged - 1 ) * $per_page; 
     $args = array( 'number'  => $per_page, 'offset'  => $offset, 'orderby' => 'registered', 'order'   => 'DESC', 'fields'  => 'all', ); 
     
     $q = new WP_User_Query( $args ); 
     $users = $q->get_results(); 
+
+    if ( empty( $users ) && $paged > 1 && intval( $q->get_total() ) > 0 ) {
+        $paged = 1;
+        $offset = 0;
+        $args['offset'] = 0;
+        $q = new WP_User_Query( $args );
+        $users = $q->get_results();
+    }
     
     if ( empty( $users ) ) 
     { 
@@ -503,9 +522,7 @@ function shortcode_all_members( $atts )
                     <input type="text" id="memberSearch" placeholder="🔍 Sök medlem">
                 </div>
             
-                <div class="all-members-inner-wrap">' .
-              
-    $i = ""; // Ta inte bort denna variabel, då kraschar sidan.
+                <div class="all-members-inner-wrap">';
     
     foreach ( $users as $u ) {                     
         $profilePhoto = '';
@@ -534,15 +551,17 @@ function shortcode_all_members( $atts )
         $email = isset( $u->user_email ) ? $u->user_email : '';
         $website = isset( $u->user_url ) ? $u->user_url : get_user_meta( $u->ID, 'user_url', true );
         $company =  get_user_meta( $u->ID, 'company', true );
+        $linkedin = isset( $u->linkedin ) ? $u->linkedin : get_user_meta( $u->ID, 'linkedin', true );
         $biography= isset( $u->description ) ? $u->description : get_user_meta( $u->ID, 'description', true );
         
         $out .= '<div class="member-wrap"
                     data-name="' . esc_attr( $u->display_name ) . '"
                     data-company="' . esc_attr( $company ) . '"
                     data-email="' . esc_attr( $email ) . '"
-                    data-website="' . esc_attr( $website ) . '"
-                    data-description="' . esc_attr( $biography ) . '"
-                    data-username="' . esc_attr( $u->user_login ) . '">';
+                    data-linkedin="' . esc_attr( $linkedin ) . '"
+                    data-website="' . esc_attr( $website ) . '"                    
+                    data-description="' . esc_attr( $biography ) . '">';
+
         $out .= '<div class="member-cover"' . ( $cover_style ? ' style="' . $cover_style . '"' : '' ) . '></div>';
         // Resolve the edit-member page permalink by path if it exists, fallback to the slug URL.
         $edit_page = get_page_by_path( 'andra-medlem' );
@@ -560,8 +579,8 @@ function shortcode_all_members( $atts )
             $out .= '<div class="member profile-display-name">' . esc_html( $u->display_name ) . '</div>';
         }
 
-        $out .= '<div class="member-item-wrap">' . esc_html( $u->user_login ) . '</div>';
         $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Epost: </span>' . esc_html( $email ) . '</div>';
+        $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">LinkedIn: </span><a href="' . esc_url( $linkedin ) . '" target="_blank" rel="noopener">' . esc_html( $linkedin ) . '</a></div>';
         $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Företag: </span>' . esc_html( $company ) . '</div>';
         $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Webbplats: </span><a href="' . esc_url( $website ) . '" target="_blank" rel="noopener">' . esc_html( $website ) . '</a></div>';
         $out .= '<div class="member-item-wrap profile-bio">' . wp_kses_post( wpautop( $biography ) ) . '</div>';
@@ -572,46 +591,81 @@ function shortcode_all_members( $atts )
     $out .= '</div>
              </div>'; 
 
+    $total_users = intval( $q->get_total() );
+    $total_pages = $per_page > 0 ? (int) ceil( $total_users / $per_page ) : 1;
+
+    if ( $total_pages > 1 ) {
+        $out .= '<div class="all-members-pagination">';
+
+        if ( $paged > 1 ) {
+            $prev_url = esc_url( add_query_arg( 'members_page', $paged - 1, remove_query_arg( 'members_page' ) ) );
+            $out .= '<a class="members-page-link members-page-prev" href="' . $prev_url . '">« Föregående</a> ';
+        }
+
+
+        if ( $paged < $total_pages ) {
+            $next_url = esc_url( add_query_arg( 'members_page', $paged + 1, remove_query_arg( 'members_page' ) ) );
+            $out .= '<a class="members-page-link members-page-next" href="' . $next_url . '">Nästa»</a> ';
+        }
+
+        $out .= ' &nbsp; ' . $total_pages . ' sidor</div>';
+    }
+
     // Sökfunktionalitet 
-                $out .= '
-                    <script>
-                    document.addEventListener("DOMContentLoaded", function() {
+    $out .= '
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
 
-                        const searchInput = document.getElementById("memberSearch");
+            const url = new URL(window.location.href);
+            const currentPerPage = parseInt(url.searchParams.get("members_per_page") || "", 10);
+            const desiredPerPage = window.innerWidth < 705 ? 10 : 20;
 
-                        if (!searchInput) return;
+            if (currentPerPage !== desiredPerPage) {
+                url.searchParams.set("members_per_page", String(desiredPerPage));
+                url.searchParams.delete("members_page");
+                window.location.replace(url.toString());
+                return;
+            }
 
-                        searchInput.addEventListener("keyup", function() {
+            const searchInput = document.getElementById("memberSearch");
 
-                            const searchTerm = this.value.toLowerCase();
+            if (!searchInput) return;
 
-                            document.querySelectorAll(".member-wrap").forEach(function(member) {
+            searchInput.addEventListener("keyup", function() {
 
-                                const searchText =
-                                    (
-                                        member.dataset.name + " " +
-                                        member.dataset.company + " " +
-                                        member.dataset.email + " " +
-                                        member.dataset.website + " " +
-                                        member.dataset.description + " " +
-                                        member.dataset.username
-                                    ).toLowerCase();
+                const searchTerm = this.value.toLowerCase();
 
-                                if (searchText.includes(searchTerm)) {
-                                    member.style.display = "";
-                                } else {
-                                    member.style.display = "none";
-                                }
+                document.querySelectorAll(".member-wrap").forEach(function(member) {
 
-                            });
+                    const searchText =
+                        (
+                            member.dataset.name + " " +
+                            member.dataset.company + " " +
+                            member.dataset.email + " " +
+                            member.dataset.website + " " +
+                            member.dataset.linkedin + " " +
+                            member.dataset.description
+                        ).toLowerCase();
 
-                        });
+                    if (searchText.includes(searchTerm)) {
+                        member.style.display = "";
+                    } else {
+                        member.style.display = "none";
+                    }
 
-                    });
-                    </script>';
+                });
+
+            });
+
+        });
+        </script>';
     
     return $out; 
-} 
+}
+
+add_shortcode( 'all_members', 'shortcode_all_members' );
+
+
    
 /**
  * Shows list of members for a given event who are either cancelled (avanmälda)
@@ -706,7 +760,6 @@ function shortcode_anmalningar( $atts ) {
 add_shortcode( 'anmalningar_list', 'shortcode_anmalningar' );
 
     
-    add_shortcode( 'all_members', 'shortcode_all_members' );
 
 // Save company/business custom field from User Registration forms to user meta
 add_action( 'user_registration_after_register_user_action', 'ollie_save_company_from_ur', 10, 3 );
@@ -978,21 +1031,31 @@ function ollie_get_user_cover_url( $user_id, $size = 'full' ) {
 }
 
 
-// Load register member shortcode implementation if present
+// Load register-member-shortcode implementation if present
 if ( file_exists( get_stylesheet_directory() . '/register-member-shortcode.php' ) ) {
     require_once get_stylesheet_directory() . '/register-member-shortcode.php';
 }
 
-// Load edit member shortcode implementation if present
+// Load edit-member-shortcode implementation if present
 if ( file_exists( get_stylesheet_directory() . '/edit-member-shortcode.php' ) ) {
     require_once get_stylesheet_directory() . '/edit-member-shortcode.php';
 }
 
-// Load Uploaded files shortcode
+// Load uploaded-files shortcode
 if ( file_exists( get_stylesheet_directory() . '/uploaded-files-shortcode.php' ) ) {
     require_once get_stylesheet_directory() . '/uploaded-files-shortcode.php';
 }
 // Load events shortcode implementation if present
 if ( file_exists( get_stylesheet_directory() . '/events-shortcode.php' ) ) {
     require_once get_stylesheet_directory() . '/events-shortcode.php';
+}
+
+// Load password-setup shortcode implementation if present
+if ( file_exists( get_stylesheet_directory() . '/password-setup-shortcode.php' ) ) {
+    require_once get_stylesheet_directory() . '/password-setup-shortcode.php';
+}
+
+// Load tfa_select_members shortcode implementation if present
+if ( file_exists( get_stylesheet_directory() . '/tfa-shortcode.php' ) ) {
+    require_once get_stylesheet_directory() . '/tfa-shortcode.php';
 }

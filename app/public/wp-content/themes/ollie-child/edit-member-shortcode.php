@@ -83,7 +83,9 @@ function shortcode_Edit_member( $atts ) {
 			$company    = isset( $_POST['company'] ) ? sanitize_text_field( wp_unslash( $_POST['company'] ) ) : '';
 			$phone      = isset( $_POST['phone'] ) ? sanitize_text_field( wp_unslash( $_POST['phone'] ) ) : '';
 			$email      = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+			$linkedin   = isset( $_POST['linkedin'] ) ? esc_url_raw( wp_unslash( $_POST['linkedin'] ) ) : '';
 			$website    = isset( $_POST['website'] ) ? esc_url_raw( wp_unslash( $_POST['website'] ) ) : '';
+			$isGoodAt = isset( $_POST['isGoodAt'] ) ? wp_kses_post( wp_unslash( $_POST['isGoodAt'] ) ) : '';
 			$biography  = isset( $_POST['biography'] ) ? wp_kses_post( wp_unslash( $_POST['biography'] ) ) : '';
 			$password   = isset( $_POST['password'] ) ? $_POST['password'] : '';
 			$password_confirm = isset( $_POST['password_confirm'] ) ? $_POST['password_confirm'] : '';
@@ -105,6 +107,21 @@ function shortcode_Edit_member( $atts ) {
 			if ( $password !== '' ) {
 				if ( $password !== $password_confirm ) {
 					$messages['errors'][] = 'Lösenorden matchar inte.';
+				}
+				if ( strlen( $password ) < 10 ) {
+					$messages['errors'][] = 'Lösenordet måste vara minst 10 tecken.';
+				}
+				if ( ! preg_match( '/[A-ZÅÄÖ]/u', $password ) ) {
+					$messages['errors'][] = 'Lösenordet måste innehålla minst en versal.';
+				}
+				if ( ! preg_match( '/[a-zåäö]/u', $password ) ) {
+					$messages['errors'][] = 'Lösenordet måste innehålla minst en gemen.';
+				}
+				if ( ! preg_match( '/\d/', $password ) ) {
+					$messages['errors'][] = 'Lösenordet måste innehålla minst en siffra.';
+				}
+				if ( ! preg_match( '/[^A-Za-z0-9]/', $password ) ) {
+					$messages['errors'][] = 'Lösenordet måste innehålla minst ett specialtecken.';
 				}
 			}
 
@@ -129,21 +146,41 @@ function shortcode_Edit_member( $atts ) {
 				$updated = wp_update_user( $userdata );
 				if ( is_wp_error( $updated ) ) {
 					$messages['errors'][] = $updated->get_error_message();
-				} else {
+				} 
+				else {
 					// Update meta fields
 					if ( $company !== '' ) {
 						update_user_meta( $target_user_id, 'company', $company );
-					} else {
+					} 
+					else {
 						delete_user_meta( $target_user_id, 'company' );
 					}
+
 					if ( $phone !== '' ) {
 						update_user_meta( $target_user_id, 'phone', $phone );
-					} else {
+					} 
+					else {
 						delete_user_meta( $target_user_id, 'phone' );
 					}
+
+					if ( $linkedin !== '' ) {
+						update_user_meta( $target_user_id, 'linkedin', $linkedin );
+					} 
+					else {
+						delete_user_meta( $target_user_id, 'linkedin' );
+					}
+
+					if ( $isGoodAt !== '' ) {
+						update_user_meta( $target_user_id, 'isGoodAt', $isGoodAt );
+					} 
+					else {
+						delete_user_meta( $target_user_id, 'isGoodAt' );
+					}
+
 					if ( $biography !== '' ) {
 						update_user_meta( $target_user_id, 'description', $biography );
-					} else {
+					}
+					else {
 						delete_user_meta( $target_user_id, 'description' );
 					}
 
@@ -282,13 +319,15 @@ function shortcode_Edit_member( $atts ) {
 		'company'    => get_user_meta( $target_user_id, 'company', true ),
 		'phone'      => get_user_meta( $target_user_id, 'phone', true ),
 		'email'      => $user->user_email,
+		'linkedin'   => get_user_meta( $target_user_id, 'linkedin', true ),
 		'website'    => $user->user_url,
+		'isGoodAt'   => get_user_meta( $target_user_id, 'isGoodAt', true ),
 		'biography'  => get_user_meta( $target_user_id, 'description', true ),
 		'role'       => implode( ',', (array) $user->roles ),
 	);
 
 	// If POST values exist (on error) override
-	$fields = array( 'first_name','last_name','company','phone','email','website','biography','role' );
+	$fields = array( 'first_name','last_name','company','phone','email', 'linkedin', 'website','isGoodAt','biography','role' );
 	foreach ( $fields as $f ) {
 		if ( isset( $_POST[ $f ] ) ) {
 			$vals[ $f ] = esc_attr( wp_unslash( $_POST[ $f ] ) );
@@ -328,8 +367,17 @@ function shortcode_Edit_member( $atts ) {
 	$out .= '<tr><th><label>Epost:</label></th><td><input type="email" name="email" value="' . esc_attr( $vals['email'] ) . '" /></td></tr>';
 	$out .= '<tr><th><label>Nytt lösenord (valfritt):</label></th><td><input type="password" name="password" /></td></tr>';
 	$out .= '<tr><th><label>Bekräfta lösenord:</label></th><td><input type="password" name="password_confirm" /></td></tr>';
+	$out .= '<tr><th><label>LinkedIn</label></th><td><input type="url" name="linkedin" value="' . $vals['linkedin'] . '" /></td></tr>';
 	$out .= '<tr><th><label>Webbplats:</label></th><td><input name="website" value="' . esc_attr( $vals['website'] ) . '" /></td></tr>';
-	$out .= '<tr><th><label>Biografi:</label></th><td><textarea name="biography">' . esc_textarea( $vals['biography'] ) . '</textarea></td></tr>';
+	
+	if ( get_current_user_id() == $target_user_id ) {
+		$out .= '<tr><th><label>Något du är bra på?</label></th><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
+	} 
+	else {
+		$out .= '<tr><th><label>Något medlemmen är bra på?</label></th><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
+	}
+	
+	$out .= '<tr><th><label>Biografi:</label></th><td><textarea name="biography" class="biography">' . esc_textarea( $vals['biography'] ) . '</textarea></td></tr>';
 
 	// Profile picture: show current filename (attachment ID only) and include hidden existing field
 	$profile_att = intval( get_user_meta( $target_user_id, 'profile_picture', true ) );

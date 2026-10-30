@@ -1,0 +1,26 @@
+Username: christoffer
+Lösenord:  %123456baKS
+Email: christoffer@seesafe.se
+Firstname: Christoffer
+Lastname: Jeppson
+Company:    PMR MobiltelefoniAktiebolaget
+Webbplats: http://www.seesafe.se/
+Bio: 
+Ditt företag är ditt levebröd och bör vara där du fokuserar din tid. Vi är specialister på säkerhet, låt om ta hand om säkerheten så kan ni fokusera på er verksamhet.
+
+Förutom att säkra dina värderingar kan vi även stödja processer och generera data för din verksamhet. Vi är ledande inom AI-lösningar för säkerhet och drift.
+
+
+Username: anders
+Lösenord:  %123456cxAB
+Email: anders.andersson@pmr.se
+Firstname: Anders
+Lastname: Andersson
+Company:    PMR MobiltelefoniAktiebolaget
+
+Username: Bosse
+Lösenord:  %123456dfKT
+Email:  bosse@mandaq.se
+Firstname: Bosse
+Lastname: Stibeck
+Company: Mandaq AB

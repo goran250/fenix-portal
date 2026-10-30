@@ -127,7 +127,7 @@ function shortcode_uploaded_files( $atts ) {
 	$allowed_exts = array( 'doc','docx','txt','rtf','jpg','jpeg','png','webp','bmp','gif','pdf','xls','xlsx','ppt','pptx','pptm' );
 
 	// Extension -> mime mapping for fallback when detection fails
-	$ext_to_mime = array(
+	$text_to_mime = array(
 		'ppt'  => 'application/vnd.ms-powerpoint',
 		'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
 		'pptm' => 'application/vnd.ms-powerpoint.presentation.macroEnabled.12',

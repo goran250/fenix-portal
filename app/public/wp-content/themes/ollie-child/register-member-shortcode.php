@@ -29,9 +29,24 @@ function shortcode_Register_member( $atts ) {
 			$target_user = $target_user_id ? get_user_by( 'id', $target_user_id ) : false;
 			if ( ! $target_user || empty( $target_user->user_email ) ) {
 				$messages['errors'][] = 'Kunde inte hitta medlemmens e-postadress.';
-			} else {
+			} 
+			else {
+				$raw_token = wp_generate_password( 48, false, false );
+				$token_hash = hash( 'sha256', $raw_token );
+				$token_expires = time() + DAY_IN_SECONDS;
+				update_user_meta( $target_user_id, 'password_setup_token_hash', $token_hash );
+				update_user_meta( $target_user_id, 'password_setup_token_expires', $token_expires );
+
+				$password_setup_link = add_query_arg(
+					array(
+						'uid'   => $target_user_id,
+						'token' => rawurlencode( $raw_token ),
+					),
+					$password_setup_url
+				);
+
 				$subject = 'Välkommen - välj ditt lösenord';
-				$message = "Hej!\n\nVälkommen till nätverket Fenix medlemsportal.Du är nu antagen som medlem.\n\nVälj ett lösenord via länken nedan:\n" . $password_setup_url;
+				$message = "Hej!\n\nVälkommen till nätverket Fenix medlemsportal.Du är nu antagen som medlem.\n\nVälj ett lösenord via länken nedan:\n" . $password_setup_link;
 				$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 				$mail_error_message = '';
 				$wp_mail_failed_handler = function( $wp_error ) use ( &$mail_error_message ) {
@@ -48,7 +63,10 @@ function shortcode_Register_member( $atts ) {
 				}
 				if ( $sent ) {
 					$messages['success'] = 'Meddelandet har skickats till medlemmen.';
-				} else {
+					$messages['errors'][] = "Eftersom mailfunktionen inte fungerar så visas lösenordslänken här: ";
+					$messages['errors'][] = $password_setup_link;
+				} 
+				else {
 					$messages['errors'][] = 'Kunde inte skicka meddelandet.';
 				}
 			}
@@ -62,14 +80,13 @@ function shortcode_Register_member( $atts ) {
 			$username = isset( $_POST['username'] ) ? sanitize_user( wp_unslash( $_POST['username'] ), true ) : '';
 			$first_name = isset( $_POST['first_name'] ) ? sanitize_text_field( wp_unslash( $_POST['first_name'] ) ) : '';
 			$last_name = isset( $_POST['last_name'] ) ? sanitize_text_field( wp_unslash( $_POST['last_name'] ) ) : '';
-			// Role selection (only allow specific roles)
 			$role = isset( $_POST['role'] ) ? sanitize_text_field( wp_unslash( $_POST['role'] ) ) : 'subscriber';
 			$company = isset( $_POST['company'] ) ? sanitize_text_field( wp_unslash( $_POST['company'] ) ) : '';
 			$phone = isset( $_POST['phone'] ) ? sanitize_text_field( wp_unslash( $_POST['phone'] ) ) : '';
 			$email = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
-			$password = isset( $_POST['password'] ) ? $_POST['password'] : '';
-			$password_confirm = isset( $_POST['password_confirm'] ) ? $_POST['password_confirm'] : '';
+			$linkedin = isset( $_POST['linkedin'] ) ? esc_url_raw( wp_unslash( $_POST['linkedin'] ) ) : '';
 			$website = isset( $_POST['website'] ) ? esc_url_raw( wp_unslash( $_POST['website'] ) ) : '';
+			$isGoodAt = isset( $_POST['isGoodAt'] ) ? wp_kses_post( wp_unslash( $_POST['isGoodAt'] ) ) : '';
 			$biography = isset( $_POST['biography'] ) ? wp_kses_post( wp_unslash( $_POST['biography'] ) ) : '';
 
 			$required = array(
@@ -78,8 +95,6 @@ function shortcode_Register_member( $atts ) {
 				'last_name' => $last_name,
 				'company' => $company,
 				'email' => $email,
-				'password' => $password,
-				'password_confirm' => $password_confirm,
 			);
 			foreach ( $required as $key => $val ) {
 				if ( empty( $val ) ) {
@@ -87,10 +102,7 @@ function shortcode_Register_member( $atts ) {
 				}
 			}
 
-			if ( $password !== $password_confirm ) {
-				$messages['errors'][] = 'Lösenorden matchar inte.';
-			}
-			if ( $email && ! is_email( $email ) ) {
+			if ( $email && !is_email( $email ) ) {
 				$messages['errors'][] = 'Ogiltig epostaddress.';
 			}
 			if ( $username && username_exists( $username ) ) {
@@ -101,7 +113,7 @@ function shortcode_Register_member( $atts ) {
 			}
 
 			// Allowed roles for this form
-			$allowed_roles = array( 'administrator', 'editor', 'subscriber' );
+			$allowed_roles = array( 'administrator', 'subscriber' );
 			if ( ! in_array( $role, $allowed_roles, true ) ) {
 				$role = 'subscriber';
 			}
@@ -109,7 +121,6 @@ function shortcode_Register_member( $atts ) {
 			if ( empty( $messages['errors'] ) ) {
 				$userdata = array(
 					'user_login'   => $username,
-					'user_pass'    => $password,
 					'user_email'   => $email,
 					'display_name' => trim( $first_name . ' ' . $last_name ),
 					'first_name'   => $first_name,
@@ -126,6 +137,8 @@ function shortcode_Register_member( $atts ) {
 					if ( $company !== '' ) update_user_meta( $user_id, 'company', $company );
 					if ( $phone !== '' ) update_user_meta( $user_id, 'phone', $phone );
 					if ( $biography !== '' ) update_user_meta( $user_id, 'description', $biography );
+					if ( $isGoodAt !== '' ) update_user_meta( $user_id, 'isGoodAt', $isGoodAt );
+					if ( $linkedin !== '' ) update_user_meta( $user_id, 'linkedin', $linkedin );
 
 					require_once ABSPATH . 'wp-admin/includes/file.php';
 					require_once ABSPATH . 'wp-admin/includes/image.php';
@@ -218,7 +231,7 @@ function shortcode_Register_member( $atts ) {
 	}
 
 	$vals = array();
-	$fields = array( 'username','first_name','last_name','company','phone','email','website','biography','role' );
+	$fields = array( 'username', 'first_name', 'last_name', 'company', 'phone', 'email', 'linkedin', 'website', 'isGoodAt', 'biography','role' );
 	foreach ( $fields as $f ) {
 		$vals[ $f ] = isset( $_POST[ $f ] ) ? esc_attr( wp_unslash( $_POST[ $f ] ) ) : '';
 	}
@@ -229,28 +242,15 @@ function shortcode_Register_member( $atts ) {
 
 	$out = '';
 	
-	if ( ! empty( $messages['errors'] ) ) {
-		$out .= '<div class="member-errors"><ul>';
-		foreach ( $messages['errors'] as $e ) {
-			$out .= '<li>' . esc_html( $e ) . '</li>';
-		}
-		$out .= '</ul></div>';
-	}
-	if ( $messages['success']  && empty( $messages['errors'] )) {
-		$out .= '<div class="member-success">' . esc_html( $messages['success'] ) . '</div>';
-	}
-	if ( $mail_debug_notice !== '' ) {
-		$out .= '<div class="member-success">' . esc_html( $mail_debug_notice ) . '</div>';
-	}
-
+	$out .= '<div class="password-text">Lösenord anges inte i formuläret. Klicka på knappen <strong>Skicka meddelande, </strong> ' . 
+	        'så skickas ett mail med en lösenordslänk till medlemmens epostadress.' . '</div>';
 	$out .= '<form method="post" enctype="multipart/form-data" class="register-member-form">';
 	$out .= wp_nonce_field( 'register_member_action', 'register_member_nonce', true, false );
 	$out .= '<table class="form-table">';
-	$out .= '<tr><th><label>Användarnamn&nbsp;*</label></th><td><input name="username" value="' . $vals['username'] . '" required /></td></tr>';
+	$out .= '<tr><th><label>Användarnamn *</label></th><td><input name="username" value="' . $vals['username'] . '" required /></td></tr>';
 	// Role selector
 	$out .= '<tr><th><label>Role</label></th><td><select name="role">';
 	$out .= '<option value="subscriber"' . ( $vals['role'] === 'subscriber' ? ' selected' : '' ) . '>Subscriber</option>';
-	$out .= '<option value="editor"' . ( $vals['role'] === 'editor' ? ' selected' : '' ) . '>Editor</option>';
 	$out .= '<option value="administrator"' . ( $vals['role'] === 'administrator' ? ' selected' : '' ) . '>Administrator</option>';
 	$out .= '</select></td></tr>';
 	$out .= '<tr><th><label>Förnamn *</label></th><td><input name="first_name" value="' . $vals['first_name'] . '" required /></td></tr>';
@@ -258,25 +258,48 @@ function shortcode_Register_member( $atts ) {
 	$out .= '<tr><th><label>Företag *</label></th><td><input name="company" value="' . $vals['company'] . '" required /></td></tr>';
 	$out .= '<tr><th><label>Telefon</label></th><td><input name="phone" value="' . $vals['phone'] . '" /></td></tr>';
 	$out .= '<tr><th><label>Epost *</label></th><td><input type="email" name="email" value="' . $vals['email'] . '" required /></td></tr>';
-	$out .= '<tr><th><label>Lösenord *</label></th><td><input type="password" name="password" required /></td></tr>';
-	$out .= '<tr><th><label style="padding-left: 25px;">Bekräfta lösenord *</label></th><td><input type="password" name="password_confirm" required /></td></tr>';
+	$out .= '<tr><th><label>LinkedIn</label></th><td><input type="url" name="linkedin" value="' . $vals['linkedin'] . '"/></td></tr>';
 	$out .= '<tr><th><label>Webbplats</label></th><td><input name="website" value="' . $vals['website'] . '" /></td></tr>';
-	$out .= '<tr><th><label>Biografi</label></th><td><textarea name="biography">' . $vals['biography'] . '</textarea></td></tr>';
+	$out .= '<tr><th><label>Något medlemmen är bra på?</label></th><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
+	$out .= '<tr><th><label>Biografi</label></th><td><textarea name="biography" class="biography">' . $vals['biography'] . '</textarea></td></tr>';
 	$out .= '<tr><th><label>Profilbild</label></th><td><input type="file" name="profile_picture_file" /></td></tr>';
 	$out .= '<tr><th><label>Logotyp</label></th><td><input type="file" name="cover_photo_file" /></td></tr>';
 	$out .= '</table>';
 	$out .= '<p><button type="submit" name="register_member_submit" class="submit-button">Skapa medlem</button></p>';
 	$out .= '</form>';
 
+	
+	$out .= '<form method="post" class="send-member-email-form ">';
+	$out .= wp_nonce_field( 'send_new_member_email_action', 'send_new_member_email_nonce', true, false );
+	$out .= '<input type="hidden" name="new_member_user_id" value="' . esc_attr( $new_member_id ) . '" />';
+	$out .= '<p id="send-email-instruction">Klicka på knappen nedan för att skicka ett epostmeddelande med en lösenordslänk till den nya medlemmen.</p>';
+	$out .= '<p><button id="send-button" type="submit" name="send_new_member_email_submit" class="submit-button" disabled>Skicka meddelande</button></p>';
+	$out .= '</form>';
+	
 	if ( $new_member_id > 0 && empty( $messages['errors'] ) ) {
-		$out .= '<form method="post" class="send-member-email-form">';
-		$out .= wp_nonce_field( 'send_new_member_email_action', 'send_new_member_email_nonce', true, false );
-		$out .= '<input type="hidden" name="new_member_user_id" value="' . esc_attr( $new_member_id ) . '" />';
-		$out .= '<p><button type="submit" name="send_new_member_email_submit" class="submit-button">Skicka meddelande till ny medlem</button></p>';
-		$out .= '</form>';
+		$out .= '<script>
+		            document.getElementById("send-button").removeAttribute("disabled");
+					document.getElementById("send-email-instruction").style.color = "black";
+				 </script>';
 	}
 
+	if ( ! empty( $messages['errors'] ) ) {
+		$out .= '<div class="member-errors"><ul>';
+		foreach ( $messages['errors'] as $e ) {
+			$out .= '<li>' . esc_html( $e ) . '</li>';
+		}
+		$out .= '</ul></div>';
+
+		$out .= '<script>window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });</script>';
+	}
+	if ( $messages['success']  && empty( $messages['errors'] )) {
+		$out .= '<div class="member-success">' . esc_html( $messages['success'] ) . '</div>';
+		$out .= '<script>window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });</script>';
 	
+	}
+	if ( $mail_debug_notice !== '' ) {
+		$out .= '<div class="member-success">' . esc_html( $mail_debug_notice ) . '</div>';
+	}
 
 	return $out;
 }

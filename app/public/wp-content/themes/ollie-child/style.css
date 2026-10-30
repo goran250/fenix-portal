@@ -586,8 +586,7 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
     margin-right: 20px;
     border: 1px solid #dddddd;
     width: 305px;
-    height: 650px;
-
+    height: 690px;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased !important
 }
@@ -679,6 +678,18 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
     box-shadow: 0 0 8px rgba(245,158,11,.25);
 }
 
+.all-members-pagination {
+    clear: both;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.all-members-pagination .members-page-link {
+    display: inline-block;
+    margin: 0 6px;
+}
+
 /********* End Alla medlemmar-sidan *********/
 
 
@@ -697,29 +708,44 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
 .register-member-form .form-table td input, 
 .edit-member-form .form-table td input {
   margin: 8px 0;
-  border: solid 1px #555;
+  border: solid 1px #888;
   width: 300px;
 }
 
-.register-member-form .form-table td textarea, .edit-member-form .form-table td textarea{
+.register-member-form .form-table td textarea.biography, .edit-member-form .form-table td textarea.biography{
   margin: 8px 0;
-  border: solid 1px #aaa;
+  border: solid 1px #888;
   width: 300px;
   height: 150px;
 }
 
-.register-member-form .form-table td select, .edit-member-form .form-table td select{
-    background: white;
-    border: solid 1px #aaa;
-    width: 300px;
+.register-member-form .form-table td textarea.isGoodAt, .edit-member-form .form-table td textarea.isGoodAt {
+  margin: 8px 0;
+  border: solid 1px #888;
+  width: 300px;
+  height: 97px;
 }
 
-.register-member-form .submit-button, .edit-member-form .submit-button, .user-files-form .submit-button, .gutena-forms-submit-buttons button {
-  padding: 5px 12px!important;
-  border-radius: 6px!important;
-  border: 1px solid #888;
-  margin: 20px 0  0 190px;
+.register-member-form .form-table td select, .edit-member-form .form-table td select{
+    width: 300px;
+    border: 1px solid #888;
+    border-radius: 6px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2rem; /* space for arrow */
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23333' d='M1 1l5 5 5-5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 12px 8px;
 }
+
+.edit-member-form .member-picture-preview, 
+.edit-member-form .member-cover-preview {
+  font-size: 16px;
+}
+
 
 .gutena-forms-submit-buttons button {
   padding: 6px 16px!important;
@@ -750,38 +776,32 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
   text-decoration: none !important;
 }
 
-
+#send-email-instruction {
+  max-width: 500px;
+  margin: 30px 0 -15px 0;
+  color: #999;
+}
 /** End Registera-medlemmar-sidan och Ändra-medlem-sidan*/
 
-ul.wp-block-navigation__container {
-  background-color: #FFFBF5!important;
-}
-
-li.wp-block-navigation-item.wp-block-navigation-link {
-  background-color: white!important;
-  border: #ccc solid 1px;
-  border-radius: 6px;
-  margin-right: -28px;
-}
 
 
-li.wp-block-navigation-item.has-child.open-on-click  {
-  background-color: white!important;
-  border: #ccc solid 1px;
-  border-radius: 6px;
-  margin-right: -28px;
-  padding: 8px 16px;
+/** StartKontaktsidan */
+.wp-block-gutena-form-confirm-msg div {
+  background: green!important;
+  width: fit-content;
+  PADDING: 10px 30px!important;
+}
+.wp-block-gutena-form-confirm-msg div p {
+  color: white!important;
+  font-size: 16px!important;
 }
 
-ul.user-files-list {
-  list-style-type: none;
-  padding-left: 0;
+.wp-block-gutena-forms .wp-block-gutena-form-confirm-msg .wp-block-image {
+  display: none!important;
 }
+/** End Kontaktsidan */
 
-ul.user-files-list li {
-  margin-bottom: 20px;
-  font-size: 16px;
-}
+
 
 /*************   Start Events-sidan ***************/
 .events-list-wrap {
@@ -803,7 +823,7 @@ form.events-add-form,  form.events-edit-form  {
 
 form.events-add-form input, form.events-edit-form input {
   margin: 8px 0;
-  border: solid 1px #999!important;
+  border: solid 1px #888!important;
   width: 310px;
 }
 
@@ -828,8 +848,7 @@ form.events-add-form .event-nbrOfParticipants, form.events-edit-form .event-nbrO
 form.events-add-form textarea, form.events-edit-form textarea {
   width: 310px;
   margin: 8px 0;
-  border: solid 1px #999!important;
-   width: 310px;
+  border: solid 1px #888!important;
 }
 
 form.events-add-form .submit-button, form.events-edit-form .submit-button {
@@ -900,14 +919,15 @@ div.events-list {
 }
 
 div.events-list .edit-button, 
-div .events-list .delete-button, 
+div.events-list .delete-button, 
 div.events-list .foranmalan-button, 
 div.events-list .avanmalan-button {
-  margin: 0 20px 30px 0;
+  margin: 0 10px 40px 0;
   padding: 4px 10px!important;
   border-radius: 6px!important;
   border: 1px solid #888;
 }
+
 
 /* Remove any generated marker (hyphen or list marker) that may appear before the
    event action buttons (some themes or user-agent styles can add ::before content).
@@ -972,6 +992,115 @@ div.event-item div {
 /*************   End Events-sidan ***************/
 
 
+/** Start set-password sidan */
+.page-id-401 h2.page-header {
+  margin-top: 60px;
+}
+
+.page-id-401 h1.wp-block-post-title {
+  display: none;
+}
+
+.page-id-401 .form-table th label {
+  width: fit-content;
+  float: right;
+  font-weight: normal;
+}
+
+.page-id-401 .form-table td input {
+  margin: 8px 0;
+  border: solid 1px #555;
+  width: 300px;
+}
+
+
+/** End set-password sidan */
+
+
+/** Start TFA sidorna */
+.page-id-321 h1.wp-block-post-title {
+  display: none;
+}
+
+.page-id-321 .tfa-form{
+  border: 1px solid #888;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.page-id-321 .tfa-separator {
+    margin: 25px 0 20px 0;
+} 
+
+.page-id-321 .from-member-wrap select {
+  margin-top: 20px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2rem; /* space for arrow */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23333' d='M1 1l5 5 5-5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 12px 8px;
+}
+
+.page-id-321 .amount-wrap input[type="number"] {
+  padding: 8px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.page-id-321 textarea[name="tfa_description"] {
+  margin-top: 20px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  max-width: 430px;
+  width: 100%;
+}
+
+/** End TFA sidorna */
+
+ul.wp-block-navigation__container {
+  background-color: #FFFBF5!important;
+}
+
+li.wp-block-navigation-item.wp-block-navigation-link {
+  background-color: white!important;
+  border: #ccc solid 1px;
+  border-radius: 6px;
+  margin-right: -28px;
+}
+
+
+li.wp-block-navigation-item.has-child.open-on-click  {
+  background-color: white!important;
+  border: #ccc solid 1px;
+  border-radius: 6px;
+  margin-right: -28px;
+  padding: 8px 16px;
+}
+
+ul.user-files-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul.user-files-list li {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/** Anmalningarsidan */
+.anmalningar-members .member-wrap {
+  height: 170px;
+}
+
+/** page-id-280 = Om fenix-sidan */
 .page-id-280 h1.wp-block-post-title {
     font-size: 20px;
     color: #E98D1C;
@@ -983,13 +1112,28 @@ div.event-item div {
   width: 100%;
 }
 
+/** Diverse submit buttons */
+.register-member-form .submit-button, .edit-member-form .submit-button, .user-files-form .submit-button,
+.page-id-401 .submit-button, .gutena-forms-submit-button button, .send-member-email-form .submit-button,
+.page-id-321 .tfa-form .submit-button {
+  padding: 5px 12px!important;
+  border-radius: 6px!important;
+  border: 1px solid #888;
+  margin: 20px 30px  0 0;
+}
+
+.send-member-email-form .submit-button {
+  background-color: #F0F0F0!important;
+}
 
 
 /** page-id-2 = Startsidan, 
     page-id-22 = Registrera medlemssidan, 
     page-id-73 = Ändra medlemssidan,    
-    page-id-281 = Kontaktsidan */
-.page-id-2 main, .page-id-22 main, .page-id-73 main {
+    page-id-281 = Kontaktsidan
+    page-id-321 = TFA-sidan
+    page-id-401 = Set password sidan */
+.page-id-2 main, .page-id-22 main, .page-id-73 main, .page-id-321 main, .page-id-401 main {
    max-width: 800px;
    width: 100%;
    margin: 0 auto;
@@ -1042,7 +1186,6 @@ div.event-item div {
   height: 30px;
 }
 
-12px 16px!important
 
 
 

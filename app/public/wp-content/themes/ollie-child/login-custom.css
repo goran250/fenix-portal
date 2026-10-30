@@ -5,10 +5,12 @@ body.login h1.wp-login-logo a {
 	height: 106px;
 	width: 220px;
 }
+
 body.login #login {
 	width: 100%;
 	max-width: 420px;
 }
+
 body.login form {
 	padding: 30px 28px;
 	border-radius: 10px;

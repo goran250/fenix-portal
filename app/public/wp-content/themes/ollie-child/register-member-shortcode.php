@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function shortcode_Register_member( $atts ) {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		// Do not emit any output for unauthorized visitors so pages containing the shortcode remain visible.
-		return '';
+		return '<p style="color: green; font-weight: bold;">Du  inte behörighet att registrera medlemmar.</p>';
 	}
 
 	$messages = array( 'errors' => array(), 'success' => '' );

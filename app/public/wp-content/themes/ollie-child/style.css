@@ -1012,8 +1012,6 @@ div.event-item div {
   border: solid 1px #555;
   width: 300px;
 }
-
-
 /** End set-password sidan */
 
 
@@ -1048,12 +1046,22 @@ div.event-item div {
   background-size: 12px 8px;
 }
 
-.page-id-321 .amount-wrap input[type="number"] {
+.page-id-321 .amount-wrap input[type="number"]{
   padding: 8px;
   border: 1px solid #888;
   border-radius: 6px;
   margin-top: 20px;
 }
+
+.page-id-321 .title-wrap input[type="text"] {
+  padding: 8px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  margin-top: 20px;
+  max-width: 416px;
+  width: 100%;
+}
+
 
 .page-id-321 textarea[name="tfa_description"] {
   margin-top: 20px;
@@ -1063,6 +1071,14 @@ div.event-item div {
   width: 100%;
 }
 
+.page-id-321 input[type="file"] {
+  border: none;
+  padding: 8px 0 8px 0;
+}
+
+.page-id-321 .file-preview {
+  font-size: 15px;
+}
 /** End TFA sidorna */
 
 ul.wp-block-navigation__container {
@@ -1138,6 +1154,7 @@ ul.user-files-list li {
    width: 100%;
    margin: 0 auto;
 }
+
 /** page-id-120 = Dokumentsidan */
 .page-id-120 main {
    max-width: 900px;

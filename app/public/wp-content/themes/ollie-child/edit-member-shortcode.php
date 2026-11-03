@@ -133,7 +133,10 @@ function shortcode_Edit_member( $atts ) {
 
 			if ( empty( $messages['errors'] ) ) {
 				$userdata = array( 'ID' => $target_user_id );
-				if ( $email !== '' ) $userdata['user_email'] = $email;
+				
+				if ( $email !== '' ) 
+					$userdata['user_email'] = $email;
+
 				$userdata['first_name'] = $first_name;
 				$userdata['last_name']  = $last_name;
 				$userdata['user_url']   = $website;
@@ -367,7 +370,7 @@ function shortcode_Edit_member( $atts ) {
 	$out .= '<tr><th><label>Epost:</label></th><td><input type="email" name="email" value="' . esc_attr( $vals['email'] ) . '" /></td></tr>';
 	$out .= '<tr><th><label>Nytt lösenord (valfritt):</label></th><td><input type="password" name="password" /></td></tr>';
 	$out .= '<tr><th><label>Bekräfta lösenord:</label></th><td><input type="password" name="password_confirm" /></td></tr>';
-	$out .= '<tr><th><label>LinkedIn</label></th><td><input type="url" name="linkedin" value="' . $vals['linkedin'] . '" /></td></tr>';
+	$out .= '<tr><th><label>LinkedIn</label></th><td><input type="url" name="linkedin" value="' . $vals['linkedin'] . '" required /></td></tr>';
 	$out .= '<tr><th><label>Webbplats:</label></th><td><input name="website" value="' . esc_attr( $vals['website'] ) . '" /></td></tr>';
 	
 	if ( get_current_user_id() == $target_user_id ) {

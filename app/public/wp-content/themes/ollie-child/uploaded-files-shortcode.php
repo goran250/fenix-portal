@@ -175,10 +175,12 @@ function shortcode_uploaded_files( $atts ) {
 	if ( isset( $_POST['user_files_submit'] ) ) {
 		if ( ! isset( $_POST['user_files_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['user_files_nonce'] ), 'user_files_action' ) ) {
 			$messages['errors'][] = 'Invalid form submission.';
-		} else {
+		} 
+		else {
 			if ( empty( $_FILES['user_files'] ) ) {
 				$messages['errors'][] = 'Inga filer uppladdade.';
-			} else {
+			} 
+			else {
 				require_once ABSPATH . 'wp-admin/includes/file.php';
 				require_once ABSPATH . 'wp-admin/includes/image.php';
 				require_once ABSPATH . 'wp-admin/includes/media.php';
@@ -197,58 +199,59 @@ function shortcode_uploaded_files( $atts ) {
 							'size'     => $_FILES['user_files']['size'][ $i ],
 						);
 					}
-				} else {
+				} 
+				else {
 					// single file
 					$files[] = $_FILES['user_files'];
 				}
 
 				foreach ( $files as $file ) {
-				if ( intval( $file['error'] ) !== 0 ) {
-					$messages['errors'][] = sprintf( 'Upppladdningsfel för %s (code %d).', esc_html( $file['name'] ), intval( $file['error'] ) );
-					continue;
-				}
-				if ( intval( $file['size'] ) > $max_size ) {
-					$messages['errors'][] = sprintf( '%s är för stor (max %d MB).', esc_html( $file['name'] ), intval( $max_size / (1024*1024) ) );
-					continue;
-				}
+					if ( intval( $file['error'] ) !== 0 ) {
+						$messages['errors'][] = sprintf( 'Upppladdningsfel för %s (code %d).', esc_html( $file['name'] ), intval( $file['error'] ) );
+						continue;
+					}
+					if ( intval( $file['size'] ) > $max_size ) {
+						$messages['errors'][] = sprintf( '%s är för stor (max %d MB).', esc_html( $file['name'] ), intval( $max_size / (1024*1024) ) );
+						continue;
+					}
 
-				// Validate file type and extension using WP helper which attempts content-based checks
-				$check = wp_check_filetype_and_ext( $file['tmp_name'], $file['name'] );
-				$detected_type = isset( $check['type'] ) ? $check['type'] : '';
-				$detected_ext = isset( $check['ext'] ) ? $check['ext'] : '';
+					// Validate file type and extension using WP helper which attempts content-based checks
+					$check = wp_check_filetype_and_ext( $file['tmp_name'], $file['name'] );
+					$detected_type = isset( $check['type'] ) ? $check['type'] : '';
+					$detected_ext = isset( $check['ext'] ) ? $check['ext'] : '';
 
-				if ( empty( $detected_ext ) || empty( $detected_type ) ) {
-					$messages['errors'][] = sprintf( '%s har en ej stödd eller okänd filtyp.', esc_html( $file['name'] ) );
-					continue;
-				}
+					if ( empty( $detected_ext ) || empty( $detected_type ) ) {
+						$messages['errors'][] = sprintf( '%s har en ej stödd eller okänd filtyp.', esc_html( $file['name'] ) );
+						continue;
+					}
 
-				// Determine category limits
-				$cat_label = 'Other files (PDF, DOCX, XLSX, TXT, RTF, PPTX, PPTM)';
-				$limit = 2 * 1024 * 1024; // default other files 2MB
-				// Animated GIFs - 6MB (detect animation)
-				if ( $detected_type === 'image/gif' || strtolower( $detected_ext ) === 'gif' ) {
-					$animated = is_gif_animated( $file['tmp_name'] );
-					if ( $animated ) {
-						$cat_label = 'Animated GIFs';
-						$limit = 6 * 1024 * 1024;
-					} else {
+					// Determine category limits
+					$cat_label = 'Other files (PDF, DOCX, XLSX, TXT, RTF, PPTX, PPTM)';
+					$limit = 2 * 1024 * 1024; // default other files 2MB
+					// Animated GIFs - 6MB (detect animation)
+					if ( $detected_type === 'image/gif' || strtolower( $detected_ext ) === 'gif' ) {
+						$animated = is_gif_animated( $file['tmp_name'] );
+						if ( $animated ) {
+							$cat_label = 'Animated GIFs';
+							$limit = 6 * 1024 * 1024;
+						} else {
+							$cat_label = 'Images (JPG, PNG, WEBP, BMP, GIF)';
+							$limit = 3 * 1024 * 1024;
+						}
+					} elseif ( in_array( $detected_type, array( 'image/jpeg', 'image/png', 'image/webp', 'image/bmp', 'image/gif' ), true ) ) {
 						$cat_label = 'Images (JPG, PNG, WEBP, BMP, GIF)';
 						$limit = 3 * 1024 * 1024;
 					}
-				} elseif ( in_array( $detected_type, array( 'image/jpeg', 'image/png', 'image/webp', 'image/bmp', 'image/gif' ), true ) ) {
-					$cat_label = 'Images (JPG, PNG, WEBP, BMP, GIF)';
-					$limit = 3 * 1024 * 1024;
-				}
 
-				if ( intval( $file['size'] ) > $limit ) {
-					$messages['errors'][] = sprintf( '%s överskrider %s gränsen (%d MB).', esc_html( $file['name'] ), $cat_label, intval( $limit / (1024*1024) ) );
-					continue;
-				}
+					if ( intval( $file['size'] ) > $limit ) {
+						$messages['errors'][] = sprintf( '%s överskrider %s gränsen (%d MB).', esc_html( $file['name'] ), $cat_label, intval( $limit / (1024*1024) ) );
+						continue;
+					}
 
-				if ( ! in_array( $detected_type, $allowed_mimes, true ) ) {
-					$messages['errors'][] = sprintf( '%s har en filtyp som inte stöds (%s).', esc_html( $file['name'] ), esc_html( $detected_type ) );
-					continue;
-				}
+					if ( ! in_array( $detected_type, $allowed_mimes, true ) ) {
+						$messages['errors'][] = sprintf( '%s har en filtyp som inte stöds (%s).', esc_html( $file['name'] ), esc_html( $detected_type ) );
+						continue;
+					}
 
 					// Move to uploads
 					$overrides = array( 'test_form' => false );
@@ -305,7 +308,12 @@ function shortcode_uploaded_files( $atts ) {
 
 	$out .= '<form method="post" enctype="multipart/form-data" class="user-files-form">';
 	$out .= wp_nonce_field( 'user_files_action', 'user_files_nonce', true, false );
-	$out .= '<p><label>Välj filer att ladda upp (flera filer är tillåtet):</label><br/><input type="file" name="user_files[]" multiple /></p>';
+	$out .= '<p>
+	            <label>Välj filer att ladda upp (flera filer är tillåtet):</label>
+				<br/>
+				<input type="file" name="user_files[]" multiple />
+			 </p>';
+				
 	$out .= '<p><button type="submit" name="user_files_submit" class="submit-button">Ladda upp</button></p>';
 	$out .= '</form>';
 

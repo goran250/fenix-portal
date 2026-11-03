@@ -26,6 +26,22 @@ add_action('login_enqueue_scripts', function () {
 	wp_enqueue_style('ollie-child-login', $file_url, array(), $ver);
 });
 
+add_action('init', function () {
+	register_post_type('tfa', array(
+		'labels' => array(
+			'name'          => 'TFA',
+			'singular_name' => 'TFA',
+		),
+		'public'       => false,          // not public front-end archive
+		'show_ui'      => true,           // show in wp-admin
+		'show_in_menu' => true,
+		'supports'     => array('title', 'author'),
+		'has_archive'  => false,
+		'rewrite'      => false,
+		'menu_icon'    => 'dashicons-forms',
+	));
+});
+
 // Change login logo link URL
 add_filter('login_headerurl', function () {
 	return home_url('/');
@@ -1055,7 +1071,7 @@ if ( file_exists( get_stylesheet_directory() . '/password-setup-shortcode.php' )
     require_once get_stylesheet_directory() . '/password-setup-shortcode.php';
 }
 
-// Load tfa_select_members shortcode implementation if present
-if ( file_exists( get_stylesheet_directory() . '/tfa-shortcode.php' ) ) {
-    require_once get_stylesheet_directory() . '/tfa-shortcode.php';
+// Load tfa_page shortcode implementation if present
+if ( file_exists( get_stylesheet_directory() . '/tfa-shortcodes.php' ) ) {
+    require_once get_stylesheet_directory() . '/tfa-shortcodes.php';
 }

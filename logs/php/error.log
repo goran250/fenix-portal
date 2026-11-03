@@ -731,3 +731,172 @@ Stack trace:
 [29-Oct-2026 10:40:06 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 29
 [29-Oct-2026 10:40:06 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 29
 [30-Oct-2026 00:01:23 UTC] PHP Warning:  Undefined variable $tfa_sender in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 75
+[30-Oct-2026 15:13:38 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 227
+[30-Oct-2026 16:34:30 UTC] PHP Warning:  Undefined variable $max_size in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 131
+[30-Oct-2026 16:34:30 UTC] PHP Warning:  Undefined variable $max_size in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 132
+[30-Oct-2026 16:43:13 UTC] PHP Warning:  Undefined variable $allowed_mimes in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 172
+[30-Oct-2026 16:43:13 UTC] PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array, null given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php:172
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php(172): in_array('image/webp', NULL, true)
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_tfa_page(Array, '', 'tfa_page')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(tfa_pa...', 'do_shortcode_ta...', '\n<h2 class="wp-...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('\n<h2 class="wp-...')
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('\n<h2 class="wp-...', Array)
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:heading...')
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:heading...', Object(WP_Block))
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#19 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#20 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 172
+[30-Oct-2026 16:50:34 UTC] PHP Fatal error:  Cannot redeclare is_gif_animated() (previously declared in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\uploaded-files-shortcode.php:78) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 7
+[30-Oct-2026 16:52:35 UTC] PHP Fatal error:  Cannot redeclare is_gif_animated() (previously declared in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\uploaded-files-shortcode.php:78) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 7
+[30-Oct-2026 16:53:09 UTC] PHP Fatal error:  Cannot redeclare is_gif_animated() (previously declared in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\uploaded-files-shortcode.php:78) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 7
+[30-Oct-2026 16:53:09 UTC] PHP Fatal error:  Cannot redeclare is_gif_animated() (previously declared in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\uploaded-files-shortcode.php:78) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 7
+[30-Oct-2026 16:53:36 UTC] PHP Fatal error:  Cannot redeclare is_gif_animated() (previously declared in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\uploaded-files-shortcode.php:78) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 7
+[30-Oct-2026 16:53:36 UTC] PHP Fatal error:  Cannot redeclare is_gif_animated() (previously declared in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\uploaded-files-shortcode.php:78) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 7
+[30-Oct-2026 16:53:39 UTC] PHP Fatal error:  Cannot redeclare is_gif_animated() (previously declared in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\uploaded-files-shortcode.php:78) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 7
+[30-Oct-2026 16:53:39 UTC] PHP Fatal error:  Cannot redeclare is_gif_animated() (previously declared in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\uploaded-files-shortcode.php:78) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 7
+[30-Oct-2026 17:37:20 UTC] PHP Parse error:  syntax error, unexpected token "return" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 354
+[30-Oct-2026 17:37:20 UTC] PHP Parse error:  syntax error, unexpected token "return" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 354
+[30-Oct-2026 17:37:54 UTC] PHP Parse error:  Unclosed '{' on line 3 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 357
+[30-Oct-2026 17:37:54 UTC] PHP Parse error:  Unclosed '{' on line 3 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 357
+[31-Oct-2026 11:22:00 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 282
+[31-Oct-2026 11:30:11 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 305
+[31-Oct-2026 11:32:03 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 305
+[31-Oct-2026 11:32:30 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 305
+[31-Oct-2026 11:36:26 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 286
+[01-Nov-2026 21:59:46 UTC] PHP Parse error:  syntax error, unexpected single-quoted string "txt", expecting ")" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 66
+[01-Nov-2026 21:59:46 UTC] PHP Parse error:  syntax error, unexpected single-quoted string "txt", expecting ")" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 66
+[01-Nov-2026 22:00:40 UTC] PHP Parse error:  syntax error, unexpected token "class" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 320
+[01-Nov-2026 22:00:40 UTC] PHP Parse error:  syntax error, unexpected token "class" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 320
+[01-Nov-2026 22:01:52 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 321
+[01-Nov-2026 22:01:53 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 321
+[01-Nov-2026 22:02:29 UTC] PHP Warning:  Undefined variable $target_user_id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 302
+[01-Nov-2026 22:06:45 UTC] PHP Warning:  Undefined variable $current_user in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 302
+[01-Nov-2026 22:06:45 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 302
+[02-Nov-2026 11:24:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_postmeta() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php:302
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_tfa_page(Array, '', 'tfa_page')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(tfa_pa...', 'do_shortcode_ta...', '\n<h2 class="wp-...')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('\n<h2 class="wp-...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('\n<h2 class="wp-...', Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:heading...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:heading...', Object(WP_Block))
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#19 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 302
+[02-Nov-2026 11:25:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_postmeta() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php:302
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_tfa_page(Array, '', 'tfa_page')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(tfa_pa...', 'do_shortcode_ta...', '\n<h2 class="wp-...')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('\n<h2 class="wp-...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('\n<h2 class="wp-...', Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:heading...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:heading...', Object(WP_Block))
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#19 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 302
+[02-Nov-2026 11:25:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_postmeta() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php:302
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_tfa_page(Array, '', 'tfa_page')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(tfa_pa...', 'do_shortcode_ta...', '\n<h2 class="wp-...')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('\n<h2 class="wp-...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('\n<h2 class="wp-...', Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:heading...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:heading...', Object(WP_Block))
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#19 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 302
+[02-Nov-2026 12:57:39 UTC] PHP Parse error:  syntax error, unexpected variable "$i", expecting ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 327
+[02-Nov-2026 12:57:40 UTC] PHP Parse error:  syntax error, unexpected variable "$i", expecting ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 327
+[02-Nov-2026 12:58:38 UTC] PHP Parse error:  syntax error, unexpected variable "$i", expecting ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 327
+[02-Nov-2026 12:58:38 UTC] PHP Parse error:  syntax error, unexpected variable "$i", expecting ";" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 327
+[02-Nov-2026 13:00:30 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 326
+[02-Nov-2026 13:06:52 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 326
+[02-Nov-2026 13:09:09 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 326
+[02-Nov-2026 13:09:45 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 326
+[02-Nov-2026 13:11:52 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 326
+[02-Nov-2026 13:26:18 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 327
+[02-Nov-2026 13:29:26 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 351
+[02-Nov-2026 13:29:27 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 351
+[02-Nov-2026 13:30:25 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 349
+[02-Nov-2026 13:30:25 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 349
+[02-Nov-2026 13:30:27 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 349
+[02-Nov-2026 13:30:27 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 349
+[02-Nov-2026 13:35:55 UTC] PHP Warning:  Undefined variable $id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 309
+[02-Nov-2026 13:35:55 UTC] PHP Warning:  Undefined variable $id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 313
+[02-Nov-2026 13:36:26 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 167772160 bytes) in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 309
+[02-Nov-2026 16:03:34 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 306
+[02-Nov-2026 16:25:56 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 306
+[02-Nov-2026 16:29:46 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 306
+[02-Nov-2026 17:18:25 UTC] PHP Warning:  foreach() argument must be of type array|object, false given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 297
+[02-Nov-2026 17:41:08 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "s" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php:319
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_tfa_page(Array, '', 'tfa_page')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(tfa_pa...', 'do_shortcode_ta...', '\n<h2 class="wp-...')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('\n<h2 class="wp-...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('\n<h2 class="wp-...', Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:heading...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:heading...', Object(WP_Block))
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#19 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 319

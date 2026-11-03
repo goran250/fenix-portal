@@ -605,7 +605,7 @@ function shortcode_events_list( $atts ) {
 				}
 						*/
 
-					if ( current_user_can( 'manage_options' ) ) {
+				if ( current_user_can( 'manage_options' ) ) {
 				// Build action buttons in a single container to avoid stray text nodes between elements
 				$buttons = '<span class="event-action-buttons">';
 				// include both raw picture value (attachment ID or URL) and a human label

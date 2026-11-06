@@ -246,26 +246,42 @@ function shortcode_Register_member( $atts ) {
 	        'så skickas ett mail med en lösenordslänk till medlemmens epostadress.' . '</div>';
 	$out .= '<form method="post" enctype="multipart/form-data" class="register-member-form">';
 	$out .= wp_nonce_field( 'register_member_action', 'register_member_nonce', true, false );
-	$out .= '<table class="form-table">';
-	$out .= '<tr><th><label>Användarnamn *</label></th><td><input name="username" value="' . $vals['username'] . '" required /></td></tr>';
-	// Role selector
-	$out .= '<tr><th><label>Role</label></th><td><select name="role">';
+	
+	$out .= '<table class="form-table" style="float: left; margin-right: 40px;">';
+	$out .= '<tr><th><label>Användarnamn *</label></th></tr>
+	         <tr><td><input name="username" value="' . $vals['username'] . '" required /></td></tr>';
+	$out .= '<tr><th><label>Role</label></th></tr>
+	         <tr><td><select name="role">'; // Role selector
 	$out .= '<option value="subscriber"' . ( $vals['role'] === 'subscriber' ? ' selected' : '' ) . '>Subscriber</option>';
 	$out .= '<option value="administrator"' . ( $vals['role'] === 'administrator' ? ' selected' : '' ) . '>Administrator</option>';
 	$out .= '</select></td></tr>';
-	$out .= '<tr><th><label>Förnamn *</label></th><td><input name="first_name" value="' . $vals['first_name'] . '" required /></td></tr>';
-	$out .= '<tr><th><label>Efternamn *</label></th><td><input name="last_name" value="' . $vals['last_name'] . '" required /></td></tr>';
-	$out .= '<tr><th><label>Företag *</label></th><td><input name="company" value="' . $vals['company'] . '" required /></td></tr>';
-	$out .= '<tr><th><label>Telefon</label></th><td><input name="phone" value="' . $vals['phone'] . '" /></td></tr>';
-	$out .= '<tr><th><label>Epost *</label></th><td><input type="email" name="email" value="' . $vals['email'] . '" required /></td></tr>';
-	$out .= '<tr><th><label>LinkedIn</label></th><td><input type="url" name="linkedin" value="' . $vals['linkedin'] . '"/></td></tr>';
-	$out .= '<tr><th><label>Webbplats</label></th><td><input name="website" value="' . $vals['website'] . '" /></td></tr>';
-	$out .= '<tr><th><label>Något medlemmen är bra på?</label></th><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
-	$out .= '<tr><th><label>Biografi</label></th><td><textarea name="biography" class="biography">' . $vals['biography'] . '</textarea></td></tr>';
-	$out .= '<tr><th><label>Profilbild</label></th><td><input type="file" name="profile_picture_file" /></td></tr>';
-	$out .= '<tr><th><label>Logotyp</label></th><td><input type="file" name="cover_photo_file" /></td></tr>';
+	$out .= '<tr><th><label>Förnamn *</label></th></tr>
+	         <tr><td><input name="first_name" value="' . $vals['first_name'] . '" required /></td></tr>';
+	$out .= '<tr><th><label>Efternamn *</label></th></tr>
+	         <tr><td><input name="last_name" value="' . $vals['last_name'] . '" required /></td></tr>';
+	$out .= '<tr><th><label>Företag *</label></th></tr>
+	         <tr><td><input name="company" value="' . $vals['company'] . '" required /></td></tr>';
+	$out .= '<tr><th><label>Telefon</label></th></tr>
+	         <tr><td><input name="phone" value="' . $vals['phone'] . '" /></td></tr>';
+	$out .= '<tr><th><label>Epost *</label></th></tr>
+	         <tr><td><input type="email" name="email" value="' . $vals['email'] . '" required /></td></tr>';
+	$out .= '<tr><th><label>LinkedIn</label></th></tr>
+	         <tr><td><input type="url" name="linkedin" value="' . $vals['linkedin'] . '"/></td></tr>';
 	$out .= '</table>';
-	$out .= '<p><button type="submit" name="register_member_submit" class="submit-button">Skapa medlem</button></p>';
+	
+	$out .= '<table class="form-table" style="float: left;">';
+	$out .= '<tr><th><label>Webbplats</label></th></tr>
+	         <tr><td><input name="website" value="' . $vals['website'] . '" /></td></tr>';
+	$out .= '<tr><th><label>Något medlemmen är bra på?</label></th></tr>
+	         <tr><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
+	$out .= '<tr><th><label>Biografi</label></th></tr>
+	         <tr><td><textarea name="biography" class="biography">' . $vals['biography'] . '</textarea></td></tr>';
+	$out .= '<tr><th><label>Profilbild</label></th></tr>
+	         <tr><td><input type="file" name="profile_picture_file" /></td></tr>';
+	$out .= '<tr><th><label>Logotyp</label></th></tr>
+	         <tr><td><input type="file" name="cover_photo_file" /></td></tr>';
+	$out .= '</table>';
+	$out .= '<p style="clear: both; width: 100%;"><button type="submit" name="register_member_submit" class="submit-button">Skapa medlem</button></p>';
 	$out .= '</form>';
 
 	

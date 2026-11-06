@@ -352,35 +352,52 @@ function shortcode_Edit_member( $atts ) {
 	$out .= '<form method="post" enctype="multipart/form-data" class="edit-member-form">';
 	$out .= wp_nonce_field( 'edit_member_action', 'edit_member_nonce', true, false );
 	$out .= '<input type="hidden" name="target_user_id" value="' . esc_attr( $target_user_id ) . '" />';
-	$out .= '<table class="form-table">';
-	$out .= '<tr><th><label>Användarnamn:</label></th><td><input name="username" value="' . esc_attr( $vals['username'] ) . '" readonly /></td></tr>';
+	$out .= '<table class="form-table" style="float: left; margin-right: 40px;">';
+	$out .= '<tr><th><label>Användarnamn:</label></th></tr>
+	         <tr><td><input name="username" value="' . esc_attr( $vals['username'] ) . '" readonly /></td></tr>';
 
 	// Role selector for admins
 	if ( current_user_can( 'manage_options' ) ) {
-		$out .= '<tr><th><label>Roll:</label></th><td><select name="role">';
+		$out .= '<tr><th><label>Roll:</label></tr>
+		         <tr></th><td><select name="role">';
 		$out .= '<option value="subscriber"' . ( $vals['role'] === 'subscriber' ? ' selected' : '' ) . '>Subscriber</option>';
 		$out .= '<option value="administrator"' . ( strpos( $vals['role'], 'administrator' ) !== false ? ' selected' : '' ) . '>Administrator</option>';
 		$out .= '</select></td></tr>';
 	}
 
-	$out .= '<tr><th><label>Förnamn:</label></th><td><input name="first_name" value="' . esc_attr( $vals['first_name'] ) . '" /></td></tr>';
-	$out .= '<tr><th><label>Efternamn:</label></th><td><input name="last_name" value="' . esc_attr( $vals['last_name'] ) . '" /></td></tr>';
-	$out .= '<tr><th><label>Företag:</label></th><td><input name="company" value="' . esc_attr( $vals['company'] ) . '" /></td></tr>';
-	$out .= '<tr><th><label>Telefon:</label></th><td><input name="phone" value="' . esc_attr( $vals['phone'] ) . '" /></td></tr>';
-	$out .= '<tr><th><label>Epost:</label></th><td><input type="email" name="email" value="' . esc_attr( $vals['email'] ) . '" /></td></tr>';
-	$out .= '<tr><th><label>Nytt lösenord (valfritt):</label></th><td><input type="password" name="password" /></td></tr>';
-	$out .= '<tr><th><label>Bekräfta lösenord:</label></th><td><input type="password" name="password_confirm" /></td></tr>';
-	$out .= '<tr><th><label>LinkedIn</label></th><td><input type="url" name="linkedin" value="' . $vals['linkedin'] . '" required /></td></tr>';
-	$out .= '<tr><th><label>Webbplats:</label></th><td><input name="website" value="' . esc_attr( $vals['website'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Förnamn:</label></th><tr> 
+	         <tr><td><input name="first_name" value="' . esc_attr( $vals['first_name'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Efternamn:</label></th></tr>
+	         <tr><td><input name="last_name" value="' . esc_attr( $vals['last_name'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Företag:</label></th></tr>
+	         <tr><td><input name="company" value="' . esc_attr( $vals['company'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Telefon:</label></th></tr>
+	         <tr><td><input name="phone" value="' . esc_attr( $vals['phone'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Epost:</label></th></tr>
+	         <tr><td><input type="email" name="email" value="' . esc_attr( $vals['email'] ) . '" /></td></tr>';
+	$out .= '<tr><th><label>Nytt lösenord (valfritt):</label></th></tr>
+	         <tr><td><input type="password" name="password" /></td></tr>';
+	$out .= '<tr><th><label>Bekräfta lösenord:</label></th></tr>
+	         <tr><td><input type="password" name="password_confirm" /></td></tr>';
+	$out .= '</table>';
+	
+	$out .= '<table class="form-table" style="float: left;">';
+	$out .= '<tr><th><label>LinkedIn</label></th></tr>
+	         <tr><td><input type="url" name="linkedin" value="' . $vals['linkedin'] . '" /></td></tr>';
+	$out .= '<tr><th><label>Webbplats:</label></th></tr>
+	         <tr><td><input name="website" value="' . esc_attr( $vals['website'] ) . '" /></td></tr>';
 	
 	if ( get_current_user_id() == $target_user_id ) {
-		$out .= '<tr><th><label>Något du är bra på?</label></th><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
+		$out .= '<tr><th><label>Något du är bra på?</label></th></tr>
+		         <tr><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
 	} 
 	else {
-		$out .= '<tr><th><label>Något medlemmen är bra på?</label></th><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
+		$out .= '<tr><th><label>Något medlemmen är bra på?</label></th></tr>
+		         <tr><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
 	}
 	
-	$out .= '<tr><th><label>Biografi:</label></th><td><textarea name="biography" class="biography">' . esc_textarea( $vals['biography'] ) . '</textarea></td></tr>';
+	$out .= '<tr><th><label>Biografi:</label></th></tr>
+	         <tr><td><textarea name="biography" class="biography">' . esc_textarea( $vals['biography'] ) . '</textarea></td></tr>';
 
 	// Profile picture: show current filename (attachment ID only) and include hidden existing field
 	$profile_att = intval( get_user_meta( $target_user_id, 'profile_picture', true ) );
@@ -391,8 +408,8 @@ function shortcode_Edit_member( $atts ) {
 			$profile_label = wp_basename( $profile_url );
 		}
 	}
-	$out .= '<tr><th><label>Profilbild:</label></th><td>';
-	$out .= '<input type="file" name="profile_picture_file" />';
+	$out .= '<tr><th><label>Profilbild:</label></th></tr>
+	         <tr><td><input type="file" name="profile_picture_file" />';
 	if ( $profile_att > 0 ) {
 		$out .= '<input type="hidden" name="profile_picture_existing" value="' . esc_attr( $profile_att ) . '" />';
 		$out .= '<div class="member-picture-preview">Nuvarande bild: <strong>' . esc_html( $profile_label ) . '</strong></div>';
@@ -408,7 +425,8 @@ function shortcode_Edit_member( $atts ) {
 			$cover_label = wp_basename( $cover_url );
 		}
 	}
-	$out .= '<tr><th><label>Logotyp:</label></th><td>';
+	$out .= '<tr><th><label>Logotyp:</label></th></tr>
+	         <tr><td>';
 	$out .= '<input type="file" name="cover_photo_file" />';
 	if ( $cover_att > 0 ) {
 		$out .= '<input type="hidden" name="cover_photo_existing" value="' . esc_attr( $cover_att ) . '" />';
@@ -417,7 +435,7 @@ function shortcode_Edit_member( $atts ) {
 	$out .= '</td></tr>';
 
 	$out .= '</table>';
-	$out .= '<p>';
+	$out .= '<p style="clear: both; width: 100%;">';
 	$out .= '<button type="submit" name="edit_member_submit" class="submit-button">Spara</button>';
 	if ( current_user_can( 'manage_options' ) && get_current_user_id() !== $target_user_id ) {
 		$out .= ' <button type="submit" name="delete_member_submit" class="submit-button delete-button" onclick="return confirm(\'Är du säker på att du vill ta bort medlemmen?\');">Ta bort medlem</button>';

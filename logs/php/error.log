@@ -900,3 +900,150 @@ Stack trace:
 #18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
 #19 {main}
   thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcode.php on line 319
+[03-Nov-2026 20:48:02 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 277
+[03-Nov-2026 20:51:16 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 277
+[03-Nov-2026 20:52:57 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:52:57 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 20:52:58 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:52:58 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 20:52:58 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:52:58 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 20:55:34 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big-1.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:55:34 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big-1.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 20:55:34 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big-1.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:55:34 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big-1.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 20:55:34 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big-1.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:55:34 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big-1.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 20:58:05 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big-2.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:58:05 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big-2.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 20:58:05 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big-2.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:58:05 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big-2.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 20:58:05 UTC] PHP Warning:  exif_imagetype(Ann-Sofie-och-day-and-night-big-2.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 20:58:05 UTC] PHP Warning:  file_get_contents(Ann-Sofie-och-day-and-night-big-2.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:00:19 UTC] PHP Warning:  exif_imagetype(aromaolja-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:00:19 UTC] PHP Warning:  file_get_contents(aromaolja-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:00:19 UTC] PHP Warning:  exif_imagetype(aromaolja-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:00:19 UTC] PHP Warning:  file_get_contents(aromaolja-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:00:19 UTC] PHP Warning:  exif_imagetype(aromaolja-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:00:19 UTC] PHP Warning:  file_get_contents(aromaolja-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:04:45 UTC] PHP Warning:  exif_imagetype(Artikel-i-YA-2025-09-21-07.jpg): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:04:45 UTC] PHP Warning:  file_get_contents(Artikel-i-YA-2025-09-21-07.jpg): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:04:45 UTC] PHP Warning:  exif_imagetype(Artikel-i-YA-2025-09-21-07.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:04:45 UTC] PHP Warning:  file_get_contents(Artikel-i-YA-2025-09-21-07.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:04:45 UTC] PHP Warning:  exif_imagetype(ayurvediska-tygknyten.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:04:45 UTC] PHP Warning:  file_get_contents(ayurvediska-tygknyten.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:14:51 UTC] PHP Warning:  exif_imagetype(angel-14-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:14:51 UTC] PHP Warning:  file_get_contents(angel-14-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:14:51 UTC] PHP Warning:  exif_imagetype(angel-17-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:14:51 UTC] PHP Warning:  file_get_contents(angel-17-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:14:51 UTC] PHP Warning:  exif_imagetype(angel-and-wolf-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:14:51 UTC] PHP Warning:  file_get_contents(angel-and-wolf-desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:17:27 UTC] PHP Warning:  exif_imagetype(ayurvediska-orter.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:17:27 UTC] PHP Warning:  file_get_contents(ayurvediska-orter.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:17:27 UTC] PHP Warning:  exif_imagetype(ayurvedisk-massage-mobile.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:17:27 UTC] PHP Warning:  file_get_contents(ayurvedisk-massage-mobile.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[03-Nov-2026 21:17:27 UTC] PHP Warning:  exif_imagetype(babydrake-gron.desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[03-Nov-2026 21:17:27 UTC] PHP Warning:  file_get_contents(babydrake-gron.desktop.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[04-Nov-2026 08:08:00 UTC] PHP Warning:  exif_imagetype(angel-ljusbla-02-fb.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3376
+[04-Nov-2026 08:08:00 UTC] PHP Warning:  file_get_contents(angel-ljusbla-02-fb.webp): Failed to open stream: No such file or directory in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\functions.php on line 3396
+[04-Nov-2026 14:45:38 UTC] PHP Warning:  Maximum number of allowable file uploads has been exceeded in Unknown on line 0
+[04-Nov-2026 20:23:17 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 338
+[04-Nov-2026 20:23:27 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 338
+[04-Nov-2026 21:36:24 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 21:41:12 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:43:03 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 21:44:07 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:44:12 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 21:44:17 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 21:44:47 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:44:53 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:47:34 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:47:44 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 21:48:44 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:48:52 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:48:59 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:49:10 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:49:24 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:49:33 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:49:39 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:49:56 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:50:06 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:50:10 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:50:29 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:51:33 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:51:40 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 21:51:45 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 21:52:22 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:52:28 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:53:22 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:53:51 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 21:53:57 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:03:31 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:03:38 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:05:14 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:05:27 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 22:06:03 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:06:09 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:06:53 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 22:08:17 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 346
+[04-Nov-2026 22:11:56 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:12:00 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:12:04 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 349
+[04-Nov-2026 22:19:04 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 201
+[04-Nov-2026 22:20:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function Handle_uploaded_files() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php:131
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_tfa_form(Array, '', 'tfa_form')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(tfa_fo...', 'do_shortcode_ta...', '\n<h2 class="wp-...')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('\n<h2 class="wp-...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('\n<h2 class="wp-...', Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:heading...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:heading...', Object(WP_Block))
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#19 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 131
+[04-Nov-2026 22:22:31 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 421
+[04-Nov-2026 22:22:31 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 421
+[04-Nov-2026 23:58:28 UTC] PHP Parse error:  syntax error, unexpected token "." in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 472
+[04-Nov-2026 23:58:28 UTC] PHP Parse error:  syntax error, unexpected token "." in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 472
+[05-Nov-2026 00:59:36 UTC] PHP Warning:  Undefined array key "tfa_edit_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 192
+[05-Nov-2026 01:00:09 UTC] PHP Warning:  Undefined array key "tfa_edit_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 192
+[05-Nov-2026 08:07:45 UTC] PHP Warning:  Undefined variable $post_id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 128
+[05-Nov-2026 08:09:51 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 492
+[05-Nov-2026 08:09:52 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 492
+[05-Nov-2026 08:34:48 UTC] PHP Parse error:  syntax error, unexpected token ">" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 485
+[05-Nov-2026 08:34:49 UTC] PHP Parse error:  syntax error, unexpected token ">" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 485
+[05-Nov-2026 12:53:22 UTC] PHP Parse error:  syntax error, unexpected token "=" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 609
+[05-Nov-2026 12:53:27 UTC] PHP Parse error:  syntax error, unexpected token "=" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 609
+[05-Nov-2026 16:04:22 UTC] PHP Parse error:  syntax error, unexpected token ".=" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 76
+[05-Nov-2026 16:04:23 UTC] PHP Parse error:  syntax error, unexpected token ".=" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 76
+[05-Nov-2026 16:04:36 UTC] PHP Parse error:  syntax error, unexpected token ".=" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 76
+[05-Nov-2026 16:06:37 UTC] PHP Parse error:  syntax error, unexpected token ".=" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 76
+[06-Nov-2026 00:19:54 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 00:19:54 UTC] PHP Warning:  Undefined variable $tfatotal_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 603
+[06-Nov-2026 00:20:11 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:27:37 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:28:48 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:29:24 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:30:53 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:33:51 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:37:36 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:37:44 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:38:29 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:38:33 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:38:54 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:38:59 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:41:54 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:41:58 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 01:43:09 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579

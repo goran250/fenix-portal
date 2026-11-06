@@ -15,7 +15,7 @@
 
 
 /* Mobil/tablet: visa hamburger, dölj full nav */
-@media (max-width: 1140px) {
+@media (max-width: 1120px) {
   /* Visa i hamburger-meny */
   li.mobile-only-menu-item {
     display: block !important;
@@ -307,15 +307,15 @@ Görans css
 @media (max-width: 560px) {
   
   .register-member-form .form-table td input, .edit-member-form .form-table td input{
-      width: 200px;
+      width: 300px;
   }
 
   .register-member-form .form-table td select, .edit-member-form .form-table td select{
-    width: 200px;
+    width: 300px;
   }
 
   .register-member-form .form-table td textarea, .edit-member-form .form-table td textarea{
-    width: 200px;
+    width: 300px;
   } 
 
   .form-table {
@@ -369,6 +369,11 @@ Görans css
   .page-id-2 main div.wp-block-group h1.wp-block-post-title {      
     font-size: 30px;
   } 
+
+  .page-id-321 .tfa-table th.amount,
+  .page-id-321 .tfa-table td.amount {
+    width: 90px;
+  }
 }
 
 

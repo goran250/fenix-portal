@@ -74,6 +74,22 @@ add_action('init', function () {
 	}
 });
 
+add_shortcode('login_button_on_start', function () {
+	if ( !is_user_logged_in() ) {
+	    return '<div class="is-layout-flex" style="width: 100%">
+                    <div class="wp-block-button start-login-button">    
+
+                        <a class="wp-block-button__link wp-element-button" href="' . esc_url( wp_login_url() ) . '?redirect_to=http%3A%2F%2Ffenix-portal.local%2F">
+                            Logga in
+                        </a>
+                    </div>
+                </div>';
+    }
+    else {
+        return '';
+    }
+});
+
 /**
  * Handle Avanmalning (user cancellation) requests.
  * Accepts POST or GET with event_id and records the current user as cancelled for that event.

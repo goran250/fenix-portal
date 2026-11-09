@@ -780,8 +780,8 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
   color: #999;
 }
 
-.page-id-22 div.password-text, .page-id-22 div.password-text {
-  max-width: 650px;
+.page-id-22 div.password-text, .page-id-401 div.password-requirements {
+  max-width: 600px;
   margin-left: 0 !important;
 }
 /** End Registera-medlemmar-sidan och Ändra-medlem-sidan*/
@@ -1244,6 +1244,16 @@ ul.user-files-list li {
   font-size: 16px;
 }
 
+.wp-block-button.start-login-button {
+  margin: 20px auto -50px;
+  display: inline-block;
+  padding: 8px 14px 10px!important;
+  background-color: #E98D1C;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
 /** Anmalningarsidan */
 .anmalningar-members .member-wrap {
   height: 170px;
@@ -1291,7 +1301,7 @@ ul.user-files-list li {
     page-id-321 = TFA-sidan
    
 */
-.page-id-22main, .page-id-73 main, .page-id-120 main, .page-id-321 main {
+.page-id-22 main, .page-id-73 main, .page-id-120 main, .page-id-321 main {
    max-width: 900px;
    width: 100%;
    margin: 0 auto;

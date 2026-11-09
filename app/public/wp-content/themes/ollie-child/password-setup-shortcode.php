@@ -98,6 +98,7 @@ function shortcode_password_setup( $atts ) {
 		return $out;
 	}
 
+	$out .= '<div class="password-requirements">Lösenordet måste vara minst 10 tecken och innehålla minst en versal och minst en gemen samt minst ett specialtecken.</div>';
 	$out .= '<form method="post" class="password-setup-form">';
 	$out .= wp_nonce_field( 'password_setup_action', 'password_setup_nonce', true, false );
 	$out .= '<input type="hidden" name="uid" value="' . esc_attr( $uid ) . '" />';

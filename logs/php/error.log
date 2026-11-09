@@ -1047,3 +1047,25 @@ Stack trace:
 [06-Nov-2026 01:41:54 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
 [06-Nov-2026 01:41:58 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
 [06-Nov-2026 01:43:09 UTC] PHP Warning:  Undefined variable $tfa_total_amount in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[06-Nov-2026 13:06:01 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 627
+[06-Nov-2026 13:06:02 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 627
+[07-Nov-2026 14:10:50 UTC] PHP Parse error:  syntax error, unexpected token "." in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 606
+[07-Nov-2026 14:10:50 UTC] PHP Parse error:  syntax error, unexpected token "." in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 606
+[08-Nov-2026 12:11:54 UTC] PHP Warning:  Undefined variable $tfa_receiver in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 618
+[08-Nov-2026 12:11:54 UTC] PHP Warning:  Attempt to read property "display_name" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 618
+[08-Nov-2026 12:12:37 UTC] PHP Warning:  Undefined variable $tfa_receiver in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 618
+[08-Nov-2026 12:12:37 UTC] PHP Warning:  Attempt to read property "display_name" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 618
+[08-Nov-2026 20:23:44 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 665
+[08-Nov-2026 20:23:44 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 665
+[08-Nov-2026 22:41:55 UTC] PHP Parse error:  syntax error, unexpected token ";", expecting ")" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 142
+[08-Nov-2026 22:41:55 UTC] PHP Parse error:  syntax error, unexpected token ";", expecting ")" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 142
+[08-Nov-2026 22:42:33 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 668
+[08-Nov-2026 22:42:33 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 668
+[08-Nov-2026 22:44:42 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 668
+[08-Nov-2026 22:44:42 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 668
+[08-Nov-2026 22:45:38 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 669
+[08-Nov-2026 22:45:39 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 669
+[08-Nov-2026 22:47:38 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 668
+[08-Nov-2026 22:47:38 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 668
+[08-Nov-2026 22:57:01 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 668
+[08-Nov-2026 22:57:01 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 668

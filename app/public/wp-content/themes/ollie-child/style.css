@@ -1040,6 +1040,7 @@ div.event-item div {
 /** Start TFA sidan */
 .page-id-321 .tfa-intro-box {
    width: 100%;
+   float: left;
 }
 
 .page-id-321 .tfa-errors, .page-id-321 .tfa-success {
@@ -1125,6 +1126,8 @@ div.event-item div {
 }
 
 .page-id-321 input[type="file"] {
+  max-width: 380px;
+  width: 100%;
   border: none;
   padding: 8px 0 8px 0;
 }
@@ -1150,6 +1153,30 @@ div.event-item div {
    clear: both;
 }
 
+.page-id-321 .tfa-list-box {
+  width: 100%;
+   margin: 15px 0 0;
+   float: left;
+   clear: both;
+}
+
+.page-id-321 .tfa-list-box > div {
+    max-width: 330px;
+    width: 100%;
+    margin: 0 20px 20px 0;
+    text-align: center;
+    border: 1px solid #888;
+    border-radius: 8px;
+    background-color: #fff;
+    float: left;
+}
+
+.page-id-321 .tfa-list-box div div {
+    margin: 10px;
+
+}
+
+/**
 .page-id-321 .tfa-table th.amount,
 .page-id-321 .tfa-table td.amount {
    text-align: right;
@@ -1166,7 +1193,26 @@ div.event-item div {
 .page-id-321 .tfa-table td.description {
    width: 250px; 
 }
-/** Start TFA sidorna */
+   */
+
+.page-id-321 .show_more-button {
+    margin: 5px auto 15px;
+    float: left;
+}
+
+.page-id-321 .tfa-post-to-show-box {
+  border: 1px solid #888;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 25px;
+  margin: 20px 0 20px;
+  float: left;
+  clear: both;
+  max-width: 688px;
+  width: 100%;
+}
+
+/** End TFA sidan */
 
 ul.wp-block-navigation__container {
   background-color: #FFFBF5!important;
@@ -1232,19 +1278,20 @@ ul.user-files-list li {
 
 /** page-id-2 = Startsidan,     
     page-id-281 = Kontaktsidan
-    page-id-321 = TFA-sidan
     page-id-401 = Set password sidan */
-.page-id-2 main, .page-id-321 main, .page-id-401 main {
+.page-id-2 main, .page-id-401 main {
    max-width: 800px;
    width: 100%;
    margin: 0 auto;
 }
 
-/** page-id-120 = Dokumentsidan 
-    page-id-22 = Registrera medlem-sidan, 
-    page-id-73 = Ändra medlem-sidan, 
+/** page-id-22 = Registrera medlem-sidan, 
+    page-id-73 = Ändra medlem-sidan,    
+    page-id-120 = Dokumentsidan 
+    page-id-321 = TFA-sidan
+   
 */
-.page-id-120 main, .page-id-22 main, .page-id-73 main {
+.page-id-22main, .page-id-73 main, .page-id-120 main, .page-id-321 main {
    max-width: 900px;
    width: 100%;
    margin: 0 auto;

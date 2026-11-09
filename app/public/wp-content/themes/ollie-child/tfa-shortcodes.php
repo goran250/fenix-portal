@@ -56,6 +56,7 @@ function shortcode_tfa_intro( $atts )
     );
 
     $tfa_total_amount = 0;
+
     foreach ($tfa_posts_all as $tfa_post) {            
         $tfa_total_amount += intval( get_post_meta( $tfa_post->ID, 'tfa-amount', true ) );;
     }
@@ -86,7 +87,7 @@ add_shortcode( 'tfa_intro', 'shortcode_tfa_intro' );
 function shortcode_tfa_form( $atts )
 {
     if ( ! is_user_logged_in() ) {
-		return ;
+		return '';
 	}
 
     $currentUser = wp_get_current_user();
@@ -95,7 +96,7 @@ function shortcode_tfa_form( $atts )
     $reset_form = false;
     $current_tfa_post_id = isset( $_POST['tfa_post_id'] ) ? intval( wp_unslash( $_POST['tfa_post_id'] ) ) : 0;
 
-    // Edit mode via query parameter: ?tfa_edit_id=<post_id>
+    // Edit mode via query parameter: ?tfa_edit_id = post_id>
     if ( $current_tfa_post_id <= 0 && isset( $_GET['tfa_edit_id'] ) ) {
         $tfa_edit_id = intval( wp_unslash( $_GET['tfa_edit_id'] ) );
         if ( $tfa_edit_id > 0 ) {
@@ -138,7 +139,7 @@ function shortcode_tfa_form( $atts )
         } 
         else {
             // Reset form state and clear edit query parameter to avoid updating previous TFA
-            $redirect_url = remove_query_arg( 'tfa_edit_id' );
+            $redirect_url = remove_query_arg( array( 'tfa_edit_id', 'tfa_post_to_show_id' ));
             $redirect_url = add_query_arg( 'tfa_reset', '1', $redirect_url );
             wp_safe_redirect( $redirect_url );
             exit;
@@ -249,7 +250,6 @@ function shortcode_tfa_form( $atts )
     $form_title = '';
     $form_description = '';
     $form_amount = '';
-    
 
     if ( $current_tfa_post_id > 0 && ! isset( $_POST['tfa_submit'] ) ) {  // Load existing TFA for editing
         $form_receiver = intval( get_post_meta( $current_tfa_post_id, 'tfa-receiver', true ) );
@@ -283,7 +283,7 @@ function shortcode_tfa_form( $atts )
     $out .= '<div style="width: 100%; float: left;">
                 <p style="clear; both;">Här kan du lägga in tfa-er (Tack för affären) som du gett andra medlemmar.</p>
              </div>';
-    $form_action = esc_url( remove_query_arg( array( 'tfa_edit_id', 'tfa_reset' ) ) );
+    $form_action = esc_url( remove_query_arg( array( 'tfa_edit_id', 'tfa_reset', 'tfa_post_to_show_id' ) ) );
     $out .= '<form method="post" action="' . $form_action . '" enctype="multipart/form-data" class="tfa-form">';
     $out .= wp_nonce_field( 'tfa_action', 'tfa_nonce', true, false );
     $out .= '<input type="hidden" name="tfa_post_id" value="' . esc_attr( $current_tfa_post_id ) . '" />';
@@ -309,7 +309,7 @@ function shortcode_tfa_form( $atts )
             <hr class="tfa-separator" />';
 
     $out .= '<div class="title-wrap"> 
-                <label>Kort beskrivning av affären. Max 30 tecken</label>
+                <label>Titel: En kort beskrivning av affären. Max 30 tecken</label>
                 <input type="text" name="tfa_title" required maxlength="30" value="' . esc_attr( $form_title ) . '">
              </div>
              <hr class="tfa-separator" />'; 
@@ -350,7 +350,7 @@ function shortcode_tfa_form( $atts )
                     $out .= '<div class="file-preview">Nuvarande filer:</div>';
                     foreach ( $file_items as $item ) {
                         $out .= '<div class="file-preview">
-                                    <strong>' . esc_html( $item['label'] ) . '</strong> 
+                                    <a href="' . esc_url( wp_get_attachment_url( $item['id'] ) ) . '" target="_blank"><strong> ' . esc_html( $item['label'] ) . '</strong></a>
                                     <button type="submit" name="tfa_delete_attach_id" value="' . esc_attr( $item['id'] ) . '" class="file-delete-button" title="Ta bort bort denna fil" formnovalidate onclick="return confirm(\'Ta bort bort denna fil?\');">
                                       X
                                     </button>
@@ -374,8 +374,8 @@ function shortcode_tfa_form( $atts )
     
     return $out; 
 } 
-
 add_shortcode( 'tfa_form', 'shortcode_tfa_form' );  
+
 
 
 // Handle file uploads for TFA. Updates db too.
@@ -531,7 +531,7 @@ function HandleUploadedFiles( $current_tfa_post_id, $currentUser ) {
 function shortcode_tfa_list( $atts )
 {
     if ( ! is_user_logged_in() ) {
-		return ;
+		return '';
 	}
 
     $currentUser = wp_get_current_user();
@@ -562,95 +562,119 @@ function shortcode_tfa_list( $atts )
         ),
     ));
 
-    $out = '<p style="float: left;">Nedanför kommer en lista över dina tidigare TFA:er (både skickade och mottagna).</p>';
+    $out = '';
 
     if ( !empty( $tfa_posts_sent ) ) {
         $out .= '<div style="float: left;">Här är dina tidigare skickade TFA:er:</div>';
-        $out .= '<table class="tfa-table">';
-        $out .= '<tr>
-                    <th style="text-align: left;">Senast ändrad:</th>
-                    <th style="text-align: left;">Mottagare:</th>
-                    <th style="text-align: left;">Kort beskrivning:</th>
-                    <th class="amount">Belopp:</th>
-                </tr>';
-        $tfa_total_amount = 0;
+
+        $out .= '<div class="tfa-list-box">';
+
         foreach ( $tfa_posts_sent as $post ) {
             $tfa_amount = get_post_meta( $post->ID, 'tfa-amount', true ); 
-            $tfa_total_amount += intval( $tfa_amount ); 
             $tfa_receiver_id = get_post_meta( $post->ID, 'tfa-receiver', true );
             $tfa_receiver = get_userdata( $tfa_receiver_id );
-            $edit_url = esc_url( add_query_arg( 'tfa_edit_id', intval( $post->ID ), remove_query_arg( 'tfa_reset' ) ) );
-            $out .= '<tr>
-                        <td class="modified-date">' . 
-                            esc_html( date( 'Y-m-d', strtotime( $post->post_modified ) ) ) .
-                        '</td>
-                        <td class="receiver">' . 
-                            esc_html( $tfa_receiver->display_name ) .
-                        '</td>
-                        <td class="description">
-                            <a href="' . $edit_url . '" name="tfa_edit">' . esc_html( get_the_title( $post->ID ) ) . '</a>
-                        </td>
-                        <td class="amount">' . 
-                            esc_html( number_format( $tfa_amount, 0, ',', ' ' ) ) .
-                        '</td>
-                    </tr>';                   
-        }
-    
-        $out .= '   <tr>
-                        <td></td>
-                        <td></td>
-                        <td style="text-align: right;">Summa:</td>
-                        <td class="amount">' . esc_html( number_format( $tfa_total_amount, 0, ',', ' ' )) . '</td>
-                    </tr>
-                </table>';
-    } else {
+            $edit_url = esc_url( add_query_arg( 'tfa_edit_id', intval( $post->ID ), remove_query_arg( array( 'tfa_reset', 'tfa_post_to_show_id' ) ) ) );
+            $out .= '<div>
+                        <div>Mottagare: ' . esc_html( $tfa_receiver->display_name ) . '</div>
+                        <div>Titel: <a href="' . $edit_url . '" name="tfa_edit">' .  esc_html( get_the_title( $post->ID ) ) . '</a></div>
+                        <div>Belopp: <strong>' . esc_html( number_format( $tfa_amount, 0, ',', ' ' ))  . ' kr</strong></div>
+                     </div>';            
+        } 
+
+        $out .= '</div>';       
+    } 
+    else {
         $out .= '<p style="float: left;">Inga skickade TFA:er hittades.</p>';
     }
 
+
+
     if ( !empty( $tfa_posts_received ) ) {
-        $out .= '<div style="float: left;">Här är dina mottagna TFA:er:</div>';
-        $out .= '<table class="tfa-table">';
-        $out .= '<tr>
-                    <th style="text-align: left;">Senast ändrad:</th>
-                    <th style="text-align: left;">Skickad av:</th>
-                    <th style="text-align: left;">Kort beskrivning:</th>
-                    <th class="amount">Belopp:</th>
-                </tr>';
-        $tfatotal_amount = 0;
+        $out .= '<p style="float: left;">Här är dina mottagna TFA:er:</p>';
+        
+        $out .= '<div class="tfa-list-box">';
         foreach ( $tfa_posts_received as $post ) {
             $tfa_amount = get_post_meta( $post->ID, 'tfa-amount', true ); 
-            $tfa_total_amount += intval( $tfa_amount ); 
             $tfa_sender_id = get_post_meta( $post->ID, 'tfa-sender', true );
             $tfa_sender = get_userdata( $tfa_sender_id );
-            $edit_url = esc_url( add_query_arg( 'tfa_edit_id', intval( $post->ID ), remove_query_arg( 'tfa_reset' ) ) );
-            $out .= '<tr>
-                        <td class="modified-date">' . 
-                            esc_html( date( 'Y-m-d', strtotime( $post->post_modified ) ) ) .
-                        '</td>
-
-                        <td class="receiver">' . 
-                            esc_html( $tfa_sender->display_name ) .
-                        '</td>
-
-                        <td class="description">' . 
-                             esc_html( get_the_title( $post->ID ) ) . 
-                        '</td>
-                        <td class="amount">' . 
-                            esc_html( number_format( $tfa_amount, 0, ',', ' ' ))  .
-                        '</td>
-                    </tr>';                   
+            $post_to_show_url = esc_url( add_query_arg( 'tfa_post_to_show_id', intval( $post->ID ) ) );
+          
+            $out .= '<div>
+                        <div>Skickad av: ' . esc_html( $tfa_sender->display_name ) . '</div>
+                        <div>Titel: <a href="' . $post_to_show_url . '" name="tfa_post_to_show">' . esc_html( get_the_title( $post->ID ) ) . '</a></div>
+                        <div>Belopp: <strong>' . esc_html( number_format( $tfa_amount, 0, ',', ' ' ))  . ' kr</strong></div>                    
+                     </div>';                     
         }
     
-        $out .= '   <tr>
-                        <td></td>
-                        <td></td>
-                        <td style="text-align: right;">Summa:</td>
-                        <td class="amount">' . esc_html( number_format( $tfa_total_amount, 0, ',', ' ' )) . '</td>
-                    </tr>
-                </table>';
-    } else {
+        $out .= '</div>';
+    } 
+    else {
         $out .= '<p style="float: left;">Inga mottagna TFA:er hittades.</p>';
     }
+
+
+    if ( isset( $_GET['tfa_post_to_show_id'] ) ) {
+        $post_to_show_id = intval( wp_unslash( $_GET['tfa_post_to_show_id'] ) );
+
+        if ( $post_to_show_id > 0 ) {
+            $post_to_show = get_post( $post_to_show_id );
+            $tfa_sender_id = intval( get_post_meta( $post_to_show_id, 'tfa-sender', true ) );
+            $tfa_receiver_id = intval( get_post_meta( $post_to_show_id, 'tfa-receiver', true ) );
+
+            // Access control: only sender (author) or receiver can view details
+            if ( ! $post_to_show || ( intval( $post_to_show->post_author ) !== intval( $currentUser->ID ) && $tfa_receiver_id !== intval( $currentUser->ID ) ) ) {
+                return $out;
+            }
+
+            $tfa_sender = get_userdata( $tfa_sender_id );
+
+            $out .='<div class="tfa-post-to-show-box">
+                        <div>Skickad av: <strong>' . esc_html( $tfa_sender->display_name ) . '</strong></div>
+                        <hr class="tfa-separator" />
+                        <div>Titel: <strong>' .  esc_html( $post_to_show->post_title ) . '</strong></div>
+                        <hr class="tfa-separator" />
+                        <label>Lång beskrivning av affären.</label>
+                        <div><strong>' . esc_html( get_post_meta( $post_to_show_id, 'tfa-description', true ) ) . '</strong></div>
+                        <hr class="tfa-separator" />
+                        <label>Uppladdade filer.</label>';
+
+            $file_atts = get_post_meta( $post_to_show_id, 'tfa-file', false ); // all values
+            $file_items = array();
+    
+            if ( !empty( $file_atts ) ) {
+                // Prepare file labels uploaded files
+                foreach ( $file_atts as $att_id ) {
+                    $att_id = intval( $att_id );
+                    if ( $att_id <= 0 ) 
+                        continue;
+
+                    $file_url = wp_get_attachment_url( $att_id );
+                    if ( $file_url ) {
+                        $file_items[] = array(
+                            'id'    => $att_id,
+                            'label' => wp_basename( $file_url ),
+                        );
+                    }
+                }
+
+                if ( ! empty( $file_items ) ) {
+                    foreach ( $file_items as $item ) {
+                        $out .= '<div class="file-preview">
+                                    <a href="' . esc_url( wp_get_attachment_url( $item['id'] ) ) . '" target="_blank"><strong> ' . esc_html( $item['label'] ) . '</strong></a>                                         
+                                </div>';
+                    }
+                }
+            }
+
+            $out .=    '<hr class="tfa-separator" />
+                        <div>Belopp: <strong>' . esc_html( number_format( get_post_meta( $post_to_show_id, 'tfa-amount', true ), 0, ',', ' ' ))  . ' kr</strong></div>
+                    </div>'; // Closing the tfa-post-to-show                        -box
+            $out .= '<script>window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });</script>';
+
+            echo "<script>history.replaceState({}, document.title, window.location.pathname + window.location.search.replace(/([?&])tfa_post_to_show_id=[^&]*&?/, '$1').replace(/[?&]$/, ''));</script>";
+        }       
+    }   
+
 
 
     return $out;

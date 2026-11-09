@@ -297,6 +297,13 @@ Görans css
   }
 }
 
+@media (max-width: 780px) {
+  .page-id-321 .tfa-intro-box div {
+     width: 240px;
+     margin-bottom: 20px;
+  }
+}
+
 @media (max-width: 705px) {
   .all-members-inner-wrap {
       width: 335px;
@@ -332,6 +339,16 @@ Görans css
   form.events-add-form .event-description, form.events-edit-form .event-description {  
     width: 290px;
   }
+
+
+  .page-id-321 .tfa-intro-box div {
+      width: 240px;
+      margin: 0 auto 20px;
+      clear: both;
+      padding: 10px 20px;
+      float: none;
+  }
+
 }
 
 @media (max-width:520px) {
@@ -346,7 +363,7 @@ Görans css
     align-items: center; 
   } 
   
-  div.event-item-left { 
+  div.event-item-left {   
     margin-right: 0; 
     margin-bottom: 20px!important; 
     text-align: center; 

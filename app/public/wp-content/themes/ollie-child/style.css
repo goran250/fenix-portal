@@ -481,6 +481,9 @@ li.mobile-only-menu-item {
   color: #588790 !important; 
 }
 
+.footer > div.wp-block-group {
+    border-top-color: #ccc!important;
+}
 .footer-link a:link {
   text-decoration: underline !important;
 }
@@ -540,13 +543,10 @@ footer .wp-block-group.wp-elements-3.wp-container-core-group-is-layout-63f1d60a.
   padding-top: 50px!important;
 }
 
-footer li.wp-block-navigation-item.wp-block-navigation-link, 
-footer li.wp-block-navigation-item.wp-block-navigation-submenu {
-  width: 155px!important;
-  padding: 8px 16px;
-}
+
                  
 footer .wp-block-navigation li.wp-block-navigation-item{
+    width: 155px!important;
     background-color: white !important;
     border: #ccc solid 1px;
     border-radius: 6px;
@@ -554,9 +554,24 @@ footer .wp-block-navigation li.wp-block-navigation-item{
     padding: 8px 16px !important;
 }
 
+footer .wp-block-navigation li.wp-block-navigation-item a {
+    width: 100% !important;
+    height: 100% !important;
+    text-align: center !important;
+}
+
 footer .wp-block-navigation .wp-block-navigation-submenu li.wp-block-navigation-item { 
-   width: 220px !important;
+   width: 240px !important;
    padding: 0px !important;
+}    
+
+footer .wp-block-navigation .wp-block-navigation-submenu ul {
+  background-color: #FFFBF5!important;
+}
+
+/* Footer submenu last child spacing */
+footer .wp-block-navigation .wp-block-navigation-submenu li.last-submenu-item {
+    margin-bottom: 20px;
 }
 
 footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-color.wp-elements-4.is-layout-flow.wp-block-group-is-layout-flow {
@@ -1176,24 +1191,6 @@ div.event-item div {
 
 }
 
-/**
-.page-id-321 .tfa-table th.amount,
-.page-id-321 .tfa-table td.amount {
-   text-align: right;
-   width: 90px;
-}
-
-.page-id-321 .tfa-table td.receiver {
-   width: 200px; 
-}
-.page-id-321 .tfa-table td.modified-date {
-   width: 136px; 
-}
-
-.page-id-321 .tfa-table td.description {
-   width: 250px; 
-}
-   */
 
 .page-id-321 .show_more-button {
     margin: 5px auto 15px;
@@ -1214,6 +1211,9 @@ div.event-item div {
 
 /** End TFA sidan */
 
+.site-header, header.wp-block-template-part {
+  border-bottom: 1px solid #ccc;
+}
 ul.wp-block-navigation__container {
   background-color: #FFFBF5!important;
 }

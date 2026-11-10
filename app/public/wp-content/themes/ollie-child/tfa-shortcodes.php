@@ -590,7 +590,7 @@ function shortcode_tfa_list( $atts )
 
 
     if ( !empty( $tfa_posts_received ) ) {
-        $out .= '<p style="float: left;">Här är dina mottagna TFA:er:</p>';
+        $out .= '<p style="float: left; clear: both">Här är dina mottagna TFA:er:</p>';
         
         $out .= '<div class="tfa-list-box">';
         foreach ( $tfa_posts_received as $post ) {

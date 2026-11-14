@@ -40,7 +40,37 @@ add_action('init', function () {
 		'rewrite'      => false,
 		'menu_icon'    => 'dashicons-forms',
 	));
+
+	register_post_type('guest', array(
+		'labels' => array(
+			'name' => 'Guests',
+			'singular_name' => 'Guest',
+		),
+		'public' => false,
+		'show_ui' => true,
+		'map_meta_cap' => true,
+		'capability_type' => array('guest', 'guests'),
+		'supports' => array('title', 'editor', 'author'),
+	));
 });
+
+
+add_action('init', function () {
+	$role = get_role('subscriber');
+	if (!$role) return;
+
+	$role->add_cap('read');
+	$role->add_cap('edit_guest');
+	$role->add_cap('read_guest');
+	$role->add_cap('delete_guest');
+
+	$role->add_cap('edit_guests');
+	$role->add_cap('edit_published_guests');
+	$role->add_cap('publish_guests');
+	$role->add_cap('delete_guests');
+	$role->add_cap('delete_published_guests');
+});
+
 
 // Change login logo link URL
 add_filter('login_headerurl', function () {
@@ -212,6 +242,7 @@ function foranmalning_handler() {
     }
 
     $user_id = get_current_user_id();
+
 
     // ensure post exists and is an event
     $post = get_post( $event_id );
@@ -1090,4 +1121,9 @@ if ( file_exists( get_stylesheet_directory() . '/password-setup-shortcode.php' )
 // Load tfa_page shortcode implementation if present
 if ( file_exists( get_stylesheet_directory() . '/tfa-shortcodes.php' ) ) {
     require_once get_stylesheet_directory() . '/tfa-shortcodes.php';
+}
+
+// Load register-guest-shortcode implementation if present
+if ( file_exists( get_stylesheet_directory() . '/register-guest-shortcode.php' ) ) {
+    require_once get_stylesheet_directory() . '/register-guest-shortcode.php';
 }

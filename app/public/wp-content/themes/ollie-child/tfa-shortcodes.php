@@ -96,7 +96,7 @@ function shortcode_tfa_form( $atts )
     $reset_form = false;
     $current_tfa_post_id = isset( $_POST['tfa_post_id'] ) ? intval( wp_unslash( $_POST['tfa_post_id'] ) ) : 0;
 
-    // Edit mode via query parameter: ?tfa_edit_id = post_id>
+    // Edit mode via query parameter: ? tfa_edit_id = post_id>
     if ( $current_tfa_post_id <= 0 && isset( $_GET['tfa_edit_id'] ) ) {
         $tfa_edit_id = intval( wp_unslash( $_GET['tfa_edit_id'] ) );
         if ( $tfa_edit_id > 0 ) {
@@ -146,7 +146,7 @@ function shortcode_tfa_form( $atts )
         }
     }
 
-    if ( isset( $_GET['tfa_reset'] ) && ! isset( $_GET['tfa_edit_id'] ) ) {
+    if ( isset( $_GET['tfa_reset'] ) && !isset( $_GET['tfa_edit_id'] ) ) {
         $reset_form = true;
         $current_tfa_post_id = 0;
         $messages['success'] = 'Formuläret är återställt. Du kan registrera en ny TFA.';
@@ -233,7 +233,7 @@ function shortcode_tfa_form( $atts )
     }
 
     
-    $args = array('orderby' => 'registered', 'order'   => 'DESC', 'fields'  => 'all', ); 
+    $args = array('orderby' => 'registered', 'order' => 'DESC', 'fields' => 'all', ); 
     
     $q = new WP_User_Query( $args ); 
     $users = $q->get_results(); 
@@ -245,13 +245,13 @@ function shortcode_tfa_form( $atts )
         return '<p>Finns inga medlemmar i databasen.</p>'; 
     }
 
-    // Prepare form values (load existing TFA if  editing)
+    // Prepare form values (load existing TFA if editing)
     $form_receiver = 0;
     $form_title = '';
     $form_description = '';
     $form_amount = '';
 
-    if ( $current_tfa_post_id > 0 && ! isset( $_POST['tfa_submit'] ) ) {  // Load existing TFA for editing
+    if ( $current_tfa_post_id > 0 && !isset( $_POST['tfa_submit'] ) ) {  // Load existing TFA for editing
         $form_receiver = intval( get_post_meta( $current_tfa_post_id, 'tfa-receiver', true ) );
         $form_title = get_the_title( $current_tfa_post_id );
         $form_description = (string) get_post_meta( $current_tfa_post_id, 'tfa-description', true );
@@ -374,6 +374,7 @@ function shortcode_tfa_form( $atts )
     
     return $out; 
 } 
+
 add_shortcode( 'tfa_form', 'shortcode_tfa_form' );  
 
 

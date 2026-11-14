@@ -772,19 +772,6 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
    margin: 0 0 15px;
 }
 
-.member-success, .file-success, .tfa-success {
-  width: fit-content;
-  background-color: green;
-  color: white;
-  padding: 5px 20px;
-  border-radius: 6px;
-  margin-left: 0px!important;
-}
-
-.member-errors, .file-errors, .events-errors, .tfa-errors {
-    color: #d60000;
-}
-
 .member-card a:link {
   text-decoration: none !important;
 }
@@ -995,7 +982,9 @@ div.event-item {
   display:flex; 
   align-items:flex-start;
   border: 1px solid #ccc;
+  border-top: 2px solid #E98E1D;
   padding: 14px 20px;
+  min-height: 273px;
   margin-bottom: 15px;
   border-radius: 6px;
   background-color: white;
@@ -1068,6 +1057,7 @@ div.event-item div {
    padding: 20px;
    margin-right: 20px;
    border: 1px solid #888;
+   border-top: 4px solid #E98E1D;
    border-radius: 8px;
    background-color: #fff;
    float: left;
@@ -1088,6 +1078,7 @@ div.event-item div {
 }
 .page-id-321 .tfa-form{
   border: 1px solid #888;
+  border-top: 3px solid green;
   border-radius: 8px;
   background-color: #fff;
   padding: 25px;
@@ -1181,6 +1172,7 @@ div.event-item div {
     margin: 0 20px 20px 0;
     text-align: center;
     border: 1px solid #888;
+    border-top: 3px solid #E98E1D;
     border-radius: 8px;
     background-color: #fff;
     float: left;
@@ -1191,7 +1183,6 @@ div.event-item div {
 
 }
 
-
 .page-id-321 .show_more-button {
     margin: 5px auto 15px;
     float: left;
@@ -1199,6 +1190,7 @@ div.event-item div {
 
 .page-id-321 .tfa-post-to-show-box {
   border: 1px solid #888;
+  border-top: 3px solid green;
   border-radius: 8px;
   background-color: #fff;
   padding: 25px;
@@ -1208,8 +1200,98 @@ div.event-item div {
   max-width: 688px;
   width: 100%;
 }
-
 /** End TFA sidan */
+
+
+
+/** Start register_guest sidan */
+.page-id-730 h1.wp-block-post-title {
+   display: none;
+}
+
+.page-id-730 .register-guest-header {
+  margin-top: 50px;
+} 
+
+.page-id-730 .register-guest-text {
+  max-width: 550px;
+  margin: 20px 0!important;
+}
+
+.page-id-730 .register-guest-form{
+  max-width: 600px;
+  width: 100%;
+  border: 1px solid #888;
+  border-top: 3px solid green;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 25px;
+  margin: 0 0 30px;
+  float: left;
+}
+
+.page-id-730  input[name="guest_name"], 
+.page-id-730  input[name="guest_company"], 
+.page-id-730  input[name="guest_email"], 
+.page-id-730  input[name="guest_phone"] {
+  padding: 8px;
+  border: 1px solid #888;
+  border-radius: 6px;
+  margin-top: 10px;
+  max-width: 430px;
+  width: 100%;
+}
+
+.page-id-730 .submit-button, .page-id-730 .submit-button {
+  margin: 15px 20px 0 0;
+  padding: 5px 12px!important;
+  border-radius: 6px!important;
+  border: 1px solid #888;
+  cursor: pointer;
+}
+
+.page-id-730 .separator {
+    margin: 25px 0 20px 0;
+} 
+
+
+.page-id-730 .guest-delete-button {
+    height: 25px;
+    border: 1px solid #666;
+    border-radius: 12px;
+    padding: 0 6px 0;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.page-id-730 .my-guest-form .guest-div {
+    padding: 8px 0;
+}
+
+.page-id-730 .register-guest-success, .page-id-730 .register-guest-errors {
+   clear: both;
+   margin-top: 20px;
+}
+/** End register_guest sidan */
+
+.member-success, .file-success, .tfa-success, .register-guest-success {
+  width: fit-content;
+  background-color: green;
+  color: white;
+  padding: 5px 20px;
+  border-radius: 6px;
+  margin-left: 0px!important;
+}
+
+.member-errors, .file-errors, .events-errors, .tfa-errors, .register-guest-errors {
+    color: #d60000;
+}
+
+
+input[readonly] {
+  background-color: #f0f0f0!important;
+  color: #888!important;
+}
 
 .site-header, header.wp-block-template-part {
   border-bottom: 1px solid #ccc;
@@ -1286,10 +1368,36 @@ ul.user-files-list li {
 }
 
 
+
+button[data-tooltip], a[data-tooltip] {
+  position: relative;
+}
+
+button[data-tooltip]::after, a[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: lightgray;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+}
+
+button[data-tooltip]:hover::after, a[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
 /** page-id-2 = Startsidan,     
     page-id-281 = Kontaktsidan
     page-id-401 = Set password sidan */
-.page-id-2 main, .page-id-401 main {
+.page-id-2 main, .page-id-401 main, .page-id-730 main {
    max-width: 800px;
    width: 100%;
    margin: 0 auto;

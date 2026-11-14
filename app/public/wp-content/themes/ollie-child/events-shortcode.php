@@ -539,15 +539,15 @@ function shortcode_events_list( $atts ) {
 					$registered = array();
 
 				if ( in_array( $user_id, $cancelled, true ) ) {
-					$out .= '<div style="margin-bottom: 0;">Du har avanmält dig</div>';
+					$out .= '<div style="margin-bottom: 10px;">Du har avanmält dig</div>';
 				} elseif ( in_array( $user_id, $registered, true ) ) {
-					$out .= '<div style="margin-bottom: 0;">Du har anmält dig</div>';
+					$out .= '<div style="margin-bottom: 10px;">Du har anmält dig</div>';
 				} else {
 					if ( $notification === 'Avanmälan' ) {
 						$avan_url = admin_url( 'admin-post.php' );
 						$avan_url = add_query_arg( array( 'action' => 'avanmalning', 'event_id' => $id ), $avan_url );
 						$avan_url = wp_nonce_url( $avan_url, 'avanmalning_action' );
-						$out .= '<div style="margin-bottom: 0;" >
+						$out .= '<div style="margin-bottom: 10px;" >
 						            <a onclick="return alert(\'Din avanmälan är registrerad.\');" class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
 								</div>';
 					}
@@ -555,11 +555,16 @@ function shortcode_events_list( $atts ) {
 						$foran_url = admin_url( 'admin-post.php' );
 						$foran_url = add_query_arg( array( 'action' => 'foranmalning', 'event_id' => $id ), $foran_url );
 						$foran_url = wp_nonce_url( $foran_url, 'foranmalning_action' );
-						$out .= '<div style="margin-bottom: 0;" >
+						$out .= '<div style="margin-bottom: 10px;" >
 									<a onclick="return alert(\'Din föranmälan är registrerad.\');" class="foranmalan-link" href="' . esc_url( $foran_url ) . '">Föranmälan</a>
 								</div>';
 					}
 				}
+
+			    $register_guest_page = get_page_by_path( 'register_guest' );
+				$register_guest_base = $register_guest_page ? get_permalink( $register_guest_page->ID ) : site_url( '/register_guest/' );
+				$register_guest_link = add_query_arg( array( 'event_id' => $id ), $register_guest_base );
+				$out .= '<div><a href="' . esc_url( $register_guest_link ) . '">Anmäl en gäst</a></div>';
 			} 
 		
 			$out .= '</div>'; // .event-item-left
@@ -609,7 +614,14 @@ function shortcode_events_list( $atts ) {
 				// Build action buttons in a single container to avoid stray text nodes between elements
 				$buttons = '<span class="event-action-buttons">';
 				// include both raw picture value (attachment ID or URL) and a human label
-				$buttons .= '<button class="edit-button" data-event-id="' . esc_attr( $id ) . '" data-event-name="' . esc_attr( $name ) . '" data-event-date="' . esc_attr( $date ) . '" data-event-time="' . esc_attr( $time ) . '" data-event-location="' . esc_attr( $location ) . '" data-event-description="' . esc_attr( $description ) . '" data-event-nbr="' . esc_attr( $nbrOfParticipants ) . '" data-event-notification="' . esc_attr( $notification ) . '" data-event-picture-value="' . esc_attr( $picture ) . '" data-event-picture-label="' . esc_attr( $picture_label ) . '">Ändra</button>';
+				$buttons .= '<button class="edit-button" data-event-id="' . esc_attr( $id ) . '" 
+				                     data-event-name="' . esc_attr( $name ) . '" data-event-date="' . esc_attr( $date ) . '"
+									 data-event-time="' . esc_attr( $time ) . '" data-event-location="' . esc_attr( $location ) . '" 
+									 data-event-description="' . esc_attr( $description ) . '" data-event-nbr="' . esc_attr( $nbrOfParticipants ) . '" 
+									 data-event-notification="' . esc_attr( $notification ) . '" 
+									 data-event-picture-value="' . esc_attr( $picture ) . '" data-event-picture-label="' . esc_attr( $picture_label ) . '">
+							    Ändra
+							</button>';
 
 				$del_url = add_query_arg( array( 'delete_event' => $id, '_ev_nonce' => wp_create_nonce( 'events_delete_action' ) ) );
 				$buttons .= '<a href="' . esc_url( $del_url ) . '" onclick="return confirm(\'Vill du radera detta event?\');"><button class="delete-button" name="events_delete">Radera</button></a>';

@@ -168,6 +168,8 @@
   footer nav.is-responsive.wp-block-navigation {
     display: none !important;
   }
+
+
 }
 
 @media (max-width: 580px) {
@@ -195,6 +197,10 @@
 
   .fenix-feature-grid.is-layout-grid > .wp-block-group {
     flex: 1 1 100%;
+  }
+
+  button[data-tooltip]:hover::after, a[data-tooltip]:hover::after {
+    opacity: 0;
   }
 }
 

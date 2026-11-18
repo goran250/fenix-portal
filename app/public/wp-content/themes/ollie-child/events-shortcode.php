@@ -107,7 +107,7 @@ function shortcode_events_list( $atts ) {
 			$name = isset( $_POST['event_name'] ) ? sanitize_text_field( wp_unslash( $_POST['event_name'] ) ) : '';
 			$date = isset( $_POST['event_date'] ) ? sanitize_text_field( wp_unslash( $_POST['event_date'] ) ) : '';
 			$time = isset( $_POST['event_time'] ) ? sanitize_text_field( wp_unslash( $_POST['event_time'] ) ) : '';
-			$nbrOfParticipants = isset( $_POST['event_nbrOfParticipants'] ) ? sanitize_text_field( wp_unslash( $_POST['event_nbrOfParticipants'] ) ) : '';
+			$maxNbrOfParticipants = isset( $_POST['event_nbrOfParticipants'] ) ? sanitize_text_field( wp_unslash( $_POST['event_nbrOfParticipants'] ) ) : '';
 			$location = isset( $_POST['event_location'] ) ? sanitize_text_field( wp_unslash( $_POST['event_location'] ) ) : '';
 			$notification = isset( $_POST['event_notification'] ) ? $_POST['event_notification'] : '';
 			$description = isset( $_POST['event_description'] ) ? sanitize_text_field( wp_unslash( $_POST['event_description'] ) ) : '';
@@ -142,7 +142,7 @@ function shortcode_events_list( $atts ) {
 				} else {
 					update_post_meta( $post_id, 'event_date', $date );
 					update_post_meta( $post_id, 'event_time', $time );
-					update_post_meta( $post_id, 'event_nbrOfParticipants', $nbrOfParticipants );
+					update_post_meta( $post_id, 'event_nbrOfParticipants', $maxNbrOfParticipants );
 					update_post_meta( $post_id, 'event_location', $location );					
 					update_post_meta( $post_id, 'event_notification', $notification );
 					// process file upload if provided
@@ -217,7 +217,7 @@ function shortcode_events_list( $atts ) {
 			$name = isset( $_POST['event_name_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_name_edit'] ) ) : '';
 			$date = isset( $_POST['event_date_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_date_edit'] ) ) : '';
 			$time = isset( $_POST['event_time_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_time_edit'] ) ) : '';
-			$nbrOfParticipants = isset( $_POST['event_nbrOfParticipants_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_nbrOfParticipants_edit'] ) ) : '';
+			$maxNbrOfParticipants = isset( $_POST['event_nbrOfParticipants_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_nbrOfParticipants_edit'] ) ) : '';
 			$location = isset( $_POST['event_location_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_location_edit'] ) ) : '';
 			$notification = isset( $_POST['event_notification_edit'] ) ? $_POST['event_notification_edit'] : '';
 			$description = isset( $_POST['event_description_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_description_edit'] ) ) : '';
@@ -253,7 +253,7 @@ function shortcode_events_list( $atts ) {
 					wp_update_post( array( 'ID' => $edit_id, 'post_title' => $name ) );
 					update_post_meta( $edit_id, 'event_date', $date );
 					update_post_meta( $edit_id, 'event_time', $time );
-					update_post_meta( $edit_id, 'event_nbrOfParticipants', $nbrOfParticipants );
+					update_post_meta( $edit_id, 'event_nbrOfParticipants', $maxNbrOfParticipants );
 					update_post_meta( $edit_id, 'event_location', $location );
 				    delete_post_meta( $edit_id, 'event_notification' );
 					update_post_meta( $edit_id, 'event_notification', $notification );
@@ -301,6 +301,7 @@ function shortcode_events_list( $atts ) {
 					$stored_picture = get_post_meta( $edit_id, 'event_picture', true );
 					// Production success message
 					$messages['success-edit'] = 'Event uppdaterat.';
+					
 					// preserve saved values to pre-fill the edit form and keep it open
 					$edit_saved = array(
 						'event_id' => $edit_id,
@@ -308,13 +309,13 @@ function shortcode_events_list( $atts ) {
 						'event_date_edit' => $date,
 						'event_time_edit' => $time,
 						'event_location_edit' => $location,
-						'event_nbrOfParticipants_edit' => $nbrOfParticipants,
+						'event_nbrOfParticipants_edit' => $maxNbrOfParticipants,
 						'event_notification_edit' => $notification,
 						'event_description_edit' => $description,
 					    'event_picture_edit' => $picture
 					);
 
-			// Leave $edit_saved and $messages['success-edit'] set so the edit form remains open
+			        // Leave $edit_saved and $messages['success-edit'] set so the edit form remains open
 				}
 			}
 		}
@@ -346,12 +347,12 @@ function shortcode_events_list( $atts ) {
 		          	<label>Max antal deltagare:</label>
 					<input class="event-nbrOfParticipants" name="event_nbrOfParticipants" type="text" />
 				</div>
-				<div style="float:left; margin: 20px 0 0 0; width: 135px;">
-				    <label style="display: inline;">Föranmälan:</label>
-					<input type="radio" name="event_notification" value="Föranmälan" />
+				<div style="float:left; margin: 20px 0 0 0; width: 135px;">				    
+					<input type="radio" id="event_notification_add_1" name="event_notification" value="Föranmälan" />
+					<label style="display: inline;" for="event_notification_add_1">Föranmälan:</label>
 					
-					<label style="display: inline; clear:both;">Avanmälan:</label>
-					<input style="margin-left: 6px;" type="radio" name="event_notification" value="Avanmälan" checked/>
+					<input style="clear:both;" type="radio" id="event_notification_add_2" name="event_notification" value="Avanmälan" checked/>
+					<label style="display: inline;" for="event_notification_add_2">Avanmälan:</label>
 				</div>
 				<div style="float:left; margin-right: 20px;">
 		          	<label>Beskrivning:</label>
@@ -382,41 +383,42 @@ function shortcode_events_list( $atts ) {
 
 			$out .= '<form method="post" class="events-edit-form" enctype="multipart/form-data" id="events-edit-form" style="display:' . esc_attr( $edit_display ) . '; margin-top:20px;">';
 			$out .= wp_nonce_field( 'events_edit_action', 'events_edit_nonce', true, false );
-			$out .= '<input type="hidden" name="event_id" value="' . esc_attr( isset( $es['event_id'] ) ? $es['event_id'] : '' ) . '" />';
-			$out .= '<div class="form-header">Ändra event:<button type="button" id="events-edit-close" class="cancel-button">X</button></div>';
-			$out .= '<div style="float:left; margin-right: 20px; clear: both;">';
-			$out .= '<label>Namn:</label>';
-			$out .= '<input name="event_name_edit" required value="' . esc_attr( isset( $es['event_name_edit'] ) ? $es['event_name_edit'] : '' ) . '" />';
-			$out .= '</div>';
-			$out .= '<div style="float:left; margin-right: 20px;">';
-			$out .= '<label>Datum (YYYY-MM-DD):</label>';
-			$out .= '<input name="event_date_edit" type="date" required value="' . esc_attr( isset( $es['event_date_edit'] ) ? $es['event_date_edit'] : '' ) . '" />';
-			$out .= '</div>';
-			$out .= '<div style="float:left; margin-right:  20px;">';
-			$out .= '<label>Tid</label>';
-			$out .= '<input name="event_time_edit" type="time" required value="' . esc_attr( isset( $es['event_time_edit'] ) ? $es['event_time_edit'] : '' ) . '" />';
-			$out .= '</div>';
-			$out .= '<div style="float:left; margin-right: 20px;">';
-			$out .= '<label>Plats:</label>';
-			$out .= '<input name="event_location_edit" value="' . esc_attr( isset( $es['event_location_edit'] ) ? $es['event_location_edit'] : '' ) . '" />';
-			$out .= '</div>';
-			$out .= '<div style="float:left; margin-right: 20px;">';
-			$out .= '<label>Max antal deltagare:</label>';
-			$out .= '<input class="event-nbrOfParticipants" name="event_nbrOfParticipants_edit" type="text" value="' . esc_attr( isset( $es['event_nbrOfParticipants_edit'] ) ? $es['event_nbrOfParticipants_edit'] : '' ) . '" />';
-			$out .= '</div>';
-			$out .= '<div style="float:left; margin: 20px 0 0 0; width: 135px;">';
-			$out .= '<label style="display: inline;">Föranmälan:</label>';
-			$out .= '<input type="radio" name="event_notification_edit" value="Föranmälan"' . ( isset( $es['event_notification_edit'] ) && $es['event_notification_edit'] === 'Föranmälan' ? ' checked' : '' ) . ' />';
-			$out .= '<label style="display: inline; clear:both;">Avanmälan:</label>';
-			$out .= '<input style="margin-left: 6px;" type="radio" name="event_notification_edit" value="Avanmälan"' . ( isset( $es['event_notification_edit'] ) && $es['event_notification_edit'] === 'Avanmälan' ? ' checked' : '' ) . ' />';
-			$out .= '</div>';
-			$out .= '<div style="float:left; margin-right: 20px;">';
-			$out .= '<label>Beskrivning:</label>';
-			$out .= '<textarea class="event-description" name="event_description_edit">' . esc_attr( isset( $es['event_description_edit'] ) ? $es['event_description_edit'] : '' ) . '</textarea>';
-			$out .= '</div>';
-			$out .= '<div style="float:left; margin-right: 20px;">';
-			$out .= '<label>Bild:</label>';
-			$out .= '<input type="file" name="event_picture_edit" />';
+			$out .= '<input type="hidden" name="event_id" value="' . esc_attr( isset( $es['event_id'] ) ? $es['event_id'] : '' ) . '" />
+			         <div class="form-header">Ändra event:<button type="button" id="events-edit-close" class="cancel-button">X</button></div>
+				 	 <div style="float:left; margin-right: 20px; clear: both;">
+						<label>Namn:</label>
+						<input name="event_name_edit" required value="' . esc_attr( isset( $es['event_name_edit'] ) ? $es['event_name_edit'] : '' ) . '" />
+					 </div>
+					 <div style="float:left; margin-right: 20px;">
+						<label>Datum (YYYY-MM-DD):</label>
+						<input name="event_date_edit" type="date" required value="' . esc_attr( isset( $es['event_date_edit'] ) ? $es['event_date_edit'] : '' ) . '" />
+					 </div>
+					 <div style="float:left; margin-right:  20px;">
+						<label>Tid</label>
+						<input name="event_time_edit" type="time" required value="' . esc_attr( isset( $es['event_time_edit'] ) ? $es['event_time_edit'] : '' ) . '" />
+					</div>
+					<div style="float:left; margin-right: 20px;">
+						<label>Plats:</label>
+						<input name="event_location_edit" value="' . esc_attr( isset( $es['event_location_edit'] ) ? $es['event_location_edit'] : '' ) . '" />
+					</div>
+					<div style="float:left; margin-right: 20px;">
+						<label>Max antal deltagare:</label>
+						<input class="event-nbrOfParticipants" name="event_nbrOfParticipants_edit" type="text" value="' . esc_attr( isset( $es['event_nbrOfParticipants_edit'] ) ? $es['event_nbrOfParticipants_edit'] : '' ) . '" />
+					</div>
+					<div style="float:left; margin: 20px 0 0 0; width: 135px;">						
+						<input type="radio" id="event_notification_edit_1" name="event_notification_edit" value="Föranmälan" ' . ( isset( $es['event_notification_edit'] ) && $es['event_notification_edit'] === 'Föranmälan' ? 'checked' : '' ) . ' />
+						<label style="display: inline;" for="event_notification_edit_1">Föranmälan:</label>						
+						<input style="clear:both;" type="radio" id="event_notification_edit_2" name="event_notification_edit" value="Avanmälan" ' . ( isset( $es['event_notification_edit'] ) && $es['event_notification_edit'] === 'Avanmälan' ? 'checked' : '' ) . ' />
+						<label style="display: inline;" for="event_notification_edit_2">Avanmälan:</label>
+					</div>
+					<div style="float:left; margin-right: 20px;">
+						<label>Beskrivning:</label>
+						<textarea class="event-description" name="event_description_edit">' . esc_attr( isset( $es['event_description_edit'] ) ? $es['event_description_edit'] : '' ) . '</textarea>
+					</div>
+					<div style="float:left; margin-right: 20px;">
+						<label>Bild:</label>
+						<input type="file" name="event_picture_edit" />';
+						
 			// Show the existing picture filename or attachment URL/ID when editing
 			$existing_picture = '';
 			if ( isset( $es['event_picture_edit'] ) && $es['event_picture_edit'] !== '' ) {
@@ -479,28 +481,30 @@ function shortcode_events_list( $atts ) {
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
 	);
-	$q = new WP_Query( $args );
-	if ( ! $q->have_posts() ) {
+
+	$events = new WP_Query( $args );
+
+	if ( ! $events->have_posts() ) {
 		$out .= '<p>Inga events hittades.</p>';
 		return $out;
 	}
 
 	$out .= '<div class="events-list">';
 
-			while ( $q->have_posts() ) {	
-				$q->the_post();
-				$id = get_the_ID();
+			while ( $events->have_posts() ) {	
+				$events->the_post();
+				$event_id = get_the_ID();
 				$name = get_the_title();	
-				$date = get_post_meta( $id, 'event_date', true );
-				$time = get_post_meta( $id, 'event_time', true );
-				$location = get_post_meta( $id, 'event_location', true );					
-				$nbrOfParticipants = get_post_meta( $id, 'event_nbrOfParticipants', true );
-				if ( ! $nbrOfParticipants ) {
-					$nbrOfParticipants = '0';
+				$date = get_post_meta( $event_id, 'event_date', true );
+				$time = get_post_meta( $event_id, 'event_time', true );
+				$location = get_post_meta( $event_id, 'event_location', true );					
+				$maxNbrOfParticipants = get_post_meta( $event_id, 'event_nbrOfParticipants', true );
+				if ( ! $maxNbrOfParticipants ) {
+					$maxNbrOfParticipants = '0';
 				}
-				$description = get_post_meta( $id, 'event_description', true );
+				$description = get_post_meta( $event_id, 'event_description', true );
 				// Only store attachment IDs (integer). Reject URLs or other formats.
-				$picture = intval( get_post_meta( $id, 'event_picture', true ) );
+				$picture = intval( get_post_meta( $event_id, 'event_picture', true ) );
 				// Compute a human-friendly picture label (filename) from the attachment, if present
 				$picture_label = '';
 				if ( $picture > 0 ) {
@@ -509,51 +513,55 @@ function shortcode_events_list( $atts ) {
 						$picture_label = wp_basename( $pic_url );
 					}
 				}
-				$notification = get_post_meta( $id, 'event_notification', true );
+				$notification = get_post_meta( $event_id, 'event_notification', true );
 				
 			// Render event item left and right columns
 			$out .= '<div class="event-item-outer">';
-			$out .= '<div id="event-item-' . esc_attr( $id ) . '" class="event-item">';
+			$out .= '<div id="event-item-' . esc_attr( $event_id ) . '" class="event-item">';
 			// left column
 			$out .= '<div class="event-item-left">';
 			$out .= '<div style="font-size: 20px;"><strong>' . esc_html( $name ) . '</strong></div>';
 			$out .= '<div>' . esc_html( $date ) . ', kl ' . esc_html( $time ) . '</div>';
 			$out .= '<div>' . esc_html( $location ) . '</div>';
 			if ( $description ) {
-				$out .= '<div onclick="ShowDescription(' . "'event-description-" . esc_attr( $id ) . "'" . ')" style="text-decoration:underline; cursor:pointer;">Beskrivning:</div>';
-				$out .= '<div id="event-description-' . esc_attr( $id ) . '" style="text-align:left; margin-top: -5px; margin-bottom:10px; display:none;">' . esc_html( $description ) . '</div>';
+				$out .= '<div onclick="ShowDescription(' . "'event-description-" . esc_attr( $event_id ) . "'" . ')" style="text-decoration:underline; cursor:pointer;">Beskrivning:</div>';
+				$out .= '<div id="event-description-' . esc_attr( $event_id ) . '" style="text-align:left; margin-top: -5px; margin-bottom:10px; display:none;">' . esc_html( $description ) . '</div>';
 			} else {
 				$out .= '<div>Beskrivning ej tillgänglig.</div>';
 			}
-			$out .= '<div>Max ' . esc_html( $nbrOfParticipants ) . ' deltagare</div>';
+			$out .= '<div>Max ' . esc_html( $maxNbrOfParticipants ) . ' deltagare</div>';
 
 			// Add Avanmälan or Föranmälan link or status text depending on user state
 			if ( is_user_logged_in() ) {
 				$user_id = get_current_user_id();
-				$cancelled = get_post_meta( $id, 'event_cancellations', true );
+				$cancelled = get_post_meta( $event_id, 'event_cancellations', true );
 				if ( ! is_array( $cancelled ) ) 
 					$cancelled = array();
 
-				$registered = get_post_meta( $id, 'event_registrations', true );
+				$registered = get_post_meta( $event_id, 'event_registrations', true );
 				if ( ! is_array( $registered ) ) 
 					$registered = array();
 
 				if ( in_array( $user_id, $cancelled, true ) ) {
 					$out .= '<div style="margin-bottom: 10px;">Du har avanmält dig</div>';
-				} elseif ( in_array( $user_id, $registered, true ) ) {
+				} 
+				elseif ( in_array( $user_id, $registered, true ) ) {
 					$out .= '<div style="margin-bottom: 10px;">Du har anmält dig</div>';
-				} else {
+				} 
+				else {
 					if ( $notification === 'Avanmälan' ) {
-						$avan_url = admin_url( 'admin-post.php' );
-						$avan_url = add_query_arg( array( 'action' => 'avanmalning', 'event_id' => $id ), $avan_url );
-						$avan_url = wp_nonce_url( $avan_url, 'avanmalning_action' );
+						// $avan_url = admin_url( 'admin-post.php' );
+ 						$avan_url = get_page_by_path( 'avanmalan' );
+                        $base = $avan_url ? get_permalink( $avan_url->ID ) : site_url( '/avanmalan/' );
+                        $avan_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
+
 						$out .= '<div style="margin-bottom: 10px;" >
-						            <a onclick="return alert(\'Din avanmälan är registrerad.\');" class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
+									<a class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
 								</div>';
 					}
 					if ( $notification === 'Föranmälan' ) {
 						$foran_url = admin_url( 'admin-post.php' );
-						$foran_url = add_query_arg( array( 'action' => 'foranmalning', 'event_id' => $id ), $foran_url );
+						$foran_url = add_query_arg( array( 'action' => 'foranmalning', 'event_id' => $event_id ), $foran_url );
 						$foran_url = wp_nonce_url( $foran_url, 'foranmalning_action' );
 						$out .= '<div style="margin-bottom: 10px;" >
 									<a onclick="return alert(\'Din föranmälan är registrerad.\');" class="foranmalan-link" href="' . esc_url( $foran_url ) . '">Föranmälan</a>
@@ -563,7 +571,7 @@ function shortcode_events_list( $atts ) {
 
 			    $register_guest_page = get_page_by_path( 'register_guest' );
 				$register_guest_base = $register_guest_page ? get_permalink( $register_guest_page->ID ) : site_url( '/register_guest/' );
-				$register_guest_link = add_query_arg( array( 'event_id' => $id ), $register_guest_base );
+				$register_guest_link = add_query_arg( array( 'event_id' => $event_id ), $register_guest_base );
 				$out .= '<div><a href="' . esc_url( $register_guest_link ) . '">Anmäl en gäst</a></div>';
 			} 
 		
@@ -593,14 +601,14 @@ function shortcode_events_list( $atts ) {
 				if ( is_user_logged_in() ) {
 					$user_id = get_current_user_id();
 					if ( $user_id ) {
-						$transient_key = 'events_success_avan_' . intval( $user_id ) . '_' . intval( $id );
+						$transient_key = 'events_success_avan_' . intval( $user_id ) . '_' . intval( $event_id );
 						$trans = get_transient( $transient_key );
 						if ( $trans ) {
 							$out .= '<div class="event-cancelled">' . esc_html( 'Avanmälan registrerad.' ) . '</div>';
 							delete_transient( $transient_key );
 						}
 
-						$transient_key_foran = 'events_success_foran_' . intval( $user_id ) . '_' . intval( $id );
+						$transient_key_foran = 'events_success_foran_' . intval( $user_id ) . '_' . intval( $event_id );
 						$trans_foran = get_transient( $transient_key_foran );
 						if ( $trans_foran ) {
 							$out .= '<div class="event-registered">' . esc_html( 'Föranmälan registrerad.' ) . '</div>';
@@ -614,27 +622,27 @@ function shortcode_events_list( $atts ) {
 				// Build action buttons in a single container to avoid stray text nodes between elements
 				$buttons = '<span class="event-action-buttons">';
 				// include both raw picture value (attachment ID or URL) and a human label
-				$buttons .= '<button class="edit-button" data-event-id="' . esc_attr( $id ) . '" 
+				$buttons .= '<button class="edit-button" data-event-id="' . esc_attr( $event_id ) . '" 
 				                     data-event-name="' . esc_attr( $name ) . '" data-event-date="' . esc_attr( $date ) . '"
 									 data-event-time="' . esc_attr( $time ) . '" data-event-location="' . esc_attr( $location ) . '" 
-									 data-event-description="' . esc_attr( $description ) . '" data-event-nbr="' . esc_attr( $nbrOfParticipants ) . '" 
+									 data-event-description="' . esc_attr( $description ) . '" data-event-nbr="' . esc_attr( $maxNbrOfParticipants ) . '" 
 									 data-event-notification="' . esc_attr( $notification ) . '" 
 									 data-event-picture-value="' . esc_attr( $picture ) . '" data-event-picture-label="' . esc_attr( $picture_label ) . '">
 							    Ändra
 							</button>';
 
-				$del_url = add_query_arg( array( 'delete_event' => $id, '_ev_nonce' => wp_create_nonce( 'events_delete_action' ) ) );
+				$del_url = add_query_arg( array( 'delete_event' => $event_id, '_ev_nonce' => wp_create_nonce( 'events_delete_action' ) ) );
 				$buttons .= '<a href="' . esc_url( $del_url ) . '" onclick="return confirm(\'Vill du radera detta event?\');"><button class="delete-button" name="events_delete">Radera</button></a>';
 
 				$anm_page = get_page_by_path( 'anmalningar' );
 				$anm_base = $anm_page ? get_permalink( $anm_page->ID ) : site_url( '/anmalningar/' );
 
 				if ( $notification === 'Föranmälan' ) {
-					$foran_link = add_query_arg( array( 'event_id' => $id, 'status' => 'registered' ), $anm_base );
-					$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="foranmalan-button">Föranmälda</button></a>';
+					$foran_link = add_query_arg( array( 'event_id' => $event_id, 'status' => 'registered' ), $anm_base );
+					$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="foranmalan-button">Anmälningar</button></a>';
 				} elseif ( $notification === 'Avanmälan' ) {
-					$avan_link = add_query_arg( array( 'event_id' => $id, 'status' => 'cancelled' ), $anm_base );
-					$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="avanmalan-button">Avanmälda</button></a>';
+					$avan_link = add_query_arg( array( 'event_id' => $event_id, 'status' => 'cancelled' ), $anm_base );
+					$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="avanmalan-button">Anmälningar</button></a>';
 				}
 
 				$buttons .= '</span>';

@@ -122,7 +122,7 @@ const GutenaFormsHeader = ( { activeMenu, setActiveMenu } ) => {
 						<Button
 							className={ 'gutena-forms__upgrade-button' }
 							variant="primary"
-							href="https://gutenaforms.com/pricing/?utm_source=plugin_dashboard&utm_medium=website&utm_campaign=free_plugin"
+							href="https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=dashboard_header-upgrade"
 							target="_blank"
 							rel="noopener noreferrer"
 						>

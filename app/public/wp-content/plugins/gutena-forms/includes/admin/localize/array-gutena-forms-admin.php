@@ -17,6 +17,7 @@ defined( 'ABSPATH' ) || exit;
 return array(
 	'pluginURL'               => esc_url( GUTENA_FORMS_PLUGIN_URL ),
 	'adminURL'                => esc_url( admin_url() ),
+	'pluginVersion'           => defined( 'GUTENA_FORMS_VERSION' ) ? GUTENA_FORMS_VERSION : '',
 	'hasPro'                  => is_gutena_forms_pro( false ),
 	'featureList'             => array(
 		__( 'Entry Notes', 'gutena-forms' ),
@@ -208,20 +209,20 @@ return array(
 						'price'       => '$29.99',
 						'description' => __( '1 Site', 'gutena-forms' ),
 						'btn_name'    => __( 'Get Started', 'gutena-forms' ),
-						'link'        => 'https://gutenaforms.com/pricing/',
+						'link'        => 'https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=dashboard_pricing-basic',
 					),
 					array(
 						'title'       => __( 'Professional', 'gutena-forms' ),
 						'price'       => '$49.99',
 						'description' => __( '5 Site', 'gutena-forms' ),
-						'link'        => 'https://gutenaforms.com/pricing/',
+						'link'        => 'https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=dashboard_pricing-professional',
 						'btn_name'    => __( 'Get Started', 'gutena-forms' ),
 					),
 					array(
 						'title'       => __( 'Business', 'gutena-forms' ),
 						'price'       => '$59.99',
 						'description' => __( 'Unlimited Sites', 'gutena-forms' ),
-						'link'        => 'https://gutenaforms.com/pricing/',
+						'link'        => 'https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=dashboard_pricing-business',
 						'btn_name'    => __( 'Get Started', 'gutena-forms' ),
 					),
 				),
@@ -281,7 +282,7 @@ return array(
 				'sales' => array(
 					'title1' => __( 'Do you have any question?', 'gutena-forms' ),
 					'title2' => __( 'Contact with Sales Team', 'gutena-forms' ),
-					'link'   => esc_attr( 'https://gutenaforms.com/contact?utm_source=plugin&utm_medium=footer&utm_campaign=contact_with_sales_team' ),
+					'link'   => esc_attr( 'https://gutenaforms.com/contact?utm_source=plugin&utm_medium=in-plugin&utm_campaign=support&utm_content=dashboard_footer-contact-sales' ),
 				),
 			),
 		),
@@ -292,22 +293,22 @@ return array(
 			'items' => array(
 				array(
 					'heading' => esc_html__( 'How to reuse Gutena forms on Multiple Pages?', 'gutena-forms' ),
-					'link'    => esc_url( 'https://gutenaforms.com/reuse-gutena-forms-on-multiple-pages' ),
+					'link'    => esc_url( 'https://gutenaforms.com/reuse-gutena-forms-on-multiple-pages?utm_source=plugin&utm_medium=in-plugin&utm_campaign=docs&utm_content=dashboard_topic-reuse-forms' ),
 				),
 				array(
 					'heading' => esc_html__( 'How to generate Google reCaptcha Site Key and Secret Key?', 'gutena-forms' ),
-					'link'    => esc_url( 'https://gutenaforms.com/how-to-generate-google-recaptcha-site-key-and-secret-key' ),
+					'link'    => esc_url( 'https://gutenaforms.com/how-to-generate-google-recaptcha-site-key-and-secret-key?utm_source=plugin&utm_medium=in-plugin&utm_campaign=docs&utm_content=dashboard_topic-recaptcha-keys' ),
 				),
 				array(
 					'heading' => esc_html__( 'How to start with Gutena Forms Pro?', 'gutena-forms' ),
-					'link'    => esc_url( 'https://gutenaforms.com/how-to-start-with-gutena-forms-pro' ),
+					'link'    => esc_url( 'https://gutenaforms.com/how-to-start-with-gutena-forms-pro?utm_source=plugin&utm_medium=in-plugin&utm_campaign=docs&utm_content=dashboard_topic-start-pro' ),
 				),
 			),
 		),
 		'support'   => array(
 			'title'              => esc_html__( 'Need Help?', 'gutena-forms' ),
 			'description'        => esc_html__( 'Have a question, we are happy to help! Get in touch with our support team.', 'gutena-forms' ),
-			'documentation_link' => esc_attr( 'https://gutenaforms.com/blog?utm_source=plugin&utm_medium=knowledge_base&utm_campaign=help_articles' ),
+			'documentation_link' => esc_attr( 'https://gutenaforms.com/blog?utm_source=plugin&utm_medium=in-plugin&utm_campaign=docs&utm_content=dashboard_documentation' ),
 			'documentation_text' => esc_html__( 'Help Articles', 'gutena-forms' ),
 			'link_text'          => esc_html__( 'Support', 'gutena-forms' ),
 		),
@@ -317,6 +318,7 @@ return array(
 		),
 	),
 	'gutenaFormsDashboard'    => array(
+		'pricing_link' => esc_url( 'https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=dashboard_introduction-upgrade' ),
 		'support_link' => esc_url(
 			apply_filters(
 				'gutena_forms_support_link',

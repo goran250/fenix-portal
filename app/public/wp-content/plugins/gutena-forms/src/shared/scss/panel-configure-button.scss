@@ -1,0 +1,60 @@
+$gf-panel-configure-heading: #1e1e1e;
+
+@mixin gutena-forms-panel-configure-button {
+	align-items: center;
+	align-self: stretch;
+	border: 0.5px solid $gf-panel-configure-heading;
+	border-radius: 6px;
+	box-shadow: none;
+	color: $gf-panel-configure-heading;
+	display: inline-flex;
+	font-size: 10px;
+	font-weight: 700;
+	gap: 10px;
+	height: 35px;
+	justify-content: center;
+	line-height: 1.5;
+	min-height: 35px;
+	padding: 10px 15px;
+	width: 100%;
+
+	&.is-secondary {
+		background: #fff;
+		box-shadow: none;
+
+		&:not( :disabled ):not( [aria-disabled='true'] ):hover,
+		&:not( :disabled ):not( [aria-disabled='true'] ):focus {
+			background: #fff;
+			box-shadow: none;
+		}
+	}
+
+	.components-button__icon {
+		flex-shrink: 0;
+		height: 12px;
+		margin: 0;
+		width: 14px;
+
+		svg {
+			display: block;
+			height: 12px;
+			max-height: none;
+			max-width: none;
+			width: 14px;
+		}
+	}
+
+	svg {
+		flex-shrink: 0;
+		height: 12px;
+		max-height: none;
+		max-width: none;
+		width: 14px;
+	}
+
+	&:hover,
+	&:focus {
+		border-color: $gf-panel-configure-heading;
+		color: $gf-panel-configure-heading;
+	}
+}

@@ -1,8 +1,10 @@
 === Gutena Forms – Contact Form, Survey Form, Feedback Form, Booking Form, and Custom Form Builder ===
 Contributors:      wpexpertsio
 Tags:              contact form, custom form, forms, form builder, WordPress form plugin
+Requires at least: 6.5
+Requires PHP:      5.6
 Tested up to:      7.1
-Stable tag:        2.1.1
+Stable tag:        2.2.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +14,7 @@ WordPress form builder to create lightweight contact forms, survey forms, feedba
 
 = WordPress Contact Form Builder Plugin =
 
-[👑Checkout Premium Version](https://gutenaforms.com/pricing/?utm_source=wp_org&utm_medium=website&utm_campaign=free_plugin) | [💻 Live Demo](https://app.instawp.io/launch?s=demo-gutena-forms&d=v2) | [Documentation](https://gutenaforms.com/docs/) | [Support](https://objectsws.atlassian.net/servicedesk/customer/portal/239)
+[👑Checkout Premium Version](https://gutenaforms.com/pricing?utm_source=wordpress.org&utm_medium=wp-org-listing&utm_campaign=readme&utm_content=link-top) | [💻 Live Demo](https://app.instawp.io/launch?s=demo-gutena-forms&d=v2) | [Documentation](https://gutenaforms.com/docs/) | [Support](https://objectsws.atlassian.net/servicedesk/customer/portal/239)
 
 
 [Gutena Forms](https://gutenaforms.com/) is the easiest WordPress form builder for creating responsive, lightweight forms in the WordPress block editor (formerly Gutenberg). It works as a block editor native form plugin that lets you build contact forms, survey forms, feedback forms, booking forms, and any custom form using a dedicated WordPress block.
@@ -29,125 +31,90 @@ WordPress form builder to create lightweight contact forms, survey forms, feedba
 Use ready-made WordPress form templates, drag and drop fields, and powerful Pro features to build forms that match your brand and help you collect the data you need.
 
 
-Try the [Live Demo](https://app.instawp.io/launch?t=gutena-forms-demo&d=v2) or [upgrade to Gutena Forms Pro](https://gutenaforms.com/pricing/?utm_source=wp_org&utm_medium=website&utm_campaign=free_plugin) to unlock advanced features.
+Try the [Live Demo](https://app.instawp.io/launch?t=gutena-forms-demo&d=v2) or [upgrade to Gutena Forms Pro](https://gutenaforms.com/pricing?utm_source=wordpress.org&utm_medium=wp-org-listing&utm_campaign=readme&utm_content=link-body) to unlock advanced features.
 
 https://www.youtube.com/watch?v=u9sB-RSBQIE
 
 
-###⚡Complete Features List (Free \+ Pro)
+### ⚡ Complete Features List (Free + Pro)
 
 #### Free Version Includes:
 
 * Easy form creation inside the WordPress block editor
-
 * Lightweight WordPress form plugin
-
 * No jQuery
-
 * Form input fields:
-
   * **Text**: Capture user text with a standard input field.
-
   * **Number**: Collect numeric data with a number input field.
-
   * **Range**: Let users select values with a range slider field.
-
   * **Text Area**: Gather long responses with a multi-line text area.
-
   * **Email**: Validate and capture user email addresses.
-
   * **Dropdown**: Offer selectable options with a dropdown field.
-
   * **Radio**: Allow single-choice selections with radio buttons.
-
   * **Checkbox**: Enable multi-select choices with checkboxes.
-
-  * **Opt-in Checkbox (Privacy and Terms)**: Add GDPR-ready consent fields for policies.
-
+  * **Opt-in Checkbox (Privacy and Terms)**: Add consent fields for privacy policies and terms.
 * Responsive WordPress forms
-
-* Form Field Validation
-
+* Form field validation
 * WordPress form block
-
 * Weekly form report lite
-
 * Pre-built WordPress form templates
-
 * **Google reCAPTCHA integration**
-
 * **Cloudflare Turnstile integration**
-
 * **Honeypot spam protection**
-
-* Custom confirmation messages
-
+* **Form Import & Export**: — **NEW**
+  * Import forms from Gutena Forms JSON export files.
+  * Export selected forms in JSON format.
+  * Export form entries in CSV, XLSX, and PDF formats.
 * Full control over layout and styling
-
 * Add unlimited core blocks inside forms
-
 * Drag-and-drop WordPress form builder
-
 * User-friendly interface
+* **Email Notifications**: — **NEW**
+  * Set global default email notification settings for newly created forms.
+  * Configure email notifications individually for each form.
+  * Set up multiple notifications for a form.
+  * Customize recipients, CC, BCC, Reply-To, sender details, subject, and message.
+  * Use dynamic merge tags in supported notification fields.
+* **Form Confirmation**: — **NEW**
+  * Set global default confirmation settings and override them for individual forms.
+  * Display custom success and error messages.
+  * Hide or reset the form after submission.
+  * Redirect users to a published WordPress page or a custom URL.
+* **REST API**: — **NEW**
+  * Enable or disable the form submission REST API.
+  * Allow external applications to submit form entries through the `/gutena-forms/v1/submit-entry` endpoint.
+  * Optionally require an API key to authenticate submissions.
+* **MCP (Model Context Protocol) Integration**
 
-* Email Notifications
-
-* Custom Redirection
-
-* Custom Error Messages
-
-* MCP (Model Context Protocol) Integration — **NEW**
-
-####✨Pro Version Unlocks (everything in Free, plus):
+#### ✨ Pro Version Unlocks (everything in Free, plus):
 
 Gutena Forms Pro gives you everything you need to manage advanced form workflows:
 
 * All advanced form input fields, such as:
-
   * **File Upload**: Let users upload files and documents easily.
-
   * **Date**: Capture dates with a user-friendly date picker.
-
   * **Time**: Record time selections with a time picker field.
-
   * **Rating**: Collect user ratings with a star rating field.
-
   * **Phone**: Gather phone numbers with proper field validation.
-
   * **Country and State**: Capture location details with country and state selectors.
-
   * **URL**: Collect website links with a URL input field.
-
   * **Hidden Field**: Store extra form data with hidden fields.
-
   * **Password Field**: Securely collect passwords with a masked input field.
-
   * **Step Break**: Create multi-step forms to organize long forms into separate steps.
-
 * Database entries
-
 * Entry management dashboard
-
 * Weekly form report pro
-
 * Advanced entries filter
-
 * Tags management
-
 * Status management
-
 * Entry notes
-
 * User access control
-
 * Premium Integrations:
-
   * **Brevo**
   * **Mailchimp**
   * **Active Campaign**
   * **Google Sheet** — **Coming Soon**
   * **Zapier** — **Coming Soon**
-
 * Priority support
 
 Gutena Forms Pro is ideal for users who need a complete WordPress form builder Pro solution.
@@ -295,23 +262,23 @@ If you enjoy using Gutena Forms, explore our collection of Gutenberg block plugi
 
 ### ⚡Check Out What Else We’ve Built for You
 
-* [**Post SMTP**](https://postmansmtp.com) – Reliable WordPress email delivery plugin with detailed email logs and multiple SMTP integrations.
+* [**Post SMTP**](https://postmansmtp.com?utm_source=gutena-forms-plugin&utm_medium=cross-promo&utm_campaign=cross-promo&utm_content=post-smtp_readme) – Reliable WordPress email delivery plugin with detailed email logs and multiple SMTP integrations.
 
-* [**Advanced File Manager**](https://advancedfilemanager.com) – Easily manage and organize your WordPress files directly from the dashboard.
+* [**Advanced File Manager**](https://advancedfilemanager.com?utm_source=gutena-forms-plugin&utm_medium=cross-promo&utm_campaign=cross-promo&utm_content=advanced-file-manager_readme) – Easily manage and organize your WordPress files directly from the dashboard.
 
-* [**Password Protected**](https://passwordprotectedwp.com) – Secure your WordPress site, posts, pages, and categories with simple password protection.
+* [**Password Protected**](https://passwordprotectedwp.com?utm_source=gutena-forms-plugin&utm_medium=cross-promo&utm_campaign=cross-promo&utm_content=password-protected_readme) – Secure your WordPress site, posts, pages, and categories with simple password protection.
 
 * [**myCred**](https://mycred.me) – Add gamification, rewards, ranks, and points management systems to your WordPress website.
 
-* [**WP EasyPay**](https://wpeasypay.com) – Accept Square payments and donations easily on your WordPress site.
+* [**WP EasyPay**](https://wpeasypay.com?utm_source=gutena-forms-plugin&utm_medium=cross-promo&utm_campaign=cross-promo&utm_content=wp-easy-pay_readme) – Accept Square payments and donations easily on your WordPress site.
 
-* [**WC Shop Sync**](https://wcshopsync.com) – Add Square payments and Sync WooCommerce products, customers, and orders with your Square POS.
+* [**WC Shop Sync**](https://wcshopsync.com?utm_source=gutena-forms-plugin&utm_medium=cross-promo&utm_campaign=cross-promo&utm_content=wc-shop-sync_readme) – Add Square payments and Sync WooCommerce products, customers, and orders with your Square POS.
 
 * [**Bookify**](https://wpbookify.com) – Your go-to online bookings and appointment scheduling plugin for WordPress.
 
 * [**CF7 Apps**](https://cf7apps.com) – It allows you to add honeypot, hCaptcha, and Database entries to the Contact form. Our team is constantly adding new Contact Form 7 extensions.
 
-* [**All In One Login**](https://aiologin.com) – Secure your WordPress login page, change the wp-login.php url, and add Google, Facebook, Microsoft, LINE, and other social logins to your WordPress site.
+* [**All In One Login**](https://aiologin.com?utm_source=gutena-forms-plugin&utm_medium=cross-promo&utm_campaign=cross-promo&utm_content=aio-login_readme) – Secure your WordPress login page, change the wp-login.php url, and add Google, Facebook, Microsoft, LINE, and other social logins to your WordPress site.
 
 * [**New User Approve**](https://newuserapprove.com) – Control user registrations by manually approving or denying new signups.
 
@@ -421,8 +388,23 @@ Please report security bugs found in the source code of the undefined plugin thr
 11. Connect AI clients to MCP for secure access to your form and entry data.
 
 
+
+== Upgrade Notice ==
+
+= 2.2.0 =
+Update to Gutena Forms 2.2.0 to access the latest form import/export, REST API, email notification, and form confirmation improvements.
+
 == Changelog ==
-= 2.1.1 - Sep 21, 2026 =
+= 2.2.0 - Nov 11, 2026 =
+* NEW - Added Import and Export tools to import Gutena Forms from JSON and export forms and entries in JSON, CSV, XLSX, and PDF formats.
+* NEW - Added a REST API enable/disable option in Gutena Forms settings.
+* NEW - Added global and per-form Email Notifications settings with multiple notification configurations, recipient fields, and merge-tag support.
+* NEW - Added global and per-form Form Confirmation settings, including success messages, error messages, and page or custom URL redirects.
+* FIX - Resolved issues across form import/export, email notifications, form confirmation, settings synchronization, and related interface behavior.
+* FIX - Fixed form and entries interface issues, validation messages, field display, and export-related warnings.
+* COMPATIBILITY - Verified the Free build with the related Pro setup and tested on WordPress 7.1.4 and PHP 8.4.
+
+= 2.1.1 - Sep 15, 2026 =
 * Fix - Resolved PHP notice related to load_textdomain on the frontend.
 * Fix - Resolved Google reCAPTCHA secret key exposure on frontend scripts.
 * Fix - Fixed submission entries date filtering issue (Today, Yesterday, Date Range).

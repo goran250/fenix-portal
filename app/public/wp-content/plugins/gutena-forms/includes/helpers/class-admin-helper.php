@@ -13,7 +13,7 @@ if ( ! class_exists( 'Gutena_Forms_Admin_Helper' ) ) :
 		public static function feature_request_redirection() {
 			if ( isset( $_GET['pagetype'] ) && 'feature-request' === sanitize_key( wp_unslash( $_GET['pagetype'] ) ) ) {
 				echo '<script type="text/javascript">
-					window.location.href = "https://gutenaforms.com/roadmap/?utm_source=plugin&utm_medium=tab&utm_campaign=feature_requests";
+					window.location.href = "https://gutenaforms.com/roadmap?utm_source=plugin&utm_medium=in-plugin&utm_campaign=support&utm_content=admin-menu_feature-request";
 				</script>';
 				exit;
 			}
@@ -21,16 +21,7 @@ if ( ! class_exists( 'Gutena_Forms_Admin_Helper' ) ) :
 
 		public static function pricing_page_redirection() {
 			if ( isset( $_GET['page'] ) && 'gutena-forms-upgrade' === sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) {
-				wp_redirect(
-					add_query_arg(
-						array(
-							'utm_source'   => 'wordpress_admin_menu',
-							'utm_medium'   => 'website',
-							'utm_campaign' => 'free_plugin',
-						),
-						'https://gutenaforms.com/pricing/'
-					)
-				);
+				wp_redirect( 'https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=admin-menu_upgrade' );
 				exit;
 			}
 		}
@@ -48,6 +39,22 @@ if ( ! class_exists( 'Gutena_Forms_Admin_Helper' ) ) :
 					}
 				}
 			}
+		}
+
+		/**
+		 * Whether the current admin screen is the Gutena Forms React dashboard.
+		 *
+		 * @return bool
+		 */
+		public static function is_gutena_forms_dashboard_screen() {
+			if ( ! is_admin() ) {
+				return false;
+			}
+
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+
+			return 'gutena-forms' === $page;
 		}
 
 		public static function is_admin( $check_permission = 'manage_options' ) {

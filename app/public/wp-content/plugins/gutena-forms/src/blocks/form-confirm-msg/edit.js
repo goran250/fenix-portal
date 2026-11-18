@@ -1,36 +1,61 @@
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
+import { useBlockProps } from '@wordpress/block-editor';
+import { focusFormConfirmationFromMessageBlock } from '../../shared/focus-form-confirmation-from-message-block';
+import FormNoticePreview from '../../shared/components/FormNoticePreview';
+import {
+	BlockPreview,
+	useMessageNoticePreview,
+} from '../../shared/hooks/use-message-notice-preview';
 
-export default function edit() {
-	const CONFIRMATION_MESSAGE_GROUP = [
-		[
-			'core/group',
-			{},
-			[
-				[
-					'core/paragraph',
-					{
-						placeholder: 'Confirmation message goes here...',
-					},
-				],
-			],
-		],
-	];
-
+export default function edit( { clientId } ) {
 	const blockProps = useBlockProps();
-	const ALLOWED_BLOCKS = [
-		'core/columns',
-		'core/group',
-		'core/image',
-		'core/paragraph',
-		'core/social-links',
-		'core/embed',
-	];
+	const {
+		settingsHtml,
+		useLegacyInnerPreview,
+		innerBlocks,
+	} = useMessageNoticePreview( clientId, 'successMessage' );
+
+	const handleActivate = () => {
+		focusFormConfirmationFromMessageBlock( clientId );
+	};
+
+	if ( useLegacyInnerPreview ) {
+		return (
+			<div
+				{ ...blockProps }
+				className={ `${ blockProps.className || '' } gutena-forms-notice-preview is-success is-readonly`.trim() }
+				onClick={ ( event ) => {
+					event.stopPropagation();
+					handleActivate();
+				} }
+				onKeyDown={ ( event ) => {
+					if ( 'Enter' === event.key || ' ' === event.key ) {
+						event.preventDefault();
+						event.stopPropagation();
+						handleActivate();
+					}
+				} }
+				role="button"
+				tabIndex={ 0 }
+				aria-label={ __(
+					'Show Form Confirmation settings in the sidebar',
+					'gutena-forms'
+				) }
+			>
+				<BlockPreview blocks={ innerBlocks } viewportWidth={ 800 } />
+			</div>
+		);
+	}
+
 	return (
-		<div { ...blockProps }>
-			<InnerBlocks
-				template={ CONFIRMATION_MESSAGE_GROUP }
-				allowedBlocks={ ALLOWED_BLOCKS }
-			/>
-		</div>
+		<FormNoticePreview
+			blockProps={ blockProps }
+			variant="success"
+			previewHtml={
+				settingsHtml ||
+				__( 'Configure the success message in Form Confirmation settings.', 'gutena-forms' )
+			}
+			onActivate={ handleActivate }
+		/>
 	);
 }

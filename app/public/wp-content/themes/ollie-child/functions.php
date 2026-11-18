@@ -4,7 +4,6 @@ add_action( 'wp_enqueue_scripts', 'ollie_child_enqueue_styles' );
 
 /**
  * Enqueue Ollie child theme styles and scripts.
- *
  * @return void
  */
 function ollie_child_enqueue_styles(): void {
@@ -52,6 +51,30 @@ add_action('init', function () {
 		'capability_type' => array('guest', 'guests'),
 		'supports' => array('title', 'editor', 'author'),
 	));
+
+    register_post_type('replacer', array(
+		'labels' => array(
+			'name' => 'Replacers',
+			'singular_name' => 'Replacer',
+		),
+		'public' => false,
+		'show_ui' => true,
+		'map_meta_cap' => true,
+		'capability_type' => array('replacer', 'replacers'),
+		'supports' => array('title', 'editor', 'author'),
+	));
+
+     register_post_type('absence_reason', array(
+		'labels' => array(
+			'name' => 'Absence reasons',
+			'singular_name' => 'Absence reason',
+		),
+		'public' => false,
+		'show_ui' => true,
+		'map_meta_cap' => true,
+		'capability_type' => array('absence_reason', 'absence_reasons'),
+		'supports' => array('title', 'editor', 'author'),
+	));
 });
 
 
@@ -70,6 +93,11 @@ add_action('init', function () {
 	$role->add_cap('delete_guests');
 	$role->add_cap('delete_published_guests');
 });
+
+// Gör så att användare som loggar ut skickas till startsidan.
+add_filter('logout_redirect', function ($redirect_to, $requested_redirect_to, $user) {
+	return home_url('/'); // start page
+}, 10, 3);
 
 
 // Change login logo link URL
@@ -104,114 +132,35 @@ add_action('init', function () {
 	}
 });
 
-add_shortcode('login_button_on_start', function () {
-	if ( !is_user_logged_in() ) {
-	    return '<div class="is-layout-flex" style="width: 100%">
-                    <div class="wp-block-button start-login-button">    
+add_shortcode('start_page', function () {
+    $out = '<div class="start-page-content">
+                <p>
+                   Välkommen till Fenix medlemsportal. De flesta sidorna är endast synliga för inloggade medlemmar. Kontakta Susanne Eneroth 
+                   för att få inloggningsuppgifter. Du kan inte registrera dig själv.
+                </p>';
+    
+    if (is_user_logged_in() ) {               
+        $out .= '<p>I medlemsportalen kan du redigera dina uppgifter under menyalternativet <a href="' . esc_url( site_url( '/andra-medlem/' ) ) . '"><strong>Din profil</strong></a>.</p>
+                 <p>Under <strong>Medlemmar-><a href="' . esc_url( site_url( '/alla-medlemmar/' ) ) . '">Alla medlemmar</a></strong> kan du se övriga medlemmars uppgifter.</p>
+                 <p>Du kan se vilka <a href="' . esc_url( site_url( '/events/' ) ) . '"><strong>events</strong></a> som är på gång och registrera eller avregistrera dig från event.</p>
+                 <p>Du kan även hantera <a href="' . esc_url( site_url( '/tfa/' ) ) . '"><strong>TFA (tack för affären)</strong></a> uppgifter.</p>
+            </div>';
+    }
 
+	if ( !is_user_logged_in() ) {
+	    $out .= '<div class="is-layout-flex" style="width: 100%">
+                    <div class="wp-block-button start-login-button">    
                         <a class="wp-block-button__link wp-element-button" href="' . esc_url( wp_login_url() ) . '?redirect_to=http%3A%2F%2Ffenix-portal.local%2F">
                             Logga in
                         </a>
                     </div>
                 </div>';
     }
-    else {
-        return '';
-    }
+
+    return $out;
 });
 
-/**
- * Handle Avanmalning (user cancellation) requests.
- * Accepts POST or GET with event_id and records the current user as cancelled for that event.
- * Accessible via admin-post.php?action=avanmalning
- */
-function avanmalning_handler() {
-    // verify nonce to avoid CSRF
-    if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), 'avanmalning_action' ) ) {
-        wp_safe_redirect( site_url( '/avanmalan/?status=nonce' ) );
-        exit;
-    }
 
-    // require logged in user
-    if ( ! is_user_logged_in() ) {
-        wp_safe_redirect( wp_login_url( site_url( '/avanmalan/' ) ) );
-        exit;
-    }
-
-    $event_id = 0;
-    if ( isset( $_REQUEST['event_id'] ) ) {
-        $event_id = intval( wp_unslash( $_REQUEST['event_id'] ) );
-    }
-
-    if ( $event_id <= 0 ) {
-        wp_safe_redirect( site_url( '/avanmalan/' ) );
-        exit;
-    }
-
-    $user_id = get_current_user_id();
-
-    // ensure post exists and is an event
-    $post = get_post( $event_id );
-    if ( ! $post || $post->post_type !== 'event' ) {
-        wp_safe_redirect( site_url( '/avanmalan/?status=invalid' ) );
-        exit;
-    }
-
-    // store cancellations as an array of user IDs in post meta 'event_cancellations'
-    $cancellations = get_post_meta( $event_id, 'event_cancellations', true );
-    if ( ! is_array( $cancellations ) ) {
-        $cancellations = array();
-    }
-
-    if ( ! in_array( $user_id, $cancellations, true ) ) {
-        $cancellations[] = $user_id;
-        update_post_meta( $event_id, 'event_cancellations', $cancellations );
-    }
-
-    // optionally also record on user meta for quick lookup
-    $user_cancelled = get_user_meta( $user_id, 'cancelled_events', true );
-    if ( ! is_array( $user_cancelled ) ) {
-        $user_cancelled = array();
-    }
-    if ( ! in_array( $event_id, $user_cancelled, true ) ) {
-        $user_cancelled[] = $event_id;
-        update_user_meta( $user_id, 'cancelled_events', $user_cancelled );
-    }
-
-    // set a short-lived transient to indicate success for this user+event (one-time display)
-    if ( $user_id && $event_id ) {
-        set_transient( 'events_success_avan_' . intval( $user_id ) . '_' . intval( $event_id ), 1, 30 );
-    }
-
-    // Redirect back to referring page (clean URL). Transient contains one-time success flag.
-    $redirect = wp_get_referer();
-    if ( ! $redirect ) {
-        $redirect = site_url( '/avanmalan/' );
-    }
-    // remove any success/query parameters that may have been present in the referrer
-    $parts = wp_parse_url( $redirect );
-    $clean_url = $redirect;
-    if ( ! empty( $parts['query'] ) ) {
-        wp_parse_str( $parts['query'], $q );
-        // keys to remove
-        $remove_keys = array( 'avanmald', 'foranmald', 'event_id', 'delete_event', '_ev_nonce', '_wpnonce' );
-        foreach ( $remove_keys as $k ) {
-            if ( isset( $q[ $k ] ) ) {
-                unset( $q[ $k ] );
-            }
-        }
-        $clean_query = ! empty( $q ) ? '?' . build_query( $q ) : '';
-        $clean_url = $parts['scheme'] . '://' . $parts['host'] . ( ! empty( $parts['path'] ) ? $parts['path'] : '' ) . $clean_query;
-        if ( ! empty( $parts['port'] ) ) {
-            $clean_url = $parts['scheme'] . '://' . $parts['host'] . ':' . $parts['port'] . ( ! empty( $parts['path'] ) ? $parts['path'] : '' ) . $clean_query;
-        }
-    }
-    wp_safe_redirect( $clean_url );
-
-    exit;
-}
-add_action( 'admin_post_avanmalning', 'avanmalning_handler' );
-add_action( 'admin_post_nopriv_avanmalning', 'avanmalning_handler' );
 
 /**
  * Handle Foranmalning (user registration) requests.
@@ -290,6 +239,13 @@ function foranmalning_handler() {
 add_action( 'admin_post_foranmalning', 'foranmalning_handler' );
 add_action( 'admin_post_nopriv_foranmalning', 'foranmalning_handler' );
 
+
+/**
+ *  Det finns ingen avanmalning_handler. Avanmälan hanteras på en egen sida, url '/avanmalan/'.
+*/
+
+
+
 /**
  * Show Company field on user profile and edit screens (editable) and save it to user meta.
  */
@@ -342,45 +298,7 @@ function ollie_save_user_company_profile( $user_id ) {
 add_action( 'personal_options_update', 'ollie_save_user_company_profile' );
 add_action( 'edit_user_profile_update', 'ollie_save_user_company_profile' );
 
-/**
- * Remove or hide User Registration "User Extra Information" company field to avoid duplication.
- * Filters the profile meta fields shown by the User Registration plugin and removes any field
- * whose label or field_key looks like a company/företag field.
- */
-/** 
-add_filter( 'user_registration_profile_meta_fields', 'ollie_filter_ur_profile_meta_fields', 10, 1 );
-function ollie_filter_ur_profile_meta_fields( $fields ) {
-    if ( empty( $fields ) || ! is_array( $fields ) ) {
-        return $fields;
-    }
 
-    foreach ( $fields as $group_key => $group ) {
-        if ( empty( $group['fields'] ) || ! is_array( $group['fields'] ) ) {
-            continue;
-        }
-
-        foreach ( $group['fields'] as $key => $field ) {
-            $label = isset( $field['label'] ) ? $field['label'] : '';
-            $field_key = isset( $field['field_key'] ) ? $field['field_key'] : $key;
-
-            // Candidate identifiers for company field
-            $company_identifiers = array( 'billing_company', 'business_name', 'company', 'company_name', 'företag', 'foretag' );
-
-            if ( $label && ( stripos( $label, 'företag' ) !== false || stripos( $label, 'foretag' ) !== false ) ) {
-                unset( $fields[ $group_key ]['fields'][ $key ] );
-                continue;
-            }
-
-            if ( in_array( strtolower( $field_key ), $company_identifiers, true ) ) {
-                unset( $fields[ $group_key ]['fields'][ $key ] );
-                continue;
-            }
-        }
-    }
-
-    return $fields;
-}
-*/
 
 
 // Registrera Custom Post Type - Medlemmar
@@ -727,101 +645,6 @@ function shortcode_all_members( $atts )
 }
 
 add_shortcode( 'all_members', 'shortcode_all_members' );
-
-
-   
-/**
- * Shows list of members for a given event who are either cancelled (avanmälda)
- * or registered (föranmälda) depending on querystring parameters.
- * Expected querystring: ?event_id=123&status=cancelled  OR  ?event_id=123&status=registered
- * Swedish synonyms are accepted for status: 'avan', 'foran', 'avanmalda', 'foranmalda', etc.
- */
-function shortcode_anmalningar( $atts ) {
-    // Only allow administrators to view the signups list
-    if ( ! current_user_can( 'manage_options' ) ) {
-        return '<div style="color: green;"><strong>Du måste vara administratör för att se anmälningar.</strong></div>';
-    }
-
-    $event_id = isset( $_GET['event_id'] ) ? intval( wp_unslash( $_GET['event_id'] ) ) : 0;
-    $status_raw = isset( $_GET['status'] ) ? sanitize_text_field( wp_unslash( $_GET['status'] ) ) : '';
-    $status = strtolower( trim( $status_raw ) );
-
-    // normalize Swedish/English synonyms
-    $cancel_values = array( 'cancelled', 'cancel', 'avan', 'avanmalda', 'avanmald', 'avanmälda', 'avanmäld' );
-    $reg_values = array( 'registered', 'reg', 'foran', 'foranmalda', 'foranmald', 'föranmälda', 'föranmäld' );
-
-    if ( in_array( $status, $cancel_values, true ) ) {
-        $which = 'cancelled';
-    } 
-    else if ( in_array( $status, $reg_values, true ) ) {
-        $which = 'registered';
-    } 
-    else {
-        return '<div>Ogiltigt statusvärde. Ange status=cancelled eller status=registered i querystring.</div>';
-    }
-
-    if ( $event_id <= 0 ) {
-        return '<div>Event-id saknas eller ogiltigt. Ange event_id i querystring.</div>';
-    }
-
-    $post = get_post( $event_id );
-    if ( ! $post || $post->post_type !== 'event' ) {
-        return '<div>Eventet hittades inte.</div>';
-    }
-
-    if ( $which === 'cancelled' ) {
-        $user_ids = get_post_meta( $event_id, 'event_cancellations', true );
-        $heading = 'Avanmälningar';
-    } else {
-        $user_ids = get_post_meta( $event_id, 'event_registrations', true );
-        $heading = 'Föranmälningar';
-    }
-
-    if ( ! is_array( $user_ids ) ) {
-        $user_ids = array();
-    }
-    $date = get_post_meta( $event_id, 'event_date', true );
-
-    $out = '<div class="anmalningar-list">';
-    $out .= '<h4 style="margin-bottom: 40px;">' . esc_html( $heading ) . ' för "' . esc_html( get_the_title( $event_id ) ) . '" ' . esc_html( $date ) . '</h4>';
-
-    if ( empty( $user_ids ) ) {
-        $out .= '<div>Inga medlemmar hittades.</div>';
-        $out .= '</div>';
-        return $out;
-    }
-
-    $out .= '<div class="anmalningar-members">';
-    foreach ( $user_ids as $uid ) {
-        $u = get_userdata( intval( $uid ) );
-        if ( ! $u ) continue;
-
-        // avatar / profile picture if available
-        $profilePhoto = '';
-        $att_id = get_user_meta( $u->ID, 'profile_picture', true );
-        if ( $att_id ) {
-            $profilePhoto = wp_get_attachment_image( $att_id, array( 64, 64 ), false, array( 'class' => 'avatar' ) );
-        } else {
-            $profilePhoto = get_avatar( $u->ID, 64 );
-        }
-
-    
-        $out .= '<div class="member-wrap">';
-        $out .= '<div class="member-photo">' . $profilePhoto . '</div>';
-        $out .= '<div class="member-info">';
-        $out .= '<div class="member-name">' . esc_html( $u->display_name ) . '</div>';                
-        $out .= '<div class="member-email">' . esc_html( $u->user_email ) . '</div>';
-        $out .= '<div class="member-company">' . esc_html( get_user_meta( $u->ID, 'company', true ) ) . '</div>';
-        $out .= '</div>'; // member-info
-        $out .= '</div>'; // member-wrap
-    }
-    $out .= '</div>'; // anmalningar-members
-    $out .= '</div>'; // anmalningar-list
-
-    return $out;
-}
-add_shortcode( 'anmalningar_list', 'shortcode_anmalningar' );
-
     
 
 // Save company/business custom field from User Registration forms to user meta
@@ -1126,4 +949,14 @@ if ( file_exists( get_stylesheet_directory() . '/tfa-shortcodes.php' ) ) {
 // Load register-guest-shortcode implementation if present
 if ( file_exists( get_stylesheet_directory() . '/register-guest-shortcode.php' ) ) {
     require_once get_stylesheet_directory() . '/register-guest-shortcode.php';
+}
+
+// Load applications-shortcode implementation if present
+if ( file_exists( get_stylesheet_directory() . '/applications-shortcode.php' ) ) {
+    require_once get_stylesheet_directory() . '/applications-shortcode.php';
+}
+
+// Load avanmalan-shortcode implementation if present
+if ( file_exists( get_stylesheet_directory() . '/avanmalan_shortcode.php' ) ) {
+    require_once get_stylesheet_directory() . '/avanmalan_shortcode.php';
 }

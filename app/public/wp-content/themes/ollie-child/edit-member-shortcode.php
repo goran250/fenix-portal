@@ -85,7 +85,8 @@ function shortcode_Edit_member( $atts ) {
 			$email      = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
 			$linkedin   = isset( $_POST['linkedin'] ) ? esc_url_raw( wp_unslash( $_POST['linkedin'] ) ) : '';
 			$website    = isset( $_POST['website'] ) ? esc_url_raw( wp_unslash( $_POST['website'] ) ) : '';
-			$isGoodAt = isset( $_POST['isGoodAt'] ) ? wp_kses_post( wp_unslash( $_POST['isGoodAt'] ) ) : '';
+			$isGoodAt   = isset( $_POST['isGoodAt'] ) ? wp_kses_post( wp_unslash( $_POST['isGoodAt'] ) ) : '';
+			$specific_search = isset( $_POST['specific_search'] ) ? wp_kses_post( wp_unslash( $_POST['specific_search'] ) ) : '';
 			$biography  = isset( $_POST['biography'] ) ? wp_kses_post( wp_unslash( $_POST['biography'] ) ) : '';
 			$password   = isset( $_POST['password'] ) ? $_POST['password'] : '';
 			$password_confirm = isset( $_POST['password_confirm'] ) ? $_POST['password_confirm'] : '';
@@ -178,6 +179,13 @@ function shortcode_Edit_member( $atts ) {
 					} 
 					else {
 						delete_user_meta( $target_user_id, 'isGoodAt' );
+					}
+
+					if ( $specific_search !== '' ) {
+						update_user_meta( $target_user_id, 'specific_search', $specific_search );
+					} 
+					else {
+						delete_user_meta( $target_user_id, 'specific_search' );
 					}
 
 					if ( $biography !== '' ) {
@@ -325,12 +333,13 @@ function shortcode_Edit_member( $atts ) {
 		'linkedin'   => get_user_meta( $target_user_id, 'linkedin', true ),
 		'website'    => $user->user_url,
 		'isGoodAt'   => get_user_meta( $target_user_id, 'isGoodAt', true ),
+		'specific_search' => get_user_meta( $target_user_id, 'specific_search', true ),
 		'biography'  => get_user_meta( $target_user_id, 'description', true ),
 		'role'       => implode( ',', (array) $user->roles ),
 	);
 
 	// If POST values exist (on error) override
-	$fields = array( 'first_name','last_name','company','phone','email', 'linkedin', 'website','isGoodAt','biography','role' );
+	$fields = array( 'first_name','last_name','company','phone','email', 'linkedin', 'website','isGoodAt', 'specific_search', 'biography','role' );
 	foreach ( $fields as $f ) {
 		if ( isset( $_POST[ $f ] ) ) {
 			$vals[ $f ] = esc_attr( wp_unslash( $_POST[ $f ] ) );
@@ -389,12 +398,15 @@ function shortcode_Edit_member( $atts ) {
 	
 	if ( get_current_user_id() == $target_user_id ) {
 		$out .= '<tr><th><label>Något du är bra på?</label></th></tr>
-		         <tr><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
+		         <tr><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . esc_attr($vals['isGoodAt']) . '</textarea></td></tr>';
 	} 
 	else {
 		$out .= '<tr><th><label>Något medlemmen är bra på?</label></th></tr>
-		         <tr><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . $vals['isGoodAt'] . '</textarea></td></tr>';
+		         <tr><td><textarea name="isGoodAt" maxlength="80" class="isGoodAt">' . esc_attr($vals['isGoodAt']) . '</textarea></td></tr>';
 	}
+
+	$out .= '<tr><th><label>Specifik sökning:</label></th></tr>
+	         <tr><td><input name="specific_search" value="' . esc_attr( $vals['specific_search'] ) . '" /></td></tr>';
 	
 	$out .= '<tr><th><label>Biografi:</label></th></tr>
 	         <tr><td><textarea name="biography" class="biography">' . esc_textarea( $vals['biography'] ) . '</textarea></td></tr>';

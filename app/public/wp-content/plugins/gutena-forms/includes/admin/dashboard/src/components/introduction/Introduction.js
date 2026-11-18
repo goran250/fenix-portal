@@ -172,7 +172,7 @@ const Introduction = ( props ) => {
             {/* CTA Section */}
             <div className="gf-cta-section">
                 <a
-                    href="https://gutenaforms.com/docs/"
+                    href="https://gutenaforms.com/docs?utm_source=plugin&utm_medium=in-plugin&utm_campaign=docs&utm_content=dashboard_read-guide"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="gf-read-guide-link"
@@ -208,7 +208,7 @@ const Introduction = ( props ) => {
                         ))}
                     </div>
                     <a
-                        href="https://gutenaforms.com/#features"
+                        href="https://gutenaforms.com?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=dashboard_see-all-features#features"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="gf-see-all-features"
@@ -239,7 +239,7 @@ const Introduction = ( props ) => {
                         <div className="gf-pro-price">$59.99</div>
                         <div className="gf-pro-period">Per Year</div>
                         <a
-                            href={gutenaFormsAdmin.gutenaFormsDashboard?.pricing_link || 'https://gutenaforms.com/pricing/?utm_source=plugin_dashboard&utm_medium=website&utm_campaign=free_plugin'}
+                            href={gutenaFormsAdmin.gutenaFormsDashboard?.pricing_link || 'https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=dashboard_introduction-upgrade'}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="gf-upgrade-button"

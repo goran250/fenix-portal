@@ -30,6 +30,21 @@
     fill: transparent;
   }
 
+  // WordPress CheckboxControl uses filled SVG checkmarks; restore after global svg reset.
+  svg.components-checkbox-control__checked,
+  svg.components-checkbox-control__indeterminate {
+    fill: #fff;
+  }
+
+  .components-checkbox-control:has(:disabled) svg.components-checkbox-control__checked,
+  .components-checkbox-control:has(:disabled) svg.components-checkbox-control__indeterminate {
+    fill: #8d8d8d;
+  }
+
+  .gutena-forms-notification-field-warning-box__icon svg path {
+    fill: #f79808;
+  }
+
   .gutena-forms__forms-screen,
   .gutena-forms__entries {
     .gutena-forms__page-title {
@@ -133,6 +148,22 @@
       display: flex;
       align-items: center;
       gap: 10px;
+
+      .gutena-forms__version-badge {
+        align-items: center;
+        background: #f0f0f1;
+        border: 1px solid #dedede;
+        border-radius: 3px;
+        color: #424d55;
+        display: inline-flex;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        padding: 4px 6px;
+        text-transform: lowercase;
+        white-space: nowrap;
+      }
 
       // Burger toggle button. Hidden on desktop, shown on small screens
       // via responsive-styles.scss.
@@ -320,8 +351,12 @@
           }
         }
 
-        .gutena-forms__field-container {
-          margin-bottom: 20px;
+        &.gutena-forms__global-settings-fields:not(.gutena-forms__email-notifications-settings):not(.gutena-forms__form-confirmation-settings) {
+          .gutena-forms__settings-meta-box {
+            > .gutena-forms__settings-field-row:not(:last-child) {
+              margin-bottom: 16px;
+            }
+          }
         }
       }
 
@@ -381,8 +416,9 @@
 
           .components-base-control__label {
             color: #000;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
+            line-height: normal;
             text-transform: none;
           }
 
@@ -390,6 +426,7 @@
             color: #424D55;
             font-size: 12px;
             font-weight: 400;
+            line-height: normal;
             margin-top: 4px;
 
             a {
@@ -853,6 +890,11 @@
         min-width: 180px;
         margin-right: 10px;
 
+        &:focus-within {
+          border-color: #0da88c;
+          box-shadow: 0 0 0 1px #0da88c;
+        }
+
         input {
           border: none;
           outline: none;
@@ -876,7 +918,9 @@
           }
 
           &:focus {
+            border: none;
             box-shadow: none;
+            outline: none;
           }
         }
 
@@ -956,6 +1000,16 @@
     right: 0;
     z-index: 9999;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .rdrDateDisplayItem:focus-within {
+      border-color: #0da88c;
+      box-shadow: 0 0 0 1px #0da88c;
+    }
+
+    .rdrDateDisplayItem input:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
   }
 
   .gutena-forms__bulk-action-container {

@@ -48,7 +48,7 @@ if ( ! gutenaFormsBlock.is_pro ) {
 					el.parentNode.style.display = 'block';
 					el.innerHTML = `${ 'Gutena Forms Premium Fields' }
 						<br />
-						<a target="_blank" href="https://gutenaforms.com/pricing/?utm_source=editor&utm_medium=website&utm_campaign=free_plugin" style="background-color: #2ab399;color: #fff;padding: 10px;font-size: 12px;border: none;border-radius: 4px;cursor: pointer;transition: background-color .3s;margin-top: 16px;max-width: 280px;width: 100%;font-weight: 600;display: block;text-decoration: none;text-align: center;">
+						<a target="_blank" href="https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=editor_pro-fields-upgrade" style="background-color: #2ab399;color: #fff;padding: 10px;font-size: 12px;border: none;border-radius: 4px;cursor: pointer;transition: background-color .3s;margin-top: 16px;max-width: 280px;width: 100%;font-weight: 600;display: block;text-decoration: none;text-align: center;">
 							Upgrade to Unlock these fields
 						</a>`
 				}

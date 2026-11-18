@@ -1,0 +1,2141 @@
+# Translation of Themes - Ollie in Swedish
+# This file is distributed under the same license as the Themes - Ollie package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-02-27 20:06:50+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.1.0\n"
+"Language: sv_SE\n"
+"Project-Id-Version: Themes - Ollie\n"
+
+#. Description of the theme
+#: style.css
+#, gp-priority: high
+msgid "Launch a blazing-fast, pixel-perfect website with the Ollie WordPress block theme! Ollie features over 50 beautiful pattern designs, 7 full-page pattern layouts, and a fully-customizable design system with Global Styles. Ollie integrates seamlessly with all of the powerful new WordPress editor features, giving you the most lightweight and powerful website builder on the planet — no expensive page builder plugin required! ✶ Full demo: https://demo.olliewp.com ✶"
+msgstr "Skapa en blixtsnabb, pixelperfekt webbplats med blocktemat Ollie! Ollie har över 50 vackra mönsterdesigner, 7 mönsterlayouter för helsidor och ett anpassningsbart designsystem med globala stilar. Ollie integrerar sömlöst med alla WordPress nya kraftfulla redigeringsfunktioner, vilket ger dig den enklaste och mest kraftfulla webbplatsbyggaren på planeten - inget dyrt plugin för att bygga sidor krävs! ✶ Komplett demo: https://demo.olliewp.com ✶"
+
+#. Theme Name of the theme
+#: style.css patterns/footer-dark-centered.php:36
+#: patterns/footer-dark-minimal.php:20 patterns/footer-dark.php:121
+#: patterns/footer-light-centered.php:36 patterns/footer-light-minimal.php:20
+#: patterns/footer-light.php:118
+#, gp-priority: high
+msgid "Ollie"
+msgstr "Ollie"
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "2XL"
+msgstr "2XL"
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Large"
+msgstr "Stor"
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Medium"
+msgstr "Medium"
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Small"
+msgstr "Liten"
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "XS"
+msgstr "XS"
+
+#: patterns/woo-product-card-2.php
+msgctxt "Pattern title"
+msgid "Product Card 2"
+msgstr "Produktkort 2"
+
+#: patterns/woo-product-card.php
+msgctxt "Pattern title"
+msgid "Product Card 1"
+msgstr "Produktkort 1"
+
+#: patterns/woo-product-card-5.php
+msgctxt "Pattern title"
+msgid "Product Card 5"
+msgstr "Produktkort 5"
+
+#: patterns/woo-product-card-4.php
+msgctxt "Pattern title"
+msgid "Product Card 4"
+msgstr "Produktkort 4"
+
+#: patterns/woo-product-card-3.php
+msgctxt "Pattern title"
+msgid "Product Card 3"
+msgstr "Produktkort 3"
+
+#: patterns/woo-product-archive.php
+msgctxt "Pattern title"
+msgid "Product Archive"
+msgstr "Produktarkiv"
+
+#: patterns/menu-panel-6.php:89
+msgid "Digital Strategy"
+msgstr "Digital strategi"
+
+#: patterns/menu-panel-6.php:36
+msgid "View All Services"
+msgstr "Visa alla tjänster"
+
+#: patterns/menu-panel-6.php
+msgctxt "Pattern title"
+msgid "Menu Panel 6"
+msgstr "Menypanel 6"
+
+#: patterns/menu-panel-5.php:218
+msgid "Category Nine"
+msgstr "Kategori 9"
+
+#: patterns/menu-panel-5.php:78
+msgid "Category Two"
+msgstr "Kategori två"
+
+#: patterns/menu-panel-5.php:198
+msgid "Category Eight"
+msgstr "Kategori åtta"
+
+#: patterns/menu-panel-5.php:178
+msgid "Category Seven"
+msgstr "Kategori sju"
+
+#: patterns/menu-panel-5.php:158
+msgid "Category Six"
+msgstr "Kategori sex"
+
+#: patterns/menu-panel-5.php:138
+msgid "Category Five"
+msgstr "Kategori fem"
+
+#: patterns/menu-panel-5.php:118
+msgid "Category Four"
+msgstr "Kategori fyra"
+
+#: patterns/menu-panel-5.php:98
+msgid "Category Three"
+msgstr "Kategori tre"
+
+#: patterns/menu-panel-5.php:58
+msgid "Category One"
+msgstr "Kategori ett"
+
+#: patterns/menu-panel-5.php:36
+msgid "View All Products"
+msgstr "Visa alla produkter"
+
+#: patterns/menu-panel-5.php
+msgctxt "Pattern title"
+msgid "Menu Panel 5"
+msgstr "Menypanel 5"
+
+#: patterns/footer-dark.php:132 patterns/footer-light.php:129
+msgid "Visit YouTube"
+msgstr "Besök YouTube"
+
+#: patterns/menu-panel-3.php:76
+msgid "Community"
+msgstr "Community"
+
+#: patterns/menu-panel-3.php:73
+msgid "Dashboard"
+msgstr "Adminpanel"
+
+#: patterns/menu-panel-3.php:67
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: patterns/menu-panel-3.php:50 patterns/menu-panel-3.php:89
+msgid "Browse All"
+msgstr "Bläddra bland alla"
+
+#: patterns/menu-panel-3.php:37
+msgid "Integrations"
+msgstr "Integrationer"
+
+#: patterns/menu-panel-3.php:34
+msgid "Team"
+msgstr "Team"
+
+#: patterns/menu-panel-3.php:31
+msgid "Templates"
+msgstr "Mallar"
+
+#: patterns/menu-panel-3.php:28
+msgid "Projects"
+msgstr "Projekt"
+
+#: patterns/menu-panel-1.php:173
+msgid "→"
+msgstr "→"
+
+#: patterns/menu-panel-1.php:167 patterns/menu-panel-3.php:100
+msgid "Success Stories"
+msgstr "Framgångsberättelser"
+
+#: patterns/menu-panel-1.php:140 patterns/menu-panel-2.php:122
+msgid "24/7 Support"
+msgstr "Support dygnet runt"
+
+#: patterns/menu-panel-1.php:123 patterns/menu-panel-2.php:105
+msgid "99.9% Uptime"
+msgstr "99,9&nbsp;% drifttid"
+
+#: patterns/menu-panel-1.php:78 patterns/menu-panel-2.php:67
+msgid "Connect with existing tools"
+msgstr "Anslut med befintliga verktyg"
+
+#: patterns/menu-panel-1.php:75 patterns/menu-panel-2.php:64
+msgid "API Integration"
+msgstr "API-integration"
+
+#: patterns/menu-panel-1.php:28 patterns/menu-panel-2.php:20
+msgid "Platform Features"
+msgstr "Plattformsfunktioner"
+
+#: patterns/menu-mobile-6.php:31
+msgid "Gallery"
+msgstr "Galleri"
+
+#: patterns/menu-mobile-6.php:28
+msgid "Automations"
+msgstr "Automatiseringar"
+
+#: patterns/menu-mobile-6.php:25
+msgid "Components"
+msgstr "Komponenter"
+
+#: patterns/menu-mobile-6.php:22
+msgid "Builder"
+msgstr "Byggare"
+
+#: patterns/menu-mobile-5.php:82 patterns/menu-mobile-6.php:84
+msgid "Developers"
+msgstr "Utvecklare"
+
+#: patterns/menu-mobile-5.php:79 patterns/menu-mobile-6.php:81
+msgid "Press"
+msgstr "Press"
+
+#: patterns/menu-mobile-5.php:76 patterns/menu-mobile-6.php:78
+#: patterns/menu-panel-3.php:43
+msgid "FAQs"
+msgstr "Vanliga frågor"
+
+#: patterns/menu-mobile-5.php:73 patterns/menu-mobile-6.php:75
+msgid "Docs"
+msgstr "Dokument"
+
+#: patterns/menu-mobile-5.php:59 patterns/menu-mobile-6.php:61
+msgid "Customers"
+msgstr "Kunder"
+
+#: patterns/menu-mobile-5.php:31 patterns/menu-panel-3.php:82
+msgid "Marketplace"
+msgstr "Marknadsplats"
+
+#: patterns/menu-mobile-5.php:25
+msgid "Workflows"
+msgstr "Arbetsflöden"
+
+#: patterns/menu-mobile-5.php:22
+msgid "Collections"
+msgstr "Samlingar"
+
+#: patterns/menu-mobile-5.php:19
+msgid "Library"
+msgstr "Bibliotek"
+
+#: patterns/menu-mobile-5.php
+msgctxt "Pattern title"
+msgid "Mobile Menu 5"
+msgstr "Mobilmeny 5"
+
+#: patterns/menu-mobile-4.php:67
+msgid "support@example.com"
+msgstr "support@example.com"
+
+#: patterns/menu-mobile-4.php:64
+msgid "hello@example.com"
+msgstr "hello@example.com"
+
+#: patterns/menu-mobile-4.php
+msgctxt "Pattern title"
+msgid "Mobile Menu 4"
+msgstr "Mobilmeny 4"
+
+#: patterns/menu-mobile-3.php
+msgctxt "Pattern title"
+msgid "Mobile Menu 3"
+msgstr "Mobilmeny 3"
+
+#: patterns/menu-mobile-2.php:26 patterns/menu-mobile-3.php:26
+msgid "Margo Middleton"
+msgstr "Margo Middleton"
+
+#: patterns/menu-mobile-2.php
+msgctxt "Pattern title"
+msgid "Mobile Menu 2"
+msgstr "Mobilmeny 2"
+
+#: patterns/menu-mobile-1.php:95 patterns/menu-mobile-2.php:66
+#: patterns/menu-mobile-3.php:85
+msgid "Learn more"
+msgstr "Lär dig mer"
+
+#: patterns/menu-mobile-1.php:90 patterns/menu-mobile-2.php:61
+msgid "Get started today!"
+msgstr "Kom igång idag!"
+
+#: patterns/menu-mobile-1.php:76
+msgid "Beautiful Content"
+msgstr "Vackert innehåll"
+
+#: patterns/menu-mobile-1.php:73 patterns/menu-mobile-2.php:47
+#: patterns/menu-mobile-3.php:67 patterns/menu-mobile-4.php:45
+msgid "Publish Faster"
+msgstr "Publicera snabbare"
+
+#: patterns/menu-mobile-1.php:65
+msgid "Publish"
+msgstr "Publicera"
+
+#: patterns/menu-mobile-1.php:56 patterns/menu-mobile-2.php:44
+#: patterns/menu-mobile-3.php:61 patterns/menu-mobile-4.php:42
+msgid "Developer Friendly"
+msgstr "Utvecklarvänlig"
+
+#: patterns/menu-mobile-1.php:50 patterns/menu-mobile-2.php:38
+#: patterns/menu-mobile-3.php:49 patterns/menu-mobile-4.php:36
+msgid "Built for the Future"
+msgstr "Byggt för framtiden"
+
+#: patterns/menu-mobile-1.php:42
+msgid "Build"
+msgstr "Bygg"
+
+#: patterns/menu-mobile-1.php:30
+msgid "Beautiful Templates"
+msgstr "Vackra mallar"
+
+#: patterns/menu-mobile-1.php:19
+msgid "Design"
+msgstr "Design"
+
+#: patterns/menu-mobile-1.php
+msgctxt "Pattern title"
+msgid "Mobile Menu 1"
+msgstr "Mobilmeny 1"
+
+#: patterns/menu-card-3.php:41 patterns/menu-panel-6.php:73
+msgid "Web Design"
+msgstr "Webbdesign"
+
+#: patterns/menu-card-1.php:21 patterns/menu-card-1.php:38
+#: patterns/menu-card-1.php:55 patterns/menu-card-2.php:33
+#: patterns/menu-card-2.php:61 patterns/menu-card-3.php:29
+#: patterns/menu-card-3.php:49 patterns/menu-card-3.php:69
+#: patterns/menu-panel-1.php:36 patterns/menu-panel-1.php:53
+#: patterns/menu-panel-1.php:70 patterns/menu-panel-1.php:101
+#: patterns/menu-panel-1.php:118 patterns/menu-panel-1.php:135
+#: patterns/menu-panel-2.php:25 patterns/menu-panel-2.php:42
+#: patterns/menu-panel-2.php:59 patterns/menu-panel-2.php:83
+#: patterns/menu-panel-2.php:100 patterns/menu-panel-2.php:117
+msgid "›"
+msgstr "›"
+
+#: functions.php:159
+msgid "Menu"
+msgstr "Meny"
+
+#: patterns/menu-panel-1.php:194 patterns/menu-panel-2.php:143
+#: patterns/menu-panel-3.php:113
+msgid "Start Free Trial"
+msgstr "Starta gratis provperiod"
+
+#: patterns/menu-panel-1.php:143 patterns/menu-panel-2.php:125
+msgid "Expert help when you need it"
+msgstr "Experthjälp när du behöver det"
+
+#: patterns/menu-panel-1.php:106 patterns/menu-panel-2.php:88
+msgid "Advanced Security"
+msgstr "Avancerad säkerhet"
+
+#: patterns/menu-panel-1.php
+msgctxt "Pattern title"
+msgid "Menu Panel 1"
+msgstr "Menypanel 1"
+
+#: patterns/menu-mobile-6.php
+msgctxt "Pattern title"
+msgid "Mobile Menu 6"
+msgstr "Mobilmeny 6"
+
+#: patterns/menu-panel-3.php:59
+msgid "Learn Our Product"
+msgstr "Lär dig våra produkter"
+
+#: patterns/menu-panel-3.php
+msgctxt "Pattern title"
+msgid "Menu Panel 3"
+msgstr "Menypanel 3"
+
+#: patterns/menu-panel-2.php
+msgctxt "Pattern title"
+msgid "Menu Panel 2"
+msgstr "Menypanel 2"
+
+#: patterns/menu-panel-1.php:173
+msgid "View Case Studies"
+msgstr "Visa fallstudier"
+
+#: patterns/menu-mobile-6.php:18
+msgid "Search our site"
+msgstr "Sök på vår webbplats"
+
+#: patterns/menu-card-4.php
+msgctxt "Pattern title"
+msgid "Menu Card 4"
+msgstr "Menykort 4"
+
+#: patterns/menu-card-3.php:61
+msgid "Digital Marketing"
+msgstr "Digital marknadsföring"
+
+#: patterns/menu-card-3.php
+msgctxt "Pattern title"
+msgid "Menu Card 3"
+msgstr "Menykort 3"
+
+#: patterns/menu-card-2.php:19
+msgid "How we can help"
+msgstr "Hur vi kan hjälpa"
+
+#: patterns/menu-card-2.php
+msgctxt "Pattern title"
+msgid "Menu Card 2"
+msgstr "Menykort 2"
+
+#: patterns/menu-card-1.php
+msgctxt "Pattern title"
+msgid "Menu Card 1"
+msgstr "Menykort 1"
+
+#: patterns/menu-panel-4.php
+msgctxt "Pattern title"
+msgid "Menu Panel 4"
+msgstr "Menypanel 4"
+
+#: styles/typography/typography-preset-9.json
+msgctxt "Style variation name"
+msgid "Preset 9"
+msgstr "Förinställning 9"
+
+#: styles/typography/typography-preset-8.json
+msgctxt "Style variation name"
+msgid "Preset 8"
+msgstr "Förinställning 8"
+
+#: styles/typography/typography-preset-6.json
+msgctxt "Font family name"
+msgid "Fraunces"
+msgstr "Fraunces"
+
+#: styles/typography/typography-preset-5.json
+#: styles/typography/typography-preset-7.json
+msgctxt "Font family name"
+msgid "Source Serif 4"
+msgstr "Source Serif 4"
+
+#: styles/typography/typography-preset-5.json
+msgctxt "Font family name"
+msgid "Montagu Slab"
+msgstr "Montagu Slab"
+
+#: styles/typography/typography-preset-4.json
+msgctxt "Font family name"
+msgid "Space Grotesk"
+msgstr "Space Grotesk"
+
+#: styles/typography/typography-preset-3.json
+msgctxt "Font family name"
+msgid "Big Shoulders"
+msgstr "Big Shoulders"
+
+#: styles/typography/typography-preset-2.json
+msgctxt "Font family name"
+msgid "DM Sans"
+msgstr "DM Sans"
+
+#: patterns/numbers.php:23 patterns/numbers.php:36 patterns/numbers.php:49
+msgid "100%"
+msgstr "100&nbsp;%"
+
+#: patterns/image-and-numbered-features.php:78
+msgid "3"
+msgstr "3"
+
+#: patterns/image-and-numbered-features.php:57
+msgid "2"
+msgstr "2"
+
+#: patterns/image-and-numbered-features.php:36
+msgid "1"
+msgstr "1"
+
+#: patterns/features-with-emojis.php:60
+msgid "🤣"
+msgstr "🤣"
+
+#: patterns/features-with-emojis.php:47
+msgid "🤓"
+msgstr "🤓"
+
+#: patterns/features-with-emojis.php:34
+msgid "😎"
+msgstr "😎"
+
+#: patterns/features-with-emojis.php:21
+msgid "😍"
+msgstr "😍"
+
+#: patterns/card-text-and-details.php:131
+msgid "50+"
+msgstr "50+"
+
+#: patterns/card-lead-magnet.php:22 patterns/hero-text-image-and-logos.php:41
+#: patterns/image-and-numbered-features.php:22
+#: patterns/text-and-image-columns-with-icons.php:81
+#: patterns/text-and-image-columns-with-testimonial.php:22
+msgid "Write title…"
+msgstr "Skriv rubrik …"
+
+#: patterns/card-details.php:74
+msgid "30+"
+msgstr "30+"
+
+#: patterns/card-details.php:44 patterns/card-text-and-details.php:101
+msgid "1.1.0"
+msgstr "1.1.0"
+
+#: patterns/card-contact.php:68 patterns/contact-details.php:115
+msgid "San Francisco, CA 94070"
+msgstr "San Francisco, CA 94070"
+
+#: patterns/feature-boxes-with-button.php:36
+#: patterns/feature-boxes-with-button.php:60
+#: patterns/feature-boxes-with-button.php:84
+#: patterns/feature-boxes-with-button.php:108
+#: patterns/feature-boxes-with-button.php:132
+#: patterns/feature-boxes-with-button.php:156
+#: patterns/feature-boxes-with-icon-dark.php:36
+#: patterns/feature-boxes-with-icon-dark.php:60
+#: patterns/feature-boxes-with-icon-dark.php:84
+#: patterns/feature-boxes-with-icon-dark.php:108
+#: patterns/feature-boxes-with-icon-dark.php:132
+#: patterns/feature-boxes-with-icon-dark.php:156
+#: patterns/large-text-and-text-boxes.php:33
+#: patterns/large-text-and-text-boxes.php:57
+#: patterns/large-text-and-text-boxes.php:81
+#: patterns/text-and-image-columns-with-icons.php:50
+#: patterns/text-and-image-columns-with-icons.php:64
+msgid "✴"
+msgstr "✴"
+
+#: patterns/card-pricing-table-dark.php:48
+#: patterns/card-pricing-table-dark.php:61
+#: patterns/card-pricing-table-dark.php:74
+#: patterns/card-pricing-table-dark.php:87
+#: patterns/card-pricing-table-dark.php:100 patterns/card-pricing-table.php:48
+#: patterns/card-pricing-table.php:61 patterns/card-pricing-table.php:74
+#: patterns/card-pricing-table.php:87 patterns/pricing-table-3-column.php:65
+#: patterns/pricing-table-3-column.php:78
+#: patterns/pricing-table-3-column.php:91
+#: patterns/pricing-table-3-column.php:104
+#: patterns/pricing-table-3-column.php:149
+#: patterns/pricing-table-3-column.php:162
+#: patterns/pricing-table-3-column.php:175
+#: patterns/pricing-table-3-column.php:188
+#: patterns/pricing-table-3-column.php:201
+#: patterns/pricing-table-3-column.php:246
+#: patterns/pricing-table-3-column.php:259
+#: patterns/pricing-table-3-column.php:272
+#: patterns/pricing-table-3-column.php:285
+#: patterns/pricing-table-with-testimonials.php:65
+#: patterns/pricing-table-with-testimonials.php:78
+#: patterns/pricing-table-with-testimonials.php:91
+#: patterns/pricing-table-with-testimonials.php:104
+#: patterns/pricing-table-with-testimonials.php:149
+#: patterns/pricing-table-with-testimonials.php:162
+#: patterns/pricing-table-with-testimonials.php:175
+#: patterns/pricing-table-with-testimonials.php:188
+#: patterns/pricing-table-with-testimonials.php:201
+#: patterns/pricing-table-with-testimonials.php:246
+#: patterns/pricing-table-with-testimonials.php:259
+#: patterns/pricing-table-with-testimonials.php:272
+#: patterns/pricing-table-with-testimonials.php:285
+#: patterns/pricing-table.php:65 patterns/pricing-table.php:78
+#: patterns/pricing-table.php:91 patterns/pricing-table.php:104
+#: patterns/pricing-table.php:149 patterns/pricing-table.php:162
+#: patterns/pricing-table.php:175 patterns/pricing-table.php:188
+msgid "✓"
+msgstr "✓"
+
+#: patterns/card-contact.php:42 patterns/contact-details.php:89
+msgid "mail@example.com"
+msgstr "mail@example.com"
+
+#: patterns/card-call-to-action.php:39
+#: patterns/card-text-and-call-to-action.php:86
+msgid "WordPress.org"
+msgstr "WordPress.org"
+
+#: patterns/card-call-to-action.php:22
+#: patterns/card-text-and-call-to-action.php:63
+msgid "Version 1.0"
+msgstr "Version 1.0"
+
+#: patterns/footer-light.php:118 patterns/post-loop-grid-custom.php:28
+#: patterns/post-loop-list.php:29 patterns/template-post-centered.php:24
+#: patterns/template-post-left-sidebar.php:33
+#: patterns/template-post-right-sidebar.php:28
+#: patterns/template-post-wide.php:24
+msgid "·"
+msgstr "·"
+
+#: styles/typography/typography-preset-7.json
+msgctxt "Style variation name"
+msgid "Preset 7"
+msgstr "Förinställning 7"
+
+#: styles/typography/typography-preset-6.json
+msgctxt "Style variation name"
+msgid "Preset 6"
+msgstr "Förinställning 6"
+
+#: styles/typography/typography-preset-5.json
+msgctxt "Style variation name"
+msgid "Preset 5"
+msgstr "Förinställning 5"
+
+#: styles/typography/typography-preset-4.json
+msgctxt "Style variation name"
+msgid "Preset 4"
+msgstr "Förinställning 4"
+
+#: styles/typography/typography-preset-3.json
+msgctxt "Style variation name"
+msgid "Preset 3"
+msgstr "Förinställning 3"
+
+#: styles/typography/typography-preset-2.json
+msgctxt "Style variation name"
+msgid "Preset 2"
+msgstr "Förinställning 2"
+
+#: styles/typography/typography-preset-1.json
+msgctxt "Style variation name"
+msgid "Preset 1"
+msgstr "Förinställning 1"
+
+#: patterns/card-contact.php:55 patterns/contact-details.php:102
+msgid "815-420-2024"
+msgstr "815-420-2024"
+
+#: patterns/pricing-table-with-testimonials.php:316
+msgid "Marion Alpine · SparkCode"
+msgstr "Marion Alpine · SparkCode"
+
+#: patterns/footer-light.php:118
+msgid "© 2026"
+msgstr "© 2026"
+
+#: patterns/footer-dark-centered.php:36 patterns/footer-dark-minimal.php:20
+#: patterns/footer-dark.php:121 patterns/footer-light-centered.php:36
+#: patterns/footer-light-minimal.php:20
+msgid "© 2026 · Powered by WordPress and "
+msgstr "© 2026 · Drivs med WordPress och "
+
+#: patterns/text-call-to-action.php:21
+msgid "No code? No problem."
+msgstr "Ingen kod? Inga problem."
+
+#: patterns/text-call-to-action-buttons.php:39
+msgid "See Our Features"
+msgstr "Se våra funktioner"
+
+#: patterns/text-and-image-columns-with-testimonial.php:65
+msgctxt "Testimonial author"
+msgid "— Mandi Alpine, Brandwich"
+msgstr "– Mandi Alpine, Brandwich"
+
+#: patterns/text-and-image-columns-with-icons.php:23
+msgid "Pick Your Pattern"
+msgstr "Välj ditt mönster"
+
+#: patterns/testimonials-with-social-links.php:75
+msgid "Via Facebook →"
+msgstr "Via Facebook →"
+
+#: patterns/testimonials-with-social-links.php:36
+msgid "Via Twitter →"
+msgstr "Via Twitter →"
+
+#: patterns/card-details.php:54 patterns/card-text-and-call-to-action.php:41
+#: patterns/card-text-and-details.php:111 patterns/contact-details.php:49
+#: patterns/testimonials-with-big-text.php:32
+msgid "★★★★★"
+msgstr "★★★★★"
+
+#: patterns/testimonials-and-logos.php:137
+#: patterns/testimonials-and-logos.php:140
+#: patterns/testimonials-and-logos.php:143
+#: patterns/testimonials-and-logos.php:146
+#: patterns/testimonials-and-logos.php:149
+msgid "Brand logo"
+msgstr "Varumärkeslogga"
+
+#: patterns/testimonials-and-logos.php:119
+msgid "Customer Support"
+msgstr "Kundsupport"
+
+#: patterns/testimonials-and-logos.php:116
+msgid "Andrea Sequoia"
+msgstr "Andrea Sequoia"
+
+#: patterns/testimonials-and-logos.php:95
+msgid "Video Producer"
+msgstr "Videoproducent"
+
+#: patterns/testimonials-and-logos.php:92
+msgid "Erik Acadia"
+msgstr "Erik Acadia"
+
+#: patterns/testimonials-and-logos.php:68
+msgid "Bill Glacier"
+msgstr "Bill Glacier"
+
+#: patterns/testimonials-and-logos.php:22
+msgid "We love our customers"
+msgstr "Vi älskar våra kunder"
+
+#: patterns/template-page-search.php:18
+msgid "Search site..."
+msgstr "Sök webbplats …"
+
+#: patterns/template-page-search.php
+msgctxt "Pattern title"
+msgid "Search Results Page"
+msgstr "Sida för sökresultat"
+
+#: patterns/template-page-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Page Right Sidebar"
+msgstr "Sida höger sidopanel"
+
+#: patterns/template-page-left-sidebar.php
+msgctxt "Pattern title"
+msgid "Page Left Sidebar"
+msgstr "Sida vänster sidopanel"
+
+#: patterns/template-page-archive.php
+msgctxt "Pattern title"
+msgid "Archive Page"
+msgstr "Arkivsida"
+
+#: patterns/menu-mobile-6.php:18 patterns/template-page-404.php:23
+#: patterns/template-page-search.php:18
+msgid "Search"
+msgstr "Sök"
+
+#: patterns/template-page-404.php:16
+msgid "Page Not Found"
+msgstr "Sidan hittas inte"
+
+#: patterns/template-page-404.php
+msgctxt "Pattern title"
+msgid "404 Page"
+msgstr "404-sida"
+
+#: patterns/team-members.php:63
+msgid "Michael Glacier"
+msgstr "Michael Glacier"
+
+#: patterns/team-members.php:38
+msgid "Tracy Capitan"
+msgstr "Tracy Capitan"
+
+#: patterns/single-testimonial.php:30 patterns/team-members.php:88
+#: patterns/testimonial-highlight.php:30 patterns/testimonials-and-logos.php:44
+#: patterns/testimonials-with-big-text.php:80
+#: patterns/testimonials-with-social-links.php:59
+msgid "Maryann Alpine"
+msgstr "Maryann Alpine"
+
+#: patterns/page-profile.php:49
+msgid "Follow on Twitter"
+msgstr "Följ på Twitter"
+
+#: patterns/page-profile.php:46
+msgid "Visit My Website"
+msgstr "Besök min webbplats"
+
+#: patterns/page-profile.php:24
+msgid "Sandra Voyager"
+msgstr "Sandra Voyager"
+
+#: patterns/numbers.php:55
+msgid "Accessibility compliant to ensure equal access to content and functionality."
+msgstr "Tillgänglighetskompatibel för att säkerställa lika åtkomst till innehåll och funktionalitet."
+
+#: patterns/numbers.php:52
+msgid "Accessibility"
+msgstr "Tillgänglighet"
+
+#: patterns/numbers.php:26
+msgid "Performance"
+msgstr "Prestanda"
+
+#: patterns/numbers-stacked.php:51
+msgid "200+ Ratings"
+msgstr "200+ betyg"
+
+#: patterns/numbers-stacked.php:41
+msgid "1000+ Hours"
+msgstr "1000+ timmar"
+
+#: patterns/numbers-stacked.php:31
+msgid "5+ Layouts"
+msgstr "5+ layouter"
+
+#: patterns/numbers-stacked.php:21
+msgid "50+ Patterns"
+msgstr "50+ mönster"
+
+#: patterns/job-openings.php:52 patterns/job-openings.php:80
+#: patterns/job-openings.php:108 patterns/job-openings.php:136
+msgid "Apply →"
+msgstr "Ansök →"
+
+#: patterns/job-openings.php:38 patterns/single-testimonial.php:33
+#: patterns/team-members.php:41 patterns/team-members.php:66
+#: patterns/team-members.php:91 patterns/testimonial-highlight.php:33
+#: patterns/testimonials-and-logos.php:47
+msgid "Product Designer"
+msgstr "Produktdesigner"
+
+#: patterns/footer-dark.php:101 patterns/footer-light.php:101
+msgid "Demo"
+msgstr "Demo"
+
+#: patterns/footer-dark.php:87 patterns/footer-light.php:87
+msgid "Product"
+msgstr "Produkt"
+
+#: patterns/footer-dark.php:78 patterns/footer-light.php:78
+msgid "Get Help"
+msgstr "Skaffa hjälp"
+
+#: patterns/footer-dark.php:69 patterns/footer-light.php:69
+#: patterns/menu-mobile-5.php:50 patterns/menu-mobile-6.php:52
+msgid "Blog"
+msgstr "Blogg"
+
+#: patterns/footer-dark.php:64 patterns/footer-light.php:64
+#: patterns/menu-mobile-5.php:68 patterns/menu-mobile-6.php:34
+#: patterns/menu-mobile-6.php:70
+msgid "Resources"
+msgstr "Resurser"
+
+#: patterns/footer-dark.php:55 patterns/footer-dark.php:72
+#: patterns/footer-light.php:55 patterns/footer-light.php:72
+msgid "Contact"
+msgstr "Kontakt"
+
+#: patterns/footer-dark.php:46 patterns/footer-light.php:46
+msgid "About"
+msgstr "Om"
+
+#: patterns/footer-dark.php:41 patterns/footer-light.php:41
+#: patterns/menu-mobile-5.php:45 patterns/menu-mobile-6.php:47
+msgid "Company"
+msgstr "Företag"
+
+#: patterns/hero-call-to-action-buttons-light.php:17
+#: patterns/hero-text-image-and-logos.php:19
+msgid "Welcome to Ollie"
+msgstr "Välkommen till Ollie"
+
+#: patterns/hero-call-to-action-buttons-light.php:28
+#: patterns/hero-text-image-and-logos.php:30
+msgid "Free Download"
+msgstr "Gratis nedladdning"
+
+#: patterns/card-social-profile.php:24
+msgid "Eric Voyager"
+msgstr "Eric Voyager"
+
+#: patterns/card-pricing-table.php:77 patterns/pricing-table-3-column.php:94
+#: patterns/pricing-table-3-column.php:275
+#: patterns/pricing-table-with-testimonials.php:94
+#: patterns/pricing-table-with-testimonials.php:275
+#: patterns/pricing-table.php:94
+msgid "Priority Support"
+msgstr "Prioriterad support"
+
+#: patterns/card-pricing-table.php:64 patterns/pricing-table-3-column.php:81
+#: patterns/pricing-table-3-column.php:262
+#: patterns/pricing-table-with-testimonials.php:81
+#: patterns/pricing-table-with-testimonials.php:262
+#: patterns/pricing-table.php:81
+msgid "Advanced Tools"
+msgstr "Avancerade verktyg"
+
+#: patterns/card-pricing-table.php:29 patterns/pricing-table-3-column.php:46
+#: patterns/pricing-table-with-testimonials.php:46
+#: patterns/pricing-table.php:46
+msgid "Beginner"
+msgstr "Nybörjare"
+
+#: patterns/card-pricing-table-dark.php:103
+#: patterns/pricing-table-3-column.php:204
+#: patterns/pricing-table-with-testimonials.php:204
+msgid "Online Workshops"
+msgstr "Online-seminarier"
+
+#: patterns/card-pricing-table-dark.php:90
+#: patterns/pricing-table-3-column.php:191
+#: patterns/pricing-table-with-testimonials.php:191
+#: patterns/pricing-table.php:191
+msgid "Access to Slack"
+msgstr "Åtkomst till Slack"
+
+#: patterns/card-pricing-table-dark.php:64
+#: patterns/pricing-table-3-column.php:165
+#: patterns/pricing-table-with-testimonials.php:165
+#: patterns/pricing-table.php:165
+msgid "Video Course"
+msgstr "Videokurs"
+
+#: patterns/card-pricing-table-dark.php:22 patterns/card-pricing-table.php:22
+#: patterns/pricing-table-3-column.php:39
+#: patterns/pricing-table-3-column.php:123
+#: patterns/pricing-table-3-column.php:220
+#: patterns/pricing-table-with-testimonials.php:39
+#: patterns/pricing-table-with-testimonials.php:123
+#: patterns/pricing-table-with-testimonials.php:220
+#: patterns/pricing-table.php:39 patterns/pricing-table.php:123
+msgid "per month"
+msgstr "per månad"
+
+#: patterns/card-post-list.php:22
+msgid "View All →"
+msgstr "Visa alla →"
+
+#: patterns/card-post-list.php:19
+msgid "Latest Posts"
+msgstr "Senaste inläggen"
+
+#: patterns/card-lead-magnet.php:43
+msgid "Download Ollie for free!"
+msgstr "Ladda ner Ollie gratis!"
+
+#: patterns/card-image-and-text.php:35 patterns/card-text-box-with-link.php:32
+#: patterns/menu-card-2.php:50 patterns/menu-card-2.php:78
+#: patterns/menu-card-4.php:33 patterns/menu-card-4.php:57
+#: patterns/menu-card-4.php:81 patterns/menu-panel-4.php:38
+#: patterns/menu-panel-4.php:63
+msgid "Read More"
+msgstr "Läs mer"
+
+#: patterns/card-image-and-text.php:32 patterns/card-pricing-table-dark.php:39
+#: patterns/card-pricing-table.php:39 patterns/menu-card-1.php:82
+#: patterns/menu-panel-4.php:92 patterns/pricing-table-3-column.php:56
+#: patterns/pricing-table-3-column.php:140
+#: patterns/pricing-table-3-column.php:237
+#: patterns/pricing-table-with-testimonials.php:56
+#: patterns/pricing-table-with-testimonials.php:140
+#: patterns/pricing-table-with-testimonials.php:237
+#: patterns/pricing-table.php:56 patterns/pricing-table.php:140
+msgid "Get Started"
+msgstr "Kom igång"
+
+#: patterns/card-details.php:71 patterns/card-text-and-details.php:128
+msgid "Patterns:"
+msgstr "Mönster:"
+
+#: patterns/card-details.php:61 patterns/card-text-and-details.php:118
+msgid "Filesize:"
+msgstr "Filstorlek:"
+
+#: patterns/card-details.php:51 patterns/card-text-and-details.php:108
+msgid "Average Rating:"
+msgstr "Genomsnittligt betyg:"
+
+#: patterns/card-details.php:41 patterns/card-text-and-details.php:98
+msgid "Version:"
+msgstr "Version:"
+
+#: patterns/card-details.php:31 patterns/card-text-and-details.php:88
+msgid "Downloads:"
+msgstr "Nedladdningar:"
+
+#: patterns/card-details.php:19 patterns/card-text-and-details.php:76
+msgid "Theme Details"
+msgstr "Detaljer för tema"
+
+#: patterns/card-contact.php:65 patterns/contact-details.php:112
+msgid "Address"
+msgstr "Adress"
+
+#: patterns/card-contact.php:52 patterns/contact-details.php:99
+msgid "Phone"
+msgstr "Telefon"
+
+#: patterns/card-contact.php:39 patterns/contact-details.php:86
+msgid "Email"
+msgstr "E-post"
+
+#: patterns/card-contact.php:19 patterns/contact-details.php:23
+#: patterns/contact-details.php:36 patterns/contact-details.php:66
+#: patterns/menu-mobile-4.php:59
+msgid "Contact Us"
+msgstr "Kontakta oss"
+
+#: patterns/card-call-to-action.php:34
+#: patterns/card-text-and-call-to-action.php:81
+#: patterns/header-dark-with-banner.php:26
+#: patterns/header-dark-with-buttons.php:22
+#: patterns/header-light-with-banner.php:26
+#: patterns/header-light-with-buttons.php:22
+msgid "Download Now"
+msgstr "Ladda ner nu"
+
+#: patterns/card-call-to-action.php:19 patterns/card-lead-magnet.php:32
+#: patterns/card-text-and-call-to-action.php:60
+#: patterns/card-text-and-details.php:38
+#: patterns/hero-call-to-action-buttons.php:36 patterns/hero-dark.php:36
+#: patterns/hero-light.php:36
+msgid "Download Ollie"
+msgstr "Ladda ner Ollie"
+
+#: patterns/card-call-to-action-with-buttons.php:32
+msgid "Explore Features"
+msgstr "Utforska funktionerna"
+
+#: patterns/card-call-to-action-with-buttons.php:19
+msgid "Build With Patterns"
+msgstr "Bygg med mönster"
+
+#: patterns/card-big-text-call-to-action.php:32
+#: patterns/card-call-to-action-with-buttons.php:29
+#: patterns/menu-mobile-4.php:52 patterns/menu-mobile-5.php:95
+#: patterns/text-and-image-columns-with-testimonial.php:47
+#: patterns/text-call-to-action-buttons.php:36
+#: patterns/text-call-to-action.php:31
+msgid "Get Started Today"
+msgstr "Kom igång idag"
+
+#: patterns/card-big-text-call-to-action.php:22
+msgid "Design your site without code"
+msgstr "Designa din webbplats utan kod"
+
+#: patterns/card-big-text-call-to-action.php:19
+#: patterns/card-text-and-call-to-action.php:23
+#: patterns/hero-call-to-action-buttons-light.php:31
+#: patterns/hero-text-image-and-logos.php:33
+msgid "Explore Ollie"
+msgstr "Utforska Ollie"
+
+#: patterns/blog-post-columns.php:22
+msgid "Read our latest blog articles"
+msgstr "Läs våra senaste bloggartiklar"
+
+#: patterns/text-call-to-action-buttons.php:24
+msgid "No code? No problem. Design websites faster with patterns."
+msgstr "Ingen kod? Inga problem. Designa webbplatser snabbare med mönster."
+
+#: patterns/template-post-right-sidebar.php
+msgctxt "Pattern title"
+msgid "Post Right Sidebar"
+msgstr "Inlägg höger sidopanel"
+
+#: patterns/template-post-left-sidebar.php
+msgctxt "Pattern title"
+msgid "Post Left Sidebar"
+msgstr "Inlägg vänster sidopanel"
+
+#: patterns/template-post-centered.php
+msgctxt "Pattern title"
+msgid "Post Centered"
+msgstr "Inlägg centrerat"
+
+#: patterns/template-page-search.php
+msgctxt "Pattern description"
+msgid "The page that shows search results."
+msgstr "Sidan som visar sökresultaten."
+
+#: patterns/template-page-centered.php
+msgctxt "Pattern title"
+msgid "Page Centered"
+msgstr "Sida centrerat"
+
+#: patterns/footer-dark-centered.php:31 patterns/footer-light-centered.php:31
+msgid "Visit Mike"
+msgstr "Besök Mike"
+
+#: patterns/footer-dark-centered.php:28 patterns/footer-light-centered.php:28
+msgid "Twitter"
+msgstr "Twitter"
+
+#: patterns/footer-dark-centered.php:25 patterns/footer-dark.php:129
+#: patterns/footer-light-centered.php:25 patterns/footer-light.php:126
+msgid "Visit Ollie"
+msgstr "Besök Ollie"
+
+#: patterns/footer-dark-centered.php:22 patterns/footer-dark.php:126
+#: patterns/footer-light-centered.php:22 patterns/footer-light.php:123
+msgid "Download"
+msgstr "Ladda ner"
+
+#: patterns/features-with-emojis.php:37
+msgid "Ollie Templates"
+msgstr "Ollie-mallar"
+
+#: patterns/features-with-emojis.php:24
+msgid "Ollie Patterns"
+msgstr "Ollie-mönster"
+
+#: patterns/feature-boxes-with-button.php:111
+#: patterns/feature-boxes-with-icon-dark.php:111
+msgid "Build with beautiful patterns"
+msgstr "Bygg med vackra mönster"
+
+#: patterns/feature-boxes-with-button.php:39
+#: patterns/feature-boxes-with-icon-dark.php:39
+#: patterns/large-text-and-text-boxes.php:36
+msgid "Customize with clicks, not code"
+msgstr "Anpassa med klick, inte kod"
+
+#: patterns/faq.php:129
+msgid "Contact Us →"
+msgstr "Kontakta oss →"
+
+#: patterns/faq.php:115
+msgid "Still have questions?"
+msgstr "Har du fortfarande frågor?"
+
+#: patterns/faq.php:86
+msgctxt "FAQ question"
+msgid "What are patterns?"
+msgstr "Vad är mönster?"
+
+#: patterns/faq.php:54
+msgctxt "FAQ question"
+msgid "Do I need any other plugins?"
+msgstr "Behöver jag några andra tillägg?"
+
+#: patterns/feature-boxes-with-button.php:49
+#: patterns/feature-boxes-with-button.php:73
+#: patterns/feature-boxes-with-button.php:97
+#: patterns/feature-boxes-with-button.php:121
+#: patterns/feature-boxes-with-button.php:145
+#: patterns/feature-boxes-with-button.php:169
+#: patterns/feature-boxes-with-icon-dark.php:49
+#: patterns/feature-boxes-with-icon-dark.php:73
+#: patterns/feature-boxes-with-icon-dark.php:97
+#: patterns/feature-boxes-with-icon-dark.php:121
+#: patterns/feature-boxes-with-icon-dark.php:145
+#: patterns/feature-boxes-with-icon-dark.php:169
+#: patterns/header-dark-with-buttons.php:25
+#: patterns/header-light-with-buttons.php:25
+#: patterns/large-text-and-text-boxes.php:46
+#: patterns/large-text-and-text-boxes.php:70
+#: patterns/large-text-and-text-boxes.php:94
+msgid "Learn More"
+msgstr "Lär dig mer"
+
+#: patterns/faq.php:40
+msgctxt "FAQ question"
+msgid "What exactly is Ollie?"
+msgstr "Vad exakt är Ollie?"
+
+#: patterns/faq.php:22
+msgid "Learn about our product"
+msgstr "Lär dig mer om vår produkt"
+
+#: patterns/comments.php:21 patterns/template-post-centered.php:53
+#: patterns/template-post-left-sidebar.php:64
+#: patterns/template-post-right-sidebar.php:61
+#: patterns/template-post-sticky.php:86 patterns/template-post-wide.php:53
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: patterns/card-text-box-with-link.php:19
+msgid "Post Page"
+msgstr "Inläggssida"
+
+#: patterns/card-text-and-details.php:61
+msgid "— Mandi Alpine, Brandwich"
+msgstr "– Mandi Alpine, Brandwich"
+
+#: patterns/card-text-and-details.php:43
+msgid "View on WordPress.org"
+msgstr "Visa på WordPress.org"
+
+#: patterns/card-text-and-details.php:26
+msgid "Download Ollie for free today and start building"
+msgstr "Ladda ner Ollie gratis idag och börja bygga"
+
+#: patterns/card-testimonial.php:27 patterns/testimonials-with-big-text.php:59
+#: patterns/testimonials-with-social-links.php:98
+msgid "Alex Glacier"
+msgstr "Alex Glacier"
+
+#: patterns/card-text-and-details.php:23
+msgid "Start Designing"
+msgstr "Börja designa"
+
+#: patterns/card-text-and-call-to-action.php:26
+msgid "Design with a few clicks. No code required."
+msgstr "Designa med några få klick. Ingen kod krävs."
+
+#: patterns/text-call-to-action-buttons.php:21
+msgid "Launch Faster"
+msgstr "Lansera snabbare"
+
+#: patterns/text-and-image-columns-with-icons.php:36
+msgid "View Ollie Patterns"
+msgstr "Visa Ollie-mönster"
+
+#: patterns/template-page-search.php:40
+msgid "Sorry, nothing was found for that search term."
+msgstr "Inget hittades för den söktermen."
+
+#: patterns/testimonials-with-social-links.php:101
+msgid "Brand Designer"
+msgstr "Märkesdesigner"
+
+#: patterns/text-and-image-columns-with-testimonial.php:34
+msgid "Build on WordPress"
+msgstr "Byggt på WordPress"
+
+#: patterns/feature-boxes-with-button.php:87
+#: patterns/feature-boxes-with-icon-dark.php:87
+#: patterns/large-text-and-text-boxes.php:84
+msgid "Blazing fast performance"
+msgstr "Blixtsnabb prestanda"
+
+#: styles/colors/neon.json
+msgctxt "Style variation name"
+msgid "Neon"
+msgstr "Neon"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Small Dark"
+msgstr "Liten mörk"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Large Dark"
+msgstr "Stor mörk"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Extra Large Dark"
+msgstr "Extra stor mörk"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Medium Dark"
+msgstr "Medium mörk"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Small Light"
+msgstr "Liten ljus"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Medium Light"
+msgstr "Medium ljus"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Large Light"
+msgstr "Stor ljus"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Extra Large Light"
+msgstr "Extra stor ljus"
+
+#: styles/blocks/button/button-light.json
+msgctxt "Style variation name"
+msgid "Light"
+msgstr "Ljus"
+
+#: styles/blocks/button/button-dark.json
+msgctxt "Style variation name"
+msgid "Dark"
+msgstr "Mörk"
+
+#: styles/blocks/button/button-brand-1.json
+msgctxt "Style variation name"
+msgid "Brand"
+msgstr "Varumärke"
+
+#: styles/agency.json
+msgctxt "Style variation name"
+msgid "Agency"
+msgstr "Byrå"
+
+#: theme.json styles/typography/typography-preset-9.json
+msgctxt "Font family name"
+msgid "Mona Sans Narrow"
+msgstr "Mona Sans Narrow"
+
+#: theme.json styles/agency.json styles/colors/blue.json
+#: styles/colors/green.json styles/colors/neon.json styles/colors/orange.json
+#: styles/colors/pink.json styles/colors/red.json styles/colors/teal.json
+#: styles/creator.json styles/ecommerce.json styles/startup.json
+#: styles/studio.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr "Kontrast"
+
+#: theme.json styles/agency.json styles/colors/blue.json
+#: styles/colors/green.json styles/colors/neon.json styles/colors/orange.json
+#: styles/colors/pink.json styles/colors/red.json styles/colors/teal.json
+#: styles/creator.json styles/ecommerce.json styles/startup.json
+#: styles/studio.json
+msgctxt "Color name"
+msgid "Border Contrast"
+msgstr "Ramkontrast"
+
+#: styles/blocks/button/button-tint.json
+msgctxt "Style variation name"
+msgid "Tint"
+msgstr "Färgton"
+
+#: theme.json styles/agency.json styles/colors/blue.json
+#: styles/colors/green.json styles/colors/neon.json styles/colors/orange.json
+#: styles/colors/pink.json styles/colors/red.json styles/colors/teal.json
+#: styles/creator.json styles/ecommerce.json styles/startup.json
+#: styles/studio.json
+msgctxt "Color name"
+msgid "Tint"
+msgstr "Färgton"
+
+#: theme.json styles/agency.json styles/colors/blue.json
+#: styles/colors/green.json styles/colors/neon.json styles/colors/orange.json
+#: styles/colors/pink.json styles/colors/red.json styles/colors/teal.json
+#: styles/creator.json styles/ecommerce.json styles/startup.json
+#: styles/studio.json
+msgctxt "Color name"
+msgid "Brand"
+msgstr "Varumärke"
+
+#: theme.json styles/agency.json styles/typography/typography-preset-9.json
+msgctxt "Font size name"
+msgid "Extra Extra Large"
+msgstr "Extra extra stor"
+
+#: theme.json styles/agency.json styles/typography/typography-preset-9.json
+msgctxt "Font size name"
+msgid "Extra Large"
+msgstr "Extra stor"
+
+#: theme.json styles/agency.json styles/typography/typography-preset-9.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Stor"
+
+#: theme.json styles/agency.json styles/typography/typography-preset-9.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Medium"
+
+#: theme.json styles/agency.json styles/typography/typography-preset-9.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Liten"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Mona Sans Condensed"
+msgstr "Mona Sans Condensed"
+
+#: theme.json styles/typography/typography-preset-1.json
+#: styles/typography/typography-preset-3.json
+#: styles/typography/typography-preset-6.json
+#: styles/typography/typography-preset-8.json
+#: styles/typography/typography-preset-9.json
+msgctxt "Font family name"
+msgid "Mona Sans"
+msgstr "Mona Sans"
+
+#: styles/studio.json
+msgctxt "Style variation name"
+msgid "Studio"
+msgstr "Studio"
+
+#: patterns/comments.php
+msgctxt "Pattern title"
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: patterns/comments.php
+msgctxt "Pattern description"
+msgid "A list of comments for a post."
+msgstr "En lista med kommentarer för ett inlägg."
+
+#: theme.json styles/typography/typography-preset-1.json
+#: styles/typography/typography-preset-8.json
+msgctxt "Font family name"
+msgid "Mona Sans Expanded"
+msgstr "Mona Sans Expanded"
+
+#: styles/startup.json
+msgctxt "Style variation name"
+msgid "Startup"
+msgstr "Startup"
+
+#: styles/colors/red.json
+msgctxt "Style variation name"
+msgid "Red"
+msgstr "Röd"
+
+#: styles/colors/pink.json
+msgctxt "Style variation name"
+msgid "Pink"
+msgstr "Rosa"
+
+#: styles/colors/orange.json
+msgctxt "Style variation name"
+msgid "Orange"
+msgstr "Orange"
+
+#: styles/colors/green.json
+msgctxt "Style variation name"
+msgid "Green"
+msgstr "Grön"
+
+#: styles/colors/blue.json
+msgctxt "Style variation name"
+msgid "Blue"
+msgstr "Blå"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr "Sidopanel"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Sidfot"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Sidhuvud"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr "Stor"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Medium"
+msgstr "Medium"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr "Liten"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Grayscale"
+msgstr "Gråskala"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Sunset"
+msgstr "Solnedgång"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Blueberry"
+msgstr "Blåbär"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Orange"
+msgstr "Orange"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Red"
+msgstr "Röd"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Yellow"
+msgstr "Gul"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Green"
+msgstr "Grön"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Pink"
+msgstr "Rosa"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Blue"
+msgstr "Blå"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Black"
+msgstr "Svart"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Pink"
+msgstr "Rosa"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Blue"
+msgstr "Blå"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Purple"
+msgstr "Lila"
+
+#: theme.json styles/agency.json styles/colors/blue.json
+#: styles/colors/green.json styles/colors/neon.json styles/colors/orange.json
+#: styles/colors/pink.json styles/colors/red.json styles/colors/teal.json
+#: styles/creator.json styles/ecommerce.json styles/startup.json
+#: styles/studio.json
+msgctxt "Color name"
+msgid "Base"
+msgstr "Bas"
+
+#: theme.json styles/ecommerce.json
+msgctxt "Font family name"
+msgid "Monospace"
+msgstr "Monospace"
+
+#: theme.json styles/agency.json styles/typography/typography-preset-9.json
+msgctxt "Font size name"
+msgid "Base"
+msgstr "Bas"
+
+#: patterns/team-members.php
+msgctxt "Pattern title"
+msgid "Team Members"
+msgstr "Teammedlemmar"
+
+#: patterns/pricing-table.php
+msgctxt "Pattern title"
+msgid "Pricing Table"
+msgstr "Pristabell"
+
+#: patterns/page-profile.php
+msgctxt "Pattern title"
+msgid "Profile Box"
+msgstr "Profilruta"
+
+#: patterns/page-home.php
+msgctxt "Pattern title"
+msgid "Homepage"
+msgstr "Startsida"
+
+#: patterns/page-blog.php
+msgctxt "Pattern title"
+msgid "Blog Page"
+msgstr "Bloggsida"
+
+#: patterns/footer-dark.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr "Sidfot"
+
+#: functions.php:189
+msgid "Sidebar"
+msgstr "Sidopanel"
+
+#: functions.php:156 patterns/testimonials-and-logos.php:19
+#: patterns/testimonials-with-big-text.php:21
+#: patterns/testimonials-with-social-links.php:19
+msgid "Testimonials"
+msgstr "Omdömen"
+
+#: functions.php:150
+msgid "Posts"
+msgstr "Inlägg"
+
+#: functions.php:147
+msgid "Pages"
+msgstr "Sidor"
+
+#: functions.php:144
+msgid "Hero"
+msgstr "Hero"
+
+#: functions.php:141 patterns/footer-dark.php:92 patterns/footer-light.php:92
+msgid "Features"
+msgstr "Funktioner"
+
+#: functions.php:135
+msgid "Cards"
+msgstr "Kort"
+
+#: functions.php:79
+msgid "Button Style"
+msgstr "Knappstil"
+
+#: functions.php:69
+msgid "Thin"
+msgstr "Tunn"
+
+#: functions.php:53
+msgid "Rounded"
+msgstr "Rundad"
+
+#: functions.php:48
+msgid "Dark"
+msgstr "Mörk"
+
+#: styles/colors/teal.json
+msgctxt "Style variation name"
+msgid "Teal"
+msgstr "Grönblå"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Lime"
+msgstr "Limegrön"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Teal"
+msgstr "Grönblå"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (With Sidebar)"
+msgstr "Sida (med sidopanel)"
+
+#: theme.json styles/agency.json styles/typography/typography-preset-9.json
+msgctxt "Font size name"
+msgid "Extra Small"
+msgstr "Extra liten"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (Full Width, No Title)"
+msgstr "Sida (full bredd, ingen rubrik)"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Extra Large"
+msgstr "Extra stor"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4xl"
+msgstr "XXXX large"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3xl"
+msgstr "XXX large"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2xl"
+msgstr "XX large"
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Punchy"
+msgstr "Kraftfull"
+
+#: patterns/text-and-image-columns-with-testimonial.php
+msgctxt "Pattern title"
+msgid "Text and Image Columns With Testimonial"
+msgstr "Text och bildkolumner med omdöme"
+
+#: patterns/text-and-image-columns-with-icons.php
+msgctxt "Pattern title"
+msgid "Text and Image Columns With Icons"
+msgstr "Text och bildkolumner med ikoner"
+
+#: patterns/testimonials-with-social-links.php
+msgctxt "Pattern title"
+msgid "Testimonials With Social Links"
+msgstr "Omdömen med sociala länkar"
+
+#: patterns/testimonials-with-big-text.php
+msgctxt "Pattern title"
+msgid "Testimonials With Big Text"
+msgstr "Omdömen med stor text"
+
+#: patterns/testimonial-highlight.php
+msgctxt "Pattern title"
+msgid "Testimonial Highlight"
+msgstr "Markerat omdöme"
+
+#: patterns/single-testimonial.php
+msgctxt "Pattern title"
+msgid "Single Testimonial"
+msgstr "Enskilt omdöme"
+
+#: patterns/pricing-table-with-testimonials.php
+msgctxt "Pattern title"
+msgid "Pricing Table With Testimonials"
+msgstr "Pristabell med omdömen"
+
+#: patterns/pricing-table-3-column.php
+msgctxt "Pattern title"
+msgid "Pricing Table - 3 Column"
+msgstr "Pristabell - 3 kolumner"
+
+#: patterns/page-pricing.php
+msgctxt "Pattern title"
+msgid "Pricing Page"
+msgstr "Prissida"
+
+#: patterns/page-features.php
+msgctxt "Pattern description"
+msgid "A full page design for a Features page"
+msgstr "En helsidesdesign för en funktionsida"
+
+#: patterns/page-home.php
+msgctxt "Pattern description"
+msgid "A full page design for a Homepage"
+msgstr "En helsidesdesign för en startsida"
+
+#: patterns/page-pricing.php
+msgctxt "Pattern description"
+msgid "A full page design for a Pricing page"
+msgstr "En helsidesdesign för en prissättningsida"
+
+#: patterns/page-download.php
+msgctxt "Pattern description"
+msgid "A full page design for a Download page"
+msgstr "En helsidesdesign för en nedladdningssida"
+
+#: patterns/page-blog.php
+msgctxt "Pattern description"
+msgid "A full page design for a blog page"
+msgstr "En helsidesdesign för en bloggsida"
+
+#: patterns/page-about.php
+msgctxt "Pattern description"
+msgid "A full page design for an About page"
+msgstr "En helsidesdesign för en om-sida"
+
+#: patterns/page-about.php
+msgctxt "Pattern title"
+msgid "About Page"
+msgstr "Om sidan"
+
+#: patterns/job-openings.php
+msgctxt "Pattern title"
+msgid "Job Openings"
+msgstr "Lediga jobb"
+
+#: patterns/image-and-numbered-features.php
+msgctxt "Pattern title"
+msgid "Image and Numbered Features"
+msgstr "Bild och numrerade funktioner"
+
+#: patterns/hero-light.php
+msgctxt "Pattern title"
+msgid "Hero Light"
+msgstr "Hero ljus"
+
+#: patterns/hero-dark.php
+msgctxt "Pattern title"
+msgid "Hero Dark"
+msgstr "Hero mörk"
+
+#: patterns/header-light-with-buttons.php
+msgctxt "Pattern title"
+msgid "Header Light With Buttons"
+msgstr "Ljust sidhuvud med knappar"
+
+#: patterns/header-light.php
+msgctxt "Pattern title"
+msgid "Header Light"
+msgstr "Ljust sidhuvud"
+
+#: patterns/header-light-with-banner.php
+msgctxt "Pattern title"
+msgid "Header Light With Banner"
+msgstr "Ljust sidhuvud med banner"
+
+#: patterns/header-dark.php
+msgctxt "Pattern title"
+msgid "Header Dark"
+msgstr "Mörkt sidhuvud"
+
+#: patterns/header-dark-with-buttons.php
+msgctxt "Pattern title"
+msgid "Header Dark With Buttons"
+msgstr "Mörkt sidhuvud med knappar"
+
+#: patterns/header-dark-with-banner.php patterns/header-dark-with-buttons.php
+#: patterns/header-dark.php patterns/header-light-with-banner.php
+#: patterns/header-light-with-buttons.php patterns/header-light.php
+msgctxt "Pattern description"
+msgid "Header with nav and social icons"
+msgstr "Sidhuvud med navigering och sociala ikoner"
+
+#: patterns/header-dark-with-banner.php
+msgctxt "Pattern title"
+msgid "Header Dark With Banner"
+msgstr "Mörkt sidhuvud med banner"
+
+#: patterns/faq.php
+msgctxt "Pattern title"
+msgid "FAQ"
+msgstr "Vanliga frågor"
+
+#: patterns/contact-details.php
+msgctxt "Pattern description"
+msgid "Contact details with call to action buttons and a testimonial"
+msgstr "Kontaktuppgifter med åtgärdsknappar och ett omdöme"
+
+#: functions.php:45 functions.php:73 functions.php:82
+msgid "Boxed"
+msgstr "Inramad"
+
+#: functions.php:43
+msgid "Check"
+msgstr "Kryssa i"
+
+#: functions.php:52
+msgid "Blur Image More"
+msgstr "Gör bild mer suddig"
+
+#: functions.php:51
+msgid "Blur Image Less"
+msgstr "Gör bild mindre suddig"
+
+#: functions.php:56 functions.php:64
+msgid "Box Shadow"
+msgstr "Skugga på ruta"
+
+#: functions.php:153 patterns/footer-dark.php:95 patterns/footer-light.php:95
+#: patterns/menu-mobile-5.php:56 patterns/menu-mobile-6.php:58
+#: patterns/menu-panel-3.php:40
+msgid "Pricing"
+msgstr "Priser"
+
+#: functions.php:76
+msgid "Dark Style"
+msgstr "Mörk stil"
+
+#: functions.php:72
+msgid "Rounded Full"
+msgstr "Rundad hel"
+
+#: functions.php:68
+msgid "Dotted"
+msgstr "Prickad"
+
+#: functions.php:61
+msgid "Truncate 4 Lines"
+msgstr "Trunkera 4 rader"
+
+#: functions.php:60
+msgid "Truncate 3 Lines"
+msgstr "Trunkera 3 rader"
+
+#: functions.php:59
+msgid "Truncate 2 Lines"
+msgstr "Trunkera 2 rader"
+
+#: patterns/page-profile.php
+msgctxt "Pattern description"
+msgid "A profile box with an avatar, links to social media, and buttons"
+msgstr "En profilruta med en profilbild, länkar till sociala medier och knappar"
+
+#: functions.php:44
+msgid "Check Circle"
+msgstr "Cirkel för avbockning"
+
+#: functions.php:138
+msgid "Call To Action"
+msgstr "Uppmaning till åtgärd"
+
+#: patterns/author-box.php
+msgctxt "Pattern title"
+msgid "Author Box"
+msgstr "Författarruta"
+
+#: patterns/blog-post-columns.php
+msgctxt "Pattern title"
+msgid "Blog Post Columns"
+msgstr "Kolumner för blogginlägg"
+
+#: patterns/card-big-text-call-to-action.php
+msgctxt "Pattern title"
+msgid "Big Text Call To Action Card"
+msgstr "Kort med uppmaning till åtgärd med stor text"
+
+#: patterns/card-blog-post.php
+msgctxt "Pattern title"
+msgid "Blog Post Card"
+msgstr "Kort för blogginlägg"
+
+#: patterns/card-call-to-action-with-buttons.php
+msgctxt "Pattern title"
+msgid "Call To Action Card With Buttons"
+msgstr "Kort med uppmaning till åtgärd med knappar"
+
+#: patterns/card-call-to-action-with-buttons.php
+#: patterns/text-call-to-action-buttons.php patterns/text-call-to-action.php
+msgctxt "Pattern description"
+msgid "A call to action with text and a button."
+msgstr "Uppmaning till åtgärd med text och knapp."
+
+#: patterns/card-call-to-action.php
+msgctxt "Pattern title"
+msgid "Call To Action Card"
+msgstr "Kort med uppmaning till åtgärd"
+
+#: patterns/card-contact.php
+msgctxt "Pattern title"
+msgid "Contact Card"
+msgstr "Kontaktkort"
+
+#: patterns/card-details.php
+msgctxt "Pattern title"
+msgid "Details Card"
+msgstr "Kort med detaljinformation"
+
+#: patterns/card-image-and-text.php
+msgctxt "Pattern title"
+msgid "Image and Text Card"
+msgstr "Kort med bild och text"
+
+#: patterns/card-lead-magnet.php
+msgctxt "Pattern title"
+msgid "Lead Magnet Card"
+msgstr "Kort med lead-magnet"
+
+#: patterns/card-post-list.php
+msgctxt "Pattern title"
+msgid "Post List Card"
+msgstr "Kort med inläggslista"
+
+#: patterns/card-pricing-table.php
+msgctxt "Pattern title"
+msgid "Pricing Table Card"
+msgstr "Kort med pristabell"
+
+#: patterns/card-pricing-table-dark.php
+msgctxt "Pattern title"
+msgid "Pricing Table Card Dark"
+msgstr "Kort med pristabell mörkt"
+
+#: patterns/card-social-profile.php
+msgctxt "Pattern title"
+msgid "Social Profile Card"
+msgstr "Kort med social profil"
+
+#: patterns/card-testimonial.php
+msgctxt "Pattern title"
+msgid "Testimonial Card"
+msgstr "Kort med omdöme"
+
+#: patterns/card-text-and-call-to-action.php
+msgctxt "Pattern title"
+msgid "Text and Call To Action Card"
+msgstr "Kort med text och uppmaning till åtgärd"
+
+#: patterns/card-text-and-details.php
+msgctxt "Pattern title"
+msgid "Text and Details Card"
+msgstr "Kort med text och detaljinformation"
+
+#: patterns/contact-details.php
+msgctxt "Pattern title"
+msgid "Contact Details"
+msgstr "Kontaktuppgifter"
+
+#: patterns/feature-boxes-with-button.php
+msgctxt "Pattern title"
+msgid "Feature Boxes With Button"
+msgstr "Funktionsrutor med knapp"
+
+#: patterns/footer-dark-minimal.php
+msgctxt "Pattern title"
+msgid "Footer Minimal"
+msgstr "Minimal sidfot"
+
+#: patterns/footer-light-minimal.php
+msgctxt "Pattern title"
+msgid "Footer Minimal Light"
+msgstr "Minimal ljus sidfot"
+
+#: patterns/footer-light.php
+msgctxt "Pattern title"
+msgid "Footer Light"
+msgstr "Ljus sidfot"
+
+#: patterns/footer-dark-centered.php
+msgctxt "Pattern title"
+msgid "Footer Centered"
+msgstr "Centrerad sidfot"
+
+#: patterns/footer-light-centered.php
+msgctxt "Pattern title"
+msgid "Footer Centered Light"
+msgstr "Centrerad ljus sidfot"
+
+#: patterns/testimonials-and-logos.php
+msgctxt "Pattern title"
+msgid "Testimonials and Logos"
+msgstr "Omdömen och loggor"
+
+#: patterns/post-loop-list.php patterns/template-index-list.php
+msgctxt "Pattern title"
+msgid "Post Loop List"
+msgstr "Inläggsloop som lista"
+
+#: patterns/post-loop-grid-default.php
+msgctxt "Pattern title"
+msgid "Post Loop Grid Default"
+msgstr "Standard inläggsloop som rutnät"
+
+#: patterns/post-loop-grid-custom.php patterns/template-index-grid.php
+msgctxt "Pattern title"
+msgid "Post Loop Grid"
+msgstr "Inläggsloop som rutnät"
+
+#: patterns/post-loop-grid-custom.php
+msgctxt "Pattern description"
+msgid "This post loop grid is best used on custom pages where there is not a default post loop."
+msgstr "Denna inläggsloop för rutnät fungerar bäst på anpassade sidor där det inte redan finns någon inläggsloop."
+
+#: patterns/post-loop-grid-default.php
+msgctxt "Pattern description"
+msgid "This post loop grid is best used on index and archive pages where the loop can inherit the query from the page."
+msgstr "Denna inläggsloop för rutnät fungerar bäst på index- och arkivsidor där loopen kan ärva frågan från sidan."
+
+#: patterns/text-call-to-action.php
+msgctxt "Pattern title"
+msgid "Text Call To Action"
+msgstr "Text för uppmaning till åtgärd"
+
+#: patterns/text-call-to-action-buttons.php
+msgctxt "Pattern title"
+msgid "Text Call To Action Buttons"
+msgstr "Text och knappar för uppmaning till åtgärd"
+
+#: patterns/job-openings.php
+msgctxt "Pattern description"
+msgid "Show job openings and a call to action button"
+msgstr "Visa lediga jobb och en knapp för uppmaning till åtgärd"
+
+#: patterns/hero-call-to-action-buttons.php
+msgctxt "Pattern title"
+msgid "Hero Call To Action Buttons"
+msgstr "Hero med knappar för uppmaning till åtgärd"
+
+#: patterns/author-box.php patterns/card-lead-magnet.php
+msgctxt "Pattern description"
+msgid "A call-to-action box to offer a free download or sign up user to an email list."
+msgstr "Ruta för uppmaning till åtgärd som erbjuder gratis nedladdning eller registrera användare till en e-postlista."
+
+#: patterns/page-features.php
+msgctxt "Pattern title"
+msgid "Features Page"
+msgstr "Sida med funktioner"
+
+#: patterns/features-with-emojis.php
+msgctxt "Pattern title"
+msgid "Features With Emojis"
+msgstr "Funktioner med emojis"
+
+#: functions.php:190
+msgid "The Sidebar template defines a page area that can be found on the Page (With Sidebar) template."
+msgstr "Mallen sidopanel definierar en sidarea på mallen Sida (med sidopanel)."
+
+#: patterns/blog-post-columns-single.php
+msgctxt "Pattern title"
+msgid "Blog Post Columns Single"
+msgstr "Blogginlägg i en kolumn"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Heat"
+msgstr "Värmebölja"
+
+#: patterns/numbers-stacked.php
+msgctxt "Pattern description"
+msgid "Display impressive numbers with a short description"
+msgstr "Visar imponerande siffror med en kort beskrivning"
+
+#: patterns/numbers-stacked.php
+msgctxt "Pattern title"
+msgid "Numbers Stacked"
+msgstr "Staplade siffror"
+
+#: patterns/numbers.php
+msgctxt "Pattern title"
+msgid "Numbers"
+msgstr "Siffror"
+
+#: patterns/page-download.php
+msgctxt "Pattern title"
+msgid "Download Page"
+msgstr "Nedladdningssida"
+
+#. Author URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "mikemcalister.com"
+msgstr "mikemcalister.com"
+
+#. Author of the theme
+#: style.css
+#, gp-priority: low
+msgid "Mike McAlister"
+msgstr "Mike McAlister"
+
+#. Theme URI of the theme
+#: style.css
+#, gp-priority: low
+msgid "olliewp.com"
+msgstr "olliewp.com"

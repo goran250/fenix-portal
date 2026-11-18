@@ -1288,3 +1288,94 @@ Stack trace:
 [13-Nov-2026 16:01:15 UTC] PHP Parse error:  syntax error, unexpected variable "$out" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 303
 [14-Nov-2026 11:21:09 UTC] PHP Warning:  Attempt to read property "post_content" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 239
 [14-Nov-2026 11:21:09 UTC] PHP Warning:  Attempt to read property "post_title" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 241
+[15-Nov-2026 12:15:20 UTC] PHP Parse error:  Unclosed '{' on line 100 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\anmalningar-shortcode.php on line 101
+[15-Nov-2026 12:15:20 UTC] PHP Parse error:  Unclosed '{' on line 100 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\anmalningar-shortcode.php on line 101
+[15-Nov-2026 12:16:31 UTC] PHP Parse error:  Unclosed '{' on line 100 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\anmalningar-shortcode.php on line 101
+[15-Nov-2026 12:16:31 UTC] PHP Parse error:  Unclosed '{' on line 100 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\anmalningar-shortcode.php on line 101
+[15-Nov-2026 18:33:07 UTC] Fel vid förnyad schemalagd händelse för åtgärds-hooken action_scheduler_run_queue. Felkod: could_not_set, felmeddelande: Det gick inte att spara listan med cron-händelser., data: {"schedule":"every_minute","args":["WP Cron"],"interval":60}
+[15-Nov-2026 18:33:07 UTC] Fel vid förnyad schemalagd händelse för åtgärds-hooken wp_privacy_delete_old_export_files. Felkod: could_not_set, felmeddelande: Det gick inte att spara listan med cron-händelser., data: {"schedule":"hourly","args":[],"interval":3600}
+[16-Nov-2026 08:27:18 UTC] PHP Warning:  Undefined variable $whichType in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\anmalningar-shortcode.php on line 43
+[17-Nov-2026 01:12:04 UTC] PHP Warning:  Undefined array key "event_id " in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 01:12:47 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 01:13:09 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 629
+[17-Nov-2026 01:13:09 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 629
+[17-Nov-2026 01:13:09 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 629
+[17-Nov-2026 01:13:09 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 629
+[17-Nov-2026 01:13:09 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 629
+[17-Nov-2026 01:13:09 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 629
+[17-Nov-2026 01:13:09 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 629
+[17-Nov-2026 09:07:01 UTC] PHP Parse error:  Unclosed '{' on line 48 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 134
+[17-Nov-2026 13:40:58 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 13:44:25 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 13:45:52 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 13:46:43 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 13:46:44 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:02:42 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:03:34 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:03:39 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:14:00 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:15:18 UTC] PHP Parse error:  Unclosed '{' on line 49 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 135
+[17-Nov-2026 15:15:18 UTC] PHP Parse error:  Unclosed '{' on line 49 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 135
+[17-Nov-2026 15:16:04 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:17:43 UTC] PHP Parse error:  syntax error, unexpected token ">" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 31
+[17-Nov-2026 15:17:43 UTC] PHP Parse error:  syntax error, unexpected token ">" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 31
+[17-Nov-2026 15:18:19 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:19:39 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:19:54 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 15:53:45 UTC] PHP Warning:  Undefined variable $event_date in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 12
+[17-Nov-2026 15:54:44 UTC] PHP Warning:  Undefined variable $event_date in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 12
+[17-Nov-2026 16:00:36 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ") {" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 88
+[17-Nov-2026 16:00:36 UTC] PHP Parse error:  syntax error, unexpected single-quoted string ") {" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 88
+[17-Nov-2026 18:53:03 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 18:53:03 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 18:54:49 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 18:54:49 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 19:19:09 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 19:19:09 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 10
+[17-Nov-2026 21:58:28 UTC] PHP Parse error:  Unclosed '{' on line 29 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 1049
+[17-Nov-2026 22:02:27 UTC] PHP Parse error:  Unclosed '{' on line 28 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 1043
+[17-Nov-2026 22:02:28 UTC] PHP Parse error:  Unclosed '{' on line 28 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 1043
+[17-Nov-2026 22:04:55 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[17-Nov-2026 22:04:55 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[17-Nov-2026 22:04:55 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[17-Nov-2026 22:04:55 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[17-Nov-2026 22:08:32 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[17-Nov-2026 22:08:32 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[17-Nov-2026 22:08:32 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[17-Nov-2026 22:08:32 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[17-Nov-2026 23:31:52 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 311
+[17-Nov-2026 23:32:12 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 311
+[17-Nov-2026 23:37:52 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 311
+[18-Nov-2026 00:06:13 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 311
+[18-Nov-2026 00:53:31 UTC] PHP Warning:  Undefined variable $u in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 66
+[18-Nov-2026 00:53:31 UTC] PHP Warning:  Undefined variable $u in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 66
+[18-Nov-2026 00:53:31 UTC] PHP Warning:  Undefined variable $u in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 66
+[18-Nov-2026 00:53:31 UTC] PHP Warning:  Undefined variable $u in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 66
+[18-Nov-2026 09:30:07 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[18-Nov-2026 09:30:07 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[18-Nov-2026 12:22:34 UTC] PHP Parse error:  Unmatched '}' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 423
+[18-Nov-2026 12:24:15 UTC] PHP Parse error:  Unmatched '}' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 423
+[18-Nov-2026 14:15:23 UTC] PHP Parse error:  syntax error, unexpected single-quoted string "checked" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 310
+[18-Nov-2026 14:15:23 UTC] PHP Parse error:  syntax error, unexpected single-quoted string "checked" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 310
+[18-Nov-2026 14:15:52 UTC] PHP Parse error:  syntax error, unexpected single-quoted string "checked" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 310
+[18-Nov-2026 14:37:26 UTC] PHP Warning:  Attempt to read property "post_content" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 237
+[18-Nov-2026 14:37:26 UTC] PHP Warning:  Attempt to read property "post_title" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 239
+[18-Nov-2026 14:37:26 UTC] PHP Warning:  Attempt to read property "post_author" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 256
+[18-Nov-2026 14:37:26 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 256
+[18-Nov-2026 14:37:26 UTC] PHP Warning:  Attempt to read property "post_author" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 257
+[18-Nov-2026 14:37:26 UTC] PHP Warning:  Attempt to read property "company" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 257
+[18-Nov-2026 15:22:35 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[18-Nov-2026 15:22:35 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[18-Nov-2026 15:22:35 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[18-Nov-2026 15:22:35 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[18-Nov-2026 15:54:28 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[18-Nov-2026 15:54:28 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[18-Nov-2026 15:54:28 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[18-Nov-2026 15:54:28 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[18-Nov-2026 16:02:53 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 311
+[18-Nov-2026 16:06:29 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 311
+[18-Nov-2026 16:06:46 UTC] PHP Warning:  Undefined variable $nbrOfParticipants in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 311
+[18-Nov-2026 17:29:55 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[18-Nov-2026 17:29:55 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[18-Nov-2026 17:49:49 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[18-Nov-2026 17:49:49 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13

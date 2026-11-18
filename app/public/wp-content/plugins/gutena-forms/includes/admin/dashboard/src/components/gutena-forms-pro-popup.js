@@ -58,7 +58,7 @@ const GutenaFormsProPopup = ( { isPopup = false, show = false, hideHandler } ) =
 					</div>
 
 					<div style={ { display: 'flex', justifyContent: 'center', marginTop: '20px', height: '45px' } }>
-						<Button className={ 'gutena-forms__pro-upgrade-button' } variant="primary" href="https://gutenaforms.com/pricing/?utm_source=plugin&utm_medium=pro_banner" target="_blank" rel="noopener noreferrer">
+						<Button className={ 'gutena-forms__pro-upgrade-button' } variant="primary" href="https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=dashboard_pro-banner" target="_blank" rel="noopener noreferrer">
 							<Crown />
 							{ __( 'Get Pro Now - $49/Year', 'gutena-forms' ) }
 						</Button>

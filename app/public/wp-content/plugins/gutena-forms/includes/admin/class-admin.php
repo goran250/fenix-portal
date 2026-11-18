@@ -84,8 +84,12 @@ if ( ! class_exists( 'Gutena_Forms_Admin' ) && class_exists( 'Gutena_Forms' ) ) 
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/entries/class-entries.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/validation-messages/class-validation-messages.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/auto-responder/class-auto-responder.php';
+			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/form-confirmation/class-form-confirmation.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/integrations/class-inegrations.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/mcp/class-mcp.php';
+			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/import/class-import.php';
+			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/export/class-export.php';
+			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/rest-api/class-rest-api.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/modules/settings-migrator/class-settings-migrator.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'vendor/smtp/class-smtp.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/admin/rest-api/class-rest-api-controller.php';
@@ -109,6 +113,7 @@ if ( ! class_exists( 'Gutena_Forms_Admin' ) && class_exists( 'Gutena_Forms' ) ) 
 			add_action( 'admin_head', array( $this, 'admin_head' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts_admin' ) );
 			add_action( 'current_screen', array( $this, 'redirect_when_old_screen' ) );
+			add_action( 'in_admin_header', array( $this, 'hide_admin_notices_on_dashboard' ), 0 );
 
 			if ( ! is_gutena_forms_pro( false ) ) {
 				add_action( 'admin_notices', array( $this, 'view_dashboard_notice' ) );
@@ -204,7 +209,7 @@ if ( ! class_exists( 'Gutena_Forms_Admin' ) && class_exists( 'Gutena_Forms' ) ) 
 					__( 'Upgrade', 'gutena-forms' ),
 					__( 'Upgrade', 'gutena-forms' ),
 					'manage_options',
-					'https://gutenaforms.com/pricing/?utm_source=plugin_dashboard&utm_medium=website&utm_campaign=free_plugin'
+					'https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=admin-menu_upgrade'
 				);
 			}
 
@@ -248,6 +253,7 @@ if ( ! class_exists( 'Gutena_Forms_Admin' ) && class_exists( 'Gutena_Forms' ) ) 
 				return;
 			}
 
+			wp_enqueue_editor();
 			wp_enqueue_script( 'gutena-forms-dashboard' );
 
 			$gutena_forms_admin = include plugin_dir_path( __FILE__ ) . 'localize/array-gutena-forms-admin.php';
@@ -278,7 +284,26 @@ if ( ! class_exists( 'Gutena_Forms_Admin' ) && class_exists( 'Gutena_Forms' ) ) 
 		/**
 		 * View dashboard notice
 		 */
+		/**
+		 * Hide third-party admin notices on the Gutena Forms dashboard.
+		 */
+		public function hide_admin_notices_on_dashboard() {
+			if ( ! Gutena_Forms_Admin_Helper::is_gutena_forms_dashboard_screen() ) {
+				return;
+			}
+
+			remove_all_actions( 'admin_notices' );
+			remove_all_actions( 'all_admin_notices' );
+		}
+
+		/**
+		 * View dashboard notice
+		 */
 		public function view_dashboard_notice() {
+			if ( Gutena_Forms_Admin_Helper::is_gutena_forms_dashboard_screen() ) {
+				return;
+			}
+
 			$notice_id = 'gutena-forms-view-dashboard-notice';
 			$notice    = $this->get_notices_and_status( $notice_id );
 			if ( false === $notice['dismissed'] ) {
@@ -307,7 +332,7 @@ if ( ! class_exists( 'Gutena_Forms_Admin' ) && class_exists( 'Gutena_Forms' ) ) 
 			// Notice + dismiss AJAX only apply when Pro is inactive; script must load for free.
 			if ( ! is_gutena_forms_pro( false ) ) {
 				wp_enqueue_script(
-					'gutena-forms-admin',
+					'gutena-forms-notice',
 					GUTENA_FORMS_PLUGIN_URL . 'assets/minify/js/admin.min.js',
 					array(),
 					GUTENA_FORMS_VERSION,
@@ -316,8 +341,8 @@ if ( ! class_exists( 'Gutena_Forms_Admin' ) && class_exists( 'Gutena_Forms' ) ) 
 
 				// Separate object so dashboard localize of gutenaFormsAdmin does not overwrite these.
 				wp_localize_script(
-					'gutena-forms-admin',
-					'gutenaFormsAdminNotice',
+					'gutena-forms-notice',
+					'gutenaFormsNotice',
 					array(
 						'dismiss_notice_action' => 'gutena_forms_dismiss_notice',
 						'ajax_url'              => admin_url( 'admin-ajax.php' ),

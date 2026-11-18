@@ -231,14 +231,6 @@
 }
 
 
-/* ── 5. Logotyp – krymper på riktigt små skärmar ── */
-@media (max-width: 375px) {
-  header .wp-block-site-logo img {
-    max-height: 40px;
-    width: auto;
-  }
-}
-
 
 /***************************************************************************************
 Görans css
@@ -389,7 +381,8 @@ Görans css
     margin: 0;
     display: block;
   }
-  .page-id-2 main div.wp-block-group h1.wp-block-post-title {      
+  .page-id-2 main div.wp-block-group h1.wp-block-post-title,
+  .page-id-328 main div.wp-block-group h1.wp-block-post-title {      
     font-size: 30px;
   } 
 
@@ -401,7 +394,7 @@ Görans css
 
 
 /* ── 5. Logotyp – krymper på riktigt små skärmar ── */
-@media (max-width: 375px) {
+@media (max-width: 500px) {
   header .wp-block-site-logo img {
     max-height: 50px;
     width: auto;

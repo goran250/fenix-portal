@@ -4,7 +4,6 @@ import { useEffect } from '@wordpress/element';
 import {
 	gfIsEmpty,
 	getInnerBlocksbyNameAttr,
-	slugToName,
 } from '../../shared/utils/helper';
 import {
 	InspectorControls,
@@ -19,20 +18,15 @@ import {
 	useSettings,
 } from '@wordpress/block-editor';
 import { store as editorStore } from '@wordpress/editor';
-import { store as coreStore } from '@wordpress/core-data';
-import { useDispatch, useSelect, dispatch } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
 import {
 	PanelBody,
 	PanelRow,
 	TextControl,
 	ToggleControl,
 	RangeControl,
-	SelectControl,
-	__experimentalUseCustomUnits as useCustomUnits,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
-	__experimentalUnitControl as UnitControl,
-	__experimentalParseQuantityAndUnitFromRawValue as parseQuantityAndUnitFromRawValue,
 } from '@wordpress/components';
 import {
 	createBlocksFromInnerBlocksTemplate,
@@ -46,7 +40,21 @@ import GoogleRecaptchaSettings from './settings/google-recaptcha-settings';
 import CloudflareSettings from './settings/cloudflare-settings';
 import HoneypotSettings from './settings/honeypot-settings';
 import ValidationMessagesSettings from './settings/validation-messages-settings';
-import NotificationSettings from './settings/notification-settings';
+import {
+	buildFormConfirmationFromDefaults,
+	hasExistingFormConfirmationSettings,
+	isFormConfirmationExplicitlyDisabled,
+	persistFormConfirmation,
+} from './settings/form-confirmation-utils';
+import EmailNotificationsSettings from './settings/email-notifications-settings';
+import FormConfirmationSettings from './settings/form-confirmation-settings';
+import { FormConfirmationEditorContext } from './settings/form-confirmation-editor-context';
+import { useFormConfirmationModal } from './settings/use-form-confirmation-modal';
+import {
+	buildTextFieldOptions,
+	collectFormFields,
+} from './settings/email-notifications-form-fields';
+
 /** Hook that retrieves the given setting for the block instance in use.
  * https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#usesetting
  */
@@ -138,18 +146,9 @@ const Placeholder = ( { clientId, name, setAttributes } ) => {
 	);
 };
 
-const MAX_SPACE_VALUES = {
-	px: 100,
-	em: 20,
-	rem: 20,
-	vh: 1,
-	vw: 1,
-};
-
 export default function Edit( props ) {
 	//props
-	const { className, attributes, setAttributes, isSelected, clientId } =
-		props;
+	const { attributes, setAttributes, clientId } = props;
 
 	//Attributes
 	const {
@@ -178,8 +177,9 @@ export default function Edit( props ) {
 		replyToLastName,
 		adminEmailSubject,
 		emailNotifyAdmin,
-		emailNotifyUser,
+		adminEmailTemplate,
 		messages = {},
+		settings = {},
 		formStyle,
 		style,
 		recaptcha,
@@ -187,8 +187,78 @@ export default function Edit( props ) {
 		honeypot,
 	} = attributes;
 
-	const { getClientIdsOfDescendants, getBlock } =
-		useSelect( blockEditorStore );
+	const { getBlock } = useSelect( blockEditorStore );
+
+	const innerBlocks = useSelect(
+		( select ) => select( blockEditorStore ).getBlock( clientId )?.innerBlocks || [],
+		[ clientId ]
+	);
+
+	const { updateBlockAttributes } = useDispatch( blockEditorStore );
+
+	const MESSAGE_BLOCK_NAMES = [
+		'gutena/form-confirm-msg',
+		'gutena/form-error-msg',
+	];
+
+	useEffect( () => {
+		innerBlocks.forEach( ( block ) => {
+			if ( ! MESSAGE_BLOCK_NAMES.includes( block.name ) ) {
+				return;
+			}
+
+			const lock = block.attributes?.lock;
+
+			if ( ! lock ) {
+				return;
+			}
+
+			if ( true === lock.move || true === lock.remove ) {
+				updateBlockAttributes( block.clientId, {
+					lock: { move: false, remove: false },
+				} );
+			}
+		} );
+	}, [ innerBlocks, updateBlockAttributes ] );
+
+	const isGutenaFormsPostType =
+		'1' === gutenaFormsBlock.is_gutena_forms_post_type ||
+		1 === gutenaFormsBlock.is_gutena_forms_post_type;
+
+	const editedPostTitle = useSelect(
+		( select ) => {
+			if ( ! isGutenaFormsPostType ) {
+				return null;
+			}
+			return select( editorStore ).getEditedPostAttribute( 'title' );
+		},
+		[ isGutenaFormsPostType ]
+	);
+
+	// Form CPT hides the Form name control; keep block formName aligned with the post title.
+	useEffect( () => {
+		if ( ! isGutenaFormsPostType || null === editedPostTitle ) {
+			return;
+		}
+
+		const trimmedTitle = ( editedPostTitle || '' ).trim();
+		if ( '' === trimmedTitle || 'Auto Draft' === trimmedTitle ) {
+			return;
+		}
+
+		const currentFormName = ( formName || '' ).trim();
+		const shouldSync =
+			'' === currentFormName ||
+			'untitled' === currentFormName.toLowerCase() ||
+			currentFormName !== trimmedTitle;
+
+		if ( shouldSync && currentFormName !== trimmedTitle ) {
+			setAttributes( { formName: trimmedTitle } );
+		}
+	}, [ editedPostTitle, formName, isGutenaFormsPostType, setAttributes ] );
+
+	const formFields = collectFormFields( innerBlocks );
+	const textFieldOptions = buildTextFieldOptions( innerBlocks );
 
 	/**
 	 * Returns an array of font family names from a given object.
@@ -211,7 +281,7 @@ export default function Edit( props ) {
 			}
 		}
 
-		if ( gfIsEmpty( fontFamilies ) || 0 == fontFamilies.length ) {
+		if ( gfIsEmpty( fontFamilies ) || 0 === fontFamilies.length ) {
 			return [];
 		}
 
@@ -383,6 +453,130 @@ export default function Edit( props ) {
 				} );
 				setAttributes( { messages: initMessages } );
 			}
+
+			if ( ! gfIsEmpty( gutenaFormsBlock ) && ! gfIsEmpty( gutenaFormsBlock.email_notifications_defaults ) ) {
+				const emailDefaults = gutenaFormsBlock.email_notifications_defaults;
+				const existingEmail = settings?.emailNotifications || {};
+
+				if ( false !== existingEmail.defaultSettings ) {
+					const nextSettings = { ...settings };
+					nextSettings.emailNotifications = {
+						...existingEmail,
+						defaultSettings: true,
+						from_email: emailDefaults.from_email || '',
+						cc: emailDefaults.cc || '',
+						bcc: emailDefaults.bcc || '',
+						reply_to: emailDefaults.reply_to || '',
+					};
+
+					setAttributes( {
+						settings: nextSettings,
+					} );
+				}
+			}
+
+			const storedConfirmation = settings?.formConfirmation || {};
+
+			if (
+				! gfIsEmpty( gutenaFormsBlock ) &&
+				! gfIsEmpty( gutenaFormsBlock.form_confirmation_defaults ) &&
+				! hasExistingFormConfirmationSettings( settings )
+			) {
+				const builtConfirmation = buildFormConfirmationFromDefaults(
+					gutenaFormsBlock.form_confirmation_defaults
+				);
+				const formConfirmation = {
+					enabled: true,
+					defaultSettings: true,
+					hasSavedConfig: false,
+					confirmationType: builtConfirmation.confirmationType,
+					afterSubmit: builtConfirmation.afterSubmit,
+					redirectType: builtConfirmation.redirectType,
+					redirectPageId: builtConfirmation.redirectPageId,
+					redirectUrl: builtConfirmation.redirectUrl,
+					resolvedRedirectUrl: builtConfirmation.resolvedRedirectUrl,
+				};
+
+				persistFormConfirmation(
+					setAttributes,
+					settings,
+					formConfirmation,
+					{ syncLegacy: true }
+				);
+			} else if (
+				! isFormConfirmationExplicitlyDisabled( storedConfirmation )
+			) {
+				const confirmationDefaults =
+					gutenaFormsBlock?.form_confirmation_defaults || {};
+				const builtConfirmation =
+					buildFormConfirmationFromDefaults( confirmationDefaults );
+				const usesGlobalDefaults =
+					storedConfirmation.defaultSettings !== false;
+				const shouldEnable =
+					true !== storedConfirmation.enabled;
+				const shouldNormalizeStored =
+					shouldEnable ||
+					( usesGlobalDefaults &&
+						( storedConfirmation.successMessage ||
+							storedConfirmation.errorMessage ) ) ||
+					( ! usesGlobalDefaults &&
+						( ! String( storedConfirmation.successMessage || '' ).trim() ||
+							! String(
+								storedConfirmation.errorMessage || ''
+							).trim() ) );
+
+				if ( shouldNormalizeStored ) {
+					let nextConfirmation = {
+						...storedConfirmation,
+						enabled: true,
+						defaultSettings:
+							storedConfirmation.defaultSettings ?? true,
+					};
+
+					if ( usesGlobalDefaults ) {
+						nextConfirmation = {
+							...nextConfirmation,
+							confirmationType: builtConfirmation.confirmationType,
+							afterSubmit: builtConfirmation.afterSubmit,
+							redirectType: builtConfirmation.redirectType,
+							redirectPageId: builtConfirmation.redirectPageId,
+							redirectUrl: builtConfirmation.redirectUrl,
+							resolvedRedirectUrl:
+								builtConfirmation.resolvedRedirectUrl,
+						};
+					} else {
+						nextConfirmation = {
+							...builtConfirmation,
+							...storedConfirmation,
+							enabled: true,
+							defaultSettings: false,
+						};
+
+						if (
+							! String(
+								nextConfirmation.successMessage || ''
+							).trim()
+						) {
+							nextConfirmation.successMessage =
+								builtConfirmation.successMessage;
+						}
+
+						if (
+							! String( nextConfirmation.errorMessage || '' ).trim()
+						) {
+							nextConfirmation.errorMessage =
+								builtConfirmation.errorMessage;
+						}
+					}
+
+					persistFormConfirmation(
+						setAttributes,
+						settings,
+						nextConfirmation,
+						{ syncLegacy: true }
+					);
+				}
+			}
 		}
 		//set replyToEmailID
 		if (
@@ -437,34 +631,6 @@ export default function Edit( props ) {
 		[ clientId ]
 	);
 
-	//Get Author Email
-	const currentUser = useSelect( ( select ) => {
-		return '' == adminEmails
-			? select( coreStore ).getUsers( { who: 'authors' } )
-			: [];
-	}, [] );
-
-	//Set Author Email
-	useEffect( () => {
-		let shouldRunAuthorEmail = true;
-		if ( shouldRunAuthorEmail ) {
-			if (
-				'' == adminEmails &&
-				'undefined' !== typeof currentUser &&
-				null !== currentUser &&
-				'undefined' !== typeof currentUser[ 0 ].email &&
-				null !== currentUser[ 0 ].email
-			) {
-				setAttributes( { adminEmails: currentUser[ 0 ].email } );
-			}
-		}
-
-		//cleanup
-		return () => {
-			shouldRunAuthorEmail = false;
-		};
-	}, [ currentUser ] );
-
 	//Template
 	const TEMPLATE =
 		gfIsEmpty( variations ) || gfIsEmpty( variations[ 0 ].innerBlocks )
@@ -481,28 +647,6 @@ export default function Edit( props ) {
 					],
 			  ]
 			: variations[ 0 ].innerBlocks;
-
-	//Spacing units
-	const units = useCustomUnits( {
-		availableUnits: [ 'px', 'em', 'rem', 'vh', 'vw' ],
-		defaultValues: { px: 0, em: 0, rem: 0, vh: 0, vw: 0 },
-	} );
-
-	const getQtyOrunit = ( rawUnit, quantityOrUnit = 'unit' ) => {
-		const [ quantityToReturn, unitToReturn ] =
-			parseQuantityAndUnitFromRawValue( rawUnit );
-		let unit =
-			'undefined' === typeof unitToReturn || null === unitToReturn
-				? 'px'
-				: unitToReturn;
-		let Qty =
-			'undefined' === typeof quantityToReturn ||
-			null === quantityToReturn ||
-			'' == quantityToReturn
-				? 0
-				: quantityToReturn;
-		return 'unit' === quantityOrUnit ? unit : quantityToReturn;
-	};
 
 	//Form Styles : local css variable for forms inner blocks styles
 	useEffect( () => {
@@ -756,6 +900,8 @@ export default function Edit( props ) {
 		'gutena/radio-field',
 		'gutena/checkbox-field',
 		'core/buttons',
+		'gutena/form-confirm-msg',
+		'gutena/form-error-msg',
 		...allowedProBlocks,
 	];
 
@@ -763,10 +909,22 @@ export default function Edit( props ) {
 		className: formClasses,
 	} );
 
-	let showFormNameField = '1' === gutenaFormsBlock.is_gutena_forms_post_type || 1 === gutenaFormsBlock.is_gutena_forms_post_type ? { display: 'none' } : {};
+	let showFormNameField = isGutenaFormsPostType ? { display: 'none' } : {};
+
+	const formConfirmationLegacyAttrs = {
+		formID,
+		afterSubmitAction,
+		afterSubmitHide,
+		redirectUrl,
+	};
+
+	const { contextValue: formConfirmationContextValue } =
+		useFormConfirmationModal( settings, setAttributes, formConfirmationLegacyAttrs );
 
 	return (
-		<>
+		<FormConfirmationEditorContext.Provider
+			value={ formConfirmationContextValue }
+		>
 			<style>{ formStyle }</style>
 			{ ! hasExistingFormsBlock && (
 				<InspectorControls>
@@ -809,7 +967,7 @@ export default function Edit( props ) {
 									) }
 								</span>
 								<a
-									href="https://gutenaforms.com/reuse-gutena-forms-on-multiple-pages"
+									href="https://gutenaforms.com/reuse-gutena-forms-on-multiple-pages?utm_source=plugin&utm_medium=in-plugin&utm_campaign=docs&utm_content=editor_synced-patterns"
 									target="_blank"
 								>
 									{ __( 'Synced Patterns', 'gutena-forms' ) }
@@ -1243,100 +1401,23 @@ export default function Edit( props ) {
 							/>
 						</PanelRow>
 					</PanelBody>
-
-					<NotificationSettings
-						settings={ {
-							emailFromName: emailFromName,
-							emailNotifyAdmin: emailNotifyAdmin,
-							adminEmails: adminEmails,
-							adminEmailSubject: adminEmailSubject,
-							replyToEmail: replyToEmail,
-							replyToName: replyToName,
-							replyToLastName: replyToLastName,
+					<EmailNotificationsSettings
+						settings={ settings }
+						setAttributes={ setAttributes }
+						legacyAttrs={ {
+							formID,
+							emailNotifyAdmin,
+							adminEmails,
+							adminEmailSubject,
+							adminEmailTemplate,
+							emailFromName,
+							replyToName,
+							replyToLastName,
 						} }
-						methods={ {
-							setAttributes: setAttributes,
-							getEmailFields: getEmailFields,
-							getTextFields: getTextFields,
-						} }
+						formFields={ formFields }
+						textFieldOptions={ textFieldOptions }
 					/>
-
-					<PanelBody
-						title={ __( 'Confirmation', 'gutena-forms' ) }
-						initialOpen={ true }
-					>
-						<PanelRow>
-							<SelectControl
-								label="Action"
-								value={ afterSubmitAction }
-								options={ [
-									{
-										label: __( 'Message', 'gutena-forms' ),
-										value: 'message',
-									},
-									{
-										label: __(
-											'Send to URL',
-											'gutena-forms'
-										),
-										value: 'redirect_url',
-									},
-								] }
-								onChange={ ( afterSubmitAction ) =>
-									setAttributes( { afterSubmitAction } )
-								}
-								help={ __(
-									'Confirmation and error message are available for edit at the bottom of the form',
-									'gutena-forms'
-								) }
-								__nextHasNoMarginBottom
-							/>
-						</PanelRow>
-						{ 'redirect_url' === afterSubmitAction ? (
-							<PanelRow>
-								<TextControl
-									type="url"
-									label={ __(
-										'Send to URL',
-										'gutena-forms'
-									) }
-									value={ redirectUrl }
-									onChange={ ( redirectUrl ) =>
-										setAttributes( { redirectUrl } )
-									}
-								/>
-							</PanelRow>
-						) : (
-							''
-						) }
-						{ 'message' === afterSubmitAction ? (
-							<PanelRow>
-								<ToggleControl
-									label={ __(
-										'Hide form after submission',
-										'gutena-forms'
-									) }
-									help={
-										afterSubmitHide
-											? __(
-													'Toggle to not hide form',
-													'gutena-forms'
-											  )
-											: __(
-													'Toggle to hide form',
-													'gutena-forms'
-											  )
-									}
-									checked={ afterSubmitHide }
-									onChange={ ( afterSubmitHide ) =>
-										setAttributes( { afterSubmitHide } )
-									}
-								/>
-							</PanelRow>
-						) : (
-							''
-						) }
-					</PanelBody>
+					<FormConfirmationSettings />
 
 				<ValidationMessagesSettings
 					setAttributes={ setAttributes }
@@ -1361,6 +1442,6 @@ export default function Edit( props ) {
 			) : (
 				<Placeholder { ...props } />
 			) }
-		</>
+		</FormConfirmationEditorContext.Provider>
 	);
 }

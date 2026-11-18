@@ -35,7 +35,7 @@ const GoogleRecaptchaSettings = ( { recaptcha, setAttributes } ) => {
     return (
         <PanelBody title="Google reCAPTCHA" initialOpen={ false }>
             <VStack >
-                <p><a href="https://gutenaforms.com/how-to-generate-google-recaptcha-site-key-and-secret-key" target="_blank">{ __( 'reCAPTCHA', 'gutena-forms' ) }</a> { __( ' v3 and v2 help you protect your sites from fraudulent activities, spam, and abuse. By using this integration in your forms, you can block spam form submissions.', 'gutena-forms' ) } </p>
+                <p><a href="https://gutenaforms.com/how-to-generate-google-recaptcha-site-key-and-secret-key?utm_source=plugin&utm_medium=in-plugin&utm_campaign=docs&utm_content=editor_recaptcha-keys" target="_blank">{ __( 'reCAPTCHA', 'gutena-forms' ) }</a> { __( ' v3 and v2 help you protect your sites from fraudulent activities, spam, and abuse. By using this integration in your forms, you can block spam form submissions.', 'gutena-forms' ) } </p>
 
                 <ToggleControl
                     label={ __( 'Enable', 'gutena-forms' ) }

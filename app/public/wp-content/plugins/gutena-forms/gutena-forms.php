@@ -4,7 +4,7 @@
  * Description:       Gutena Forms is the easiest way to create forms inside the WordPress block editor. Our plugin does not use jQuery and is lightweight, so you can rest assured that it won’t slow down your website. Instead, it allows you to quickly and easily create custom forms right inside the block editor.
  * Requires at least: 6.5
  * Requires PHP:      5.6
- * Version:           2.1.1
+ * Version:           2.2.0
  * Author:            Gutena Forms
  * Author URI:        https://gutenaforms.com
  * License:           GPL-2.0-or-later
@@ -41,7 +41,7 @@ if ( ! defined( 'GUTENA_FORMS_PLUGIN_URL' ) ) {
  * Plugin version.
  */
 if ( ! defined( 'GUTENA_FORMS_VERSION' ) ) {
-	define( 'GUTENA_FORMS_VERSION', '2.1.1' );
+	define( 'GUTENA_FORMS_VERSION', '2.2.0' );
 }
 
 /**
@@ -193,6 +193,8 @@ if ( ! class_exists( 'Gutena_Forms' ) ) :
 		private function includes() {
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/helpers/class-gutena-forms-helper.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/helpers/class-gutena-forms-auto-responder-helper.php';
+			include_once GUTENA_FORMS_DIR_PATH . 'includes/helpers/class-gutena-forms-confirmation-helper.php';
+			include_once GUTENA_FORMS_DIR_PATH . 'includes/helpers/class-gutena-forms-notification-helper.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/class-gutena-cpt.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/email-report/email-reports.php';
 			include_once GUTENA_FORMS_DIR_PATH . 'includes/class-gutena-migration.php';
@@ -233,6 +235,7 @@ if ( ! class_exists( 'Gutena_Forms' ) ) :
 			add_filter( 'gutena_forms__register_fields', array( $this, 'register_fields' ) );
 			add_action( 'admin_notices', array( $this, 'maybe_show_update_pro_notice' ) );
 			add_action( 'admin_init', array( $this, 'register_pro_plugin_row_notice' ) );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_email_assets' ) );
 
 			$this->load_dashboard();
 		}
@@ -490,7 +493,7 @@ if ( ! class_exists( 'Gutena_Forms' ) ) :
 
 			if ( ! is_gutena_forms_pro() ) {
 				$new_link = sprintf(
-					'<a style="color: #36a78a; font-weight: 600;" target="_blank" href="https://gutenaforms.com/pricing/?utm_source=all_plugins&utm_medium=website&utm_campaign=free_plugin">%s</a>',
+					'<a style="color: #36a78a; font-weight: 600;" target="_blank" href="https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=plugins-page_upgrade-link">%s</a>',
 					__( 'Get Gutena Forms Pro' )
 				);
 
@@ -609,7 +612,7 @@ if ( ! class_exists( 'Gutena_Forms' ) ) :
 							'enable' => false,
 							'type'   => 'v2',
 						),
-					'pricing_link'                  => 'https://gutenaforms.com/pricing/',
+					'pricing_link'                  => 'https://gutenaforms.com/pricing?utm_source=plugin&utm_medium=in-plugin&utm_campaign=upgrade&utm_content=editor_field-type-upgrade',
 					'cloudflare_turnstile_defaults' => is_array( $cloudflare_public ) ? $cloudflare_public : array(),
 					'is_pro'                        => is_gutena_forms_pro(),
 					'is_gutena_forms_post_type'     => $gutena_forms_post_type,
@@ -636,6 +639,8 @@ if ( ! class_exists( 'Gutena_Forms' ) ) :
 						'type'   => 'v2',
 					);
 				$gutena_forms_editor_data['cloudflare_turnstile_defaults'] = is_array( $cloudflare_turnstile_defaults ) ? $cloudflare_turnstile_defaults : array();
+				$gutena_forms_editor_data['form_confirmation_defaults']    = Gutena_Forms_Confirmation_Helper::get_form_defaults_for_editor();
+				$gutena_forms_editor_data['email_notifications_defaults'] = Gutena_Forms_Auto_Responder_Helper::get_form_defaults_for_editor();
 
 				wp_localize_script(
 					'gutena-forms-editor-script',
@@ -774,6 +779,17 @@ if ( ! class_exists( 'Gutena_Forms' ) ) :
 		}
 
 		/**
+		 * Enqueue the WordPress classic editor for email message fields in the block editor.
+		 *
+		 * @since 1.9.2
+		 */
+		public function enqueue_block_editor_email_assets() {
+			if ( is_admin() && function_exists( 'wp_enqueue_editor' ) ) {
+				wp_enqueue_editor();
+			}
+		}
+
+		/**
 		 * Register Gutena category if not exists
 		 *
 		 * @param array                   $block_categories Block categories.
@@ -888,6 +904,23 @@ if ( ! class_exists( 'Gutena_Forms' ) ) :
 								$effective_global,
 								array( 'defaultSettings' => true )
 							);
+						}
+
+						$email_settings = isset( $single_form_schema['form_attrs']['settings']['emailNotifications'] ) && is_array( $single_form_schema['form_attrs']['settings']['emailNotifications'] )
+							? $single_form_schema['form_attrs']['settings']['emailNotifications']
+							: array();
+
+						if ( class_exists( 'Gutena_Forms_Notification_Helper' ) && Gutena_Forms_Notification_Helper::uses_global_email_defaults( $email_settings ) ) {
+							unset( $single_form_schema['form_attrs']['adminEmails'] );
+							unset( $single_form_schema['form_attrs']['adminEmailSubject'] );
+							unset( $single_form_schema['form_attrs']['adminEmailTemplate'] );
+							unset( $single_form_schema['form_attrs']['emailFromName'] );
+
+							if ( ! isset( $single_form_schema['form_attrs']['settings']['emailNotifications'] ) || ! is_array( $single_form_schema['form_attrs']['settings']['emailNotifications'] ) ) {
+								$single_form_schema['form_attrs']['settings']['emailNotifications'] = array();
+							}
+
+							$single_form_schema['form_attrs']['settings']['emailNotifications']['defaultSettings'] = true;
 						}
 
 						$single_form_schema['form_attrs'] = Gutena_Forms_Helper::strip_captcha_secrets_from_form_attrs( $single_form_schema['form_attrs'] );

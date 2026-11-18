@@ -1,0 +1,3829 @@
+# Translation of Plugins - WP Mail SMTP by WPForms &#8211; SMTP for Reliable Email Delivery with Gmail, Outlook, Amazon SES, Brevo, Other SMTP &amp; More - Stable (latest release) in Swedish
+# This file is distributed under the same license as the Plugins - WP Mail SMTP by WPForms &#8211; SMTP for Reliable Email Delivery with Gmail, Outlook, Amazon SES, Brevo, Other SMTP &amp; More - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-10-08 15:08:40+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.1.0\n"
+"Language: sv_SE\n"
+"Project-Id-Version: Plugins - WP Mail SMTP by WPForms &#8211; SMTP for Reliable Email Delivery with Gmail, Outlook, Amazon SES, Brevo, Other SMTP &amp; More - Stable (latest release)\n"
+
+#: src/Admin/Pages/AboutTab.php:419 src/Admin/Pages/AboutTab.php:453
+#: src/Admin/SetupWizard/Local.php:821 src/SetupChecklist/Ajax.php:292
+msgid "This plugin is not allowed."
+msgstr "Detta tillägg är inte tillåtet."
+
+#: src/Admin/Pages/AiMcpTab.php:155
+msgid "Go To WPVibe"
+msgstr "Gå till WPVibe"
+
+#: src/Admin/Pages/AboutTab.php:411 src/Admin/Pages/AboutTab.php:446
+#: src/Admin/SetupWizard/Local.php:817 src/SetupChecklist/Ajax.php:286
+msgid "No plugin was specified."
+msgstr "Inget tillägg specificerades."
+
+#: templates/dashboard/widgets/version.php:49
+msgid "Update Now"
+msgstr "Uppdatera nu"
+
+#: templates/dashboard/widgets/version.php:44
+msgid "What's New"
+msgstr "Vad som är nytt"
+
+#: templates/dashboard/widgets/email-sources.php:71
+msgid "Share"
+msgstr "Dela"
+
+#: templates/dashboard/widgets/email-log.php:107
+msgid "View email"
+msgstr "Visa e-post"
+
+#: templates/dashboard/widget.php:63
+msgid "Widget settings"
+msgstr "Widgetinställningar"
+
+#: templates/dashboard/widget-settings.php:120
+msgid "Reset to Default Settings"
+msgstr "Återställ till standardinställningarna"
+
+#: templates/dashboard/stat-card.php:40
+msgid "Upgrade to Unlock"
+msgstr "Uppgradera för att låsa upp"
+
+#: src/SetupChecklist/Page.php:369
+msgid "Your email address"
+msgstr "Din e-postadress"
+
+#: src/SetupChecklist/Page.php:139
+msgid "Yes, dismiss"
+msgstr "Ja, avfärda"
+
+#: src/SetupChecklist/Config.php:303
+msgid "Count Me In!"
+msgstr "Räkna med mig!"
+
+#: src/SetupChecklist/Page.php:222 src/SetupChecklist/Promos.php:93
+msgid "Toggle section"
+msgstr "Slå på/av sektion"
+
+#: src/SetupChecklist/Page.php:208
+#: templates/dashboard/widgets/setup-checklist-overview.php:25
+msgid "Incomplete"
+msgstr "Ofullständig"
+
+#: templates/dashboard/widgets/email-sources.php:72
+#: templates/dashboard/widgets/email-sources.php:100
+msgid "Emails"
+msgstr "E-post"
+
+#. translators: %s: the name of the detected SMTP plugin.
+#: src/SetupChecklist/Config.php:372
+msgid "Import Settings From %s"
+msgstr "Importera inställningar från %s"
+
+#: src/SetupChecklist/Config.php:294
+msgid "Help Improve WP Mail SMTP"
+msgstr "Hjälp oss att förbättra WP Mail SMTP"
+
+#: src/SetupChecklist/Config.php:286
+msgid "Sign Up for Free"
+msgstr "Registrera gratis"
+
+#: src/SetupChecklist/Ajax.php:227
+msgid "Please enter a valid email address."
+msgstr "Ange en giltig e-postadress."
+
+#: src/SetupChecklist/Ajax.php:168 src/SetupChecklist/Ajax.php:196
+msgid "You do not have permission to change these settings."
+msgstr "Du har inte behörighet att ändra dessa inställningar."
+
+#: src/SettingsImport/SettingsImport.php:109
+msgid "Post SMTP"
+msgstr "Post SMTP"
+
+#: src/Admin/SetupWizard/Local.php:807
+#: src/PartnerPlugins/InstallPermission.php:29
+msgid "Your account does not have permission to install plugins on this site."
+msgstr "Du har inte behörighet att installera tillägg på denna webbplats."
+
+#: src/Admin/Dashboard/Widgets/FeaturesUpsell.php:287
+msgid "Enable"
+msgstr "Aktivera"
+
+#: src/Admin/Dashboard/Widgets/GettingStarted.php:81
+msgid "View All Documentation"
+msgstr "Visa all dokumentation"
+
+#: src/Admin/Dashboard/Widgets/GettingStarted.php:49
+msgid "Getting Started"
+msgstr "Komma igång"
+
+#: src/Admin/Dashboard/Widgets/FeaturesUpsell.php:171
+msgid "View All Settings"
+msgstr "Visa alla inställningar"
+
+#: src/Admin/Dashboard/Widgets/Connections.php:520
+msgid "Test Connections"
+msgstr "Testa anslutningar"
+
+#: src/Admin/Dashboard/Widgets/Connections.php:431
+msgid "Connected"
+msgstr "Ansluten"
+
+#: src/Admin/Dashboard/Widgets/Connections.php:334
+#: src/Admin/Dashboard/Widgets/FeaturesUpsell.php:237
+msgid "Manage"
+msgstr "Hantera"
+
+#: src/Admin/Dashboard/Widgets/Connections.php:304
+msgid "New Connection"
+msgstr "Ny anslutning"
+
+#: src/Admin/Dashboard/Widgets/Connections.php:81
+msgid "Connections"
+msgstr "Anslutningar"
+
+#: src/Admin/Dashboard/Page.php:198
+#: src/Admin/Dashboard/Widgets/EmailsOverview.php:134
+msgid "Failed"
+msgstr "Misslyckades"
+
+#: src/Admin/Dashboard/Page.php:197
+#: src/Admin/Dashboard/Widgets/StatCards.php:124
+msgid "Sent"
+msgstr "Skickat"
+
+#: src/Admin/Dashboard/Page.php:144 src/SetupChecklist/Page.php:145
+msgid "Activating…"
+msgstr "Aktiverar …"
+
+#: src/Admin/Dashboard/Dashboard.php:116 src/Admin/Dashboard/Dashboard.php:117
+#: templates/dashboard/page.php:20 templates/dashboard/page.php:39
+msgid "Dashboard"
+msgstr "Adminpanel"
+
+#: src/Admin/Dashboard/Ajax.php:158
+msgid "Invalid card."
+msgstr "Ogiltigt kort."
+
+#: src/Admin/Dashboard/Ajax.php:85 src/Admin/Dashboard/Ajax.php:122
+msgid "Invalid widget."
+msgstr "Ogiltig widget."
+
+#: src/Admin/Dashboard/Ajax.php:63
+msgid "You do not have permission to do this."
+msgstr "Du har inte behörighet att göra detta."
+
+#: src/Admin/Dashboard/Ajax.php:57
+msgid "Your session has expired. Please reload the page."
+msgstr "Din session har löpt ut. Ladda om sidan."
+
+#: src/PartnerPlugins/Installer.php:33
+msgid "This plugin cannot be installed automatically."
+msgstr "Detta tillägg kan inte installeras automatiskt."
+
+#: src/Admin/SetupWizard/RestApi.php:371 src/Admin/SetupWizard/RestApi.php:762
+msgid "Too many attempts. Wait a moment and try again."
+msgstr "För många försök. Vänta en stund och försök igen."
+
+#: src/Admin/SetupWizard/RestApi.php:242
+msgid "Insufficient permissions."
+msgstr "Otillräckliga behörigheter."
+
+#: src/Admin/SetupWizard/RestApi.php:227 src/Admin/SetupWizard/RestApi.php:233
+msgid "Session expired."
+msgstr "Session löpt ut."
+
+#: src/Admin/Review.php:222
+msgid "You do not have permission to dismiss this notice."
+msgstr "Du har inte behörighet att avfärda denna notis."
+
+#: src/Admin/Area.php:1649
+msgid "50% off"
+msgstr "50&nbsp;% rabatt"
+
+#: src/Admin/Area.php:1647
+msgid "Bonus:"
+msgstr "Bonus:"
+
+#: src/Admin/Area.php:632
+msgid "Done"
+msgstr "Klar"
+
+#: src/Admin/Area.php:630
+msgid "Welcome to WP Mail SMTP Pro!"
+msgstr "Välkommen till WP Mail SMTP Pro!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1560
+msgid "Configure API Keys"
+msgstr "Konfigurera API-nycklar"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1548
+msgid "Edit Connection"
+msgstr "Redigera anslutning"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1538 src/Admin/Area.php:1680
+#: src/Admin/Dashboard/Widgets/Connections.php:354
+msgid "Upgrade"
+msgstr "Uppgradera"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1535 src/Admin/Area.php:1677
+#: src/Admin/Pages/SettingsTab.php:177
+msgid "License key"
+msgstr "Licensnyckel"
+
+#. Translators: %1$s and %2$s are link tags to the upgrade documentation.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1529
+msgid "%1$sNeed Help?%2$s"
+msgstr "%1$sBehöver du hjälp?%2$s"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1508 src/Admin/Area.php:1661
+msgid "Enter your License Key"
+msgstr "Ange din licensnyckel"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1157
+msgid "Manual Setup"
+msgstr "Manuell inställning"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:566
+msgid "Activate & Continue"
+msgstr "Aktivera och fortsätt"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:533
+msgid "Your license is still not active."
+msgstr "Din licens är fortfarande inte aktiv."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:530
+msgid "Please enter your license key."
+msgstr "Ange din licensnyckel."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:501
+msgid "Connection Details"
+msgstr "Anslutningsdetaljer"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:498
+msgid "Verify New Email Address"
+msgstr "Verifiera ny e-postadress"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:470
+msgid "Add New Email Address or Domain"
+msgstr "Lägg till e-postadress eller domän"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:590
+msgid "Your license is invalid."
+msgstr "Din licens är ogiltig."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:587
+msgid "Your license has been disabled."
+msgstr "Din licens har inaktiverats."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:745
+msgid "Verify Connection"
+msgstr "Verifiera anslutning"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:748
+msgid "Authorize Connection"
+msgstr "Auktorisera anslutningen"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:742
+msgid "Continue Anyway"
+msgstr "Fortsätt ändå"
+
+#: src/WPCLI/Options/Registry.php:257
+msgid "SMTP password."
+msgstr "SMTP-lösenord."
+
+#: src/WPCLI/Options/Registry.php:250
+msgid "SMTP username."
+msgstr "SMTP-användarnamn."
+
+#: src/WPCLI/Options/Registry.php:279
+msgid "SendGrid API key."
+msgstr "SendGrid API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:306
+msgid "Mailgun API key."
+msgstr "Mailgun API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:490
+msgid "Mailjet API key."
+msgstr "Mailjet API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:462
+msgid "SparkPost API key."
+msgstr "SparkPost API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:519
+msgid "MailerSend API key."
+msgstr "MailerSend API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:576
+msgid "Elastic Email API key."
+msgstr "Elastic Email API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:598
+msgid "Mandrill API key."
+msgstr "Mandrill API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:440
+msgid "SMTP2GO API key."
+msgstr "SMTP2GO API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:412
+msgid "SMTP.com API key."
+msgstr "SMTP.com API-nyckel."
+
+#: src/WPCLI/Options/Registry.php:368
+msgid "SendLayer API key."
+msgstr "SendLayer API-nyckel."
+
+#: src/EmailSendingDebug.php:179
+msgid "Unknown"
+msgstr "Okänd"
+
+#. translators: %1$s - Plugin name causing conflict.
+#: src/Conflicts.php:580
+msgid "Deactivate %1$s"
+msgstr "Inaktivera %1$s"
+
+#: src/Admin/WooCommerceActiveLayerEducation.php:358
+msgid "Get ActiveLayer"
+msgstr "Skaffa ActiveLayer"
+
+#: src/Admin/WooCommerceActiveLayerEducation.php:239
+msgid "Dismiss this section"
+msgstr "Avfärda denna sektion"
+
+#: src/Admin/Recommendations/RecommendedPlugins.php:177
+msgid "Translations"
+msgstr "Översättningar"
+
+#: src/Admin/Recommendations/RecommendedPlugins.php:165
+msgid "Backups"
+msgstr "Säkerhetskopior"
+
+#: src/Admin/Recommendations/RecommendedPlugins.php:159
+msgid "Spam Protection"
+msgstr "Skräppostskydd"
+
+#: src/Admin/Recommendations/RecommendedPlugins.php:153
+msgid "Privacy Compliance"
+msgstr "Integritetsefterlevnad"
+
+#: src/Admin/Recommendations/Pages/WPVibe.php:291
+msgid "Open WPVibe"
+msgstr "Öppna WPVibe"
+
+#: src/Admin/Recommendations/Pages/WPVibe.php:267
+#: src/SetupChecklist/Config.php:239
+msgid "Connect Your AI Assistant"
+msgstr "Anslut din AI-assistent"
+
+#: src/Admin/Recommendations/Pages/WPVibe.php:243
+#: src/Admin/Recommendations/Pages/WPVibe.php:315
+msgid "WPVibe Installed & Activated"
+msgstr "WPVibe installerat och aktiverat"
+
+#: src/Admin/Recommendations/Pages/WPVibe.php:231
+#: src/SetupChecklist/Config.php:245
+msgid "Install WPVibe"
+msgstr "Installera WPVibe"
+
+#: src/Admin/Recommendations/Pages/WPVibe.php:219
+msgid "WPVibe"
+msgstr "WPVibe"
+
+#: src/Admin/Recommendations/Pages/WPVibe.php:179
+msgid "View Docs"
+msgstr "Visa dokumentation"
+
+#: src/Admin/Recommendations/Pages/WPConsent.php:308
+#: src/SetupChecklist/Config.php:273
+msgid "Activate WPConsent"
+msgstr "Aktivera WPConsent"
+
+#: src/Admin/Recommendations/Pages/WPConsent.php:320
+#: src/SetupChecklist/Config.php:274
+msgid "Set Up WPConsent"
+msgstr "Ställ in WPConsent"
+
+#: src/Admin/Recommendations/Pages/WPConsent.php:296
+msgid "WPConsent Installed & Activated"
+msgstr "WPConsent installerat och aktiverat"
+
+#: src/Admin/Recommendations/Pages/WPConsent.php:284
+#: src/SetupChecklist/Config.php:272
+msgid "Install WPConsent"
+msgstr "Installera WPConsent"
+
+#: src/Admin/Recommendations/Pages/WPConsent.php:248
+msgid "Install & Activate WPConsent"
+msgstr "Installera och aktivera WPConsent"
+
+#: src/Admin/Recommendations/Pages/WPConsent.php:229
+#: src/Admin/Recommendations/Pages/WPConsent.php:368
+msgid "WPConsent Pro Installed & Activated"
+msgstr "WPConsent Pro installerat och aktiverat"
+
+#: src/Admin/Recommendations/Pages/WPCode.php:319
+msgid "Open WPCode"
+msgstr "Öppna WPCode"
+
+#: src/Admin/Recommendations/Pages/WPCode.php:295
+msgid "Set Up WPCode"
+msgstr "Ställ in WPCode"
+
+#: src/Admin/Recommendations/Pages/WPCode.php:271
+msgid "WPCode Installed & Activated"
+msgstr "WPCode installerat och aktiverat"
+
+#: src/Admin/Recommendations/Pages/WPCode.php:259
+msgid "Install WPCode"
+msgstr "Installera WPCode"
+
+#: src/Admin/Recommendations/Pages/WPCode.php:247
+msgid "WPCode"
+msgstr "WPCode"
+
+#: src/Admin/Recommendations/Pages/WPCode.php:205
+#: src/Admin/Recommendations/Pages/WPCode.php:343
+msgid "WPCode Pro Installed & Activated"
+msgstr "WPCode Pro installerat och aktiverat"
+
+#: src/Admin/Recommendations/Pages/Universally.php:267
+msgid "Connect Universally"
+msgstr "Anslut Universally"
+
+#: src/Admin/Recommendations/Pages/Universally.php:255
+msgid "Activate Universally"
+msgstr "Aktivera Universally"
+
+#: src/Admin/Recommendations/Pages/Universally.php:243
+#: src/Admin/Recommendations/Pages/Universally.php:315
+msgid "Universally Installed & Activated"
+msgstr "Universally installerad och aktiverat"
+
+#: src/Admin/Recommendations/Pages/Universally.php:231
+msgid "Install Universally"
+msgstr "Installera Universally"
+
+#: src/Admin/Recommendations/Pages/Universally.php:195
+msgid "Install & Activate Universally"
+msgstr "Installera och aktivera Universally"
+
+#: src/Admin/Recommendations/Pages/Duplicator.php:288
+msgid "Activate Duplicator"
+msgstr "Aktivera Duplicator"
+
+#: src/Admin/Recommendations/Pages/Duplicator.php:276
+msgid "Duplicator Installed & Activated"
+msgstr "Duplicator installerat och aktiverat"
+
+#: src/Admin/Recommendations/Pages/Duplicator.php:264
+msgid "Install Duplicator"
+msgstr "Installera Duplicator"
+
+#: src/Admin/Recommendations/Pages/Duplicator.php:228
+msgid "Install & Activate Duplicator"
+msgstr "Installera och aktivera Duplicator"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:291
+#: src/Admin/Recommendations/Pages/Universally.php:291
+msgid "Open Settings"
+msgstr "Öppna inställningar"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:267
+msgid "Connect ActiveLayer"
+msgstr "Anslut ActiveLayer"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:255
+#: src/Admin/WooCommerceActiveLayerEducation.php:298
+msgid "Activate ActiveLayer"
+msgstr "Aktivera ActiveLayer"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:243
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:315
+msgid "ActiveLayer Installed & Activated"
+msgstr "ActiveLayer installerat och aktiverat"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:231
+msgid "Install ActiveLayer"
+msgstr "Installera ActiveLayer"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:195
+#: src/Admin/WooCommerceActiveLayerEducation.php:297
+msgid "Install & Activate ActiveLayer"
+msgstr "Installera och aktivera ActiveLayer"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:157
+#: src/Admin/Recommendations/Pages/Duplicator.php:177
+#: src/Admin/Recommendations/Pages/Universally.php:157
+#: src/Admin/Recommendations/Pages/WPCode.php:173
+#: src/Admin/Recommendations/Pages/WPConsent.php:190
+#: src/Admin/Recommendations/Pages/WPVibe.php:157
+msgid "Step 3"
+msgstr "Steg 3"
+
+#: src/Admin/Recommendations/PageAbstract.php:404
+msgid "Activate Now"
+msgstr "Aktivera nu"
+
+#: src/Admin/Recommendations/PageAbstract.php:403
+#: src/Admin/Recommendations/Pages/WPCode.php:206
+#: src/Admin/Recommendations/Pages/WPConsent.php:230
+msgid "Install Now"
+msgstr "Installera nu"
+
+#: src/Admin/Recommendations/PageAbstract.php:400
+#: src/Admin/WooCommerceActiveLayerEducation.php:356
+msgid "Activating..."
+msgstr "Aktiverar …"
+
+#: src/Admin/Recommendations/PageAbstract.php:399
+#: src/Admin/WooCommerceActiveLayerEducation.php:355
+msgid "Installing..."
+msgstr "Installerar …"
+
+#: src/Admin/Recommendations/PageAbstract.php:356
+msgid "Plugin unavailable."
+msgstr "Tillägg otillgängligt."
+
+#: src/Admin/Recommendations/PageAbstract.php:348
+#: src/SetupChecklist/Ajax.php:247
+msgid "You do not have permission."
+msgstr "Du har inte behörighet."
+
+#: src/Admin/Recommendations/PageAbstract.php:235
+msgid "Step 2"
+msgstr "Steg 2"
+
+#: src/Admin/Recommendations/PageAbstract.php:199
+msgid "Step 1"
+msgstr "Steg 1"
+
+#. translators: %s - product name (e.g. WPConsent).
+#: src/Admin/Pages/TestTab.php:505
+msgid "Install %s (Free)"
+msgstr "Installera %s (Gratis)"
+
+#: src/Admin/Pages/GetProTab.php:449
+msgid "Google Workspace"
+msgstr "Google Workspace"
+
+#: src/Admin/Pages/GetProTab.php:286 src/Admin/Pages/GetProTab.php:404
+msgid "Not available"
+msgstr "Inte tillgängligt"
+
+#: src/Admin/Pages/GetProTab.php:284
+msgid "Available"
+msgstr "Tillgängligt"
+
+#: src/Admin/Pages/GetProTab.php:218
+msgid "Lite"
+msgstr "Lite"
+
+#: src/Admin/Pages/GetProTab.php:41
+msgid "Get Pro"
+msgstr "Skaffa Pro"
+
+#: src/Admin/Pages/CodeSnippetsTab.php:485
+#: templates/dashboard/widgets/email-log.php:74
+msgid "View"
+msgstr "Visa"
+
+#: src/Admin/Pages/AiMcpTab.php:74
+#: src/Admin/Recommendations/RecommendedPlugins.php:171
+msgid "AI MCP"
+msgstr "AI MCP"
+
+#: src/Admin/Pages/AiMcpTab.php:187
+#: src/Admin/Recommendations/Pages/WPVibe.php:195
+msgid "Install & Activate WPVibe"
+msgstr "Installera och aktivera WPVibe"
+
+#: src/Admin/Pages/AiMcpTab.php:174
+#: src/Admin/Recommendations/Pages/WPVibe.php:255
+#: src/SetupChecklist/Config.php:246
+msgid "Activate WPVibe"
+msgstr "Aktivera WPVibe"
+
+#: src/Admin/Pages/AiMcpTab.php:156 src/SetupChecklist/Config.php:247
+msgid "Set Up WPVibe"
+msgstr "Ställ in WPVibe"
+
+#: src/Admin/Pages/EmailDetectiveTab.php:112 src/SetupChecklist/Page.php:135
+msgid "Something went wrong. Please try again."
+msgstr "Något gick fel. Försök igen."
+
+#: src/Admin/Recommendations/Pages/Universally.php:219
+msgid "Universally"
+msgstr "Universally"
+
+#: src/Admin/Pages/AboutTab.php:348
+msgid "Vibe AI"
+msgstr "Vibe AI"
+
+#: src/Admin/Recommendations/Pages/WPConsent.php:272
+msgid "WPConsent"
+msgstr "WPConsent"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:219
+msgid "ActiveLayer"
+msgstr "ActiveLayer"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:230
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1388
+msgid "Need Help?"
+msgstr "Behöver du hjälp?"
+
+#: src/Admin/Pages/CodeSnippetsTab.php:148
+msgid "Activate it manually."
+msgstr "Aktivera det manuellt."
+
+#: src/Admin/Pages/CodeSnippetsTab.php:145
+#: src/Admin/Recommendations/Pages/WPCode.php:283
+msgid "Activate WPCode"
+msgstr "Aktivera WPCode"
+
+#: src/Admin/Pages/CodeSnippetsTab.php:140
+#: src/Admin/Pages/CodeSnippetsTab.php:342
+msgid "Learn more about WPCode"
+msgstr "Lär dig mer om WPCode"
+
+#: src/Admin/Pages/CodeSnippetsTab.php:139
+#: src/Admin/Pages/CodeSnippetsTab.php:340
+#: src/Admin/Recommendations/Pages/WPCode.php:223
+msgid "Install & Activate WPCode"
+msgstr "Installera och aktivera WPCode"
+
+#: src/Admin/Pages/GetProTab.php:131
+msgid "Features you'll love with Pro"
+msgstr "Funktioner du kommer att gilla med Pro"
+
+#: src/Admin/Dashboard/Page.php:143 src/Admin/Pages/CodeSnippetsTab.php:134
+#: src/SetupChecklist/Page.php:144
+msgid "Installing…"
+msgstr "Installerar …"
+
+#: src/Admin/Pages/AiMcpTab.php:328
+msgid "Pro feature"
+msgstr "Pro-funktion"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:234
+msgid "Warning"
+msgstr "Varning"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:140
+msgid "View details"
+msgstr "Visa detaljer"
+
+#: src/Admin/Area.php:666 src/SetupChecklist/Page.php:137
+msgid "Are you sure?"
+msgstr "Är du säker?"
+
+#: src/Admin/Area.php:656
+msgid "Setup Now"
+msgstr "Ställ in nu"
+
+#: src/Providers/Sendlayer/QuickConnect.php:750
+msgid "From Email Address"
+msgstr "Från e-postadress"
+
+#: src/Admin/Pages/TestTab.php:458 src/Admin/Pages/TestTab.php:459
+#: src/Providers/Sendlayer/QuickConnect.php:702
+#: templates/dashboard/inline-card.php:37
+msgid "Dismiss"
+msgstr "Avfärda"
+
+#: src/Providers/Sendlayer/QuickConnect.php:691
+msgid "Setup SendLayer"
+msgstr "Ställ in SendLayer"
+
+#: src/Providers/Sendlayer/QuickConnect.php:88
+#: src/Providers/Sendlayer/QuickConnect.php:600
+msgid "You do not have permission to perform this action."
+msgstr "Du har inte behörighet att utföra denna åtgärd."
+
+#: src/Providers/Sendlayer/Options.php:125
+msgid "Connect manually with API Key"
+msgstr "Anslut manuellt med API-nyckel"
+
+#: src/Admin/Area.php:624
+msgid "Connecting..."
+msgstr "Ansluter …"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1361
+#: assets/languages/wp-mail-smtp-vue.php:1115
+msgid "Read how to setup manually"
+msgstr "Läs hur man ställer in manuellt"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:511
+#: assets/languages/wp-mail-smtp-vue.php:1112
+#: src/Providers/Sendlayer/Options.php:110
+msgid "Quick Connect"
+msgstr "Snabbanslut"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:473
+#: assets/languages/wp-mail-smtp-vue.php:1105
+#: src/Providers/Sendlayer/Options.php:140
+msgid "Change"
+msgstr "Ändra"
+
+#: assets/languages/wp-mail-smtp-vue.php:1102
+msgid "Connected to"
+msgstr "Ansluten till"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1027
+#: assets/languages/wp-mail-smtp-vue.php:1099
+#: src/Providers/Sendlayer/Options.php:134
+msgid "Domain"
+msgstr "Domän"
+
+#: assets/languages/wp-mail-smtp-vue.php:1089
+#: src/Providers/Sendlayer/Options.php:199
+msgid "Disconnect"
+msgstr "Koppla ifrån"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1358
+#: assets/languages/wp-mail-smtp-vue.php:1086 src/WP.php:236
+msgid "Copy error code"
+msgstr "Kopiera felkod"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1355
+#: assets/languages/wp-mail-smtp-vue.php:1083
+msgid "Retry Connecting"
+msgstr "Försök ansluta igen"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:428
+#: assets/languages/wp-mail-smtp-vue.php:1068 src/Admin/Area.php:626
+msgid "An error occurred. Please try again."
+msgstr "Ett fel uppstod. Försök igen."
+
+#: src/Providers/Resend/Options.php:123
+msgid "API Keys"
+msgstr "API-nycklar"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1313
+#: assets/languages/wp-mail-smtp-vue.php:1065
+msgid "Read how to set up Resend"
+msgstr "Läs hur man ställer in Resend"
+
+#. Translators: Link to the Resend API settings.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1310
+#: assets/languages/wp-mail-smtp-vue.php:1062
+msgid "%1$sFollow this link%2$s to get an API Key for Resend."
+msgstr "%1$sFölj denna länk%2$s för att skaffa en API-nyckel för Resend."
+
+#: src/Providers/Mandrill/Options.php:60
+msgid "Mandrill"
+msgstr "Mandrill"
+
+#. translators: %s - API key link.
+#: src/Providers/Mandrill/Options.php:116
+msgid "Follow this link to get an API Key from Mandrill: %s."
+msgstr "Följ denna länk för att skaffa en API-nyckel från Mandrill: %s."
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/Mandrill/Options.php:41
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mandrill documentation</a>."
+msgstr "För att komma igång, läs vår <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mandrill-dokumentation</a>."
+
+#: src/Admin/Pages/SettingsTab.php:293
+msgid "Discount"
+msgstr "Rabatt"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1257
+#: assets/languages/wp-mail-smtp-vue.php:1058
+msgid "Read how to set up Mandrill"
+msgstr "Läs om hur man ställer in Mandrill"
+
+#: assets/languages/wp-mail-smtp-vue.php:1055
+msgid "Follow this link to get an API Key from Mandrill."
+msgstr "Följ denna länk för att skaffa en API-nyckel från Mandrill."
+
+#: src/Admin/Pages/AiMcpTab.php:216 src/Admin/Pages/GetProTab.php:362
+#: src/Admin/Pages/SettingsTab.php:231 src/WPCLI/Options/Help.php:202
+msgid "Email Logs"
+msgstr "E-postloggar"
+
+#: src/Admin/Pages/SettingsTab.php:74
+msgid "You're using <strong>WP Mail SMTP Lite</strong> - no license needed. Enjoy!"
+msgstr "Du använder <strong>WP Mail SMTP Lite</strong> – ingen licens behövs. Lycka till!"
+
+#: src/Providers/MailerSend/Options.php:150
+msgid "pricing page"
+msgstr "prissida"
+
+#: src/Providers/MailerSend/Options.php:61
+msgid "MailerSend"
+msgstr "MailerSend"
+
+#. translators: %s - API key link.
+#: src/Providers/MailerSend/Options.php:115
+msgid "Follow this link to get an API Key from MailerSend: %s."
+msgstr "Följ denna länk för att skaffa en API-nyckel från MailerSend: %s."
+
+#: src/Admin/Pages/AlertsTab.php:374
+msgid "Access Token"
+msgstr "Åtkomsttoken"
+
+#: src/Admin/Pages/AlertsTab.php:356
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1224
+#: assets/languages/wp-mail-smtp-vue.php:1052
+msgid "Read how to set up MailerSend"
+msgstr "Läs hur man ställer in MailerSend"
+
+#: src/Admin/Pages/AlertsTab.php:386
+msgid "Phone Number ID"
+msgstr "Telefonnummer-ID"
+
+#: src/Admin/Pages/AlertsTab.php:345
+msgid "Connection Name"
+msgstr "Anslutningsnamn"
+
+#: src/Admin/Pages/AlertsTab.php:327
+msgid "Push Notifications"
+msgstr "Pushnotiser"
+
+#: src/Providers/ElasticEmail/Options.php:59
+msgid "Elastic Email"
+msgstr "Elastic Email"
+
+#. translators: %s - link to get an API Key.
+#: src/Providers/ElasticEmail/Options.php:120
+msgid "Follow this link to get an API Key from Elastic Email: %s."
+msgstr "Följ denna länk för att skaffa en API-nyckel från Elastic Email: %s."
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/ElasticEmail/Options.php:40
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Elastic Email documentation</a>."
+msgstr "För att komma igång, läs vår <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Elastic Email-dokumentation</a>."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:373
+#: assets/languages/wp-mail-smtp-vue.php:1036
+msgid "Sign in with Outlook"
+msgstr "Logga in med Outlook"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1148
+#: assets/languages/wp-mail-smtp-vue.php:1002
+msgid "Read how to set up Elastic Email"
+msgstr "Läs hur man ställer in Elastic Email"
+
+#: src/Providers/Mailjet/Options.php:152
+msgid "Remove Secret Key"
+msgstr "Ta bort hemlig nyckel"
+
+#: src/Providers/Mailjet/Options.php:59
+msgid "Mailjet"
+msgstr "Mailjet"
+
+#: src/Providers/ElasticEmail/Options.php:111
+#: src/Providers/MailerSend/Options.php:106
+#: src/Providers/Mailgun/Options.php:78 src/Providers/Mailjet/Options.php:111
+#: src/Providers/Mandrill/Options.php:107 src/Providers/Resend/Options.php:112
+#: src/Providers/Sendgrid/Options.php:86
+#: src/Providers/Sendinblue/Options.php:130
+#: src/Providers/Sendlayer/Options.php:195
+#: src/Providers/SMTP2GO/Options.php:112 src/Providers/SMTPcom/Options.php:125
+#: src/Providers/SparkPost/Options.php:106
+msgid "Remove API Key"
+msgstr "Ta bort API-nyckel"
+
+#. translators: %s - link to get an API Key.
+#: src/Providers/Mailjet/Options.php:161
+msgid "Follow this link to get the Secret key from Mailjet: %s."
+msgstr "Följ denna länk för att skaffa den hemliga nyckeln från Mailjet: %s."
+
+#: src/Providers/Mailjet/Options.php:122 src/Providers/Mailjet/Options.php:163
+msgid "API Key Management"
+msgstr "API-nyckelhantering"
+
+#. translators: %s - link to get an API Key.
+#: src/Providers/Mailjet/Options.php:120
+msgid "Follow this link to get the API key from Mailjet: %s."
+msgstr "Följ denna länk för att skaffa en API-nyckel från Mailjet: %s."
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/Mailjet/Options.php:40
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mailjet documentation</a>."
+msgstr "För att komma igång, läs vår <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mailjet-dokumentation</a>."
+
+#: src/Admin/Pages/AlertsTab.php:193
+msgid "Discord"
+msgstr "Discord"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1005
+#: assets/languages/wp-mail-smtp-vue.php:1009
+#: src/Providers/Mailjet/Options.php:134
+msgid "Secret Key"
+msgstr "Hemlig nyckel"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1250
+#: assets/languages/wp-mail-smtp-vue.php:1012
+msgid "Read how to set up Mailjet"
+msgstr "Läs hur man ställer in Mailjet"
+
+#: src/Providers/SMTP2GO/Options.php:123
+msgid "control panel"
+msgstr "kontrollpanel"
+
+#: src/Providers/SMTP2GO/Options.php:60
+msgid "SMTP2GO"
+msgstr "SMTP2GO"
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/SMTP2GO/Options.php:41
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">SMTP2GO documentation</a>."
+msgstr "För att komma igång, läs vår <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">SMTP2GO-dokumentation</a>."
+
+#: src/Providers/OptionsAbstract.php:405
+msgid "Remove Password"
+msgstr "Ta bort lösenord"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:572 src/Helpers/UI.php:87
+msgid "Remove"
+msgstr "Ta bort"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1320
+#: assets/languages/wp-mail-smtp-vue.php:1019
+msgid "Read how to set up SMTP2GO"
+msgstr "Läs hur man ställer in SMTP2GO"
+
+#: src/Admin/Pages/AlertsTab.php:222
+msgid "Microsoft Teams"
+msgstr "Microsoft Teams"
+
+#: src/Queue/Email.php:150
+msgid "Record not found in DB"
+msgstr "Post hittades inte i DB"
+
+#: src/Admin/Review.php:150
+msgid "Provide Feedback"
+msgstr "Ge feedback"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:546
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:560
+#: src/Admin/Review.php:139 src/Providers/Gmail/Mailer.php:177
+#: src/Providers/Gmail/Mailer.php:184 src/Providers/Gmail/Mailer.php:185
+#: src/Providers/Gmail/Mailer.php:186 src/Providers/Gmail/Mailer.php:190
+#: src/Providers/Gmail/Mailer.php:191 src/Providers/Gmail/Mailer.php:192
+#: src/Providers/Gmail/Mailer.php:193 src/Providers/Gmail/Mailer.php:197
+#: src/Providers/Gmail/Mailer.php:200 src/Providers/Gmail/Mailer.php:203
+#: src/Providers/Mail/Mailer.php:27 src/Providers/Mail/Mailer.php:31
+#: src/Providers/Mail/Mailer.php:34 src/Providers/Mail/Mailer.php:37
+#: src/Providers/MailerAbstract.php:500 src/Providers/MailerAbstract.php:504
+#: src/Providers/MailerAbstract.php:507 src/Providers/MailerAbstract.php:510
+#: src/Providers/MailerSend/Mailer.php:524 src/Providers/Mailgun/Mailer.php:446
+#: src/Providers/Mandrill/Mailer.php:478
+#: src/Providers/PepipostAPI/Mailer.php:360
+#: src/Providers/Postmark/Mailer.php:437 src/Providers/Postmark/Mailer.php:439
+#: src/Providers/Resend/Mailer.php:447 src/Providers/Sendgrid/Mailer.php:399
+#: src/Providers/Sendinblue/Mailer.php:453
+#: src/Providers/Sendlayer/Mailer.php:426 src/Providers/SMTPcom/Mailer.php:477
+#: src/Providers/SMTPcom/Mailer.php:479 src/Providers/SparkPost/Mailer.php:505
+#: src/Providers/SparkPost/Mailer.php:507
+msgid "No"
+msgstr "Nej"
+
+#: src/Admin/Pages/MiscTab.php:330
+msgid "Optimize Email Sending"
+msgstr "Optimera sändning av e-post"
+
+#: assets/languages/wp-mail-smtp-vue.php:999
+msgid "Install the WPForms plugin and create beautiful contact forms with just a few clicks."
+msgstr "Installera tillägget WPForms och skapa vackra kontaktformulär med bara några klick."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:370
+#: assets/languages/wp-mail-smtp-vue.php:951
+msgid "Sign in with Google"
+msgstr "Logga in med Google"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1067
+#: assets/languages/wp-mail-smtp-vue.php:948
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1064
+#: assets/languages/wp-mail-smtp-vue.php:945
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1211
+#: assets/languages/wp-mail-smtp-vue.php:939 src/Providers/Gmail/Options.php:91
+msgid "One-Click Setup"
+msgstr "Inställning med ett klick"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1181
+#: assets/languages/wp-mail-smtp-vue.php:990
+msgid "The email address that emails are sent from. You can use only the connected email address or its alias."
+msgstr "E-postadressen som e-postmeddelanden skickas från. Du kan endast använda den anslutna e-postadressen eller dess alias."
+
+#: assets/languages/wp-mail-smtp-vue.php:981
+msgid "The email address that emails are sent from. You can use only connected email address or "
+msgstr "E-postadressen som e-postmeddelanden skickas från. Du kan endast använda ansluten e-postadress eller "
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:348
+#: assets/languages/wp-mail-smtp-vue.php:978
+msgid "You have successfully connected your site with your Gmail account. Now you can start sending emails through Gmail."
+msgstr "Du har anslutit din webbplats med ditt Gmail-konto. Nu kan du börja skicka e-post via Gmail."
+
+#: assets/languages/wp-mail-smtp-vue.php:975
+msgid "You have successfully connected your site with your Gmail account. This site will now send emails via your Gmail account."
+msgstr "Du har anslutit din webbplats med ditt Gmail-konto. Denna webbplats kommer nu att skicka e-post via ditt Gmail-konto."
+
+#: src/Admin/Pages/MiscTab.php:51
+msgid "Miscellaneous"
+msgstr "Diverse"
+
+#: src/Admin/Area.php:1757
+msgid "Free Plugins"
+msgstr "Gratis tillägg"
+
+#: src/Admin/Area.php:1738
+msgid "Support"
+msgstr "Support"
+
+#: src/Admin/Pages/AlertsTab.php:98
+msgid "Notify when"
+msgstr "Avisera när"
+
+#: assets/languages/wp-mail-smtp-vue.php:936
+msgid "Improve your SEO rankings with the All in One SEO plugin."
+msgstr "Förbättra din SEO-rankning med tillägget All in One SEO."
+
+#: src/DBRepair.php:209
+msgid "The following DB table is still missing."
+msgid_plural "The following DB tables are still missing."
+msgstr[0] "Följande DB-tabell saknas fortfarande."
+msgstr[1] "Följande DB-tabeller saknas fortfarande."
+
+#: assets/languages/wp-mail-smtp-vue.php:929
+#: src/Providers/Mailgun/Options.php:60
+msgid "Mailgun API Key"
+msgstr "Mailgun API-nyckel"
+
+#: assets/languages/wp-mail-smtp-vue.php:906
+msgid "The following plugin will be installed for free:"
+msgstr "Följande tillägg kommer att installeras gratis:"
+
+#: src/Providers/Sendinblue/Options.php:77
+msgid "Brevo"
+msgstr "Brevo"
+
+#: src/Providers/Sendinblue/Options.php:63
+msgid "Get Brevo Now (Free)"
+msgstr "Skaffa Brevo nu (gratis)"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1017
+#: assets/languages/wp-mail-smtp-vue.php:920
+msgid "Get Started with Brevo"
+msgstr "Kom igång med Brevo"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1346
+#: assets/languages/wp-mail-smtp-vue.php:923
+msgid "Read how to set up Brevo"
+msgstr "Läs hur man ställer in Brevo"
+
+#: src/Admin/Recommendations/Pages/Duplicator.php:252
+msgid "Duplicator"
+msgstr "Duplicator"
+
+#: src/Admin/Pages/AboutTab.php:331
+msgid "WPCode Lite"
+msgstr "WPCode Lite"
+
+#. translators: %s - plugin name.
+#: src/WP.php:752
+msgid "WP Core (%s)"
+msgstr "WP-kärna (%s)"
+
+#: src/Admin/Dashboard/Widgets/Connections.php:263 src/Connection.php:52
+msgid "Primary"
+msgstr "Primär"
+
+#: src/Admin/Pages/SmartRoutingTab.php:235
+#: src/Admin/Pages/SmartRoutingTab.php:294
+msgid "Add New Group"
+msgstr "Lägg till ny grupp"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1154
+#: src/Admin/Pages/SmartRoutingTab.php:202
+#: src/Admin/Pages/SmartRoutingTab.php:232
+#: src/Admin/Pages/SmartRoutingTab.php:291
+msgid "or"
+msgstr "eller"
+
+#: src/Admin/Pages/SmartRoutingTab.php:185
+#: src/Admin/Pages/SmartRoutingTab.php:215
+#: src/Admin/Pages/SmartRoutingTab.php:274
+msgid "Is"
+msgstr "Är"
+
+#: src/Admin/Pages/SmartRoutingTab.php:170
+#: src/Admin/Pages/SmartRoutingTab.php:193
+#: src/Admin/Pages/SmartRoutingTab.php:223
+#: src/Admin/Pages/SmartRoutingTab.php:282
+msgid "And"
+msgstr "Och"
+
+#: src/Admin/Pages/SmartRoutingTab.php:162
+msgid "Contains"
+msgstr "Innehåller"
+
+#: src/Admin/Pages/SmartRoutingTab.php:141
+#: src/Admin/Pages/SmartRoutingTab.php:253
+msgid "Arrow Down"
+msgstr "Pil ner"
+
+#: src/Admin/Pages/SmartRoutingTab.php:138
+#: src/Admin/Pages/SmartRoutingTab.php:250
+msgid "Arrow Up"
+msgstr "Pil upp"
+
+#: src/Admin/Pages/SmartRoutingTab.php:134
+#: src/Admin/Pages/SmartRoutingTab.php:246
+msgid "if the following conditions are met..."
+msgstr "om följande villkor uppfylls …"
+
+#: src/Admin/Pages/SmartRoutingTab.php:130
+#: src/Admin/Pages/SmartRoutingTab.php:242
+msgid "Send with"
+msgstr "Skicka med"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:197
+#: src/Admin/Pages/SettingsTab.php:117
+msgid "Primary Connection"
+msgstr "Primär anslutning"
+
+#: src/Admin/Dashboard/Widgets/Connections.php:301
+#: src/Admin/Pages/AdditionalConnectionsTab.php:49
+#: src/Admin/Pages/AdditionalConnectionsTab.php:106
+msgid "Additional Connections"
+msgstr "Ytterligare anslutningar"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:380
+#: assets/languages/wp-mail-smtp-vue.php:815
+#: src/Providers/Gmail/Options.php:217
+msgid "Remove OAuth Connection"
+msgstr "Ta bort OAuth-anslutning"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:273
+#: assets/languages/wp-mail-smtp-vue.php:109
+msgid "It looks like we can't remove OAuth connection."
+msgstr "Det verkar som om vi inte kan ta bort OAuth-anslutning."
+
+#: src/DBRepair.php:217
+msgid "Some DB Tables are still missing."
+msgstr "Några DB-tabeller saknas fortfarande."
+
+#: src/DBRepair.php:102
+msgid "Unknown."
+msgstr "Okänd."
+
+#. translators: %d - days count.
+#: src/Admin/Pages/DebugEventsTab.php:584
+msgid "%d Day"
+msgid_plural "%d Days"
+msgstr[0] "%d dag"
+msgstr[1] "%d dagar"
+
+#: src/Admin/Pages/DebugEventsTab.php:570
+msgid "1 Year"
+msgstr "1 år"
+
+#: src/Admin/Pages/DebugEventsTab.php:569
+msgid "6 Months"
+msgstr "6 månader"
+
+#: src/Admin/Pages/DebugEventsTab.php:568
+msgid "3 Months"
+msgstr "3 månader"
+
+#: src/Admin/Pages/DebugEventsTab.php:567
+msgid "1 Month"
+msgstr "1 månad"
+
+#: src/Admin/Pages/DebugEventsTab.php:566
+msgid "1 Week"
+msgstr "1 vecka"
+
+#: src/Admin/Pages/DebugEventsTab.php:262
+msgid "Forever"
+msgstr "För alltid"
+
+#: src/DBRepair.php:191
+msgid "Missing DB tables were created successfully."
+msgstr "Saknade DB-tabeller skapades."
+
+#. translators: %1$s - missing table name; %2$s - error message.
+#: src/DBRepair.php:160
+msgid "<strong>Table:</strong> %1$s. <strong>Reason:</strong> %2$s"
+msgstr "<strong>Tabell:</strong> %1$s. <strong>Orsak:</strong> %2$s"
+
+#. translators: %1$d - index number; %2$s - function name; %3$s - file path;
+#. %4$s - line number.
+#: src/Admin/DebugEvents/Event.php:395
+msgid "[%1$d] %2$s called at [%3$s:%4$s]"
+msgstr "[%1$d] %2$s anropades på [%3$s:%4$s]"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:726
+#: assets/languages/wp-mail-smtp-vue.php:445
+msgid "Track when a link in an email is clicked"
+msgstr "Spåra när en länk i ett e-postmeddelande klickas"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:720
+#: assets/languages/wp-mail-smtp-vue.php:439
+msgid "Track when an email is opened"
+msgstr "Spåra när ett e-postmeddelande öppnas"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:714
+#: assets/languages/wp-mail-smtp-vue.php:433
+msgid "Save file attachments sent from WordPress"
+msgstr "Spara filbilagor skickade från WordPress"
+
+#. Translators: Link to the Mailgun API settings.
+#: assets/languages/wp-mail-smtp-vue.php:221
+msgid "%1$sFollow this link%2$s to get a Private API Key from Mailgun."
+msgstr "%1$sFölj denna länk%2$s för att skaffa en privat API-nyckel från Mailgun."
+
+#: src/Admin/Pages/AlertsTab.php:298
+msgid "Webhook"
+msgstr "Webhook"
+
+#: src/Admin/Pages/AlertsTab.php:287 src/Admin/Pages/AlertsTab.php:392
+msgid "To Phone Number"
+msgstr "Till telefonnummer"
+
+#: src/Admin/Pages/AlertsTab.php:281
+msgid "From Phone Number"
+msgstr "Från telefonnummer"
+
+#: src/Admin/Pages/AlertsTab.php:182 src/Admin/Pages/AlertsTab.php:211
+#: src/Admin/Pages/AlertsTab.php:240 src/Admin/Pages/AlertsTab.php:316
+msgid "Webhook URL"
+msgstr "Webhook-URL"
+
+#: src/Admin/Pages/AlertsTab.php:164
+msgid "Slack"
+msgstr "Slack"
+
+#: src/Reports/Emails/Summary.php:261
+msgid "Let’s see how many emails you’ve sent with WP Mail SMTP."
+msgstr "Låt oss se hur många e-postmeddelanden du har skickat med WP Mail SMTP."
+
+#: src/Admin/Pages/AlertsTab.php:269
+msgid "Twilio Account ID"
+msgstr "Twilio konto-ID"
+
+#: src/Admin/Pages/AlertsTab.php:251
+msgid "SMS via Twilio"
+msgstr "SMS via Twilio"
+
+#: src/Admin/Pages/AlertsTab.php:275
+msgid "Twilio Auth Token"
+msgstr "Twilio Auth-token"
+
+#: src/Admin/Pages/AlertsTab.php:43 src/Admin/Pages/AlertsTab.php:81
+#: src/WPCLI/Options/Help.php:205
+msgid "Alerts"
+msgstr "Varningar"
+
+#: src/Admin/Pages/EmailDetectiveTab.php:227
+#: src/Providers/Sendlayer/Options.php:65
+msgid "SendLayer"
+msgstr "SendLayer"
+
+#. translators: %s - API key link.
+#: src/Providers/Sendlayer/Options.php:210
+msgid "Follow this link to get an API Key from SendLayer: %s."
+msgstr "Följ denna länk för att skaffa en API-nyckel från SendLayer: %s."
+
+#: src/Admin/Area.php:1445 src/Admin/Area.php:1749
+msgid "Docs"
+msgstr "Dokumentation"
+
+#: src/Admin/Area.php:1430
+msgid "Get WP Mail SMTP Pro"
+msgstr "Skaffa WP Mail SMTP Pro"
+
+#: assets/languages/wp-mail-smtp-vue.php:473
+msgid "Get Started with SendLayer"
+msgstr "Kom igång med SendLayer"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:937
+msgid "Verify your domain Region is correct."
+msgstr "Verifiera att din domänregion är korrekt."
+
+#. translators: %1$s - Mailgun domains area URL.
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:926
+msgid "Verify your <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Domain Name</a> is correct."
+msgstr "Verifiera att ditt <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">domännamn</a> är korrekt."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1393
+#: assets/languages/wp-mail-smtp-vue.php:476
+msgid "Read how to set up SendLayer"
+msgstr "Läs om hur man ställer in SendLayer"
+
+#. Translators: Link to the SendLayer API settings.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1365
+#: assets/languages/wp-mail-smtp-vue.php:470
+msgid "%1$sFollow this link%2$s to get an API Key for SendLayer."
+msgstr "%1$sFölj denna länk%2$s för att skaffa en API-nyckel för SendLayer."
+
+#: src/Admin/Area.php:1444
+msgid "Go to WPMailSMTP.com documentation page"
+msgstr "Gå till WPMailSMTP.com dokumentationssida"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1335
+#: assets/languages/wp-mail-smtp-vue.php:909
+msgid "Read how to set up SendGrid"
+msgstr "Läs om hur man ställer in SendGrid"
+
+#. translators: %1$s - Mailgun API Key area URL.
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:913
+msgid "Go to your Mailgun account and verify that your <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mailgun API Key</a> is correct."
+msgstr "Gå till ditt Mailgun-konto och verifiera att din <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Mailgun API-nyckel</a> är korrekt."
+
+#: wp_mail_smtp.php:328
+msgid "<strong>WP Mail SMTP plugin is disabled</strong> on your site until WordPress is updated to the required version."
+msgstr "<strong>Tillägget WP Mail SMTP är inaktiverat</strong> på din webbplats tills WordPress har uppdaterats till den version som krävs."
+
+#. translators: %s - URL to the wpmailsmtp.com doc page.
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:782
+msgid "Visit <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">our documentation</a> for additional tips on how to resolve this error."
+msgstr "Besök <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">vår dokumentation</a> för ytterligare tips på hur man löser detta fel."
+
+#: src/Admin/Area.php:756 src/Admin/Pages/AboutTab.php:240
+msgid "Visit Site"
+msgstr "Besök webbplats"
+
+#: src/Providers/SparkPost/Options.php:55
+msgid "SparkPost"
+msgstr "SparkPost"
+
+#. translators: %s - API Key link.
+#: src/Providers/SparkPost/Options.php:118
+msgid "Follow this link to get an API Key from SparkPost: %s."
+msgstr "Följ denna länk för att skaffa en API-nyckel från SparkPost: %s."
+
+#. translators: %s - URL to Mailgun.com page.
+#: src/Providers/SparkPost/Options.php:164
+msgid "<a href=\"%s\" rel=\"\" target=\"_blank\">More information</a> on SparkPost."
+msgstr "<a href=\"%s\" rel=\"\" target=\"_blank\">Mer information</a> på SparkPost."
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/SparkPost/Options.php:37
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">SparkPost documentation</a>."
+msgstr "För att komma igång, läs vår <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">SparkPost-dokumentation</a>."
+
+#: src/Providers/SparkPost/Mailer.php:506
+msgid "Region:"
+msgstr "Region:"
+
+#: src/Providers/MailerSend/Mailer.php:524
+#: src/Providers/Mandrill/Mailer.php:477
+#: src/Providers/PepipostAPI/Mailer.php:360 src/Providers/Resend/Mailer.php:446
+#: src/Providers/Sendgrid/Mailer.php:399
+#: src/Providers/Sendinblue/Mailer.php:453
+#: src/Providers/Sendlayer/Mailer.php:425 src/Providers/SMTPcom/Mailer.php:476
+#: src/Providers/SparkPost/Mailer.php:504
+msgid "API Key:"
+msgstr "API-nyckel:"
+
+#: src/Providers/Outlook/Options.php:25
+msgid "365 / Outlook"
+msgstr "365/Outlook"
+
+#: src/Providers/Gmail/Options.php:38
+msgid "Google / Gmail"
+msgstr "Google/Gmail"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1171
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1200
+msgid "SparkPost API failed."
+msgstr "SparkPost-API misslyckades."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1205
+msgid "Verify that your SparkPost account region is selected in WP Mail SMTP settings."
+msgstr "Kontrollera att din SparkPost-kontoregion är vald i WP Mail SMTP-inställningar."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:861
+#: assets/languages/wp-mail-smtp-vue.php:371
+#: src/SettingsImport/SettingsImport.php:112
+msgid "FluentSMTP"
+msgstr "FluentSMTP"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:612
+#: assets/languages/wp-mail-smtp-vue.php:666
+msgid "Microsoft 365 / Outlook"
+msgstr "Microsoft 365/Outlook"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1476
+#: assets/languages/wp-mail-smtp-vue.php:751
+msgid "Read how to set up SparkPost"
+msgstr "Läs om hur man ställer in SparkPost"
+
+#. Translators: Link to the SparkPost Account API section.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1480
+#: assets/languages/wp-mail-smtp-vue.php:755
+msgid "%1$sFollow this link%2$s to get an API Key for SparkPost."
+msgstr "%1$sFölj denna länk%2$s för att skaffa en API-nyckel för SparkPost."
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/Sendinblue/Options.php:42
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Brevo documentation</a>."
+msgstr "För att komma igång läs vår <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Brevo-dokumentation</a>."
+
+#: src/Providers/Postmark/Options.php:56
+msgid "Postmark"
+msgstr "Postmark"
+
+#. translators: %2$s - URL to wpmailsmtp.com doc.
+#: src/Providers/Postmark/Options.php:37
+msgid "To get started, read our <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Postmark documentation</a>."
+msgstr "För att komma igång läs vår <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Postmark-dokumentation</a>."
+
+#: src/Admin/Pages/LogsTab.php:183
+msgid "Export logs to CSV, XLSX, or EML"
+msgstr "Exportera loggar till CSV, XLSX eller EML"
+
+#: src/Admin/Pages/ControlTab.php:176
+msgid "Created On Site"
+msgstr "Skapad på webbplats"
+
+#: src/Admin/Pages/ControlTab.php:172
+msgid "Invited To Site"
+msgstr "Inbjuden till webbplats"
+
+#: src/Admin/Pages/ControlTab.php:168
+msgid "Created (User)"
+msgstr "Skapad (användare)"
+
+#: src/Admin/Pages/ControlTab.php:164
+msgid "Created (Admin)"
+msgstr "Skapad (Admin)"
+
+#: src/Admin/Pages/ControlTab.php:161
+msgid "New User"
+msgstr "Ny användare"
+
+#: src/Admin/Pages/ControlTab.php:180
+msgid "Added / Activated on Site"
+msgstr "Tillagd/aktiverad på webbplats"
+
+#: src/Admin/Pages/ControlTab.php:169
+msgid "A new user was created. Sent to the new user."
+msgstr "En ny användare skapades. Skickat till den nya användaren."
+
+#: src/Admin/Pages/ControlTab.php:165
+msgid "A new user was created. Sent to the site admin."
+msgstr "En ny användare skapades. Skickat till webbplatsens administratör."
+
+#: src/Admin/Pages/ControlTab.php:189
+msgid "User Created Site"
+msgstr "Användare skapade webbplats"
+
+#: src/Admin/Pages/ControlTab.php:177
+msgid "A new user account was created. Sent to Network Admin."
+msgstr "Ett nytt användarkonto skapades. Skickat till nätverksadministratör."
+
+#: src/Admin/Pages/ControlTab.php:186
+msgid "New Site"
+msgstr "Ny webbplats"
+
+#: src/Admin/Pages/ControlTab.php:147
+msgid "Theme Status"
+msgstr "Temastatus"
+
+#: src/Admin/Pages/ControlTab.php:140
+msgid "Automatic Updates"
+msgstr "Automatiska uppdateringar"
+
+#: src/Admin/Pages/ControlTab.php:108
+msgid "Password Changed"
+msgstr "Lösenord ändrat"
+
+#: src/Admin/Pages/ControlTab.php:70
+msgid "Published"
+msgstr "Publicerat"
+
+#: src/Admin/Pages/ControlTab.php:66
+msgid "Awaiting Moderation"
+msgstr "Inväntar granskning"
+
+#: src/Admin/Pages/ControlTab.php:63
+msgid "Comments"
+msgstr "Kommentarer"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1306
+#: assets/languages/wp-mail-smtp-vue.php:418
+msgid "Read how to set up Postmark"
+msgstr "Läs om hur man ställer in Postmark"
+
+#: src/Admin/Pages/ControlTab.php:155
+msgid "Full Log"
+msgstr "Fullständig logg"
+
+#: src/Admin/Pages/ControlTab.php:143
+msgid "Plugin Status"
+msgstr "Status för tillägg"
+
+#: src/Admin/Pages/ControlTab.php:116
+msgid "Email Changed"
+msgstr "E-post ändrad"
+
+#: src/Admin/Pages/ControlTab.php:71
+msgid "Comment has been published. Sent to the post author."
+msgstr "Kommentar har publicerats. Skickat till inläggets författare."
+
+#: src/Admin/Pages/ControlTab.php:104
+msgid "Password Reset Successfully"
+msgstr "Lösenord återställdes"
+
+#: src/Reports/Emails/Summary.php:297
+msgid "Want More Stats?"
+msgstr "Vill du ha mer statistik?"
+
+#: src/Reports/Emails/Summary.php:296
+msgid "Reports"
+msgstr "Rapporter"
+
+#: src/Reports/Emails/Summary.php:258
+msgid "Hi there,"
+msgstr "Hej där, "
+
+#: src/Reports/Emails/Summary.php:280
+msgid "Last week"
+msgstr "Förra veckan"
+
+#: src/WP.php:893
+msgid "WP Core"
+msgstr "WP-kärnan"
+
+#: src/Reports/Emails/Summary.php:169 src/Reports/Emails/Summary.php:173
+#: src/TestEmail/TestEmail.php:407
+msgid "WP Mail SMTP Logo"
+msgstr "Logga för WP Mail SMTP"
+
+#: src/Admin/Pages/MiscTab.php:278
+msgid "Disable Email Summaries"
+msgstr "Inaktivera e-postsammanfattningar"
+
+#: src/Admin/Pages/LogsTab.php:182
+msgid "Print email logs or save as PDF"
+msgstr "Skriv ut e-postloggar eller spara som PDF"
+
+#: src/Admin/Pages/MiscTab.php:314
+msgid "View Email Summary Example"
+msgstr "Visa exempel på e-postsammanfattning"
+
+#: src/MailCatcherTrait.php:302 src/Providers/MailerAbstract.php:316
+msgid "An email request was sent."
+msgstr "En e-postbegäran skickades."
+
+#: src/Admin/Pages/TestTab.php:346
+msgid "Send Another Test Email"
+msgstr "Skicka ett annat testmeddelande"
+
+#: src/TestEmail/TestEmail.php:418
+msgid "Success"
+msgstr "Klart"
+
+#: src/Admin/Pages/EmailReportsTab.php:156
+msgid "Unlock these awesome reporting features:"
+msgstr "Lås upp dessa fantastiska rapporteringsfunktioner:"
+
+#: src/Admin/Pages/EmailReports.php:41 src/Admin/Pages/EmailReportsTab.php:42
+#: src/Admin/Pages/GetProTab.php:516 src/Admin/Pages/SettingsTab.php:241
+#: src/Admin/ProFeatures.php:56
+msgid "Email Reports"
+msgstr "E-postrapporter"
+
+#. translators: %1$s - Date. %2$s - Date.
+#: src/Admin/Pages/DebugEventsTab.php:454
+msgid "between %1$s and %2$s"
+msgstr "mellan %1$s och %2$s"
+
+#. translators: %s - Date.
+#: src/Admin/Pages/DebugEventsTab.php:448
+msgid "on %s"
+msgstr "den %s"
+
+#: src/Admin/Pages/DebugEventsTab.php:341
+msgid "Search Events"
+msgstr "Sök händelser"
+
+#. translators: %1$s - number of debug events found; %2$s - filtered type.
+#: src/Admin/Pages/DebugEventsTab.php:312
+msgid "Found <strong>%1$s %2$s event</strong>"
+msgid_plural "Found <strong>%1$s %2$s events</strong>"
+msgstr[0] "Hittade <strong>%1$s %2$s händelse</strong>"
+msgstr[1] "Hittade <strong>%1$s %2$s händelser</strong>"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:476
+#: src/Admin/Pages/DebugEventsTab.php:150 src/Admin/Pages/SettingsTab.php:249
+msgid "Close"
+msgstr "Stäng"
+
+#: src/Admin/Pages/DebugEventsTab.php:154
+msgid "An error occurred!"
+msgstr "Ett fel uppstod!"
+
+#: src/Admin/DebugEvents/Table.php:119
+msgid "All"
+msgstr "Alla"
+
+#. Translators: %s - Email initiator/source name.
+#: src/Admin/DebugEvents/Event.php:429
+msgid "Email Source: %s"
+msgstr "E-postkälla: %s"
+
+#. Translators: %1$s the path of a file, %2$s the line number in the file.
+#: src/Admin/DebugEvents/Event.php:381
+msgid "%1$s (line: %2$s)"
+msgstr "%1$s (rad: %2$s)"
+
+#: src/Admin/DebugEvents/Event.php:368 src/Admin/DebugEvents/Table.php:175
+msgid "Content"
+msgstr "Innehåll"
+
+#: src/Admin/DebugEvents/Event.php:364 src/Admin/DebugEvents/Table.php:177
+msgid "Date"
+msgstr "Datum"
+
+#: src/Admin/DebugEvents/Event.php:244 src/WP.php:771
+msgid "N/A"
+msgstr "N/A"
+
+#: src/Admin/DebugEvents/DebugEvents.php:378
+msgid "Number of events per page:"
+msgstr "Antal händelser per sida:"
+
+#: src/Admin/DashboardWidget.php:443
+msgid "View Example"
+msgstr "Visa exempel"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1263
+#: assets/languages/wp-mail-smtp-vue.php:764
+msgid "Read how to set up Microsoft Outlook / 365"
+msgstr "Läs hur man ställer in Microsoft Outlook/365"
+
+#: src/Admin/FlyoutMenu.php:118
+msgid "Suggest a Feature"
+msgstr "Föreslå en funktion"
+
+#: src/Admin/FlyoutMenu.php:113
+msgid "Follow on Facebook"
+msgstr "Följ på Facebook"
+
+#: src/Admin/FlyoutMenu.php:107
+msgid "Support & Docs"
+msgstr "Support och dokumentation"
+
+#: src/Admin/FlyoutMenu.php:52
+msgid "See Quick Links"
+msgstr "Se snabblänkar"
+
+#: src/Admin/DebugEvents/Table.php:493
+msgid "No events found."
+msgstr "Inga händelser hittades."
+
+#: src/Admin/DebugEvents/Table.php:173
+msgid "Event"
+msgstr "Händelse"
+
+#: src/Admin/DebugEvents/Table.php:569
+msgid "Delete All Events"
+msgstr "Ta bort alla händelser"
+
+#: src/Admin/DebugEvents/Table.php:560
+msgid "Filter"
+msgstr "Filter"
+
+#: src/Admin/Pages/AiMcpTab.php:234 src/Admin/Pages/DebugEventsTab.php:84
+#: src/Admin/Pages/DebugEventsTab.php:188
+#: src/Admin/Pages/DebugEventsTab.php:201
+msgid "Debug Events"
+msgstr "Felsök händelser"
+
+#: src/Admin/Pages/DebugEventsTab.php:212
+msgid "Event Types"
+msgstr "Händelsetyper"
+
+#. translators: %d the event ID.
+#: src/Admin/DebugEvents/Event.php:147
+msgid "Event #%d"
+msgstr "Händelse #%d"
+
+#: src/Admin/Area.php:1274 src/Admin/DebugEvents/DebugEvents.php:104
+#: src/Admin/DebugEvents/DebugEvents.php:147
+#: src/Admin/Pages/DebugEventsTab.php:364 src/Admin/ParentPageAbstract.php:267
+msgid "You don't have the capability to perform this action."
+msgstr "Du har inte behörighet att utföra denna åtgärd."
+
+#: src/Admin/DebugEvents/DebugEvents.php:100
+#: src/Admin/DebugEvents/DebugEvents.php:143
+msgid "Access rejected."
+msgstr "Åtkomst avvisad."
+
+#: src/Admin/Pages/ExportTab.php:139
+msgid "Email Addresses"
+msgstr "E-postadresser"
+
+#: src/Admin/Pages/ExportTab.php:137
+msgid "Search"
+msgstr "Sök"
+
+#: src/Admin/DebugEvents/Table.php:556 src/Admin/Pages/ExportTab.php:133
+msgid "Select a date range"
+msgstr "Välj ett datumintervall"
+
+#: src/Admin/Pages/ExportTab.php:132
+msgid "Custom Date Range"
+msgstr "Anpassat datumintervall"
+
+#: src/Admin/Pages/ExportTab.php:120
+msgid "Additional Information"
+msgstr "Ytterligare information"
+
+#: src/Admin/Pages/ExportTab.php:116
+msgid "Attachments"
+msgstr "Bilagor"
+
+#: src/Admin/Pages/ExportTab.php:115
+msgid "Number of Attachments"
+msgstr "Antal bilagor"
+
+#: src/Admin/Pages/ExportTab.php:114
+msgid "Created Date"
+msgstr "Datum för skapande"
+
+#: src/Admin/Pages/ExportTab.php:112 src/Admin/Pages/SmartRoutingTab.php:157
+#: templates/dashboard/widgets/email-log.php:70
+msgid "Subject"
+msgstr "Ämne"
+
+#: src/Admin/Pages/ExportTab.php:113
+msgid "Body"
+msgstr "Innehåll"
+
+#: src/Admin/Pages/ExportTab.php:110
+msgid "From Address"
+msgstr "Från adress"
+
+#: src/Admin/Pages/ExportTab.php:109
+msgid "To Address"
+msgstr "Till adress"
+
+#: src/Admin/Pages/ExportTab.php:103
+msgid "Export in EML (.eml)"
+msgstr "Exportera i EML (.eml)"
+
+#: src/Admin/Pages/ExportTab.php:100
+msgid "Export in Microsoft Excel (.xlsx)"
+msgstr "Exportera i Microsoft Excel (.xlsx)"
+
+#: src/Admin/Pages/ExportTab.php:97
+msgid "Export in CSV (.csv)"
+msgstr "Exportera i CSV (.csv)"
+
+#: src/Admin/Pages/ExportTab.php:108
+msgid "Common Information"
+msgstr "Vanlig information"
+
+#: src/Admin/Pages/ExportTab.php:126
+msgid "Error Details"
+msgstr "Feldetaljer"
+
+#: src/Admin/Pages/MiscTab.php:228
+msgid "Hide Dashboard Widget"
+msgstr "Dölj widget i adminpanel"
+
+#: src/Admin/Pages/ExportTab.php:42
+msgid "Export"
+msgstr "Exportera"
+
+#. translators: %s - search term.
+#: src/Admin/Pages/ActionSchedulerTab.php:130
+msgid "Search results for <strong>%s</strong>"
+msgstr "Sökresultat för <strong>%s</strong>"
+
+#: src/Admin/Pages/ActionSchedulerTab.php:41
+#: src/Admin/Pages/ActionSchedulerTab.php:101
+msgid "Scheduled Actions"
+msgstr "Schemalagda åtgärder"
+
+#: src/Admin/Notifications.php:485
+msgid "Notifications"
+msgstr "Aviseringar"
+
+#. translators: %s fixed string of 'N/A'.
+#: src/Admin/DashboardWidget.php:692
+msgid "Sent %s"
+msgstr "Skickat %s"
+
+#. translators: %s fixed string of 'N/A'.
+#: src/Admin/DashboardWidget.php:681
+msgid "Failed %s"
+msgstr "Misslyckade %s"
+
+#: src/Admin/DashboardWidget.php:583
+msgid "WordPress"
+msgstr "WordPress"
+
+#: src/Admin/DashboardWidget.php:575
+msgid "Color Scheme"
+msgstr "Färgschema"
+
+#: src/Admin/DashboardWidget.php:570
+msgid "Line"
+msgstr "Linje"
+
+#: src/Admin/DashboardWidget.php:534
+msgid "All Emails"
+msgstr "Alla e-postmeddelanden"
+
+#: src/Admin/DashboardWidget.php:532
+msgid "Select email type"
+msgstr "Välj e-posttyp"
+
+#: src/Admin/Dashboard/Widgets/EmailsOverview.php:128
+#: src/Admin/DashboardWidget.php:528
+msgid "Sent Emails"
+msgstr "Skicka e-post"
+
+#: src/Admin/DashboardWidget.php:500
+msgid "All Time"
+msgstr "Sedan starten"
+
+#: src/Admin/DashboardWidget.php:283
+msgid "View Detailed Email Stats"
+msgstr "Visa detaljerad e-poststatistik"
+
+#: src/Admin/DashboardWidget.php:498
+msgid "Select timespan"
+msgstr "Välj tidsperiod"
+
+#. translators: %s - URL to WPMailSMTP.com.
+#: src/Admin/DashboardWidget.php:472
+msgid "<a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Upgrade to Pro</a> for detailed stats, email logs, and more!"
+msgstr "<a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Uppgradera till Pro</a> för detaljerad statistik, e-postloggar och mer!"
+
+#. translators: %d - Number of days.
+#: src/Admin/DashboardWidget.php:505
+msgid "Last %d day"
+msgid_plural "Last %d days"
+msgstr[0] "Senaste %d dagen"
+msgstr[1] "Senaste %d dagarna"
+
+#: src/Admin/Pages/Tools.php:41
+msgid "Tools"
+msgstr "Verktyg"
+
+#: src/SiteHealth.php:390
+msgid "Email domain issues detected"
+msgstr "Problem med e-postdomän upptäckt"
+
+#: src/SiteHealth.php:338
+msgid "Email domain is configured correctly"
+msgstr "E-postdomän är konfigurerad korrekt"
+
+#: src/SiteHealth.php:107
+msgid "Is email domain configured properly?"
+msgstr "Är e-postdomänen korrekt konfigurerad?"
+
+#: src/SiteHealth.php:333
+msgid "Current from email domain"
+msgstr "Nuvarande domän i fältet för avsändare"
+
+#. translators: %s: Directory path.
+#: src/Uploads.php:58
+msgid "Unable to create directory %s. Is its parent directory writable by the server?"
+msgstr "Kan inte skapa katalog %s. Är den överordnade katalogen skrivbar av servern?"
+
+#: src/Admin/Pages/SettingsTab.php:129 src/SetupChecklist/Config.php:150
+#: templates/dashboard/widgets/mailer-notice.php:25
+msgid "Launch Setup Wizard"
+msgstr "Starta inställningsguiden"
+
+#: src/Admin/Pages/AboutTab.php:291
+msgid "Easily display Facebook content on your WordPress site without writing any code. Comes with multiple templates, ability to embed albums, group content, reviews, live videos, comments, and reactions."
+msgstr "Visa enkelt Facebook-innehåll på din WordPress-webbplats utan att skriva någon kod. Levereras med flera mallar, möjlighet att bädda in album, gruppinnehåll, recensioner, livevideoklipp, kommentarer och reaktioner."
+
+#: src/Admin/Pages/AboutTab.php:295
+msgid "Easily display YouTube videos on your WordPress site without writing any code. Comes with multiple layouts, ability to embed live streams, video filtering, ability to combine multiple channel videos, and more."
+msgstr "Visa enkelt YouTube-videoklipp på din WordPress-webbplats utan att skriva någon kod. Kommer med flera layouter, möjlighet att bädda in direktsändningar, videofiltrering, möjlighet att kombinera flera videokanaler och mer."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:950
+#: assets/languages/wp-mail-smtp-vue.php:682
+msgid "Continue"
+msgstr "Fortsätt"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:524
+#: assets/languages/wp-mail-smtp-vue.php:729 src/Admin/Area.php:1677
+#: src/Admin/Pages/SettingsTab.php:178
+msgid "Paste your license key here"
+msgstr "Klistra in din licensnyckel här"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:928
+#: assets/languages/wp-mail-smtp-vue.php:672
+msgid "Upgrade Failed!"
+msgstr "Uppgradering misslyckades!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:925
+#: assets/languages/wp-mail-smtp-vue.php:669
+msgid "Successful Upgrade!"
+msgstr "Uppgradering genomfördes!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:922
+#: assets/languages/wp-mail-smtp-vue.php:735
+msgid "Verification Error!"
+msgstr "Verifieringsfel!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:363
+#: assets/languages/wp-mail-smtp-vue.php:804
+msgid "Authorization Error!"
+msgstr "Auktoriseringsfel!"
+
+#. Translators: Error status and error text.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:280
+#: assets/languages/wp-mail-smtp-vue.php:87
+msgid "%1$s, %2$s"
+msgstr "%1$s, %2$s"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1596
+#: assets/languages/wp-mail-smtp-vue.php:8
+msgid "Error Message:"
+msgstr "Felmeddelande:"
+
+#: assets/languages/wp-mail-smtp-vue.php:891 src/Admin/Area.php:652
+#: src/Admin/Dashboard/Page.php:146 src/Admin/Pages/CodeSnippetsTab.php:488
+#: src/PartnerPlugins/PartnerPlugin.php:411 src/SetupChecklist/Page.php:147
+msgid "Installed"
+msgstr "Installerat"
+
+#. Translators: Minimum and maximum number that can be used.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:302
+#: assets/languages/wp-mail-smtp-vue.php:771
+msgid "Please enter a value between %1$s and %2$s"
+msgstr "Ange ett värde mellan %1$s och %2$s"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:527
+#: assets/languages/wp-mail-smtp-vue.php:726
+msgid "License key input"
+msgstr "Inmatning av licensnyckel"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:916
+#: assets/languages/wp-mail-smtp-vue.php:723
+msgid "Pro badge"
+msgstr "Pro-märke"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:937
+#: assets/languages/wp-mail-smtp-vue.php:691
+msgid "Purchase Now"
+msgstr "Köp nu"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:940
+#: assets/languages/wp-mail-smtp-vue.php:694
+msgid "I'll do it later"
+msgstr "Jag gör det senare"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:689
+#: assets/languages/wp-mail-smtp-vue.php:533
+msgid "Star icon"
+msgstr "Stjärnikon"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:673
+#: assets/languages/wp-mail-smtp-vue.php:523 src/TestEmail/TestEmail.php:481
+msgid "Upgrade to Pro Today"
+msgstr "Uppgradera till Pro idag"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:646
+#: assets/languages/wp-mail-smtp-vue.php:555
+msgid "Submit Feedback"
+msgstr "Skicka feedback"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:670
+#: assets/languages/wp-mail-smtp-vue.php:175
+msgid "Detailed Email Logs"
+msgstr "Detaljerade e-postloggar"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:843
+#: assets/languages/wp-mail-smtp-vue.php:398
+msgid "Yes, count me in"
+msgstr "Ja, räkna med mig"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1409
+#: assets/languages/wp-mail-smtp-vue.php:587
+msgid "Enable Auto TLS"
+msgstr "Aktivera automatisk TLS"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:919
+#: assets/languages/wp-mail-smtp-vue.php:732
+msgid "Successful Verification!"
+msgstr "Verifiering lyckades!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:637
+#: assets/languages/wp-mail-smtp-vue.php:546
+msgid "What could we do to improve?"
+msgstr "Vad kan vi göra för att bli bättre?"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1587
+#: assets/languages/wp-mail-smtp-vue.php:55
+msgid "Return to Plugin Settings"
+msgstr "Tillbaka till tilläggsinställningarna"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:360
+#: assets/languages/wp-mail-smtp-vue.php:801
+msgid "Successful Authorization"
+msgstr "Auktorisering lyckades"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:295
+#: assets/languages/wp-mail-smtp-vue.php:121
+msgid "Can't register the Amazon SES Identity"
+msgstr "Kan inte registrera ”Amazon SES”-identiteten"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1614
+#: assets/languages/wp-mail-smtp-vue.php:19
+msgid "Please fill out all the required fields to continue."
+msgstr "Fyll i de obligatoriska fälten för att fortsätta."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:692
+#: assets/languages/wp-mail-smtp-vue.php:536
+msgid "Thanks for the feedback!"
+msgstr "Tack för feedbacken!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:699
+#: assets/languages/wp-mail-smtp-vue.php:543
+msgid "Rate on WordPress.org"
+msgstr "Betygsätt på WordPress.org"
+
+#: assets/languages/wp-mail-smtp-vue.php:169
+msgid "Smart Contact Form"
+msgstr "Smart kontaktformulär"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:834
+#: assets/languages/wp-mail-smtp-vue.php:389
+msgid "Your Email Address"
+msgstr "Din e-postadress"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:883
+#: assets/languages/wp-mail-smtp-vue.php:711
+msgid "Verify License Key"
+msgstr "Verifiera licensnyckel"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:880
+#: assets/languages/wp-mail-smtp-vue.php:708
+msgid "Enter your license key below to unlock plugin updates!"
+msgstr "Ange din licensnyckel nedan för att låsa upp tilläggsuppdateringar!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:931
+#: assets/languages/wp-mail-smtp-vue.php:685
+msgid "Would you like to purchase the following features now?"
+msgstr "Vill du köpa följande funktioner nu?"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:658
+#: assets/languages/wp-mail-smtp-vue.php:517
+msgid "Upgrade to Unlock Powerful SMTP Features"
+msgstr "Uppgradera för att låsa upp kraftfulla SMTP-funktioner"
+
+#: assets/languages/wp-mail-smtp-vue.php:514
+msgid "Check out our other free WordPress plugins:"
+msgstr "Kolla in våra andra gratis WordPress-tillägg:"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:667
+#: assets/languages/wp-mail-smtp-vue.php:199
+msgid "Manage Default Notifications"
+msgstr "Hantera standardaviseringar"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:889
+#: assets/languages/wp-mail-smtp-vue.php:717
+msgid "The License Key format is incorrect. Please enter a valid key and try again."
+msgstr "Formatet för licensnyckeln är ogiltigt. Ange en giltig nyckel och försök igen."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:943
+#: assets/languages/wp-mail-smtp-vue.php:675
+msgid "Enter your WP Mail SMTP License Key"
+msgstr "Ange din licensnyckel för ”WP Mail SMTP”"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:655
+#: assets/languages/wp-mail-smtp-vue.php:508
+msgid "Congrats, you’ve successfully set up WP Mail SMTP!"
+msgstr "Grattis, du har nu installerat WP Mail SMTP!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:892
+#: assets/languages/wp-mail-smtp-vue.php:720
+msgid "Your license was successfully verified! You are ready for the next step."
+msgstr "Din licens har verifierats! Du är redo för nästa steg."
+
+#. Translators: Link to the WPMailSMTP.com pricing page.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:954
+#: assets/languages/wp-mail-smtp-vue.php:698
+msgid "To unlock selected features, %1$sUpgrade to Pro%2$s and enter your license key below."
+msgstr "För att låsa upp valda funktioner, %1$sUppgradera till Pro%2$s och ange din licensnyckel nedan."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:934
+#: assets/languages/wp-mail-smtp-vue.php:688
+msgid "These features are available as part of WP Mail SMTP Pro plan."
+msgstr "Dessa funktioner är tillgängliga som del av paketet ”WP Mail SMTP Pro”."
+
+#: assets/languages/wp-mail-smtp-vue.php:172
+msgid "Create beautiful contact forms with just a few clicks."
+msgstr "Skapa vackra kontaktformulär med några få klick."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:732
+#: assets/languages/wp-mail-smtp-vue.php:313
+msgid "Configure Mailer Settings"
+msgstr "Konfigurera inställningar för e-postleverantör"
+
+#: assets/languages/wp-mail-smtp-vue.php:154
+msgid "The following plugin will be installed for free: WPForms"
+msgstr "Följande tillägg kommer att installeras gratis: WPForms"
+
+#. Translators: %1$s and %2$s are bold tags.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:947
+#: assets/languages/wp-mail-smtp-vue.php:679
+msgid "You're currently using %1$sWP Mail SMTP Lite%2$s - no license needed. Enjoy!"
+msgstr "Du använder för närvarande %1$sWP Mail SMTP Lite%2$s – ingen licens behövs. Lycka till!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:255
+#: assets/languages/wp-mail-smtp-vue.php:94
+msgid "It looks like we can't save the settings."
+msgstr "Det verkar som om vi inte kan spara inställningarna."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:270
+#: assets/languages/wp-mail-smtp-vue.php:112
+msgid "It looks like we can't load the settings."
+msgstr "Det verkar som om vi inte kan ladda inställningarna."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:261
+#: assets/languages/wp-mail-smtp-vue.php:100
+msgid "It looks like we can't import the plugin settings."
+msgstr "Det verkar som om vi inte kan importera tilläggets inställningar."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:649
+#: assets/languages/wp-mail-smtp-vue.php:502
+msgid "How was your WP Mail SMTP setup experience?"
+msgstr "Hur upplevde du installationen av WP Mail SMTP?"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:664
+#: assets/languages/wp-mail-smtp-vue.php:205
+msgid "Multisite Network Settings"
+msgstr "Inställningar för multisitenätverk"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:840
+#: assets/languages/wp-mail-smtp-vue.php:395
+msgid "Help make WP Mail SMTP better for everyone"
+msgstr "Hjälp till att göra WP Mail SMTP bättre för alla"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:837
+#: assets/languages/wp-mail-smtp-vue.php:392
+msgid "Your email is needed, so you can receive recommendations."
+msgstr "Din e-post behövs så att du kan ta emot rekommendationer."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:305
+#: assets/languages/wp-mail-smtp-vue.php:774
+msgid "Value has to be a round number"
+msgstr "Värdet måste vara ett avrundat tal"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:258
+#: assets/languages/wp-mail-smtp-vue.php:97
+msgid "Network error encountered. Settings not saved."
+msgstr "Nätverksfel uppstod. Inställningarna sparades inte."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:264
+#: assets/languages/wp-mail-smtp-vue.php:103
+msgid "Network error encountered. SMTP plugin import failed!"
+msgstr "Nätverksfel uppstod. Import av SMTP-tillägg misslyckades."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:966
+#: assets/languages/wp-mail-smtp-vue.php:160
+msgid "Ensure your emails are sent successfully and reliably."
+msgstr "Se till att dina e-postmeddelanden skickas utan problem och med tillförlitlighet."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:963
+#: assets/languages/wp-mail-smtp-vue.php:157 src/Admin/Pages/GetProTab.php:410
+msgid "Improved Email Deliverability"
+msgstr "Förbättrad e-postleverans"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:895
+#: assets/languages/wp-mail-smtp-vue.php:178
+msgid "Keep records of every email that's sent out from your website."
+msgstr "För register över alla e-postmeddelanden som skickas ut från din webbplats."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:898
+#: assets/languages/wp-mail-smtp-vue.php:202
+msgid "Control which email notifications your WordPress site sends."
+msgstr "Styr vilka e-postaviseringar din WordPress-webbplats skickar."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:957
+#: assets/languages/wp-mail-smtp-vue.php:142
+msgid "Which email features do you want to enable?"
+msgstr "Vilka e-postfunktioner vill du aktivera?"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:289
+#: assets/languages/wp-mail-smtp-vue.php:118
+msgid "Can't retrieve Amazon SES Identities."
+msgstr "Kan inte att hämta ”Amazon SES”-identiteter."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:286
+#: assets/languages/wp-mail-smtp-vue.php:115
+msgid "It looks like we can't retrieve Amazon SES Identities."
+msgstr "Det verkar som om vi inte kan hämta ”Amazon SES”-identiteter."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:267
+#: assets/languages/wp-mail-smtp-vue.php:106
+msgid "It looks like we can't load authentication details."
+msgstr "Det verkar som om vi inte kan hämta autentiseringsuppgifter."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:643
+#: assets/languages/wp-mail-smtp-vue.php:552
+msgid "Yes, I give WP Mail SMTP permission to contact me for any follow up questions."
+msgstr "Ja, jag ger WP Mail SMTP tillåtelse att kontakta mig för eventuella uppföljningsfrågor."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:972
+#: assets/languages/wp-mail-smtp-vue.php:166
+msgid "Easily spot errors causing delivery issues."
+msgstr "Upptäck enkelt fel som orsakar leveransproblem."
+
+#. Translators: bold HTML tags.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:877
+#: assets/languages/wp-mail-smtp-vue.php:705
+msgid "Already purchased? Enter your license key below to connect with %1$sWP Mail SMTP Pro%2$s!"
+msgstr "Redan köpt? Ange din licensnyckel nedan för att ansluta med %1$sWP Mail SMTP Pro%2$s!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:969
+#: assets/languages/wp-mail-smtp-vue.php:163 src/Admin/Pages/GetProTab.php:436
+msgid "Email Error Tracking"
+msgstr "Spårning av e-postfel"
+
+#. Translators: Link to the Sendinblue doc page on wpmailsmtp.com.
+#: assets/languages/wp-mail-smtp-vue.php:563
+msgid "Please input the sending domain/subdomain you configured in your Sendinblue dashboard. More information can be found in our %1$sSendinblue documentation%2$s"
+msgstr "Mata in den domän/underdomän som du har konfigurerat som avsändare i din Sendinblue-adminpanel. Mer information finns i vår %1$sdokumentation för Sendinblue%2$s."
+
+#. Translators: Link to the Sendgrid doc page on wpmailsmtp.com.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1332
+#: assets/languages/wp-mail-smtp-vue.php:300
+msgid "Please input the sending domain/subdomain you configured in your SendGrid dashboard. More information can be found in our %1$sSendGrid documentation%2$s"
+msgstr "Mata in den domän/underdomän som du har konfigurerat som avsändare i din SendGrid-adminpanel. Mer information finns i vår %1$sdokumentation för SendGrid%2$s."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:606
+#: assets/languages/wp-mail-smtp-vue.php:335
+msgid "We're running some tests in the background to make sure everything is set up properly."
+msgstr "Vi kör några tester i bakgrunden för att se till att allt är korrekt inställt."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:825
+#: assets/languages/wp-mail-smtp-vue.php:383
+msgid "Help Improve WP Mail SMTP + Smart Recommendations"
+msgstr "Hjälp till att förbättra WP Mail SMTP + Smart Recommendations"
+
+#: assets/languages/wp-mail-smtp-vue.php:511
+msgid "Here’s what to do next:"
+msgstr "Så här gör du härnäst:"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:283
+#: assets/languages/wp-mail-smtp-vue.php:91
+msgid "You appear to be offline."
+msgstr "Du verkar vara offline."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:495
+#: assets/languages/wp-mail-smtp-vue.php:875
+msgid "Value"
+msgstr "Värde"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:492
+#: assets/languages/wp-mail-smtp-vue.php:872
+msgid "Name"
+msgstr "Namn"
+
+#: assets/languages/wp-mail-smtp-vue.php:860
+#: src/Providers/Resend/Options.php:60
+msgid "Resend"
+msgstr "Skicka igen"
+
+#: assets/languages/wp-mail-smtp-vue.php:857
+msgid "View DNS"
+msgstr "Visa DNS"
+
+#: assets/languages/wp-mail-smtp-vue.php:848
+msgid "Verify Email"
+msgstr "Verifiera e-post"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:391
+#: assets/languages/wp-mail-smtp-vue.php:826
+msgid "Connected as"
+msgstr "Ansluten som"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:321
+#: assets/languages/wp-mail-smtp-vue.php:326
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:517
+msgid "Copied!"
+msgstr "Kopierad!"
+
+#: assets/languages/wp-mail-smtp-vue.php:651
+msgid "I Understand, Continue"
+msgstr "Jag förstår, fortsätt"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1292
+#: assets/languages/wp-mail-smtp-vue.php:761
+msgid "Application Password"
+msgstr "Applikationslösenord"
+
+#: assets/languages/wp-mail-smtp-vue.php:347
+msgid "Start Troubleshooting"
+msgstr "Börja felsöka"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:870
+#: assets/languages/wp-mail-smtp-vue.php:380
+#: src/SettingsImport/SettingsImport.php:111
+msgid "WP SMTP"
+msgstr "WP SMTP"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:867
+#: assets/languages/wp-mail-smtp-vue.php:377
+#: src/SettingsImport/SettingsImport.php:110
+msgid "SMTP Mailer"
+msgstr "SMTP Mailer"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:864
+#: assets/languages/wp-mail-smtp-vue.php:374
+msgid "Post SMTP Mailer"
+msgstr "Post SMTP Mailer"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:858
+#: assets/languages/wp-mail-smtp-vue.php:368
+#: src/SettingsImport/SettingsImport.php:108
+msgid "Easy WP SMTP"
+msgstr "Easy WP SMTP"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:631
+#: assets/languages/wp-mail-smtp-vue.php:151
+msgid "Previous Step"
+msgstr "Föregående steg"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:831
+#: assets/languages/wp-mail-smtp-vue.php:365
+msgid "Skip this Step"
+msgstr "Hoppa över detta steg"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:855
+#: assets/languages/wp-mail-smtp-vue.php:362
+msgid "Import Data and Continue"
+msgstr "Importera data och fortsätt"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1617
+#: assets/languages/wp-mail-smtp-vue.php:22
+msgid "Settings Updated"
+msgstr "Inställningar uppdaterade"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:679
+#: assets/languages/wp-mail-smtp-vue.php:350
+msgid "Send us Feedback"
+msgstr "Skicka oss feedback"
+
+#. Translators: name of the oAuth provider (Google, Microsoft, ...).
+#: assets/languages/wp-mail-smtp-vue-hosted.php:367
+#: assets/languages/wp-mail-smtp-vue.php:808
+msgid "Connect to %s"
+msgstr "Anslut till %s"
+
+#. Translators: %1$s - the number of current step, %2$s - number of all steps.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:521
+#: assets/languages/wp-mail-smtp-vue.php:310
+msgid "Step %1$s of %2$s"
+msgstr "Steg %1$s av %2$s"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:318
+#: assets/languages/wp-mail-smtp-vue.php:323
+msgid "Copy input value"
+msgstr "Kopiera inmatningsvärde"
+
+#: assets/languages/wp-mail-smtp-vue.php:885
+msgid "Verify Email Address"
+msgstr "Verifiera e-postadress"
+
+#: assets/languages/wp-mail-smtp-vue.php:882
+msgid "Verify Domain"
+msgstr "Verifiera domän"
+
+#: assets/languages/wp-mail-smtp-vue.php:866
+msgid "Verify SES Identity"
+msgstr "Verifiera SES-identitet"
+
+#: assets/languages/wp-mail-smtp-vue.php:869
+msgid "Add New SES Identity"
+msgstr "Lägg till ny SES-identitet"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:987
+#: assets/languages/wp-mail-smtp-vue.php:620
+msgid "Secret Access Key"
+msgstr "Hemlig åtkomstnyckel"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:984
+#: assets/languages/wp-mail-smtp-vue.php:617
+msgid "Access Key ID"
+msgstr "ID för åtkomstnyckel"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:628
+#: assets/languages/wp-mail-smtp-vue.php:148
+msgid "Save and Continue"
+msgstr "Spara och fortsätt"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1289
+#: assets/languages/wp-mail-smtp-vue.php:758
+msgid "Application ID"
+msgstr "Applikations-ID"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1295
+#: assets/languages/wp-mail-smtp-vue.php:460
+msgid "Redirect URI"
+msgstr "URI för omdirigering"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:682
+#: assets/languages/wp-mail-smtp-vue.php:353
+msgid "Finish Setup"
+msgstr "Slutför installation"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:415
+#: assets/languages/wp-mail-smtp-vue.php:281
+msgid "Close and exit the Setup Wizard"
+msgstr "Stäng och avsluta installationsguiden"
+
+#: templates/setup-wizard/welcome.php:56
+msgid "Let's Get Started"
+msgstr "Då sätter vi igång"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1620
+#: assets/languages/wp-mail-smtp-vue.php:25
+msgid "Could Not Save Changes"
+msgstr "Kunde inte spara ändringar"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:618
+#: assets/languages/wp-mail-smtp-vue.php:663
+msgid "is a PRO Feature"
+msgstr "är en PRO-funktion"
+
+#: assets/languages/wp-mail-smtp-vue.php:623
+msgid "SES Identities"
+msgstr "SES-identiteter"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:452
+#: assets/languages/wp-mail-smtp-vue.php:832
+msgid "Please enter a domain"
+msgstr "Ange en domän"
+
+#: assets/languages/wp-mail-smtp-vue.php:835
+msgid "Please enter a valid email address"
+msgstr "Ange en giltig e-postadress"
+
+#. Translators: Link to the Mailgun Domain settings.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1232
+#: assets/languages/wp-mail-smtp-vue.php:225
+msgid "%1$sFollow this link%2$s to get a Domain Name from Mailgun."
+msgstr "%1$sFölj denna länk%2$s för att skaffa ett domännamn från Mailgun."
+
+#: assets/languages/wp-mail-smtp-vue.php:566
+msgid "Get Started with Sendinblue"
+msgstr "Kom igång med Sendinblue"
+
+#. Translators: Link to the Sendinblue API settings.
+#: assets/languages/wp-mail-smtp-vue.php:559
+msgid "%1$sFollow this link%2$s to get an API Key for Sendinblue."
+msgstr "%1$sFölj denna länk%2$s för att skaffa en API-nyckel från Sendinblue."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:849
+#: assets/languages/wp-mail-smtp-vue.php:356
+msgid "Import data from your current plugins"
+msgstr "Importera data från dina nuvarande tillägg"
+
+#: templates/setup-wizard/welcome.php:50
+msgid "Welcome to the WP Mail SMTP Setup Wizard!"
+msgstr "Välkommen till installationsguiden för WP Mail SMTP!"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1590
+#: assets/languages/wp-mail-smtp-vue.php:31
+msgid "Whoops, we found an issue!"
+msgstr "Oj, vi hittade ett problem!"
+
+#. Translators: Link to the SMTP.com API settings.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1462
+#: assets/languages/wp-mail-smtp-vue.php:483
+msgid "%1$sFollow this link%2$s to get an API Key for SMTP.com."
+msgstr "%1$sFölj denna länk%2$s för att skaffa en API-nyckel för SMTP.com."
+
+#. Translators: Link to the SMTP.com Senders/Channel settings.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1466
+#: assets/languages/wp-mail-smtp-vue.php:487
+msgid "%1$sFollow this link%2$s to get a Sender Name for SMTP.com."
+msgstr "%1$sFölj denna länk%2$s för att skaffa ett avsändarnamn för SMTP.com."
+
+#. Translators: Link to the Sendgrid API settings.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1324
+#: assets/languages/wp-mail-smtp-vue.php:292
+msgid "%1$sFollow this link%2$s to get an API Key for Sendgrid."
+msgstr "%1$sFölj denna länk%2$s för att skaffa en API-nyckel för Sendgrid."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:603
+#: assets/languages/wp-mail-smtp-vue.php:332
+msgid "Checking Mailer Configuration"
+msgstr "Kontrollerar konfiguration av e-postleverantör"
+
+#: assets/languages/wp-mail-smtp-vue.php:657
+msgid "Recommended Mailers"
+msgstr "Rekommenderade e-postleverantörer"
+
+#: assets/languages/wp-mail-smtp-vue.php:654
+msgid "Choose a Different Mailer"
+msgstr "Välj en annan e-postleverantör"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1623
+#: assets/languages/wp-mail-smtp-vue.php:28
+msgid "Return to Mailer Settings"
+msgstr "Tillbaka till inställningarna för e-postleverantör"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1593
+#: assets/languages/wp-mail-smtp-vue.php:34
+msgid "It looks like something went wrong..."
+msgstr "Det verkar som om något gick fel …"
+
+#: assets/languages/wp-mail-smtp-vue.php:130
+msgid "You appear to be offline. Plugin not installed."
+msgstr "Du verkar vara offline. Tillägg är inte installerat."
+
+#: assets/languages/wp-mail-smtp-vue.php:127
+msgid "It looks like we can't install the plugin."
+msgstr "Det verkar som vi inte kan installera tillägget."
+
+#: assets/languages/wp-mail-smtp-vue.php:124
+msgid "It looks like the plugin installation failed!"
+msgstr "Det verkar som tilläggets installation misslyckades!"
+
+#: assets/languages/wp-mail-smtp-vue.php:139
+msgid "You appear to be offline. Plugin information not retrieved."
+msgstr "Du verkar vara offline. Information om tillägg har inte hämtats."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:425
+#: assets/languages/wp-mail-smtp-vue.php:81
+msgid "It looks like we can't send the feedback."
+msgstr "Det ser ut som om vi inte kan skicka feedback."
+
+#: assets/languages/wp-mail-smtp-vue.php:851
+msgid "No registered domains or emails."
+msgstr "Inga registrerade domäner eller e-postadresser."
+
+#: assets/languages/wp-mail-smtp-vue.php:133
+msgid "Can't fetch plugins information."
+msgstr "Kan inte hämta information om tillägg."
+
+#: assets/languages/wp-mail-smtp-vue.php:136
+msgid "It looks like we can't fetch plugins information."
+msgstr "Det verkar som om vi inte kan hämta information om tillägg."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:311
+#: assets/languages/wp-mail-smtp-vue.php:329
+msgid "The value entered does not match the required format"
+msgstr "Det angivna värdet matchar inte det obligatoriska formatet."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:397
+#: assets/languages/wp-mail-smtp-vue.php:58
+msgid "It looks like we can't load oAuth redirect."
+msgstr "Det verkar som om vi inte kan ladda oAuth-omdirigering."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1492
+#: assets/languages/wp-mail-smtp-vue.php:466
+msgid "Read how to set up Zoho Mail"
+msgstr "Läs om hur du konfigurerar Zoho Mail"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1239
+#: assets/languages/wp-mail-smtp-vue.php:272
+msgid "Read how to set up Mailgun"
+msgstr "Läs om hur du konfigurerar Mailgun"
+
+#: assets/languages/wp-mail-smtp-vue.php:569
+msgid "Read how to set up Sendinblue"
+msgstr "Läs om hur du konfigurerar Sendinblue"
+
+#: assets/languages/wp-mail-smtp-vue.php:303
+msgid "Read how to set up Sendgrid"
+msgstr "Läs om hur du konfigurerar Sendgrid"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1129
+#: assets/languages/wp-mail-smtp-vue.php:629
+msgid "Read how to set up Amazon SES"
+msgstr "Läs om hur du konfigurerar Amazon SES"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1469
+#: assets/languages/wp-mail-smtp-vue.php:493
+msgid "Read how to set up SMTP.com"
+msgstr "Läs om hur du konfigurerar SMTP.com"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1184
+#: assets/languages/wp-mail-smtp-vue.php:744
+msgid "Read how to set up the Gmail mailer"
+msgstr "Läs om hur du konfigurerar Gmail's e-posttjänst"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:403
+#: assets/languages/wp-mail-smtp-vue.php:61
+msgid "It looks like we can't load existing settings."
+msgstr "Det verkar som om vi inte kan hämta befintliga inställningar."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1580
+#: assets/languages/wp-mail-smtp-vue.php:48
+msgid "Yikes! WordPress Update Required"
+msgstr "Ojdå! WordPress behöver uppdateras"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:400
+#: assets/languages/wp-mail-smtp-vue.php:68
+msgid "It looks like we can't remove oAuth connection."
+msgstr "Det verkar som om vi inte kan ta bort oAuth-anslutningen."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:276
+#: assets/languages/wp-mail-smtp-vue.php:65
+msgid "It looks like we can't load oAuth connected data."
+msgstr "Det verkar som om vi inte kan ladda oAuth-ansluten data."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:621
+#: assets/languages/wp-mail-smtp-vue.php:641
+msgid "Choose Your SMTP Mailer"
+msgstr "Välj din e-postleverantör för SMTP"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:292
+#: assets/languages/wp-mail-smtp-vue.php:75
+msgid "It looks like we can't register the Amazon SES Identity."
+msgstr "Det verkar som om vi inte kan registrera identiteten för ”Amazon SES”."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:406
+#: assets/languages/wp-mail-smtp-vue.php:71
+msgid "It looks like we can't retrieve the Amazon SES Identities."
+msgstr "Det verkar som om vi inte kan hämta identiteterna för ”Amazon SES”."
+
+#: assets/languages/wp-mail-smtp-vue.php:741
+msgid "Select which email address you would like to send your emails from."
+msgstr "Välj vilken e-postadress du vill skicka dina e-postmeddelanden från."
+
+#. Translators: Email address.
+#: assets/languages/wp-mail-smtp-vue.php:845
+msgid "Please check the inbox of <b>%s</b> for a confirmation email."
+msgstr "Kontrollera inkorgen till <b>%s</b> för en e-postbekräftelse."
+
+#: assets/languages/wp-mail-smtp-vue.php:341
+msgid "Whoops, looks like things aren’t configured properly."
+msgstr "Hoppsan, det verkar som om saker och ting inte är korrekt konfigurerade."
+
+#. Translators: Link to the Sendinblue API settings.
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1339
+#: assets/languages/wp-mail-smtp-vue.php:913
+msgid "%1$sFollow this link%2$s to get an API Key for Brevo."
+msgstr "%1$sFölj denna länk%2$s för att skaffa en API-nyckel från Brevo."
+
+#: assets/languages/wp-mail-smtp-vue.php:841
+msgid "Enter a valid email address. A verification email will be sent to the email address you entered."
+msgstr "Ange en giltig e-postadress. En e-postverifiering kommer att skickas till den e-postadress du angav."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1573
+#: assets/languages/wp-mail-smtp-vue.php:41
+msgid "Yikes! PHP Update Required"
+msgstr "Ojdå! PHP behöver uppdateras"
+
+#: src/Admin/Pages/SettingsTab.php:125
+msgid "Setup Wizard"
+msgstr "Installationsguide"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:886
+#: assets/languages/wp-mail-smtp-vue.php:714
+#: src/Admin/Dashboard/Widgets/Connections.php:327
+#: src/Admin/Pages/SettingsTab.php:180
+msgid "Connect"
+msgstr "Anslut"
+
+#: src/Admin/SetupWizard/Local.php:1100 src/Admin/SetupWizard/RestApi.php:887
+msgid "Please enter a valid license key!"
+msgstr "Ange en giltig licensnyckel!"
+
+#: src/Admin/DomainChecker.php:105
+msgid "Something went wrong. Please try again later."
+msgstr "Något blev fel. Försök igen senare."
+
+#: src/Admin/SetupWizard/Local.php:1000
+msgid "WP Call Button"
+msgstr "WP Call Button"
+
+#: src/Admin/SetupWizard/Local.php:994
+msgid "SeedProd Landing Page Builder"
+msgstr "SeedProd Landing Page Builder"
+
+#: src/Admin/SetupWizard/Local.php:988
+msgid "Smash Balloon Social Photo Feed"
+msgstr "Smash Balloon Social Photo Feed"
+
+#: src/Admin/SetupWizard/Local.php:982
+msgid "Giveaways by RafflePress"
+msgstr "Giveaways by RafflePress"
+
+#: src/Admin/SetupWizard/Local.php:964
+msgid "All in One SEO"
+msgstr "All in One SEO"
+
+#: src/Admin/SetupWizard/Local.php:970
+msgid "Google Analytics by MonsterInsights"
+msgstr "Google Analytics by MonsterInsights"
+
+#: src/Admin/SetupWizard/Local.php:457
+msgid "Contact Us"
+msgstr "Kontakta oss"
+
+#: src/Admin/SetupWizard/Local.php:454
+msgid "Copy the error message above and paste it in a message to the WP Mail SMTP support team."
+msgstr "Kopiera felmeddelandet ovan och klistra in det i ett meddelande till WP Mail SMTP supportteam."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:517
+#: assets/languages/wp-mail-smtp-vue.php:306
+#: src/Admin/SetupWizard/Local.php:429 templates/setup-wizard/welcome.php:42
+msgid "WP Mail SMTP logo"
+msgstr "Logga för WP Mail SMTP"
+
+#: src/Admin/SetupWizard/Local.php:246 templates/setup-wizard/welcome.php:67
+msgid "Go back to the Dashboard"
+msgstr "Gå tillbaka till adminpanelen"
+
+#: src/Admin/SetupWizard/Local.php:229 templates/setup-wizard/welcome.php:27
+msgid "WP Mail SMTP &rsaquo; Setup Wizard"
+msgstr "WP Mail SMTP › Installationsguide"
+
+#. translators: %s - item state name.
+#: src/Admin/DomainChecker.php:303
+msgid "%s icon"
+msgstr "%s-ikon"
+
+#: src/Admin/DomainChecker.php:291
+msgid "Domain Check Results"
+msgstr "Resultat av domänkontroll"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:745
+msgid "Save the plugin settings."
+msgstr "Spara tilläggets inställningar."
+
+#: src/Admin/SetupWizard/Local.php:437
+msgid "Whoops, something's not working."
+msgstr "Hoppsan, det är något som inte fungerar."
+
+#: src/Admin/Pages/SettingsTab.php:173
+msgid "Already purchased? Simply enter your license key below to connect with WP Mail SMTP Pro!"
+msgstr "Redan köpt? Ange bara din licensnyckel nedan för att ansluta till WP Mail SMTP Pro!"
+
+#: src/Admin/SetupWizard/Local.php:1017 src/Admin/SetupWizard/Local.php:1066
+#: src/Admin/SetupWizard/Local.php:1094 src/Admin/SetupWizard/Local.php:1137
+#: src/Admin/SetupWizard/RestApi.php:881
+msgid "You don't have the permission to perform this action."
+msgstr "Du har inte behörighet att utföra denna åtgärd."
+
+#: src/Admin/SetupWizard/Hosted.php:195 src/Admin/SetupWizard/Local.php:504
+#: src/Admin/SetupWizard/Local.php:526 src/Admin/SetupWizard/Local.php:591
+msgid "You don't have permission to change options for this WP site!"
+msgstr "Du har inte behörighet att ändra alternativ för denna WP-webbplats!"
+
+#: src/Admin/SetupWizard/Local.php:445
+msgid "Confirm that your browser is updated to the latest version."
+msgstr "Bekräfta att din webbläsare är uppdaterad till den senaste versionen."
+
+#: src/Admin/SetupWizard/Local.php:1090 src/Admin/SetupWizard/RestApi.php:873
+msgid "You are already using the WP Mail SMTP PRO version. Please refresh this page and verify your license key."
+msgstr "Du använder redan WP Mail SMTP PRO-versionen. Uppdatera denna sida och verifiera din licensnyckel."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:746
+msgid "If updating the API Key doesn't resolve this issue, please contact our support."
+msgstr "Om uppdatering av API-nyckeln inte löser problemet, kontakta vår support."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1505
+#: assets/languages/wp-mail-smtp-vue.php:13 src/Admin/Area.php:643
+#: src/Admin/Area.php:662 src/Admin/Pages/DebugEventsTab.php:152
+msgid "OK"
+msgstr "OK"
+
+#: src/Connect.php:146
+msgid "You are not allowed to install plugins."
+msgstr "Du saknar behörighet att installera tillägg."
+
+#: src/Connect.php:153
+msgid "Please enter your license key to connect."
+msgstr "Ange din licensnyckel för att ansluta."
+
+#: src/Connect.php:161
+msgid "Only the Lite version can be upgraded."
+msgstr "Endast Lite-versionen kan uppgraderas."
+
+#. translators: %s - URL to Sendinblue documentation on wpmailsmtp.com
+#: src/Providers/Sendinblue/Options.php:165
+msgid "Please input the sending domain/subdomain you configured in your Brevo (formerly Sendinblue) dashboard. More information can be found in our <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Brevo documentation</a>."
+msgstr "Mata in den domän/underdomän som du har konfigurerat som avsändare i din Brevo-adminpanel (f.d. Sendinblue). Mer information finns i vår <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">dokumentation för Brevo</a>."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1014
+#: assets/languages/wp-mail-smtp-vue.php:288
+#: src/Providers/Sendgrid/Options.php:116
+#: src/Providers/Sendinblue/Options.php:152
+msgid "Sending Domain"
+msgstr "Skickande domän"
+
+#. translators: %s - URL to SendGrid documentation on wpmailsmtp.com
+#: src/Providers/Sendgrid/Options.php:129
+msgid "Please input the sending domain/subdomain you configured in your SendGrid dashboard. More information can be found in our <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">SendGrid documentation</a>."
+msgstr "Mata in den domän/underdomän som du har konfigurerat som avsändare i din SendGrid-adminpanel. Mer information finns i vår <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">dokumentation för SendGrid</a>."
+
+#: src/Admin/Area.php:471
+msgid "Multisite"
+msgstr "Multisite"
+
+#: src/Providers/Gmail/Mailer.php:134
+msgid "The email message ID is missing."
+msgstr "E-postmeddelandets ID saknas."
+
+#: src/Providers/Gmail/Mailer.php:129
+msgid "The response object is invalid (missing getId method)."
+msgstr "Svarsobjektet är ogiltigt (saknar ”getId”-metod)."
+
+#: src/Admin/Area.php:472
+msgid "Pro+ badge icon"
+msgstr "Ikon för Pro+-märke"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:394
+#: assets/languages/wp-mail-smtp-vue.php:897 src/Core.php:1120
+msgid "Loading"
+msgstr "Laddar in"
+
+#: src/SiteHealth.php:176
+msgid "None selected"
+msgstr "Ingen vald"
+
+#. translators: Date and time format, see
+#. https://www.php.net/manual/datetime.format.php.
+#: src/SiteHealth.php:160
+msgid "M j, Y @ g:ia"
+msgstr "j M Y H:i"
+
+#: src/SiteHealth.php:159
+msgid "Lite install date"
+msgstr "Datum för Lite-installationen"
+
+#: src/Providers/Zoho/Options.php:25
+msgid "Zoho Mail"
+msgstr "Zoho Mail"
+
+#: src/Admin/Pages/MiscTab.php:253
+msgid "Allow Usage Tracking"
+msgstr "Tillåt användningsspårning"
+
+#: src/Admin/Education.php:86
+msgid "Dismiss this message."
+msgstr "Avfärda detta meddelande."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:846
+#: assets/languages/wp-mail-smtp-vue.php:401 src/Admin/Pages/MiscTab.php:268
+msgid "By allowing us to track usage data we can better help you because we know with which WordPress configurations, themes and plugins we should test."
+msgstr "Om du låter oss spåra användningsdata kan vi hjälpa dig bättre eftersom vi då kommer veta vilka WordPress-konfigurationer, teman och tillägg vi behöver testa."
+
+#: src/Admin/Notifications.php:498
+msgid "Next message"
+msgstr "Nästa meddelande"
+
+#: src/Admin/Notifications.php:494
+msgid "Previous message"
+msgstr "Föregående meddelande"
+
+#: src/Admin/Notifications.php:489
+msgid "Dismiss this message"
+msgstr "Avfärda detta meddelande"
+
+#: src/Admin/Pages/AboutTab.php:151
+msgid "Plugin icon"
+msgstr "Tilläggsikon"
+
+#: src/SiteHealth.php:145
+msgid "DB tables"
+msgstr "DB-tabeller"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1502
+#: assets/languages/wp-mail-smtp-vue.php:1118 src/Admin/Area.php:648
+#: src/Admin/Area.php:659 src/Admin/DebugEvents/Event.php:184
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:235
+#: src/Providers/PepipostAPI/Mailer.php:342
+msgid "Error"
+msgstr "Fel"
+
+#: src/Providers/PepipostAPI/Mailer.php:341
+msgid "General error"
+msgstr "Allmänt fel"
+
+#. translators: %s - the list of missing tables separated by comma.
+#: src/SiteHealth.php:288
+msgid "Missing table: %s"
+msgid_plural "Missing tables: %s"
+msgstr[0] "Saknad tabell: %s"
+msgstr[1] "Saknade tabeller: %s"
+
+#: src/SiteHealth.php:147
+msgid "No DB tables found."
+msgstr "Inga DB-tabeller hittades."
+
+#: src/SiteHealth.php:102
+msgid "Do WP Mail SMTP DB tables exist?"
+msgstr "Finns DB-tabeller för WP Mail SMTP?"
+
+#: src/SiteHealth.php:282
+msgid "WP Mail SMTP DB tables check has failed"
+msgstr "Kontroll av WP Mail SMTP databastabeller misslyckades"
+
+#: src/SiteHealth.php:258
+msgid "WP Mail SMTP DB tables are created"
+msgstr "WP Mail SMTP databastabeller skapas"
+
+#: assets/languages/wp-mail-smtp-vue.php:1144 src/Admin/Area.php:607
+#: src/Admin/Area.php:674 src/Admin/Pages/DebugEventsTab.php:149
+#: src/Admin/Pages/EmailDetectiveTab.php:433 src/SetupChecklist/Page.php:140
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/Admin/Review.php:166
+msgid "I already did"
+msgstr "Jag har redan gjort det"
+
+#: src/Admin/Review.php:165
+msgid "No, maybe later"
+msgstr "Nej, kanske senare"
+
+#: src/Admin/Area.php:608
+msgid "Warning icon"
+msgstr "Varningsikon"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1611
+#: assets/languages/wp-mail-smtp-vue.php:16 src/Admin/Area.php:601
+#: src/Admin/Pages/DebugEventsTab.php:153
+msgid "Heads up!"
+msgstr "Observera!"
+
+#. translators: %1$s - WP Mail SMTP, %2$s - error message.
+#: src/Migration.php:135
+msgid "There was an error while upgrading the database. Please contact %1$s support with this information: %2$s."
+msgstr "Ett fel uppstod vid uppgradering av databasen. Kontakta supporten för %1$s med denna information: %2$s."
+
+#: src/Admin/Review.php:155
+msgid "No thanks"
+msgstr "Nej tack"
+
+#: src/Admin/Review.php:136
+msgid "Are you enjoying WP Mail SMTP?"
+msgstr "Gillar du WP Mail SMTP?"
+
+#: src/Admin/Area.php:673
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:546
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:560
+#: src/Admin/Pages/DebugEventsTab.php:151 src/Admin/Review.php:138
+#: src/Providers/Gmail/Mailer.php:184 src/Providers/Gmail/Mailer.php:185
+#: src/Providers/Gmail/Mailer.php:186 src/Providers/Gmail/Mailer.php:191
+#: src/Providers/Gmail/Mailer.php:192 src/Providers/Gmail/Mailer.php:193
+#: src/Providers/Gmail/Mailer.php:197 src/Providers/Gmail/Mailer.php:200
+#: src/Providers/Gmail/Mailer.php:203 src/Providers/Mail/Mailer.php:27
+#: src/Providers/Mail/Mailer.php:31 src/Providers/Mail/Mailer.php:34
+#: src/Providers/Mail/Mailer.php:37 src/Providers/MailerAbstract.php:504
+#: src/Providers/MailerAbstract.php:507 src/Providers/MailerAbstract.php:510
+#: src/Providers/MailerSend/Mailer.php:524 src/Providers/Mailgun/Mailer.php:446
+#: src/Providers/Mandrill/Mailer.php:478
+#: src/Providers/PepipostAPI/Mailer.php:360
+#: src/Providers/Postmark/Mailer.php:437 src/Providers/Resend/Mailer.php:447
+#: src/Providers/Sendgrid/Mailer.php:399
+#: src/Providers/Sendinblue/Mailer.php:453
+#: src/Providers/Sendlayer/Mailer.php:426 src/Providers/SMTPcom/Mailer.php:477
+#: src/Providers/SMTPcom/Mailer.php:479 src/Providers/SparkPost/Mailer.php:505
+#: src/Providers/SparkPost/Mailer.php:507
+msgid "Yes"
+msgstr "Ja"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1139
+msgid "SMTP.com API Error."
+msgstr "SMTP.com API-fel."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:843
+msgid "Verify that the host's SSL certificate is valid."
+msgstr "Verifiera att SSL-certifikatet på ditt webbhotell är giltigt."
+
+#: src/Admin/Review.php:143
+msgid "We're sorry to hear you aren't enjoying WP Mail SMTP. We would love a chance to improve. Could you take a minute and let us know what we can do better?"
+msgstr "Vad tråkigt att du inte gillar WP Mail SMTP. Vi skulle bli glada om vi fick en chans att förbättra det. Kan du ägna en minut för att låta oss veta vad vi kan göra bättre?"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:837
+msgid "Misconfigured server certificate."
+msgstr "Felkonfigurerat servercertifikat."
+
+#: src/Providers/Gmail/Mailer.php:258
+msgid "Please re-grant Google app permissions!"
+msgstr "Ge Google-appen behörighet igen!"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1153
+msgid "GuzzleHttp requirements."
+msgstr "GuzzleHttp-krav"
+
+#: src/Admin/Recommendations/Pages/ActiveLayer.php:179
+#: src/Admin/Recommendations/Pages/Universally.php:179
+#: src/Admin/Recommendations/Pages/WPCode.php:195
+#: src/Admin/Recommendations/Pages/WPConsent.php:213
+#: src/Providers/OptionsAbstract.php:417 src/SetupChecklist/Config.php:299
+msgid "Learn More"
+msgstr "Lär dig mer"
+
+#: src/Providers/PepipostAPI/Options.php:55
+msgid "Get Started with Pepipost"
+msgstr "Kom igång med Pepipost"
+
+#: src/Providers/ElasticEmail/Options.php:122
+#: src/Providers/MailerSend/Options.php:117
+#: src/Providers/Mandrill/Options.php:118
+#: src/Providers/Sendlayer/Options.php:212
+#: src/Providers/SMTPcom/Options.php:135
+#: src/Providers/SparkPost/Options.php:120
+msgid "Get API Key"
+msgstr "Skaffa API-nyckel"
+
+#: src/Providers/SMTPcom/Options.php:83
+msgid "SMTP.com"
+msgstr "SMTP.com"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1076
+#: assets/languages/wp-mail-smtp-vue.php:490
+#: src/Providers/SMTPcom/Options.php:69
+msgid "Get Started with SMTP.com"
+msgstr "Kom igång med SMTP.com"
+
+#. translators: %s - API key link.
+#: src/Providers/SMTPcom/Options.php:133
+msgid "Follow this link to get an API Key from SMTP.com: %s."
+msgstr "Följ denna länk för att skaffa en API-nyckel från SMTP.com: %s."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1086
+#: assets/languages/wp-mail-smtp-vue.php:479
+#: src/Providers/SMTPcom/Options.php:146
+msgid "Sender Name"
+msgstr "Avsändarnamn"
+
+#: src/Providers/SMTPcom/Options.php:164
+msgid "Get Sender Name"
+msgstr "Hämta avsändarnamn"
+
+#. translators: %s - Channel/Sender Name link for smtp.com documentation.
+#: src/Providers/SMTPcom/Options.php:162
+msgid "Follow this link to get a Sender Name from SMTP.com: %s."
+msgstr "Följ denna länk för att skaffa ett avsändarnamn från SMTP.com: %s."
+
+#: src/Providers/SMTPcom/Mailer.php:478
+msgid "Channel:"
+msgstr "Kanal:"
+
+#: src/Admin/ConnectionSettings.php:270
+msgid "Don't see what you're looking for?"
+msgstr "Hittar du inte vad du letar efter?"
+
+#: src/Admin/Area.php:1436
+msgid "Go to WP Mail SMTP Settings page"
+msgstr "Gå till inställningssidan för WP Mail SMTP"
+
+#: src/Admin/DebugEvents/Event.php:185 src/SiteHealth.php:141
+msgid "Debug"
+msgstr "Felsök"
+
+#: src/SiteHealth.php:137
+msgid "License key type"
+msgstr "Typ av licensnyckel"
+
+#: src/Admin/Area.php:599
+msgid "Changes that you made to the settings are not saved!"
+msgstr "Ändringarna som du gjort i inställningarna är inte sparade!"
+
+#: src/SiteHealth.php:142
+msgid "No debug notices found."
+msgstr "Ingen felsökningsnotis hittades."
+
+#: src/SiteHealth.php:198
+msgid "Current mailer"
+msgstr "Nuvarande e-postleverantör"
+
+#: src/SiteHealth.php:241 src/SiteHealth.php:400
+msgid "Configure mailer"
+msgstr "Konfigurera e-postleverantör"
+
+#: src/SiteHealth.php:217
+msgid "Test email sending"
+msgstr "Testmeddelande skickas"
+
+#: src/Providers/Pepipost/Options.php:25
+msgid "Pepipost SMTP"
+msgstr "Pepipost SMTP"
+
+#: src/Admin/ConnectionSettings.php:275
+msgid "Suggest a Mailer"
+msgstr "Föreslå en e-postleverantör"
+
+#: src/Providers/PepipostAPI/Options.php:117
+msgid "Get the API Key"
+msgstr "Skaffa API-nyckeln"
+
+#: src/Admin/Area.php:661
+msgid "Download"
+msgstr "Ladda ner"
+
+#: src/Providers/AmazonSES/Options.php:25
+msgid "Amazon SES"
+msgstr "Amazon SES"
+
+#: src/Admin/Pages/GetProTab.php:462
+msgid "Outlook"
+msgstr "Outlook"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1518 src/Admin/Area.php:412
+#: src/Admin/Area.php:413 src/Admin/Area.php:1640
+#: src/Admin/Dashboard/Widgets/EmailsOverview.php:231
+#: src/Admin/Dashboard/Widgets/FeaturesUpsell.php:171
+#: src/Admin/Pages/GetProTab.php:327 src/Admin/Pages/SettingsTab.php:91
+#: src/Admin/SetupWizard/Local.php:191 src/Reports/Emails/Summary.php:317
+#: src/SetupChecklist/Promos.php:24
+#: templates/dashboard/widgets/email-log.php:31
+#: templates/dashboard/widgets/email-sources.php:28
+#: templates/dashboard/widgets/version.php:60
+msgid "Upgrade to Pro"
+msgstr "Uppgradera till Pro"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1521 src/Admin/Area.php:1653
+#: src/Admin/SetupWizard/Local.php:210
+msgid "Already purchased?"
+msgstr "Redan köpt?"
+
+#: src/Admin/Area.php:612
+msgid "%name% is a Pro Feature"
+msgstr "%name% är en Pro-funktion"
+
+#: src/Admin/Pages/MiscTab.php:179
+msgid "Hide Email Delivery Errors"
+msgstr "Dölj leveransfel för e-post"
+
+#. translators: %s - link to get an API Key.
+#: src/Providers/PepipostAPI/Options.php:115
+#: src/Providers/Sendinblue/Options.php:139
+msgid "Follow this link to get an API Key: %s."
+msgstr "Följ denna länk för att skaffa en API-nyckel: %s."
+
+#: src/Providers/Sendinblue/Options.php:141
+msgid "Get v3 API Key"
+msgstr "Skaffa v3 API-nyckel"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: wp_mail_smtp.php
+msgid "https://wpmailsmtp.com/"
+msgstr "https://wpmailsmtp.com/"
+
+#: src/Admin/Area.php:653 src/Admin/Area.php:751 src/Admin/Area.php:758
+#: src/Admin/Dashboard/Page.php:145 src/Admin/Pages/AboutTab.php:223
+#: src/PartnerPlugins/PartnerPlugin.php:421 src/SetupChecklist/Page.php:146
+msgid "Activate"
+msgstr "Aktivera"
+
+#: src/Admin/Area.php:757
+msgid "Install and Activate"
+msgstr "Installera och aktivera"
+
+#: src/Admin/Pages/SettingsTab.php:107
+msgid "License Key"
+msgstr "Licensnyckel"
+
+#: src/Admin/Pages/SettingsTab.php:64
+msgid "License"
+msgstr "Licens"
+
+#: src/Admin/Area.php:651 src/Admin/Area.php:755
+msgid "Processing..."
+msgstr "Bearbetar …"
+
+#: src/Admin/ProFeatures.php:92
+msgid "Priority Support"
+msgstr "Prioriterad support"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1151
+#: src/Admin/Pages/GetProTab.php:221 src/Admin/Pages/TestTab.php:397
+msgid "Pro"
+msgstr "Pro"
+
+#: src/Admin/Pages/GetProTab.php:215
+msgid "Feature"
+msgstr "Funktion"
+
+#: src/Admin/Pages/AboutTab.php:482
+msgid "Plugin installed."
+msgstr "Tillägg installerat."
+
+#: src/Admin/Pages/AboutTab.php:481
+msgid "Plugin installed & activated."
+msgstr "Tillägg installerat och aktiverat."
+
+#: src/Admin/SetupWizard/Local.php:941 src/PartnerPlugins/Installer.php:53
+msgid "Could not install the plugin."
+msgstr "Kunde inte installera tillägget."
+
+#: src/Admin/Pages/AboutTab.php:435
+msgid "Plugin activated."
+msgstr "Tillägg aktiverat."
+
+#. translators: %s - status HTML text.
+#: src/Admin/Pages/AboutTab.php:165
+msgid "Status: %s"
+msgstr "Status: %s"
+
+#: src/Admin/Pages/TestTab.php:244
+msgid "Enter email address where test email will be sent."
+msgstr "Ange e-postadress dit testmeddelandet ska skickas."
+
+#: src/Admin/Pages/GetProTab.php:180
+msgid "Get the most out of WP Mail SMTP by upgrading to Pro and unlocking all of the powerful features."
+msgstr "Få ut det mesta möjliga av WP Mail SMTP genom att uppgradera till Pro och lås upp alla kraftfulla funktioner."
+
+#: src/Admin/Pages/AboutTab.php:112
+msgid "The WPForms Team"
+msgstr "WPForms-teamet"
+
+#: src/Admin/SetupWizard/Local.php:958
+msgid "Contact Forms by WPForms"
+msgstr "Contact Forms by WPForms"
+
+#: src/Admin/Area.php:754 src/Admin/Pages/AboutTab.php:220
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: src/Admin/Pages/ControlTab.php:35 src/Admin/Pages/ControlTab.php:237
+#: src/WPCLI/Options/Help.php:204
+msgid "Email Controls"
+msgstr "E-postkontroller"
+
+#: src/Admin/Pages/About.php:50 src/Admin/Pages/AboutTab.php:44
+msgid "About Us"
+msgstr "Om oss"
+
+#. translators: %s - email address, as received from Google API.
+#: src/Providers/Gmail/Options.php:226
+msgid "Connected as %s"
+msgstr "Ansluten som %s"
+
+#: src/Admin/Area.php:385 src/Admin/Area.php:386
+#: src/Admin/Dashboard/Widgets/EmailLog.php:58 src/Admin/Pages/Logs.php:48
+#: src/Admin/Pages/LogsTab.php:51 src/Admin/Pages/LogsTab.php:143
+msgid "Email Log"
+msgstr "E-postlogg"
+
+#: src/Admin/Area.php:501 src/Admin/Area.php:1429
+#: src/Admin/DashboardWidget.php:287 src/Admin/FlyoutMenu.php:100
+#: src/Admin/Pages/AdditionalConnectionsTab.php:115
+#: src/Admin/Pages/AdditionalConnectionsTab.php:125
+#: src/Admin/Pages/AlertsTab.php:90 src/Admin/Pages/AlertsTab.php:402
+#: src/Admin/Pages/ControlTab.php:246 src/Admin/Pages/ControlTab.php:299
+#: src/Admin/Pages/EmailReportsTab.php:137
+#: src/Admin/Pages/EmailReportsTab.php:175 src/Admin/Pages/ExportTab.php:89
+#: src/Admin/Pages/ExportTab.php:146 src/Admin/Pages/LogsTab.php:152
+#: src/Admin/Pages/LogsTab.php:190 src/Admin/Pages/SettingsTab.php:289
+#: src/Admin/Pages/SmartRoutingTab.php:111
+#: src/Admin/Pages/SmartRoutingTab.php:308 src/Admin/Pages/TestTab.php:425
+msgid "Upgrade to WP Mail SMTP Pro"
+msgstr "Uppgradera till WP Mail SMTP Pro"
+
+#. translators: %1$s - date, \a\t - specially escaped "at", %2$s - time.
+#: src/WP.php:334
+msgid "%1$s \\a\\t %2$s"
+msgstr "%1$s \\k\\l\\. %2$s"
+
+#: src/Providers/OptionsAbstract.php:392
+msgid "All the defined constants will stop working and you will be able to change all the values on this page."
+msgstr "Alla definierade konstanter kommer sluta fungera och du kommer att kunna ändra alla värden på denna sida."
+
+#. translators: %s - constant name: WPMS_SMTP_PASS.
+#: src/Providers/OptionsAbstract.php:374
+msgid "To change the password you need to change the value of the constant there: %s"
+msgstr "För att ändra lösenordet måste du ändra värdet på konstanten där: %s"
+
+#: wp_mail_smtp.php:181
+msgid "Please deactivate the free version of the WP Mail SMTP plugin before activating WP Mail SMTP Pro."
+msgstr "Inaktivera gratisversionen av tillägget WP Mail SMTP innan du aktiverar WP Mail SMTP Pro."
+
+#: assets/languages/wp-mail-smtp-vue.php:888
+#: src/PartnerPlugins/PartnerPlugin.php:421
+msgid "Install"
+msgstr "Installera"
+
+#: src/Admin/Pages/ExportTab.php:121
+msgid "Status"
+msgstr "Status"
+
+#: src/SiteHealth.php:133
+msgid "Version"
+msgstr "Version"
+
+#: src/Admin/DebugEvents/Event.php:360 src/Admin/DebugEvents/Table.php:174
+msgid "Type"
+msgstr "Typ"
+
+#: src/Admin/DebugEvents/Event.php:375 src/Admin/DebugEvents/Table.php:176
+#: src/Admin/Pages/ExportTab.php:128
+#: templates/dashboard/widgets/email-sources.php:70
+msgid "Source"
+msgstr "Källa"
+
+#: src/Admin/Area.php:753 src/Admin/Pages/AboutTab.php:212
+msgid "Active"
+msgstr "Aktiv"
+
+#: src/Admin/Pages/AboutTab.php:230
+msgid "Not Installed"
+msgstr "Inte installerad"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:308
+#: assets/languages/wp-mail-smtp-vue.php:1122
+msgid "Recommended"
+msgstr "Rekommenderad"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1141
+#: assets/languages/wp-mail-smtp-vue.php:1132
+#: src/Admin/ConnectionSettings.php:303
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:256
+msgid "Dismiss this notice"
+msgstr "Avfärda denna notis"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1037
+msgid "Remove Connection"
+msgstr "Ta bort anslutning"
+
+#: assets/languages/wp-mail-smtp-vue.php:463
+#: src/Providers/Gmail/Options.php:180
+msgid "Authorization"
+msgstr "Auktorisation"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1280
+msgid "An issue was detected."
+msgstr "Ett problem upptäcktes."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:974
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:990
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1010
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1026
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1042
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1096
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1124
+msgid "Google API Error."
+msgstr "Google API-fel."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:889
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:904
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:946
+msgid "Mailgun failed."
+msgstr "Mailgun misslyckades."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1283
+msgid "Your web server is blocking the connection."
+msgstr "Din webbserver blockerar anslutningen."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:671
+msgid "Typically this error is returned for one of the following reasons:"
+msgstr "Vanligtvis returneras detta fel av någon av följande skäl:"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:865
+msgid "Could not connect to the SMTP host."
+msgstr "Kunde inte ansluta till SMTP-server."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1415
+#: assets/languages/wp-mail-smtp-vue.php:596
+msgid "Enable Authentication"
+msgstr "Aktivera autentisering"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:819
+msgid "Unauthenticated senders are not allowed."
+msgstr "Oautentiserade avsändare är inte tillåtet."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:722
+msgid "Could not connect to host."
+msgstr "Kunde inte ansluta till webbhotell."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:705
+msgid "SSL certificate issue."
+msgstr "SSL-certifikatproblem."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1117
+#: assets/languages/wp-mail-smtp-vue.php:239
+#: src/Admin/ConnectionSettings.php:170
+msgid "Force From Name"
+msgstr "Tvinga från namn"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:779
+#: assets/languages/wp-mail-smtp-vue.php:249
+#: src/Admin/ConnectionSettings.php:106
+msgid "Force From Email"
+msgstr "Tvinga från e-post"
+
+#: src/Admin/Pages/MiscTab.php:379
+msgid "Uninstall WP Mail SMTP"
+msgstr "Avinstallera WP Mail SMTP"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1049
+#: assets/languages/wp-mail-smtp-vue.php:584
+#: src/Providers/OptionsAbstract.php:307
+msgid "Auto TLS"
+msgstr "Auto TLS"
+
+#: assets/languages/wp-mail-smtp-vue.php:605
+#: src/Providers/OptionsAbstract.php:285
+msgid "For most servers TLS is the recommended option. If your SMTP provider offers both SSL and TLS options, we recommend using TLS."
+msgstr "För de flesta servrar är TLS det rekommenderade alternativet. Om din SMTP-leverantör erbjuder både SSL och TLS så rekommenderar vi att du väljer TLS."
+
+#. translators: %s - SendGrid access level.
+#: src/Providers/Sendgrid/Options.php:105
+msgid "To send emails you will need only a %s access level for this API key."
+msgstr "För att skicka e-post behöver du bara åtkomstnivå %s för denna API-nyckel."
+
+#: src/Providers/Sendgrid/Options.php:97
+msgid "Create API Key"
+msgstr "Skapa API-nyckel"
+
+#. translators: %s - API key link.
+#: src/Providers/Sendgrid/Options.php:95
+msgid "Follow this link to get an API Key from SendGrid: %s."
+msgstr "Följ denna länk för att få en API-nyckel från SendGrid: %s."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:993
+#: assets/languages/wp-mail-smtp-vue.php:285
+#: src/Providers/ElasticEmail/Options.php:93
+#: src/Providers/MailerSend/Options.php:88 src/Providers/Mailjet/Options.php:93
+#: src/Providers/Mandrill/Options.php:89
+#: src/Providers/PepipostAPI/Options.php:96 src/Providers/Resend/Options.php:94
+#: src/Providers/Sendgrid/Options.php:68
+#: src/Providers/Sendinblue/Options.php:112
+#: src/Providers/Sendlayer/Options.php:178 src/Providers/SMTP2GO/Options.php:94
+#: src/Providers/SMTPcom/Options.php:107 src/Providers/SparkPost/Options.php:88
+msgid "API Key"
+msgstr "API-nyckel"
+
+#: src/Providers/Sendgrid/Options.php:30
+msgid "SendGrid"
+msgstr "SendGrid"
+
+#: src/Providers/SMTP/Options.php:28
+msgid "Other SMTP"
+msgstr "Övrig SMTP"
+
+#: src/Providers/PepipostAPI/Options.php:63
+msgid "Pepipost"
+msgstr "Pepipost"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1421
+#: assets/languages/wp-mail-smtp-vue.php:602
+#: src/Providers/OptionsAbstract.php:362
+msgid "SMTP Password"
+msgstr "SMTP-lösenord"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1418
+#: assets/languages/wp-mail-smtp-vue.php:599
+#: src/Providers/OptionsAbstract.php:348
+msgid "SMTP Username"
+msgstr "SMTP-användarnamn"
+
+#: src/Helpers/UI.php:38
+msgid "Off"
+msgstr "Av"
+
+#: src/Helpers/UI.php:37
+msgid "On"
+msgstr "På"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1458
+#: assets/languages/wp-mail-smtp-vue.php:614
+#: src/Providers/OptionsAbstract.php:281
+msgid "TLS"
+msgstr "TLS"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1455
+#: assets/languages/wp-mail-smtp-vue.php:611
+#: src/Providers/OptionsAbstract.php:272
+msgid "SSL"
+msgstr "SSL"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1061
+#: assets/languages/wp-mail-smtp-vue.php:608
+#: src/Admin/Pages/SettingsTab.php:378 src/Providers/OptionsAbstract.php:263
+msgid "None"
+msgstr "Ingen"
+
+#: src/Providers/Mailgun/Options.php:120
+msgid "Get a Domain Name"
+msgstr "Skaffa ett domännamn"
+
+#. translators: %s - Domain Name link.
+#: src/Providers/Mailgun/Options.php:118
+msgid "Follow this link to get a Domain Name from Mailgun: %s."
+msgstr "Följ denna länk för att skaffa ett domännamn hos Mailgun: %s."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1002
+#: assets/languages/wp-mail-smtp-vue.php:214
+#: src/Providers/Mailgun/Options.php:106
+msgid "Domain Name"
+msgstr "Domännamn"
+
+#: assets/languages/wp-mail-smtp-vue.php:211
+msgid "Private API Key"
+msgstr "Privat API-nyckel"
+
+#: src/Providers/Mailgun/Options.php:29
+msgid "Mailgun"
+msgstr "Mailgun"
+
+#: src/Providers/Mail/Options.php:26
+msgid "Default (none)"
+msgstr "Standard (ingen)"
+
+#: src/Providers/Gmail/Options.php:211
+msgid "Click the button above to confirm authorization."
+msgstr "Klicka på knappen ovan för att bekräfta auktoriseringen."
+
+#: src/Providers/Gmail/Options.php:158
+msgid "Authorized redirect URI"
+msgstr "Auktoriserad omskrivning URI"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1172
+#: assets/languages/wp-mail-smtp-vue.php:457
+#: src/Providers/Gmail/Options.php:128
+msgid "Client Secret"
+msgstr "Klient hemlighet"
+
+#: src/Admin/Pages/TestTab.php:298
+msgid "Send Email"
+msgstr "Skicka e-post"
+
+#: src/Admin/Pages/AlertsTab.php:153 src/Admin/Pages/TestTab.php:238
+msgid "Send To"
+msgstr "Skicka till"
+
+#: src/Admin/Pages/TestTab.php:103
+msgid "Email Test"
+msgstr "Test av e-post"
+
+#: src/Admin/Pages/DebugEventsTab.php:376 src/Admin/Pages/MiscTab.php:544
+#: src/Admin/Pages/SettingsTab.php:445
+msgid "Settings were successfully saved."
+msgstr "Inställningarna sparades utan problem."
+
+#: src/Admin/Area.php:606 src/Admin/PageAbstract.php:192
+msgid "Save Settings"
+msgstr "Spara inställningar"
+
+#: src/Admin/Area.php:457 src/Admin/Area.php:463
+#: src/Admin/Pages/SettingsTab.php:38 src/WPCLI/Options/Help.php:186
+msgid "General"
+msgstr "Allmänt"
+
+#: src/Admin/Pages/MiscTab.php:39
+msgid "Misc"
+msgstr "Diverse"
+
+#: src/Admin/Area.php:230
+msgid "There was an error while processing the authentication request. Please make sure that you have Client ID and Client Secret both valid and saved."
+msgstr "Ett fel uppstod vid behandlingen av auktoriseringsbegäran. Vänligen kontrollera att rätt klient ID och klient hemlighet är angivet och sparat."
+
+#: src/Admin/Pages/MiscTab.php:154
+msgid "Hide Announcements"
+msgstr "Dölj meddelanden"
+
+#: src/Admin/Pages/SmartRoutingTab.php:278
+msgid "WPForms"
+msgstr "WPForms"
+
+#: templates/dashboard/widgets/email-log.php:71
+msgid "To"
+msgstr "Till"
+
+#: src/Admin/ConnectionSettings.php:217
+msgid "Return Path indicates where non-delivery receipts - or bounce messages - are to be sent."
+msgstr "”Svara till” anger vart information om ej levererade meddelanden, eller studsade meddelanden, ska skickas."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:771
+msgid "Could not authenticate your SMTP account."
+msgstr "Kunde inte verifiera ditt SMTP-konto."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:755
+msgid "Could not connect to your host."
+msgstr "Kunde inte ansluta till din webbhotell."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:999
+#: assets/languages/wp-mail-smtp-vue.php:278
+#: src/Providers/Mailgun/Options.php:150
+#: src/Providers/SparkPost/Options.php:150
+msgid "EU"
+msgstr "EU"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:996
+#: assets/languages/wp-mail-smtp-vue.php:275
+#: src/Providers/Mailgun/Options.php:141
+#: src/Providers/SparkPost/Options.php:141
+msgid "US"
+msgstr "US"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:990
+#: assets/languages/wp-mail-smtp-vue.php:217
+#: src/Providers/Mailgun/Options.php:131
+#: src/Providers/SparkPost/Options.php:131
+msgid "Region"
+msgstr "Region"
+
+#. translators: %s - URL to Mailgun.com page.
+#: src/Providers/Mailgun/Options.php:160
+msgid "<a href=\"%s\" rel=\"\" target=\"_blank\">More information</a> on Mailgun.com."
+msgstr "<a href=\"%s\" rel=\"\" target=\"_blank\">Mer information</a> på Mailgun.com."
+
+#: src/WPCLI/Options/Help.php:185
+msgid "Mail"
+msgstr "E-post"
+
+#: src/Admin/Pages/TestTab.php:261
+msgid "HTML"
+msgstr "HTML"
+
+#: src/Admin/Pages/MiscTab.php:78
+msgid "Do Not Send"
+msgstr "Skicka inte"
+
+#: assets/languages/wp-mail-smtp-vue.php:894 src/Admin/Area.php:752
+#: src/Admin/Pages/AboutTab.php:215
+msgid "Activated"
+msgstr "Aktiverad"
+
+#: src/Admin/Pages/AboutTab.php:233
+msgid "Install Plugin"
+msgstr "Installera tillägg"
+
+#: src/Providers/Mailgun/Options.php:154
+msgid "Define which endpoint you want to use for sending messages."
+msgstr "Definiera vilken ändpunkt du vill använda för att skicka meddelanden."
+
+#: src/Providers/Mailgun/Options.php:155
+msgid "If you are operating under EU laws, you may be required to use EU region."
+msgstr "Om du arbetar enligt EU-lagstiftning kan du vara skyldig att använda EU-region."
+
+#: src/Admin/ConnectionSettings.php:99
+msgid "Please note that other plugins can change this, to prevent this use the setting below."
+msgstr "Observera att andra tillägg kan ändra detta. För att förhindra detta, använd inställningen nedan."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:965
+msgid "Complete the steps in section \"2. Verify Your Domain\"."
+msgstr "Slutför stegen i sektionen ”2. Verifiera din domän”."
+
+#: src/Admin/Pages/TestTab.php:274
+msgid "Send this email in HTML or in plain text format."
+msgstr "Skicka denna e-post i HTML eller i oformaterad text."
+
+#: src/Providers/Gmail/Options.php:166
+msgid "Copy URL to clipboard"
+msgstr "Kopiera webbadress till urklipp"
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:1284
+msgid "Your host is rejecting the connection."
+msgstr "Ditt webbhotell avvisar anslutningen."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:725
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:869
+msgid "Your SMTP host is rejecting the connection."
+msgstr "Din SMTP-server avvisar anslutningen."
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1169
+#: assets/languages/wp-mail-smtp-vue.php:454
+#: src/Providers/Gmail/Options.php:113
+msgid "Client ID"
+msgstr "Klient-ID"
+
+#: src/Providers/Gmail/Options.php:208
+msgid "Allow plugin to send emails using your Google account"
+msgstr "Tillåt tillägg att skicka e-post med ditt Google-konto"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:327
+#: assets/languages/wp-mail-smtp-vue.php:777 src/Admin/Area.php:223
+msgid "There was an error while processing the authentication request. Please try again."
+msgstr "Ett fel uppstod vid behandlingen av auktoriseringsbegäran. Försök igen."
+
+#. translators: %s - error code, returned by Google API.
+#: src/Admin/Area.php:216
+msgid "There was an error while processing the authentication request: %s. Please try again."
+msgstr "Ett fel uppstod vid behandling av auktoriseringsbegäran: %s. Försök igen."
+
+#: src/Admin/EmailSendingErrors/EmailSendingErrors.php:711
+msgid "Contact your web hosting provider and inform them your site has an issue with SSL certificates."
+msgstr "Kontakta ditt webbhotell och informera dem om att din webbplats har ett problem med SSL-certifikat."
+
+#: src/Admin/Pages/TestTab.php:164
+msgid "Test failed. Please use a valid email address and try to resend the test email."
+msgstr "Testet misslyckades. Ange en giltig e-postadress och försök att skicka testmeddelandet igen."
+
+#. translators: %1$s - Provider name; %2$s - PHP version required by Provider;
+#. %3$s - current PHP version.
+#: src/Providers/OptionsAbstract.php:478
+msgid "%1$s requires PHP %2$s to work and does not support your current PHP version %3$s. Please contact your host and request a PHP upgrade to the latest one."
+msgstr "%1$s kräver PHP %2$s för att fungera och stödjer inte din nuvarande PHP-version %3$s. Kontakta ditt webbhotell och be dem att uppgradera PHP till den senaste versionen."
+
+#. translators: %s - plugin name (e.g. WPConsent).
+#: src/Admin/Area.php:655
+msgid "Activate %s"
+msgstr "Aktivera %s"
+
+#: src/WPCLI/Options/Help.php:138
+msgid "Required."
+msgstr "Obligatorisk"
+
+#: src/Admin/Area.php:376 src/Admin/Area.php:377 src/Admin/Area.php:1437
+msgid "Settings"
+msgstr "Inställningar"
+
+#: src/Admin/DashboardWidget.php:587
+#: templates/dashboard/widget-settings.php:114
+msgid "Save Changes"
+msgstr "Spara ändringar"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1058
+msgid "Password"
+msgstr "Lösenord"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1052
+#: assets/languages/wp-mail-smtp-vue.php:593
+#: src/Providers/OptionsAbstract.php:329
+msgid "Authentication"
+msgstr "Autentisering"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1055
+msgid "Username"
+msgstr "Användarnamn"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1043
+#: assets/languages/wp-mail-smtp-vue.php:578
+#: src/Providers/OptionsAbstract.php:253
+msgid "Encryption"
+msgstr "Kryptering"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1406
+#: assets/languages/wp-mail-smtp-vue.php:581
+#: src/Providers/OptionsAbstract.php:293
+msgid "SMTP Port"
+msgstr "SMTP-port"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1403
+#: assets/languages/wp-mail-smtp-vue.php:575
+#: src/Providers/OptionsAbstract.php:239
+msgid "SMTP Host"
+msgstr "SMTP-värd"
+
+#: src/Admin/ConnectionSettings.php:201
+msgid "Return Path"
+msgstr "Svara till"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:1114
+#: assets/languages/wp-mail-smtp-vue.php:234
+#: src/Admin/ConnectionSettings.php:151 src/Admin/Pages/ExportTab.php:111
+msgid "From Name"
+msgstr "Från namn"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:773
+#: assets/languages/wp-mail-smtp-vue.php:244
+#: src/Admin/ConnectionSettings.php:81 src/Admin/Pages/SmartRoutingTab.php:180
+#: src/Admin/Pages/SmartRoutingTab.php:210
+msgid "From Email"
+msgstr "Från e-post"
+
+#: assets/languages/wp-mail-smtp-vue-hosted.php:676
+#: assets/languages/wp-mail-smtp-vue.php:526
+#: src/Admin/Pages/EmailDetectiveTab.php:317 src/Admin/Pages/TestTab.php:204
+#: src/SiteHealth.php:347 templates/dashboard/widgets/email-log.php:44
+#: templates/dashboard/widgets/email-sources.php:41
+#: templates/dashboard/widgets/emails-overview.php:25
+msgid "Send a Test Email"
+msgstr "Skicka ett testmeddelande"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+#: wp_mail_smtp.php src/Abilities/AbilityRegistrar.php:130
+#: src/Admin/Area.php:363 src/Admin/Area.php:364 src/Admin/Area.php:429
+#: src/Admin/Area.php:430 src/Admin/DashboardWidget.php:172
+#: src/Admin/DashboardWidget.php:579 src/Providers/Outlook/Provider.php:57
+#: src/SiteHealth.php:43
+msgid "WP Mail SMTP"
+msgstr "WP Mail SMTP"
+
+#: assets/languages/wp-mail-smtp-vue.php:644
+#: src/Admin/ConnectionSettings.php:226 src/Admin/Pages/ExportTab.php:125
+#: templates/dashboard/widgets/email-log.php:72
+msgid "Mailer"
+msgstr "E-postleverantör"
+
+#: src/Admin/Pages/AlertsTab.php:135
+msgid "Email"
+msgstr "E-post"

@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\wp-content\\themes\\ollie-child\\register-member-shortcode.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\edit-member-shortcode.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -85,8 +85,7 @@
               "RelativeToolTip": "wp-content\\themes\\ollie-child\\password-setup-shortcode.php",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
-              "WhenOpened": "2026-11-12T08:27:50.627Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-12T08:27:50.627Z"
             },
             {
               "$type": "Document",
@@ -98,8 +97,7 @@
               "RelativeToolTip": "wp-content\\themes\\ollie-child\\tfa-shortcode.php",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
-              "WhenOpened": "2026-11-12T08:27:49.989Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-12T08:27:49.989Z"
             },
             {
               "$type": "Document",
@@ -111,8 +109,7 @@
               "RelativeToolTip": "wp-content\\themes\\ollie-child\\tfa-shortcodes.php",
               "ViewState": "AgIAAHACAAAAAAAAAMBdwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
-              "WhenOpened": "2026-11-08T23:59:49.918Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-08T23:59:49.918Z"
             },
             {
               "$type": "Document",
@@ -136,8 +133,7 @@
               "RelativeToolTip": "wp-content\\themes\\ollie-child\\functions.php",
               "ViewState": "AgIAACgCAAAAAAAAAFB2wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
-              "WhenOpened": "2026-10-15T21:41:01.984Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-15T21:41:01.984Z"
             },
             {
               "$type": "Document",
@@ -149,8 +145,7 @@
               "RelativeToolTip": "wp-content\\themes\\ollie-child\\edit-member-shortcode.php",
               "ViewState": "AgIAAJMBAAAAAAAAAAAAwJoBAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
-              "WhenOpened": "2026-10-15T21:31:23.957Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-15T21:31:23.957Z"
             },
             {
               "$type": "Document",
@@ -162,8 +157,7 @@
               "RelativeToolTip": "wp-content\\themes\\ollie-child\\style.css",
               "ViewState": "AgIAAGACAAAAAAAAAEyawAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-10-15T07:11:34.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-15T07:11:34.556Z"
             },
             {
               "$type": "Document",
@@ -192,13 +186,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "register-member-shortcode.php",
-              "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\wp-content\\themes\\ollie-child\\register-member-shortcode.php",
-              "RelativeDocumentMoniker": "..\\..\\wp-content\\themes\\ollie-child\\register-member-shortcode.php",
-              "ToolTip": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\wp-content\\themes\\ollie-child\\register-member-shortcode.php",
-              "RelativeToolTip": "..\\..\\wp-content\\themes\\ollie-child\\register-member-shortcode.php",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
-              "WhenOpened": "2026-10-01T12:56:57.068Z"
+              "Title": "plan-repository-scan-and-initial-investigation.md [Preview]",
+              "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md",
+              "ToolTip": "C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md [Preview]",
+              "RelativeToolTip": "..\\..\\..\\..\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md [Preview]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-11-12T13:34:22.186Z",
+              "EditorCaption": " [Preview]"
             },
             {
               "$type": "Bookmark",

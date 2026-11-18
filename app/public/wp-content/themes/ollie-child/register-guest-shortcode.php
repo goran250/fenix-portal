@@ -12,7 +12,7 @@ function shortcode_register_guest( $atts )
     $event_id = isset( $_REQUEST['event_id'] ) ? intval( wp_unslash( $_REQUEST['event_id'] ) ) : 0;
 
     $event_name = get_the_title( $event_id );
-    $event_notification = get_post_meta( $event_id, 'event_notification', true );
+    // $event_notification = get_post_meta( $event_id, 'event_notification', true );
     $event_date = get_post_meta( $event_id, 'event_date', true );
     $event_location = get_post_meta( $event_id, 'event_location', true );
 
@@ -46,7 +46,7 @@ function shortcode_register_guest( $atts )
     }
 
 
-    // Edit mode via query parameter: ? tfa_edit_id = post_id>
+    // Edit mode via query parameter: 
     if ( isset( $_GET['edit_guest_id'] ) ) {
         $edit_guest_id = intval( wp_unslash( $_GET['edit_guest_id'] ) );
 
@@ -68,7 +68,16 @@ function shortcode_register_guest( $atts )
             $guest_name = isset( $_POST['guest_name'] ) ? wp_unslash( $_POST['guest_name'] ) : '';
             $guest_company = isset( $_POST['guest_company'] ) ? wp_unslash( $_POST['guest_company'] ) : '';
             $guest_email = strtolower( sanitize_email( wp_unslash( $_POST['guest_email'] ?? '' ) ) );
-            $guest_phone = isset( $_POST['guest_phone'] ) ? wp_unslash( $_POST['guest_phone'] ) : '';           
+            $guest_phone = isset( $_POST['guest_phone'] ) ? wp_unslash( $_POST['guest_phone'] ) : '';  
+            $guest_expertise = isset( $_POST['guest_expertise'] ) ? wp_unslash( $_POST['guest_expertise'] ) : '';      
+            
+            if (current_user_can('manage_options')) {
+                $is_membership_guest = isset( $_POST['has_applied_for_membership'] ) ? wp_unslash( $_POST['has_applied_for_membership'] ) : 'No';
+                $guest_specific_search = isset( $_POST['guest_specific_search'] ) ? wp_unslash( $_POST['guest_specific_search'] ) : '';
+            }
+            else {
+                $is_membership_guest = 'No';
+            }
 
             if ( empty( $guest_name )) {
                 $messages['errors'][] = 'Ange ett namn för gästen!';
@@ -101,7 +110,7 @@ function shortcode_register_guest( $atts )
              // ensure post exists and is an event
             $event_post = get_post( $event_id );
             if ( ! $event_post || $event_post->post_type !== 'event' ) {
-                wp_safe_redirect( site_url( '/foranmalan/?status=invalid' ) );
+                wp_safe_redirect( site_url( '/register-guest/?status=invalid' ) );
                 exit;
             }
 
@@ -147,6 +156,9 @@ function shortcode_register_guest( $atts )
                         // update_post_meta handles both inserting and updating post meta values
                         update_post_meta( $guest_id, 'guest_company', $guest_company );
                         update_post_meta( $guest_id, 'guest_phone', $guest_phone );
+                        update_post_meta( $guest_id, 'guest_expertise', $guest_expertise );
+                        update_post_meta( $guest_id, 'is_membership_guest', $is_membership_guest );
+                        update_post_meta( $guest_id, 'guest_specific_search', $guest_specific_search );
                         $messages['success'] = '<strong>Gästen har sparats.</strong><br/><span style="font-size: 14px;">Formuläret är återställt och du kan anmäla en ny gäst.</span>';
                     } 
                     else if ( is_wp_error( $guest_id ) ) {
@@ -219,6 +231,9 @@ function shortcode_register_guest( $atts )
     $guest_company = '';
     $guest_email = '';
     $guest_phone = '';  
+    $guest_expertise = '';  
+    $is_membership_guest = "No";
+    $guest_specific_search = '';  
 
     // Load a guest for editing
     if ( $guest_id > 0 && !isset( $_POST['register_guest_submit']) && isset( $_GET['edit_guest_id'] ) ) {  
@@ -227,6 +242,9 @@ function shortcode_register_guest( $atts )
         $guest_company = get_post_meta( $guest_id, 'guest_company', true );
         $guest_email =  $guest->post_title;
         $guest_phone = get_post_meta( $guest_id, 'guest_phone', true );
+        $guest_expertise = get_post_meta( $guest_id, 'guest_expertise', true );
+        $is_membership_guest = get_post_meta( $guest_id, 'is_membership_guest', true );
+        $guest_specific_search = get_post_meta( $guest_id, 'guest_specific_search', true );
     }
 
     $out .= '<div class="register-guest-text">
@@ -264,7 +282,7 @@ function shortcode_register_guest( $atts )
 
     $out .= '<div> 
                 <label>Företaget som gästen representerar?</label>               
-                <input type="text" name="guest_company" required placeholder="Namnet på företaget" value="' . esc_attr($guest_company) . '">
+                <input type="text" name="guest_company" required placeholder="Namnet på gästens företag" value="' . esc_attr($guest_company) . '">
              </div>
              <hr class="separator" />'; 
 
@@ -285,6 +303,31 @@ function shortcode_register_guest( $atts )
              </div>
              <hr class="separator" />';
 
+    $out .= '<div> 
+                <label>Gästens expertområde?</label>               
+                <input type="text" name="guest_expertise" placeholder="Ange gästens expertområde" value="' . esc_attr($guest_expertise) . '">
+             </div>
+             <hr class="separator" />'; 
+             if (current_user_can( 'manage_options' )) { 
+                $out .= '<div> 
+                            <label>Har gästen ansökt om medlemskap?</label>               
+                            <div class="membership-div">                    
+                                <input id="is_membership_guest_yes" type="radio" name="has_applied_for_membership" value="Yes" ' .  ( $is_membership_guest === "Yes" ? 'checked' : '' ) . ' />
+                                <label for="is_membership_guest_yes" style="display: inline;  margin-right: 20px;">Ja!</label>                        
+                                <input id="is_membership_guest_no" type="radio" name="has_applied_for_membership" value="No" ' .  ( $is_membership_guest === "No" ? 'checked' : '' ) . ' />
+                                <label for="is_membership_guest_no" style="display: inline;">Nej!</label>
+                            </div>
+                         </div>';
+            
+        
+                $out .= '<div style="margin-top: 20px;"> 
+                            <label>Specifikt sök för ansökande gästen?</label>               
+                            <input type="text" name="guest_specific_search" placeholder="Ange specifikt sök för ansökande gästen" value="' . esc_attr($guest_specific_search) . '">
+                        </div>
+                        <hr class="separator" />';
+             }; 
+            
+    
     $out .= '<p>
                 <button type="submit" name="register_guest_submit" class="submit-button">Spara</button>                 
                     <button type="submit" name="register_new_guest_submit" class="submit-button" formnovalidate data-tooltip="Nollställ formuläret och lägg till fler gäster">Lägg till fler gäster</button>

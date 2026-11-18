@@ -120,7 +120,7 @@ const GutenaFormsForms = ( { setActiveMenu } ) => {
 					<div className={ 'gutena-forms__empty-state-help' }>
 						{ __( 'Need some help?', 'gutena-forms' ) }{ ' ' }
 						<a
-							href="https://gutenaforms.com/blog/?utm_source=plugin&utm_medium=empty_state&utm_campaign=help_articles"
+							href="https://gutenaforms.com/blog?utm_source=plugin&utm_medium=in-plugin&utm_campaign=docs&utm_content=forms_empty-state"
 							target="_blank"
 							rel="noopener noreferrer"
 						>

@@ -1,10 +1,149 @@
+@import "../../../../../src/shared/scss/notification-message-field";
+@import "../../../../../src/shared/scss/notification-field";
+@import "../../../../../src/shared/scss/confirmation-option-cards";
+
 .gutena-froms#gutena-forms__root {
-  .gutena-forms__meta-box-container.gutena-forms__auto-responder-settings {
+  .gutena-forms__global-settings-fields {
+    .gutena-forms__html-editor-field {
+      .gutena-forms-notification-merge-tag-popover__form-tags-button.components-button {
+        background: #0da88c;
+        border: 0.833px solid #0c9b81;
+        border-radius: 4.167px;
+        box-shadow: none;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        height: auto;
+        min-height: 0;
+        padding: 5px 9px;
+
+        &:hover,
+        &:focus {
+          background: #0c9b81;
+          border-color: #0c9b81;
+          box-shadow: none;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .gutena-forms__meta-box-container.gutena-forms__email-notifications-settings,
+  .gutena-forms__meta-box-container.gutena-forms__auto-responder-settings,
+  .gutena-forms__meta-box-container.gutena-forms__form-confirmation-settings {
     .gutena-forms__page-title {
       font-size: 24px;
       font-weight: 700;
       margin-bottom: 10px;
       padding-right: 0;
+    }
+
+    &.gutena-forms__email-notifications-settings {
+      .gutena-forms__page-title {
+        color: #000;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 4px;
+      }
+
+      .gutena-forms__settings-meta-box-desc {
+        color: #000;
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+
+      .gutena-forms__settings-meta-box {
+        background: #fff;
+        border: 1px solid #e2e2e2;
+        border-radius: 10px;
+        gap: 16px;
+        max-width: 750px;
+        padding: 20px 22px;
+      }
+
+      .gutena-forms__html-editor-field {
+        .gutena-forms-notification-message-field__label {
+          color: #000;
+          font-size: 12px;
+          font-weight: 700;
+        }
+      }
+
+      .gutena-forms__submit-button {
+        margin-top: 0;
+
+        button {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+      }
+
+      .gutena-forms__html-editor-field {
+        margin-bottom: 0;
+        width: 100%;
+      }
+    }
+
+    &.gutena-forms__form-confirmation-settings {
+      .gutena-forms__page-title {
+        color: #000;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 4px;
+      }
+
+      .gutena-forms__settings-meta-box-desc {
+        color: #000;
+        font-size: 12px;
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+
+      .gutena-forms__settings-meta-box {
+        background: #fff;
+        border: 1px solid #e2e2e2;
+        border-radius: 10px;
+        gap: 16px;
+        max-width: 750px;
+        padding: 20px 22px;
+      }
+
+      .gutena-forms__radio-group-control.is-card-variant {
+        .gutena-forms__field-label {
+          color: #000;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: normal;
+          margin-bottom: 10px;
+        }
+      }
+
+      .gutena-forms__html-editor-field {
+        margin-bottom: 0;
+        width: 100%;
+
+        .gutena-forms-notification-message-field {
+          gap: 6px;
+        }
+
+        .gutena-forms-notification-message-field__label {
+          color: #000;
+          font-size: 12px;
+          font-weight: 700;
+        }
+      }
+
+      .gutena-forms__submit-button {
+        margin-top: 0;
+
+        button {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+      }
     }
 
     .gutena-forms__settings-meta-box-desc {
@@ -23,7 +162,7 @@
       display: flex;
       gap: 10px;
       margin: 0 0 16px;
-      max-width: 540px;
+      max-width: 750px;
       padding: 12px 14px;
 
       .dashicons {
@@ -61,16 +200,33 @@
     }
 
     .gutena-forms__settings-meta-box {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       max-width: 540px;
       padding: 20px;
+
+      > .gutena-forms__settings-field-row {
+        margin: 0;
+      }
+    }
+
+    &.gutena-forms__email-notifications-settings,
+    &.gutena-forms__form-confirmation-settings {
+      .gutena-forms__settings-meta-box {
+        gap: 16px;
+        max-width: 750px;
+      }
     }
 
     .gutena-forms__settings-meta-box .gutena-forms__field-container {
-      margin-bottom: 20px;
+      margin-bottom: 0;
     }
 
-    .gutena-forms__settings-meta-box .gutena-forms__field-container:last-child {
+    .gutena-forms__settings-meta-box .components-base-control__field {
       margin-bottom: 0;
+      max-width: 100%;
+      width: 100%;
     }
 
     .gutena-forms__toggle-control-input .components-toggle-control__label {
@@ -86,13 +242,32 @@
     }
 
     .gutena-forms__text-control .components-base-control__label,
-    .gutena-forms__textarea-control .components-base-control__label {
+    .gutena-forms__textarea-control .components-base-control__label,
+    .gutena-forms__email-control .components-base-control__label {
       color: #000;
-      font-size: 13px;
+      display: block;
+      font-size: 12px;
       font-weight: 700;
       line-height: normal;
       margin-bottom: 6px;
       text-transform: none;
+    }
+
+    .gutena-forms__email-control .gutena-forms__field-description,
+    .gutena-forms__text-control .gutena-forms__field-description {
+      color: #424d55;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: normal;
+      margin: 0;
+    }
+
+    .gutena-forms__text-control,
+    .gutena-forms__email-control,
+    .gutena-forms__textarea-control,
+    .gutena-forms__html-editor-field {
+      display: block;
+      width: 100%;
     }
 
     .gutena-forms__textarea-control .components-base-control__label {
@@ -112,14 +287,12 @@
       line-height: normal;
       padding: 7px 15px;
 
-      // Same focus outline as Weekly Forms Summary (WP TextControl accent).
       &:focus {
         border-color: var(--wp-components-color-accent, var(--wp-admin-theme-color, #2271b1));
         box-shadow: 0 0 0 1px var(--wp-components-color-accent, var(--wp-admin-theme-color, #2271b1));
         outline: 2px solid transparent;
       }
 
-      // Same disabled look as Weekly Forms Summary fields.
       &:disabled {
         background: #f5f6f7;
         border-color: #e2e4e7;
@@ -140,50 +313,8 @@
       margin-top: 5px;
     }
 
-    .gutena-forms__merge-tags {
-      margin-top: 0;
-    }
-
-    .gutena-forms__merge-tags-label {
-      color: #424d55;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: normal;
-      margin: 7px 0;
-    }
-
-    .gutena-forms__merge-tags-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .gutena-forms__merge-tag-pill {
-      background: #f0fffc;
-      border: none;
-      border-radius: 4px;
-      color: #424d55;
-      cursor: pointer;
-      font-family: "Satoshi", sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      line-height: normal;
-      padding: 6px;
-    }
-
-    .gutena-forms__merge-tag-pill:hover:not(:disabled) {
-      background: #dff8f2;
-    }
-
-    .gutena-forms__merge-tags.is-disabled .gutena-forms__merge-tag-pill,
-    .gutena-forms__merge-tag-pill:disabled {
-      background: #f5f6f7;
-      color: #8a8f98;
-      cursor: not-allowed;
-    }
-
     .gutena-forms__submit-button {
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .gutena-forms__submit-button button {

@@ -54,23 +54,50 @@ function shortcode_Edit_member( $atts ) {
 
 	$messages = array( 'errors' => array(), 'success' => '' );
 
-	if ( isset( $_POST['delete_member_submit'] ) ) {
+	if ( isset( $_POST['deactivate_member_submit'] ) ) {
 		if ( ! isset( $_POST['edit_member_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['edit_member_nonce'] ), 'edit_member_action' ) ) {
 			$messages['errors'][] = 'Invalid form submission.';
 		} 
-		elseif ( ! current_user_can( 'manage_options' ) ) {
-			$messages['errors'][] = 'Du har inte behörighet att ta bort medlemmar.';
+		elseif ( ! current_user_can( 'manage_options') && get_current_user_id() !== $target_user_id ) {
+			$messages['errors'][] = 'Du har inte behörighet att avaktivera medlemmar.';
 		} 
 		elseif ( get_current_user_id() === $target_user_id ) {
-			$messages['errors'][] = 'Du kan inte ta bort ditt eget konto.';
+			$messages['errors'][] = 'Du kan inte avaktivera ditt eget konto.';
 		} 
 		else {
 			require_once ABSPATH . 'wp-admin/includes/user.php';
-			$deleted = wp_delete_user( $target_user_id );
-			if ( $deleted ) {
-				return '<div class="member-success">Medlemmen har tagits bort.</div>';
+			$umeta_id = update_user_meta( $target_user_id, 'deactivated', 1 );
+
+			if ( $umeta_id > 0 ) {
+				return '<div class="member-success">Medlemmen har avaktiverats.</div>';
 			}
-			$messages['errors'][] = 'Kunde inte ta bort medlemmen.';
+			else {
+				$messages['errors'][] = 'Kunde inte avaktivera medlemmen.';
+			}
+		}
+	} 
+    
+	$out = '';
+
+	if ( isset( $_POST['activate_member_submit'] ) ) {
+		if ( ! isset( $_POST['edit_member_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['edit_member_nonce'] ), 'edit_member_action' ) ) {
+			$messages['errors'][] = 'Invalid form submission.';
+		} 
+		elseif ( !current_user_can( 'manage_options' ) && get_current_user_id() !== $target_user_id ) {
+			$messages['errors'][] = 'Du har inte behörighet att aktivera medlemmar.';
+		} 
+		elseif ( get_current_user_id() === $target_user_id ) {
+			$messages['errors'][] = 'Du kan inte aktivera ditt eget konto.';
+		} 
+		else {
+			$deleted = delete_user_meta( $target_user_id, 'deactivated', 1 );
+	
+			if ( $deleted == true ) {
+				$out .= '<div class="member-success">Medlemmen har aktiverats.</div>';
+			}
+			else {
+				$messages['errors'][] = 'Kunde inte aktivera medlemmen.';
+			}
 		}
 	}
 
@@ -346,7 +373,7 @@ function shortcode_Edit_member( $atts ) {
 		}
 	}
 
-	$out = '';
+
 	if ( ! empty( $messages['errors'] ) ) {
 		$out .= '<div class="member-errors"><ul>';
 		foreach ( $messages['errors'] as $e ) {
@@ -356,6 +383,10 @@ function shortcode_Edit_member( $atts ) {
 	}
 	if ( $messages['success'] && empty( $messages['errors'] ) ) {
 		$out .= '<div class="member-success">' . esc_html( $messages['success'] ) . '</div>';
+	}
+
+	if ( get_user_meta( $target_user_id, 'deactivated', true ) === '1' ) {
+		$out .= '<h4 class="member-errors">Den här medlemmen är avaktiverad.</h4>';
 	}
 
 	$out .= '<form method="post" enctype="multipart/form-data" class="edit-member-form">';
@@ -444,13 +475,19 @@ function shortcode_Edit_member( $atts ) {
 		$out .= '<input type="hidden" name="cover_photo_existing" value="' . esc_attr( $cover_att ) . '" />';
 		$out .= '<div class="member-cover-preview">Nuvarande bild: <strong>' . esc_html( $cover_label ) . '</strong></div>';
 	}
+
 	$out .= '</td></tr>';
 
 	$out .= '</table>';
 	$out .= '<p style="clear: both; width: 100%;">';
 	$out .= '<button type="submit" name="edit_member_submit" class="submit-button">Spara</button>';
 	if ( current_user_can( 'manage_options' ) && get_current_user_id() !== $target_user_id ) {
-		$out .= ' <button type="submit" name="delete_member_submit" class="submit-button delete-button" onclick="return confirm(\'Är du säker på att du vill ta bort medlemmen?\');">Ta bort medlem</button>';
+		if ( get_user_meta( $target_user_id, 'deactivated', true ) !== '1' ) {
+		    $out .= ' <button type="submit" name="deactivate_member_submit" class="submit-button" onclick="return confirm(\'Är du säker på att du vill avaktivera medlemmen?\');">Avaktivera medlem</button>';
+		}
+		else if ( get_user_meta( $target_user_id, 'deactivated', true ) === '1' ) {
+			$out .= ' <button type="submit" name="activate_member_submit" class="submit-button" onclick="return confirm(\'Är du säker på att du vill aktivera medlemmen?\');">Aktivera medlem</button>';
+		}
 	}
 	$out .= '</p>';
 	$out .= '</form>';

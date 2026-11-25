@@ -75,6 +75,19 @@ add_action('init', function () {
 		'capability_type' => array('absence_reason', 'absence_reasons'),
 		'supports' => array('title', 'editor', 'author'),
 	));
+
+	register_post_type( 'event', array(
+		'labels' =>  array(
+            'name' => 'Events',
+            'singular_name' => 'Event',
+        ),
+		'public' => false,
+		'show_ui' => false,
+		'supports' => array( 'title' ),
+		'has_archive' => false,
+		'show_in_rest' => false,
+	) );
+
 });
 
 
@@ -99,6 +112,20 @@ add_filter('logout_redirect', function ($redirect_to, $requested_redirect_to, $u
 	return home_url('/'); // start page
 }, 10, 3);
 
+
+// Prevent login for deactivated users
+add_filter('authenticate', function ($user, $username, $password) {
+	if (is_wp_error($user) || !$user instanceof WP_User) {
+		return $user;
+	}
+
+	$is_deactivated = get_user_meta($user->ID, 'deactivated', true);
+	if ((string)$is_deactivated === '1') {
+		return new WP_Error('account_deactivated', 'Ditt konto är inaktiverat.');
+	}
+
+	return $user;
+}, 30, 3);
 
 // Change login logo link URL
 add_filter('login_headerurl', function () {
@@ -163,90 +190,6 @@ add_shortcode('start_page', function () {
 
 
 /**
- * Handle Foranmalning (user registration) requests.
- * Accepts POST or GET with event_id and records the current user as registered for that event.
- * Accessible via admin-post.php?action=foranmalning
- */
-function foranmalning_handler() {
-    // verify nonce to avoid CSRF
-    if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), 'foranmalning_action' ) ) {
-        wp_safe_redirect( site_url( '/foranmalan/?status=nonce' ) );
-        exit;
-    }
-
-    // require logged in user
-    if ( ! is_user_logged_in() ) {
-        wp_safe_redirect( wp_login_url( site_url( '/foranmalan/' ) ) );
-        exit;
-    }
-
-    $event_id = 0;
-    if ( isset( $_REQUEST['event_id'] ) ) {
-        $event_id = intval( wp_unslash( $_REQUEST['event_id'] ) );
-    }
-
-    if ( $event_id <= 0 ) {
-        wp_safe_redirect( site_url( '/foranmalan/' ) );
-        exit;
-    }
-
-    $user_id = get_current_user_id();
-
-
-    // ensure post exists and is an event
-    $post = get_post( $event_id );
-    if ( ! $post || $post->post_type !== 'event' ) {
-        wp_safe_redirect( site_url( '/foranmalan/?status=invalid' ) );
-        exit;
-    }
-
-    // store registrations as an array of user IDs in post meta 'event_registrations'
-    $registrations = get_post_meta( $event_id, 'event_registrations', true );
-    if ( ! is_array( $registrations ) ) {
-        $registrations = array();
-    }
-
-    if ( ! in_array( $user_id, $registrations, true ) ) {
-        $registrations[] = $user_id;
-        update_post_meta( $event_id, 'event_registrations', $registrations );
-    }
-
-    // optionally also record on user meta for quick lookup
-    $user_registered = get_user_meta( $user_id, 'registered_events', true );
-    if ( ! is_array( $user_registered ) ) {
-        $user_registered = array();
-    }
-    if ( ! in_array( $event_id, $user_registered, true ) ) {
-        $user_registered[] = $event_id;
-        update_user_meta( $user_id, 'registered_events', $user_registered );
-    }
-
-    // set a short-lived transient to indicate success for this user+event (one-time display)
-    if ( $user_id && $event_id ) {
-        set_transient( 'events_success_foran_' . intval( $user_id ) . '_' . intval( $event_id ), 1, 30 );
-    }
-
-    // Redirect back to referring page or Foranmalan with success flag
-    $redirect = wp_get_referer();
-    if ( ! $redirect ) {
-        $redirect = site_url( '/foranmalan/' );
-    }
-    // include event_id in redirect so the shortcode can show a message under that event
-    $redirect = add_query_arg( array( 'foranmald' => '1', 'event_id' => $event_id ), $redirect );
-    wp_safe_redirect( $redirect );
-    exit;
-}
-add_action( 'admin_post_foranmalning', 'foranmalning_handler' );
-add_action( 'admin_post_nopriv_foranmalning', 'foranmalning_handler' );
-
-
-/**
- *  Det finns ingen avanmalning_handler. Avanmälan hanteras på en egen sida, url '/avanmalan/'.
-*/
-
-
-
-/**
  * Show Company field on user profile and edit screens (editable) and save it to user meta.
  */
 function ollie_user_company_profile_field( $user ) {
@@ -300,115 +243,6 @@ add_action( 'edit_user_profile_update', 'ollie_save_user_company_profile' );
 
 
 
-
-// Registrera Custom Post Type - Medlemmar
-function fenix_register_member_cpt() {
-    $labels = array(
-        'name'               => 'Medlemmar',
-        'singular_name'      => 'Medlem',
-        'add_new'            => 'Lägg till ny',
-        'add_new_item'       => 'Lägg till ny medlem',
-        'edit_item'          => 'Redigera medlem',
-        'new_item'           => 'Ny medlem',
-        'view_item'          => 'Visa medlem',
-        'search_items'       => 'Sök medlemmar',
-        'not_found'          => 'Inga medlemmar hittades',
-        'not_found_in_trash' => 'Inga medlemmar i papperskorgen',
-        'menu_name'          => 'Medlemmar',
-    );
-
-    $args = array(
-        'labels'       => $labels,
-        'public'       => true,
-        'has_archive'  => false,
-        'show_in_rest' => true,
-        'supports'     => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
-        'menu_icon'    => 'dashicons-groups',
-        'rewrite'      => array( 'slug' => 'medlemmar' ),
-    );
-
-    register_post_type( 'member', $args );
-}
-add_action( 'init', 'fenix_register_member_cpt' );
-
-
-// Registrera metafält för Medlemmar
-function fenix_register_member_meta() {
-    $string_fields = array( 'fenix_name', 'fenix_title', 'fenix_email', 'fenix_phone', 'fenix_address', 'fenix_website' );
-
-    foreach ( $string_fields as $field ) {
-        register_post_meta( 'member', $field, array(
-            'show_in_rest'  => true,
-            'single'        => true,
-            'type'          => 'string',
-            'auth_callback' => function() {
-                return current_user_can( 'edit_posts' );
-            },
-        ));
-    }
-}
-
-
-
-// Show admin notice on user profile/edit pages with saved company
-add_action( 'admin_notices', 'ollie_show_company_admin_notice' );
-function ollie_show_company_admin_notice() {
-    if ( ! is_admin() ) {
-        return;
-    }
-
-    // Only show on user edit/profile pages
-    if ( ! in_array( basename( filter_input( INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_STRING ) ), array( 'user-edit.php', 'profile.php' ), true ) ) {
-        return;
-    }
-
-    if ( ! current_user_can( 'edit_users' ) ) {
-        return;
-    }
-
-    $user_id = 0;
-    if ( isset( $_GET['user_id'] ) ) {
-        $user_id = intval( $_GET['user_id'] );
-    } else {
-        $user_id = get_current_user_id();
-    }
-
-    if ( ! $user_id ) {
-        return;
-    }
-
-    $company = get_user_meta( $user_id, 'company', true );
-    if ( empty( $company ) ) {
-        // try billing_company
-        $company = get_user_meta( $user_id, 'billing_company', true );
-    }
-
-    if ( empty( $company ) ) {
-        return;
-    }
-
-    printf(
-        '<div class="notice notice-info is-dismissible"><p><strong>%s</strong> %s</p></div>',
-        esc_html__( 'Company:', 'ollie-child' ),
-        esc_html( $company )
-    );
-}
-add_action( 'init', 'fenix_register_member_meta' );
-
-add_shortcode( 'fenix_website_link', function() {
-    $url = get_post_meta( get_the_ID(), 'fenix_website', true );
-    if ( ! $url ) return '';
-    return '<a href="' . esc_url( $url ) . '" target="_blank" class="fenix-website-link">' . esc_html( $url ) . '</a>';
-});
-
-
-
-// Shortcode för klickbar e-postlänk
-add_shortcode( 'fenix_email_link', function() {
-    $email = get_post_meta( get_the_ID(), 'fenix_email', true );
-    if ( ! $email ) return '';
-    return '<a href="mailto:' . antispambot( $email ) . '" class="fenix-email-link">' . antispambot( $email ) . '</a>';
-});
 
 // Shortcode för klickbar telefonlänk
 add_shortcode( 'fenix_phone_link', function() {
@@ -467,184 +301,6 @@ add_action( 'wp_head', function() {
 } );
 
 
-
-function shortcode_all_members( $atts )
-{
-
-    $atts = shortcode_atts( array( 'per_page' => 20 ), $atts, 'all_members' );
-    $default_per_page = max( 1, intval( $atts['per_page'] ) );
-    $query_per_page = isset( $_GET['members_per_page'] ) ? intval( wp_unslash( $_GET['members_per_page'] ) ) : 0;
-    $per_page = $query_per_page > 0 ? min( 100, $query_per_page ) : $default_per_page;
-    $members_page = isset( $_GET['members_page'] ) ? intval( wp_unslash( $_GET['members_page'] ) ) : 0;
-    $paged = max( 1, $members_page, get_query_var( 'paged' ), get_query_var( 'page' ) ); 
-    $offset = ( $paged - 1 ) * $per_page; 
-    $args = array( 'number'  => $per_page, 'offset'  => $offset, 'orderby' => 'registered', 'order'   => 'DESC', 'fields'  => 'all', ); 
-    
-    $q = new WP_User_Query( $args ); 
-    $users = $q->get_results(); 
-
-    if ( empty( $users ) && $paged > 1 && intval( $q->get_total() ) > 0 ) {
-        $paged = 1;
-        $offset = 0;
-        $args['offset'] = 0;
-        $q = new WP_User_Query( $args );
-        $users = $q->get_results();
-    }
-    
-    if ( empty( $users ) ) 
-    { 
-        error_log( 'all_members shortcode: no members. Query vars: ' . print_r( $q->query_vars, true ) . ' total:' . $q->get_total() ); 
-        
-        return '<p>No members found in db.</p>'; 
-    }
-
-    $out = '<div class="all-members-wrap">
-                <div class="member-search-wrap">
-                    <input type="text" id="memberSearch" placeholder="🔍 Sök medlem">
-                </div>
-            
-                <div class="all-members-inner-wrap">';
-    
-    foreach ( $users as $u ) {                     
-        $profilePhoto = '';
-        $att_id = get_user_meta($u->ID, 'profile_picture', true );
-
-        if ( $att_id ) {
-            $profilePhoto = wp_get_attachment_image( $att_id, array( 64, 64 ), false, array( 'class' => 'avatar' ) );
-        } 
-        else {
-            $profilePhoto = get_avatar($u->ID, 64 );
-        }
-
-        // Resolve cover image URL (if present) and build inline style only when available
-        $cover_url = '';
-        if ( function_exists( 'ollie_get_user_cover_url' ) ) {
-            $cover_url = ollie_get_user_cover_url( $u->ID, 'full' );
-        } else {
-            $cover_att = get_user_meta( $u->ID, 'profile_cover', true );
-            if ( $cover_att ) {
-                $cover_url = wp_get_attachment_image_url( $cover_att, 'full' );
-            }
-        }
-
-        $cover_style = 'background-image:url(' . esc_url( $cover_url ) . ')';
-        
-        $email = isset( $u->user_email ) ? $u->user_email : '';
-        $website = isset( $u->user_url ) ? $u->user_url : get_user_meta( $u->ID, 'user_url', true );
-        $company =  get_user_meta( $u->ID, 'company', true );
-        $linkedin = isset( $u->linkedin ) ? $u->linkedin : get_user_meta( $u->ID, 'linkedin', true );
-        $biography= isset( $u->description ) ? $u->description : get_user_meta( $u->ID, 'description', true );
-        
-        $out .= '<div class="member-wrap"
-                    data-name="' . esc_attr( $u->display_name ) . '"
-                    data-company="' . esc_attr( $company ) . '"
-                    data-email="' . esc_attr( $email ) . '"
-                    data-linkedin="' . esc_attr( $linkedin ) . '"
-                    data-website="' . esc_attr( $website ) . '"                    
-                    data-description="' . esc_attr( $biography ) . '">';
-
-        $out .= '<div class="member-cover"' . ( $cover_style ? ' style="' . $cover_style . '"' : '' ) . '></div>';
-        // Resolve the edit-member page permalink by path if it exists, fallback to the slug URL.
-        $edit_page = get_page_by_path( 'andra-medlem' );
-        $base = $edit_page ? get_permalink( $edit_page->ID ) : site_url( '/andra-medlem/' );
-        $edit_link = esc_url( add_query_arg( array( 'user_id' => $u->ID ), $base ) );
-        
-
-        $out .= '<div class="member-card">';
-    
-        if ( current_user_can( 'manage_options' ) ) {
-            $out .= '<div class="member-photo"><a href="' . $edit_link . '">' . $profilePhoto . '</a></div>';
-            $out .= '<div class="member profile-display-name"><a href="' . $edit_link . '">' . esc_html( $u->display_name ) . '</a></div>';
-        } else {
-            $out .= '<div class="member-photo">' . $profilePhoto . '</div>';
-            $out .= '<div class="member profile-display-name">' . esc_html( $u->display_name ) . '</div>';
-        }
-
-        $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Epost: </span>' . esc_html( $email ) . '</div>';
-        $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">LinkedIn: </span><a href="' . esc_url( $linkedin ) . '" target="_blank" rel="noopener">' . esc_html( $linkedin ) . '</a></div>';
-        $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Företag: </span>' . esc_html( $company ) . '</div>';
-        $out .= '<div class="member-item-wrap"><span class="member-profile-item-title">Webbplats: </span><a href="' . esc_url( $website ) . '" target="_blank" rel="noopener">' . esc_html( $website ) . '</a></div>';
-        $out .= '<div class="member-item-wrap profile-bio">' . wp_kses_post( wpautop( $biography ) ) . '</div>';
-        $out .= '</div>'; // member-card
-        $out .= '</div>'; // member-wrap
-        
-    } 
-    $out .= '</div>
-             </div>'; 
-
-    $total_users = intval( $q->get_total() );
-    $total_pages = $per_page > 0 ? (int) ceil( $total_users / $per_page ) : 1;
-
-    if ( $total_pages > 1 ) {
-        $out .= '<div class="all-members-pagination">';
-
-        if ( $paged > 1 ) {
-            $prev_url = esc_url( add_query_arg( 'members_page', $paged - 1, remove_query_arg( 'members_page' ) ) );
-            $out .= '<a class="members-page-link members-page-prev" href="' . $prev_url . '">« Föregående</a> ';
-        }
-
-
-        if ( $paged < $total_pages ) {
-            $next_url = esc_url( add_query_arg( 'members_page', $paged + 1, remove_query_arg( 'members_page' ) ) );
-            $out .= '<a class="members-page-link members-page-next" href="' . $next_url . '">Nästa»</a> ';
-        }
-
-        $out .= ' &nbsp; ' . $total_pages . ' sidor</div>';
-    }
-
-    // Sökfunktionalitet 
-    $out .= '
-        <script>
-        document.addEventListener("DOMContentLoaded", function() {
-
-            const url = new URL(window.location.href);
-            const currentPerPage = parseInt(url.searchParams.get("members_per_page") || "", 10);
-            const desiredPerPage = window.innerWidth < 705 ? 10 : 20;
-
-            if (currentPerPage !== desiredPerPage) {
-                url.searchParams.set("members_per_page", String(desiredPerPage));
-                url.searchParams.delete("members_page");
-                window.location.replace(url.toString());
-                return;
-            }
-
-            const searchInput = document.getElementById("memberSearch");
-
-            if (!searchInput) return;
-
-            searchInput.addEventListener("keyup", function() {
-
-                const searchTerm = this.value.toLowerCase();
-
-                document.querySelectorAll(".member-wrap").forEach(function(member) {
-
-                    const searchText =
-                        (
-                            member.dataset.name + " " +
-                            member.dataset.company + " " +
-                            member.dataset.email + " " +
-                            member.dataset.website + " " +
-                            member.dataset.linkedin + " " +
-                            member.dataset.description
-                        ).toLowerCase();
-
-                    if (searchText.includes(searchTerm)) {
-                        member.style.display = "";
-                    } else {
-                        member.style.display = "none";
-                    }
-
-                });
-
-            });
-
-        });
-        </script>';
-    
-    return $out; 
-}
-
-add_shortcode( 'all_members', 'shortcode_all_members' );
     
 
 // Save company/business custom field from User Registration forms to user meta
@@ -916,6 +572,10 @@ function ollie_get_user_cover_url( $user_id, $size = 'full' ) {
     return wp_get_attachment_image_url( $att_id, $size );
 }
 
+// Load all_members-shortcode implementation if present
+if ( file_exists( get_stylesheet_directory() . '/all-members-shortcode.php' ) ) {
+    require_once get_stylesheet_directory() . '/all-members-shortcode.php';
+}
 
 // Load register-member-shortcode implementation if present
 if ( file_exists( get_stylesheet_directory() . '/register-member-shortcode.php' ) ) {
@@ -959,4 +619,9 @@ if ( file_exists( get_stylesheet_directory() . '/applications-shortcode.php' ) )
 // Load avanmalan-shortcode implementation if present
 if ( file_exists( get_stylesheet_directory() . '/avanmalan_shortcode.php' ) ) {
     require_once get_stylesheet_directory() . '/avanmalan_shortcode.php';
+}
+
+// Load foranmalan-shortcode implementation if present
+if ( file_exists( get_stylesheet_directory() . '/foranmalan_shortcode.php' ) ) {
+    require_once get_stylesheet_directory() . '/foranmalan_shortcode.php';
 }

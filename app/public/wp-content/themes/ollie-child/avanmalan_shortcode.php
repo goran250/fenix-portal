@@ -112,13 +112,13 @@ function shortcode_avanmalan( $atts )
 
         $out .=     '<div style="padding: 10px 0 20px;"> 
                         <label>Kommer någon att ersätta dig?</label>               
-                        <input type="text" name="replacer_name" required placeholder="Ange namnet på ersättaren" value="">
+                        <input type="text" name="replacer_name" placeholder="Ange namnet på ersättaren" value="">
                     </div>';
 
 
         $out .=     '<div style="padding: 10px 0 20px;"> 
                         <label>Ersättaren epostadress?</label>               
-                        <input type="text" name="replacer_email" required placeholder="Ange ersättarens epostadress." value="">
+                        <input type="text" name="replacer_email" placeholder="Ange ersättarens epostadress." value="">
                     </div>
                     <hr class="separator" />';
             
@@ -131,9 +131,3 @@ function shortcode_avanmalan( $atts )
     }
 }
 add_shortcode( 'avanmalan', 'shortcode_avanmalan' );
-
-
-/**
- * Handle Avanmalning (user cancellation) requests.
- 
-    */

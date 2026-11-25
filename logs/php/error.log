@@ -1379,3 +1379,271 @@ Stack trace:
 [18-Nov-2026 17:29:55 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
 [18-Nov-2026 17:49:49 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
 [18-Nov-2026 17:49:49 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[18-Nov-2026 23:58:34 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 151
+[19-Nov-2026 08:53:44 UTC] PHP Parse error:  syntax error, unexpected token "/" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 129
+[19-Nov-2026 08:53:45 UTC] PHP Parse error:  syntax error, unexpected token "/" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 129
+[19-Nov-2026 08:54:08 UTC] PHP Parse error:  syntax error, unexpected token "/" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 129
+[19-Nov-2026 08:54:08 UTC] PHP Parse error:  syntax error, unexpected token "/" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 129
+[19-Nov-2026 08:54:14 UTC] PHP Parse error:  syntax error, unexpected token "/" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 129
+[19-Nov-2026 08:54:14 UTC] PHP Parse error:  syntax error, unexpected token "/" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 129
+[19-Nov-2026 09:28:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getAllUsers() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php:139
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(129): CreateExcelFile(Array, Array, 154, 'registered')
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_applications(Array, '', 'applications')
+#2 [internal function]: do_shortcode_tag(Array)
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(applic...', 'do_shortcode_ta...', '[applications]\n...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('[applications]\n...')
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('[applications]\n...', Array)
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:shortco...')
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:shortco...', Object(WP_Block))
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#19 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#20 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 139
+[19-Nov-2026 09:36:48 UTC] PHP Parse error:  syntax error, unexpected variable "$out" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 138
+[19-Nov-2026 09:36:48 UTC] PHP Parse error:  syntax error, unexpected variable "$out" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 138
+[19-Nov-2026 09:39:58 UTC] PHP Parse error:  syntax error, unexpected variable "$out" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 138
+[19-Nov-2026 09:39:59 UTC] PHP Parse error:  syntax error, unexpected variable "$out" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 138
+[19-Nov-2026 09:41:18 UTC] PHP Parse error:  syntax error, unexpected variable "$out" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 138
+[19-Nov-2026 09:41:19 UTC] PHP Parse error:  syntax error, unexpected variable "$out" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 138
+[19-Nov-2026 09:43:06 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "fenix_register_member_meta" not found or invalid function name in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php:353
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(377): WP_Hook->apply_filters(NULL, Array)
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(523): WP_Hook->do_action(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-settings.php(779): do_action('init')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-config.php(103): require_once('C:\\Users\\\xC3\x84GARE...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-load.php(50): require_once('C:\\Users\\\xC3\x84GARE...')
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(13): require_once('C:\\Users\\\xC3\x84GARE...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#7 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php on line 353
+[19-Nov-2026 09:43:06 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "fenix_register_member_meta" not found or invalid function name in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php:353
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(377): WP_Hook->apply_filters(NULL, Array)
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(523): WP_Hook->do_action(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-settings.php(779): do_action('init')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-config.php(103): require_once('C:\\Users\\\xC3\x84GARE...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-load.php(50): require_once('C:\\Users\\\xC3\x84GARE...')
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-cron.php(46): require_once('C:\\Users\\\xC3\x84GARE...')
+#6 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php on line 353
+[19-Nov-2026 09:43:07 UTC] PHP Fatal error:  Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, function "fenix_register_member_meta" not found or invalid function name in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php:353
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(377): WP_Hook->apply_filters(NULL, Array)
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(523): WP_Hook->do_action(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-settings.php(779): do_action('init')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-config.php(103): require_once('C:\\Users\\\xC3\x84GARE...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-load.php(50): require_once('C:\\Users\\\xC3\x84GARE...')
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(13): require_once('C:\\Users\\\xC3\x84GARE...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#7 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php on line 353
+[19-Nov-2026 09:50:44 UTC] PHP Warning:  Undefined variable $args in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 148
+[19-Nov-2026 09:50:44 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 156
+[19-Nov-2026 09:50:44 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 168
+[19-Nov-2026 09:50:44 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 169
+[19-Nov-2026 09:56:31 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 168
+[19-Nov-2026 10:43:40 UTC] PHP Parse error:  syntax error, unexpected identifier "get_posts" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 201
+[19-Nov-2026 10:43:40 UTC] PHP Parse error:  syntax error, unexpected identifier "get_posts" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 201
+[19-Nov-2026 10:45:08 UTC] PHP Parse error:  Unclosed '{' on line 148 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 247
+[19-Nov-2026 10:45:08 UTC] PHP Parse error:  Unclosed '{' on line 148 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 247
+[19-Nov-2026 10:47:42 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 227
+[19-Nov-2026 10:47:42 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 228
+[19-Nov-2026 10:47:42 UTC] PHP Warning:  Attempt to read property "post_title" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 228
+[19-Nov-2026 10:51:12 UTC] PHP Warning:  Undefined array key 0 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 228
+[19-Nov-2026 10:51:12 UTC] PHP Warning:  Attempt to read property "post_title" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 228
+[19-Nov-2026 11:00:13 UTC] PHP Parse error:  Unclosed '{' on line 148 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 239
+[19-Nov-2026 11:00:13 UTC] PHP Parse error:  Unclosed '{' on line 148 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 239
+[19-Nov-2026 11:53:59 UTC] PHP Parse error:  syntax error, unexpected token "else" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 228
+[19-Nov-2026 12:50:01 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 238
+[19-Nov-2026 13:18:33 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 238
+[19-Nov-2026 13:20:09 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 238
+[19-Nov-2026 13:22:00 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 150
+[20-Nov-2026 13:48:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method PhpOffice\PhpSpreadsheet\Worksheet\Worksheet::getCellByColumnAndRow() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php:306
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(324): {closure:fenix_applications_generate_excel():295}(Array, 1)
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(456): fenix_applications_generate_excel(253, 'cancelled', Array, Array, Array, '')
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(131): CreateExcelFile(Array, Array, 253, 'cancelled')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_applications(Array, '', 'applications')
+#4 [internal function]: do_shortcode_tag(Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(applic...', 'do_shortcode_ta...', '[applications]\n...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('[applications]\n...')
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('[applications]\n...', Array)
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:shortco...')
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:shortco...', Object(WP_Block))
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#19 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#20 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#21 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#22 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 306
+[21-Nov-2026 14:59:27 UTC] PHP Warning:  Undefined variable $event_id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 578
+[21-Nov-2026 14:59:27 UTC] PHP Warning:  Undefined variable $event_id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 592
+[21-Nov-2026 14:59:32 UTC] PHP Warning:  Undefined variable $event_id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 578
+[21-Nov-2026 14:59:32 UTC] PHP Warning:  Undefined variable $event_id in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 592
+[21-Nov-2026 17:58:58 UTC] PHP Warning:  Attempt to read property "ID" on int in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 145
+[21-Nov-2026 18:04:44 UTC] PHP Warning:  Attempt to read property "ID" on int in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 145
+[22-Nov-2026 14:15:42 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[22-Nov-2026 14:15:42 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[22-Nov-2026 14:15:56 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[22-Nov-2026 14:15:56 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[22-Nov-2026 14:22:24 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[22-Nov-2026 14:22:24 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[23-Nov-2026 21:07:23 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[23-Nov-2026 21:07:23 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[23-Nov-2026 21:07:23 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[23-Nov-2026 21:07:23 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[23-Nov-2026 21:08:52 UTC] PHP Warning:  Undefined variable $guest_specific_search in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\register-guest-shortcode.php on line 161
+[23-Nov-2026 22:14:09 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[23-Nov-2026 22:14:09 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[23-Nov-2026 22:14:09 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[23-Nov-2026 22:14:09 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[24-Nov-2026 08:11:31 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[24-Nov-2026 08:11:31 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[24-Nov-2026 08:11:31 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 08:11:31 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 08:11:32 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 08:11:32 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 08:37:44 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[24-Nov-2026 08:37:44 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[24-Nov-2026 08:37:44 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 08:37:44 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 08:37:45 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 08:37:45 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 09:01:02 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 09:02:48 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 579
+[24-Nov-2026 09:39:15 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 09:40:52 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 581
+[24-Nov-2026 09:49:39 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 581
+[24-Nov-2026 09:50:01 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 581
+[24-Nov-2026 09:54:19 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 581
+[24-Nov-2026 09:54:30 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 10:36:56 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "display_name" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php:170
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_all_members(Array, '', 'all_members')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(all_me...', 'do_shortcode_ta...', '\n<h2 class="wp-...')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('\n<h2 class="wp-...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('\n<h2 class="wp-...', Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:heading...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:heading...', Object(WP_Block))
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#19 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 170
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:23:12 UTC] PHP Warning:  Attempt to read property "meta_value" on string in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 38
+[24-Nov-2026 12:58:22 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 34
+[24-Nov-2026 13:13:37 UTC] PHP Warning:  Undefined variable $args in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 5
+[24-Nov-2026 13:13:37 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 11
+[24-Nov-2026 13:29:04 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 43
+[24-Nov-2026 13:32:38 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 264
+[24-Nov-2026 13:32:38 UTC] PHP Parse error:  Unclosed '{' on line 4 in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\all-members-shortcode.php on line 264
+[24-Nov-2026 21:01:59 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:02:24 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:13:05 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:13:29 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:13:40 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:13:50 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:14:12 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:14:20 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:14:26 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:14:33 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:14:49 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:19:01 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:19:10 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:19:38 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:24:37 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 580
+[24-Nov-2026 21:29:00 UTC] PHP Warning:  Attempt to read property "display_name" on false in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\tfa-shortcodes.php on line 581
+[24-Nov-2026 23:19:26 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[24-Nov-2026 23:19:26 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[24-Nov-2026 23:19:41 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[24-Nov-2026 23:19:41 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[24-Nov-2026 23:21:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[24-Nov-2026 23:21:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[24-Nov-2026 23:21:51 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[24-Nov-2026 23:23:10 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 64
+[24-Nov-2026 23:23:10 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 64
+[24-Nov-2026 23:25:25 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[24-Nov-2026 23:25:25 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[24-Nov-2026 23:25:25 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[24-Nov-2026 23:25:25 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[24-Nov-2026 23:26:09 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[24-Nov-2026 23:26:09 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[24-Nov-2026 23:26:09 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[24-Nov-2026 23:26:09 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[25-Nov-2026 01:17:18 UTC] PHP Parse error:  Unclosed '{' on line 28 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 78
+[25-Nov-2026 01:17:19 UTC] PHP Parse error:  Unclosed '{' on line 28 does not match ')' in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\functions.php on line 78
+[25-Nov-2026 01:23:47 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 64
+[25-Nov-2026 01:23:47 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 64
+[25-Nov-2026 01:34:44 UTC] PHP Fatal error:  Uncaught TypeError: count(): Argument #1 ($value) must be of type Countable|array, WP_Query given in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php:456
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_events_list(Array, '', 'events_list')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(events...', 'do_shortcode_ta...', '\n<h2 class="wp-...')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('\n<h2 class="wp-...')
+#4 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('\n<h2 class="wp-...', Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:heading...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:heading...', Object(WP_Block))
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#19 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 456
+[25-Nov-2026 10:09:17 UTC] PHP Parse error:  syntax error, unexpected token "!", expecting variable or "{" or "$" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 488
+[25-Nov-2026 10:09:17 UTC] PHP Parse error:  syntax error, unexpected token "!", expecting variable or "{" or "$" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 488

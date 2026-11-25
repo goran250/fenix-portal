@@ -607,11 +607,10 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
 }
 
 .all-members-inner-wrap {
-  margin: 0 auto;
+  margin: 0 auto 20px;
 }
 
 .member-wrap {
-    /* position: absolute; */
     float: left;
     background: #ffffff;
     text-align: center;
@@ -622,6 +621,10 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
     height: 690px;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased !important
+}
+
+.member-wrap.deactivated-member-wrap {
+    height: 450px;
 }
 
 
@@ -711,11 +714,15 @@ footer .wp-block-group.alignwide.has-secondary-color.has-text-color.has-link-col
     box-shadow: 0 0 8px rgba(245,158,11,.25);
 }
 
+.page-id-44 .all-members-inner-wrap .member-card a:link {
+    text-decoration: underline!important;
+}
+
 .all-members-pagination {
     clear: both;
     width: 100%;
     text-align: center;
-    margin: 20px 0;
+    margin: 20px 0 40px;
 }
 
 .all-members-pagination .members-page-link {
@@ -958,8 +965,7 @@ div.events-list {
 
 div.events-list .edit-button, 
 div.events-list .delete-button, 
-div.events-list .foranmalan-button, 
-div.events-list .avanmalan-button {
+div.events-list .anmalningar-button {
   margin: 0 10px 40px 0;
   padding: 4px 10px!important;
   border-radius: 6px!important;
@@ -972,16 +978,16 @@ div.events-list .avanmalan-button {
    Force no content for the pseudo element to ensure no stray hyphen appears. */
 div.events-list .edit-button::before,
 div.events-list .delete-button::before,
-div.events-list .foranmalan-button::before,
-div.events-list .avanmalan-button::before {
+div.events-list .anmalningar-button::before,
+div.events-list .edit-button::after,
+div.events-list .delete-button::after,
+div.events-list .anmalningar-button::after {
   content: none !important;
   display: inline-block;
 }
 
 /* Some browsers or external styles may add markers on anchors; ensure anchors
    that wrap action buttons inside event items don't get a preceding marker. */
-div.event-item-left a::before,
-div.event-item-left a::after,
 div.events-list a::before,
 div.events-list a::after {
   content: none !important;
@@ -1029,6 +1035,8 @@ div.event-item-right img {
 div.event-item div { 
   margin-bottom: 8px;
 }
+
+
 /*************   End Events-sidan ***************/
 
 
@@ -1089,10 +1097,6 @@ div.event-item div {
   margin: 0 0 20px;
   float: left;
 }
-
-.page-id-321 .tfa-separator {
-    margin: 25px 0 20px 0;
-} 
 
 .page-id-321 .to-member-wrap select {
   margin-top: 10px;
@@ -1248,10 +1252,6 @@ div.event-item div {
   cursor: pointer;
 }
 
-.page-id-730 .separator {
-    margin: 25px 0 20px 0;
-} 
-
 
 .page-id-730 .guest-delete-button {
     height: 25px;
@@ -1306,6 +1306,10 @@ div.event-item div {
 input[type="radio"], input[type="radio"] + label {
   cursor: pointer;
 }
+.separator {
+    margin: 25px 0 20px 0;
+    clear: both;
+} 
 
 .member-success, .file-success, .tfa-success, .register-guest-success {
   width: fit-content;
@@ -1514,6 +1518,6 @@ button[data-tooltip]:hover::after, a[data-tooltip]:hover::after {
 
 
 
-
-
-
+.page-id-228 .excel-file_test p {
+    margin: 2px 0!important
+}

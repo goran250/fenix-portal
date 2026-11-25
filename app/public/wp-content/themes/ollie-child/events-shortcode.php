@@ -9,23 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Register CPT for events
-add_action( 'init', function() {
-	$labels = array(
-		'name' => 'Events',
-		'singular_name' => 'Event',
-	);
-	$args = array(
-		'labels' => $labels,
-		'public' => false,
-		'show_ui' => false,
-		'supports' => array( 'title' ),
-		'has_archive' => false,
-		'show_in_rest' => false,
-	);
-	register_post_type( 'event', $args );
-} );
-
 function shortcode_events_list( $atts ) {
 	$atts = shortcode_atts( array( 'per_page' => 50 ), $atts, 'events_list' );
 	
@@ -38,15 +21,8 @@ function shortcode_events_list( $atts ) {
 
 	$messages = array( 'errors' => array(), 'success-add' => '', 'success-edit' => '', 'success-delete' => '', 'success-cancellation' => '', 'success-registration' => '', );
 
-	// Show success message when returning from Avanmälan handler
-	if ( isset( $_GET['avanmald'] ) && '1' === (string) $_GET['avanmald']) {
-		$messages['success-cancellation'] = 'Avanmälan registrerad.';
-	}
 
-	// Show success message when returning from Foranmalan handler
-	if ( isset( $_GET['foranmald'] ) && '1' === (string) $_GET['foranmald']) {
-		$messages['success-registration'] = 'Föranmälan registrerad.';
-	}
+
 
 	// Show one-time success message for admin delete action
 	if ( current_user_can( 'manage_options' ) ) {
@@ -99,7 +75,7 @@ function shortcode_events_list( $atts ) {
 		}
 	}
 
-	// Handle admin add submission
+	// Handle add event
 	if ( isset( $_POST['events_add_submit'] ) && current_user_can( 'manage_options' ) ) {
 		if ( ! isset( $_POST['events_add_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['events_add_nonce'] ), 'events_add_action' ) ) {
 			$messages['errors'][] = 'Invalid form submission.';
@@ -109,8 +85,9 @@ function shortcode_events_list( $atts ) {
 			$time = isset( $_POST['event_time'] ) ? sanitize_text_field( wp_unslash( $_POST['event_time'] ) ) : '';
 			$maxNbrOfParticipants = isset( $_POST['event_nbrOfParticipants'] ) ? sanitize_text_field( wp_unslash( $_POST['event_nbrOfParticipants'] ) ) : '';
 			$location = isset( $_POST['event_location'] ) ? sanitize_text_field( wp_unslash( $_POST['event_location'] ) ) : '';
-			$notification = isset( $_POST['event_notification'] ) ? $_POST['event_notification'] : '';
+			$status = isset( $_POST['event_status'] ) ? $_POST['event_status'] : '';
 			$description = isset( $_POST['event_description'] ) ? sanitize_text_field( wp_unslash( $_POST['event_description'] ) ) : '';
+			
 			// Handle uploaded picture (from file input event_picture)
 			$picture_id = '';
 
@@ -144,7 +121,7 @@ function shortcode_events_list( $atts ) {
 					update_post_meta( $post_id, 'event_time', $time );
 					update_post_meta( $post_id, 'event_nbrOfParticipants', $maxNbrOfParticipants );
 					update_post_meta( $post_id, 'event_location', $location );					
-					update_post_meta( $post_id, 'event_notification', $notification );
+					update_post_meta( $post_id, 'event_status', $status );
 					// process file upload if provided
 					if ( ! empty( $_FILES['event_picture'] ) && ! empty( $_FILES['event_picture']['name'] ) ) {
 						// check PHP upload error first
@@ -208,7 +185,7 @@ function shortcode_events_list( $atts ) {
 			}
 		}
 	}
-	// Handle admin edit submission
+	// Handle edit event
 	if ( ( isset( $_POST['events_edit_submit'] ) || isset( $_POST['event_id'] ) ) && current_user_can( 'manage_options' ) ) {
 		if ( ! isset( $_POST['events_edit_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['events_edit_nonce'] ), 'events_edit_action' ) ) {
 			$messages['errors'][] = 'Invalid edit submission.';
@@ -219,7 +196,7 @@ function shortcode_events_list( $atts ) {
 			$time = isset( $_POST['event_time_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_time_edit'] ) ) : '';
 			$maxNbrOfParticipants = isset( $_POST['event_nbrOfParticipants_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_nbrOfParticipants_edit'] ) ) : '';
 			$location = isset( $_POST['event_location_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_location_edit'] ) ) : '';
-			$notification = isset( $_POST['event_notification_edit'] ) ? $_POST['event_notification_edit'] : '';
+			$status = isset( $_POST['event_status_edit'] ) ? $_POST['event_status_edit'] : '';
 			$description = isset( $_POST['event_description_edit'] ) ? sanitize_text_field( wp_unslash( $_POST['event_description_edit'] ) ) : '';
 			// For edit, we'll handle uploaded file via $_FILES; keep incoming value (existing attachment id)
 			// Use a dedicated hidden field 'event_picture_existing' which must contain an attachment ID
@@ -255,8 +232,8 @@ function shortcode_events_list( $atts ) {
 					update_post_meta( $edit_id, 'event_time', $time );
 					update_post_meta( $edit_id, 'event_nbrOfParticipants', $maxNbrOfParticipants );
 					update_post_meta( $edit_id, 'event_location', $location );
-				    delete_post_meta( $edit_id, 'event_notification' );
-					update_post_meta( $edit_id, 'event_notification', $notification );
+				    delete_post_meta( $edit_id, 'event_status' );
+					update_post_meta( $edit_id, 'event_status', $status );
 					update_post_meta( $edit_id, 'event_description', $description );
 					// handle uploaded picture for edit
 				if ( ! empty( $_FILES['event_picture_edit'] ) && ! empty( $_FILES['event_picture_edit']['name'] ) ) {
@@ -291,14 +268,6 @@ function shortcode_events_list( $atts ) {
 						}
 					}
 
-					// Read back stored meta for debug/UI
-					$stored_date = get_post_meta( $edit_id, 'event_date', true );
-					$stored_time = get_post_meta( $edit_id, 'event_time', true );
-					$stored_loc = get_post_meta( $edit_id, 'event_location', true );
-					$stored_nbr = get_post_meta( $edit_id, 'event_nbrOfParticipants', true );
-					$stored_notif = get_post_meta( $edit_id, 'event_notification', true );
-					$stored_descr = get_post_meta( $edit_id, 'event_description', true );
-					$stored_picture = get_post_meta( $edit_id, 'event_picture', true );
 					// Production success message
 					$messages['success-edit'] = 'Event uppdaterat.';
 					
@@ -310,7 +279,7 @@ function shortcode_events_list( $atts ) {
 						'event_time_edit' => $time,
 						'event_location_edit' => $location,
 						'event_nbrOfParticipants_edit' => $maxNbrOfParticipants,
-						'event_notification_edit' => $notification,
+						'event_status_edit' => $status,
 						'event_description_edit' => $description,
 					    'event_picture_edit' => $picture
 					);
@@ -348,11 +317,11 @@ function shortcode_events_list( $atts ) {
 					<input class="event-nbrOfParticipants" name="event_nbrOfParticipants" type="text" />
 				</div>
 				<div style="float:left; margin: 20px 0 0 0; width: 135px;">				    
-					<input type="radio" id="event_notification_add_1" name="event_notification" value="Föranmälan" />
-					<label style="display: inline;" for="event_notification_add_1">Föranmälan:</label>
+					<input type="radio" id="event_status_add_1" name="event_status" value="Föranmälan" />
+					<label style="display: inline;" for="event_status_add_1">Föranmälan:</label>
 					
-					<input style="clear:both;" type="radio" id="event_notification_add_2" name="event_notification" value="Avanmälan" checked/>
-					<label style="display: inline;" for="event_notification_add_2">Avanmälan:</label>
+					<input style="clear:both;" type="radio" id="event_status_add_2" name="event_status" value="Avanmälan" checked/>
+					<label style="display: inline;" for="event_status_add_2">Avanmälan:</label>
 				</div>
 				<div style="float:left; margin-right: 20px;">
 		          	<label>Beskrivning:</label>
@@ -406,10 +375,10 @@ function shortcode_events_list( $atts ) {
 						<input class="event-nbrOfParticipants" name="event_nbrOfParticipants_edit" type="text" value="' . esc_attr( isset( $es['event_nbrOfParticipants_edit'] ) ? $es['event_nbrOfParticipants_edit'] : '' ) . '" />
 					</div>
 					<div style="float:left; margin: 20px 0 0 0; width: 135px;">						
-						<input type="radio" id="event_notification_edit_1" name="event_notification_edit" value="Föranmälan" ' . ( isset( $es['event_notification_edit'] ) && $es['event_notification_edit'] === 'Föranmälan' ? 'checked' : '' ) . ' />
-						<label style="display: inline;" for="event_notification_edit_1">Föranmälan:</label>						
-						<input style="clear:both;" type="radio" id="event_notification_edit_2" name="event_notification_edit" value="Avanmälan" ' . ( isset( $es['event_notification_edit'] ) && $es['event_notification_edit'] === 'Avanmälan' ? 'checked' : '' ) . ' />
-						<label style="display: inline;" for="event_notification_edit_2">Avanmälan:</label>
+						<input type="radio" id="event_status_edit_1" name="event_status_edit" value="Föranmälan" ' . ( isset( $es['event_status_edit'] ) && $es['event_status_edit'] === 'Föranmälan' ? 'checked' : '' ) . ' />
+						<label style="display: inline;" for="event_status_edit_1">Föranmälan:</label>						
+						<input style="clear:both;" type="radio" id="event_status_edit_2" name="event_status_edit" value="Avanmälan" ' . ( isset( $es['event_status_edit'] ) && $es['event_status_edit'] === 'Avanmälan' ? 'checked' : '' ) . ' />
+						<label style="display: inline;" for="event_status_edit_2">Avanmälan:</label>
 					</div>
 					<div style="float:left; margin-right: 20px;">
 						<label>Beskrivning:</label>
@@ -424,9 +393,9 @@ function shortcode_events_list( $atts ) {
 			if ( isset( $es['event_picture_edit'] ) && $es['event_picture_edit'] !== '' ) {
 				$existing_picture = $es['event_picture_edit'];
 			} else {
-				$stored_pic = get_post_meta( isset( $es['event_id'] ) ? intval( $es['event_id'] ) : 0, 'event_picture', true );
-				if ( $stored_pic ) {
-					$existing_picture = $stored_pic;
+				$stored_picture = get_post_meta( isset( $es['event_id'] ) ? intval( $es['event_id'] ) : 0, 'event_picture', true );
+				if ( $stored_picture ) {
+					$existing_picture = $stored_picture;
 				}
 			}
 			if ( $existing_picture ) {
@@ -473,26 +442,57 @@ function shortcode_events_list( $atts ) {
 
 	
 	// List events sorted by event_date
+
 	$per_page = intval( $atts['per_page'] );
-	$args = array(
-		'post_type' => 'event',
-		'posts_per_page' => $per_page,
-		'meta_key' => 'event_date',
-		'orderby' => 'meta_value',
-		'order' => 'ASC',
+    $today = date('Y-m-d');
+
+	$args_upcoming = array(
+		'post_type'      => 'event',
+		'posts_per_page' => -1,
+		'meta_key'       => 'event_date',
+		'orderby'        => 'meta_value',
+		'order'          => 'DESC',
+		'meta_query'     => array(
+			array(
+				'key'     => 'event_date',
+				'value'   => $today,
+				'compare' => '>=',
+				'type'    => 'DATE',
+			),
+		),
 	);
 
-	$events = new WP_Query( $args );
+	$upcoming_events = new WP_Query($args_upcoming);
+	
 
-	if ( ! $events->have_posts() ) {
-		$out .= '<p>Inga events hittades.</p>';
-		return $out;
-	}
+	$args_past = array(
+		'post_type'      => 'event',
+		'posts_per_page' => $per_page,
+		'meta_key'       => 'event_date',
+		'orderby'        => 'meta_value',
+		'order'          => 'DESC',
+		'meta_query'     => array(
+			array(
+				'key'     => 'event_date',
+				'value'   => $today,
+				'compare' => '<',
+				'type'    => 'DATE',
+			),
+		),
+	);
+
+	$past_events = new WP_Query($args_past);
+
 
 	$out .= '<div class="events-list">';
-
-			while ( $events->have_posts() ) {	
-				$events->the_post();
+		$out .= '<h4 style="clear:both;">Kommande events:</h4>';
+		
+		if ( ! $upcoming_events->have_posts() ) {
+			$out .= '<p style="clear:both;">Finns inga kommande events.</p>';
+		} 
+		else {
+			while ( $upcoming_events->have_posts() ) {	
+				$upcoming_events->the_post();
 				$event_id = get_the_ID();
 				$name = get_the_title();	
 				$date = get_post_meta( $event_id, 'event_date', true );
@@ -513,146 +513,286 @@ function shortcode_events_list( $atts ) {
 						$picture_label = wp_basename( $pic_url );
 					}
 				}
-				$notification = get_post_meta( $event_id, 'event_notification', true );
+				$status = get_post_meta( $event_id, 'event_status', true );
 				
-			// Render event item left and right columns
-			$out .= '<div class="event-item-outer">';
-			$out .= '<div id="event-item-' . esc_attr( $event_id ) . '" class="event-item">';
-			// left column
-			$out .= '<div class="event-item-left">';
-			$out .= '<div style="font-size: 20px;"><strong>' . esc_html( $name ) . '</strong></div>';
-			$out .= '<div>' . esc_html( $date ) . ', kl ' . esc_html( $time ) . '</div>';
-			$out .= '<div>' . esc_html( $location ) . '</div>';
-			if ( $description ) {
-				$out .= '<div onclick="ShowDescription(' . "'event-description-" . esc_attr( $event_id ) . "'" . ')" style="text-decoration:underline; cursor:pointer;">Beskrivning:</div>';
-				$out .= '<div id="event-description-' . esc_attr( $event_id ) . '" style="text-align:left; margin-top: -5px; margin-bottom:10px; display:none;">' . esc_html( $description ) . '</div>';
-			} else {
-				$out .= '<div>Beskrivning ej tillgänglig.</div>';
-			}
-			$out .= '<div>Max ' . esc_html( $maxNbrOfParticipants ) . ' deltagare</div>';
-
-			// Add Avanmälan or Föranmälan link or status text depending on user state
-			if ( is_user_logged_in() ) {
-				$user_id = get_current_user_id();
-				$cancelled = get_post_meta( $event_id, 'event_cancellations', true );
-				if ( ! is_array( $cancelled ) ) 
-					$cancelled = array();
-
-				$registered = get_post_meta( $event_id, 'event_registrations', true );
-				if ( ! is_array( $registered ) ) 
-					$registered = array();
-
-				if ( in_array( $user_id, $cancelled, true ) ) {
-					$out .= '<div style="margin-bottom: 10px;">Du har avanmält dig</div>';
-				} 
-				elseif ( in_array( $user_id, $registered, true ) ) {
-					$out .= '<div style="margin-bottom: 10px;">Du har anmält dig</div>';
-				} 
-				else {
-					if ( $notification === 'Avanmälan' ) {
-						// $avan_url = admin_url( 'admin-post.php' );
- 						$avan_url = get_page_by_path( 'avanmalan' );
-                        $base = $avan_url ? get_permalink( $avan_url->ID ) : site_url( '/avanmalan/' );
-                        $avan_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
-
-						$out .= '<div style="margin-bottom: 10px;" >
-									<a class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
-								</div>';
-					}
-					if ( $notification === 'Föranmälan' ) {
-						$foran_url = admin_url( 'admin-post.php' );
-						$foran_url = add_query_arg( array( 'action' => 'foranmalning', 'event_id' => $event_id ), $foran_url );
-						$foran_url = wp_nonce_url( $foran_url, 'foranmalning_action' );
-						$out .= '<div style="margin-bottom: 10px;" >
-									<a onclick="return alert(\'Din föranmälan är registrerad.\');" class="foranmalan-link" href="' . esc_url( $foran_url ) . '">Föranmälan</a>
-								</div>';
-					}
-				}
-
-			    $register_guest_page = get_page_by_path( 'register_guest' );
-				$register_guest_base = $register_guest_page ? get_permalink( $register_guest_page->ID ) : site_url( '/register_guest/' );
-				$register_guest_link = add_query_arg( array( 'event_id' => $event_id ), $register_guest_base );
-				$out .= '<div><a href="' . esc_url( $register_guest_link ) . '">Anmäl en gäst</a></div>';
-			} 
-		
-			$out .= '</div>'; // .event-item-left
-
-			// right column
-			$out .= '<div class="event-item-right">';
-			if ( $picture ) {
-				$img_src = '';
-				if ( is_numeric( $picture ) ) {
-					$img_src = wp_get_attachment_url( intval( $picture ) );
-				} elseif ( filter_var( $picture, FILTER_VALIDATE_URL ) ) {
-					$img_src = $picture;
+				// Render event item left and right columns
+				$out .= '<div class="event-item-outer">';
+				$out .= '<div id="event-item-' . esc_attr( $event_id ) . '" class="event-item">';
+				// left column
+				$out .= '<div class="event-item-left">';
+				$out .= '<div style="font-size: 20px;"><strong>' . esc_html( $name ) . '</strong></div>';
+				$out .= '<div>' . esc_html( $date ) . ', kl ' . esc_html( $time ) . '</div>';
+				$out .= '<div>' . esc_html( $location ) . '</div>';
+				if ( $description ) {
+					$out .= '<div onclick="ShowDescription(' . "'event-description-" . esc_attr( $event_id ) . "'" . ')" style="text-decoration:underline; cursor:pointer;">Beskrivning:</div>';
+					$out .= '<div id="event-description-' . esc_attr( $event_id ) . '" style="text-align:left; margin-top: -5px; margin-bottom:10px; display:none;">' . esc_html( $description ) . '</div>';
 				} else {
-					$img_src = wp_get_attachment_url( $picture );
+					$out .= '<div>Beskrivning ej tillgänglig.</div>';
 				}
-				if ( $img_src ) {
-					$out .= '<img src="' . esc_url( $img_src ) . '" alt="Event Picture" />';
-				}
-			}
-			$out .= '</div>'; // .event-item-right
+				$out .= '<div>Max ' . esc_html( $maxNbrOfParticipants ) . ' deltagare</div>';
 
-			$out .= '</div>'; // .event-item
-
-				// Show per-event one-time success message using transient set by handler
-				/**
+				// Add Avanmälan or Föranmälan link or status text depending on user state
 				if ( is_user_logged_in() ) {
 					$user_id = get_current_user_id();
-					if ( $user_id ) {
-						$transient_key = 'events_success_avan_' . intval( $user_id ) . '_' . intval( $event_id );
-						$trans = get_transient( $transient_key );
-						if ( $trans ) {
-							$out .= '<div class="event-cancelled">' . esc_html( 'Avanmälan registrerad.' ) . '</div>';
-							delete_transient( $transient_key );
-						}
+					$cancelled = get_post_meta( $event_id, 'event_cancellations', true );
+					if ( ! is_array( $cancelled ) ) 
+						$cancelled = array();
 
-						$transient_key_foran = 'events_success_foran_' . intval( $user_id ) . '_' . intval( $event_id );
-						$trans_foran = get_transient( $transient_key_foran );
-						if ( $trans_foran ) {
-							$out .= '<div class="event-registered">' . esc_html( 'Föranmälan registrerad.' ) . '</div>';
-							delete_transient( $transient_key_foran );
+					$registered = get_post_meta( $event_id, 'event_registrations', true );
+					if ( ! is_array( $registered ) ) 
+						$registered = array();
+
+					if ( in_array( $user_id, $cancelled, true ) ) {
+						$out .= '<div style="margin-bottom: 10px;">Du har avanmält dig</div>';
+					} 
+					else if ( in_array( $user_id, $registered, true ) ) {
+						$out .= '<div style="margin-bottom: 10px;">Du har anmält dig</div>';
+					} 
+					else {
+						if ( $status === 'Avanmälan' ) {
+							$avan_url = get_page_by_path( 'avanmalan' );
+							$base = $avan_url ? get_permalink( $avan_url->ID ) : site_url( '/avanmalan/' );
+							$avan_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
+
+							$out .= '<div style="margin-bottom: 10px;" >
+										<a class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
+									</div>';
+						}
+						if ( $status === 'Föranmälan' ) {
+							$foran_url = get_page_by_path( 'foranmalan' );
+							$base = $foran_url ? get_permalink( $foran_url->ID ) : site_url( '/foranmalan/' );
+							$foran_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
+							
+							$out .= '<div style="margin-bottom: 10px;" >
+										<a class="foranmalan-link" href="' . esc_url( $foran_url ) . '">Föranmälan</a>									
+									</div>';
 						}
 					}
+
+					$register_guest_page = get_page_by_path( 'register_guest' );
+					$register_guest_base = $register_guest_page ? get_permalink( $register_guest_page->ID ) : site_url( '/register_guest/' );
+					$register_guest_link = add_query_arg( array( 'event_id' => $event_id ), $register_guest_base );
+					$out .= '<div><a href="' . esc_url( $register_guest_link ) . '">Anmäl en gäst</a></div>';
+				} 
+			
+				$out .= '</div>'; // .event-item-left
+
+				// right column
+				$out .= '<div class="event-item-right">';
+				if ( $picture ) {
+					$img_src = '';
+					if ( is_numeric( $picture ) ) {
+						$img_src = wp_get_attachment_url( intval( $picture ) );
+					} elseif ( filter_var( $picture, FILTER_VALIDATE_URL ) ) {
+						$img_src = $picture;
+					} else {
+						$img_src = wp_get_attachment_url( $picture );
+					}
+					if ( $img_src ) {
+						$out .= '<img src="' . esc_url( $img_src ) . '" alt="Event Picture" />';
+					}
 				}
-						*/
+				$out .= '</div>'; // .event-item-right
+
+				$out .= '</div>'; // .event-item
 
 				if ( current_user_can( 'manage_options' ) ) {
-				// Build action buttons in a single container to avoid stray text nodes between elements
-				$buttons = '<span class="event-action-buttons">';
-				// include both raw picture value (attachment ID or URL) and a human label
-				$buttons .= '<button class="edit-button" data-event-id="' . esc_attr( $event_id ) . '" 
-				                     data-event-name="' . esc_attr( $name ) . '" data-event-date="' . esc_attr( $date ) . '"
-									 data-event-time="' . esc_attr( $time ) . '" data-event-location="' . esc_attr( $location ) . '" 
-									 data-event-description="' . esc_attr( $description ) . '" data-event-nbr="' . esc_attr( $maxNbrOfParticipants ) . '" 
-									 data-event-notification="' . esc_attr( $notification ) . '" 
-									 data-event-picture-value="' . esc_attr( $picture ) . '" data-event-picture-label="' . esc_attr( $picture_label ) . '">
-							    Ändra
-							</button>';
+					// Build action buttons in a single container to avoid stray text nodes between elements
+					$buttons = '<span class="event-action-buttons">';
+					// include both raw picture value (attachment ID or URL) and a human label
+					$buttons .= '<button class="edit-button" data-event-id="' . esc_attr( $event_id ) . '" 
+										data-event-name="' . esc_attr( $name ) . '" data-event-date="' . esc_attr( $date ) . '"
+										data-event-time="' . esc_attr( $time ) . '" data-event-location="' . esc_attr( $location ) . '" 
+										data-event-description="' . esc_attr( $description ) . '" data-event-nbr="' . esc_attr( $maxNbrOfParticipants ) . '" 
+										data-event-status="' . esc_attr( $status ) . '" 
+										data-event-picture-value="' . esc_attr( $picture ) . '" data-event-picture-label="' . esc_attr( $picture_label ) . '">
+									Ändra
+								</button>';
 
-				$del_url = add_query_arg( array( 'delete_event' => $event_id, '_ev_nonce' => wp_create_nonce( 'events_delete_action' ) ) );
-				$buttons .= '<a href="' . esc_url( $del_url ) . '" onclick="return confirm(\'Vill du radera detta event?\');"><button class="delete-button" name="events_delete">Radera</button></a>';
+					$del_url = add_query_arg( array( 'delete_event' => $event_id, '_ev_nonce' => wp_create_nonce( 'events_delete_action' ) ) );
+					$buttons .= '<a href="' . esc_url( $del_url ) . '" onclick="return confirm(\'Vill du radera detta event?\');">
+									<button class="delete-button" name="events_delete">Radera</button>
+								</a>';
 
-				$anm_page = get_page_by_path( 'anmalningar' );
-				$anm_base = $anm_page ? get_permalink( $anm_page->ID ) : site_url( '/anmalningar/' );
+					$anm_page = get_page_by_path( 'anmalningar' );
+					$anm_base = $anm_page ? get_permalink( $anm_page->ID ) : site_url( '/anmalningar/' );
 
-				if ( $notification === 'Föranmälan' ) {
-					$foran_link = add_query_arg( array( 'event_id' => $event_id, 'status' => 'registered' ), $anm_base );
-					$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="foranmalan-button">Anmälningar</button></a>';
-				} elseif ( $notification === 'Avanmälan' ) {
-					$avan_link = add_query_arg( array( 'event_id' => $event_id, 'status' => 'cancelled' ), $anm_base );
-					$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="avanmalan-button">Anmälningar</button></a>';
-				}
-
-				$buttons .= '</span>';
-				$out .= $buttons;
+					if ( $status === 'Föranmälan' ) {
+						$foran_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'registered' ), $anm_base );
+						$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="foranmalan-button">Anmälningar</button></a>';
+					} elseif ( $status === 'Avanmälan' ) {
+						$avan_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'cancelled' ), $anm_base );
+						$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="avanmalan-button">Anmälningar</button></a>';
 					}
-					 $out .= '</div>'; // Close the div event-item-outer
-				}
-				wp_reset_postdata(); 
 
-              $out .= '</div>';
+					$buttons .= '</span>';
+					
+					$out .= $buttons;					
+				}
+				$out .= '</div>'; // Close the div event-item-outer
+			}
+	
+			$out .= '<hr class="separator" />';
+
+			$out .= '</div>';
+
+		}
+
+	
+	  	$out .= '<div class="events-list">';
+			$out .= '<h4 style="clear:both;">Gamla events:</h4>';
+
+			if ( ! $past_events->have_posts() ) {
+				$out .= '<p style="clear:both;">Finns inga gamla event.</p>';
+			} 
+			else {
+
+				while ( $past_events->have_posts() ) {	
+					$past_events->the_post();
+					$event_id = get_the_ID();
+					$name = get_the_title();	
+					$date = get_post_meta( $event_id, 'event_date', true );
+					$time = get_post_meta( $event_id, 'event_time', true );
+					$location = get_post_meta( $event_id, 'event_location', true );					
+					$maxNbrOfParticipants = get_post_meta( $event_id, 'event_nbrOfParticipants', true );
+					if ( ! $maxNbrOfParticipants ) {
+						$maxNbrOfParticipants = '0';
+					}
+					$description = get_post_meta( $event_id, 'event_description', true );
+					// Only store attachment IDs (integer). Reject URLs or other formats.
+					$picture = intval( get_post_meta( $event_id, 'event_picture', true ) );
+					// Compute a human-friendly picture label (filename) from the attachment, if present
+					$picture_label = '';
+					if ( $picture > 0 ) {
+						$pic_url = wp_get_attachment_url( $picture );
+						if ( $pic_url ) {
+							$picture_label = wp_basename( $pic_url );
+						}
+					}
+					$status = get_post_meta( $event_id, 'event_status', true );
+					
+					// Render event item left and right columns
+					$out .= '<div class="event-item-outer">';
+					$out .= '<div id="event-item-' . esc_attr( $event_id ) . '" class="event-item">';
+					// left column
+					$out .= '<div class="event-item-left">';
+					$out .= '<div style="font-size: 20px;"><strong>' . esc_html( $name ) . '</strong></div>';
+					$out .= '<div>' . esc_html( $date ) . ', kl ' . esc_html( $time ) . '</div>';
+					$out .= '<div>' . esc_html( $location ) . '</div>';
+					if ( $description ) {
+						$out .= '<div onclick="ShowDescription(' . "'event-description-" . esc_attr( $event_id ) . "'" . ')" style="text-decoration:underline; cursor:pointer;">Beskrivning:</div>';
+						$out .= '<div id="event-description-' . esc_attr( $event_id ) . '" style="text-align:left; margin-top: -5px; margin-bottom:10px; display:none;">' . esc_html( $description ) . '</div>';
+					} else {
+						$out .= '<div>Beskrivning ej tillgänglig.</div>';
+					}
+					$out .= '<div>Max ' . esc_html( $maxNbrOfParticipants ) . ' deltagare</div>';
+
+					// Add Avanmälan or Föranmälan link or status text depending on user state
+					if ( is_user_logged_in() ) {
+						$user_id = get_current_user_id();
+						$cancelled = get_post_meta( $event_id, 'event_cancellations', true );
+						if ( ! is_array( $cancelled ) ) 
+							$cancelled = array();
+
+						$registered = get_post_meta( $event_id, 'event_registrations', true );
+						if ( ! is_array( $registered ) ) 
+							$registered = array();
+
+						if ( in_array( $user_id, $cancelled, true ) ) {
+							$out .= '<div style="margin-bottom: 10px;">Du har avanmält dig</div>';
+						} 
+						else if ( in_array( $user_id, $registered, true ) ) {
+							$out .= '<div style="margin-bottom: 10px;">Du har anmält dig</div>';
+						} 
+						else {
+							if ( $status === 'Avanmälan' ) {
+								$avan_url = get_page_by_path( 'avanmalan' );
+								$base = $avan_url ? get_permalink( $avan_url->ID ) : site_url( '/avanmalan/' );
+								$avan_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
+
+								$out .= '<div style="margin-bottom: 10px;" >
+											<a class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
+										</div>';
+							}
+							if ( $status === 'Föranmälan' ) {
+								$foran_url = get_page_by_path( 'foranmalan' );
+								$base = $foran_url ? get_permalink( $foran_url->ID ) : site_url( '/foranmalan/' );
+								$foran_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
+								
+								$out .= '<div style="margin-bottom: 10px;" >
+											<a class="foranmalan-link" href="' . esc_url( $foran_url ) . '">Föranmälan</a>									
+										</div>';
+							}
+						}
+
+						$register_guest_page = get_page_by_path( 'register_guest' );
+						$register_guest_base = $register_guest_page ? get_permalink( $register_guest_page->ID ) : site_url( '/register_guest/' );
+						$register_guest_link = add_query_arg( array( 'event_id' => $event_id ), $register_guest_base );
+						$out .= '<div><a href="' . esc_url( $register_guest_link ) . '">Anmäl en gäst</a></div>';
+					} 
+				
+					$out .= '</div>'; // .event-item-left
+
+					// right column
+					$out .= '<div class="event-item-right">';
+					if ( $picture ) {
+						$img_src = '';
+						if ( is_numeric( $picture ) ) {
+							$img_src = wp_get_attachment_url( intval( $picture ) );
+						} elseif ( filter_var( $picture, FILTER_VALIDATE_URL ) ) {
+							$img_src = $picture;
+						} else {
+							$img_src = wp_get_attachment_url( $picture );
+						}
+						if ( $img_src ) {
+							$out .= '<img src="' . esc_url( $img_src ) . '" alt="Event Picture" />';
+						}
+					}
+					$out .= '</div>'; // .event-item-right
+
+					$out .= '</div>'; // .event-item
+
+					if ( current_user_can( 'manage_options' ) ) {
+						// Build action buttons in a single container to avoid stray text nodes between elements
+						$buttons = '<span class="event-action-buttons">';
+						// include both raw picture value (attachment ID or URL) and a human label
+						$buttons .= '<button class="edit-button" data-event-id="' . esc_attr( $event_id ) . '" 
+											data-event-name="' . esc_attr( $name ) . '" data-event-date="' . esc_attr( $date ) . '"
+											data-event-time="' . esc_attr( $time ) . '" data-event-location="' . esc_attr( $location ) . '" 
+											data-event-description="' . esc_attr( $description ) . '" data-event-nbr="' . esc_attr( $maxNbrOfParticipants ) . '" 
+											data-event-status="' . esc_attr( $status ) . '" 
+											data-event-picture-value="' . esc_attr( $picture ) . '" data-event-picture-label="' . esc_attr( $picture_label ) . '">
+										Ändra
+									</button>';
+
+						$del_url = add_query_arg( array( 'delete_event' => $event_id, '_ev_nonce' => wp_create_nonce( 'events_delete_action' ) ) );
+						$buttons .= '<a href="' . esc_url( $del_url ) . '" onclick="return confirm(\'Vill du radera detta event?\');">
+						                 <button class="delete-button" name="events_delete">Radera</button>
+								     </a>';
+
+						$anm_page = get_page_by_path( 'anmalningar' );
+						$anm_base = $anm_page ? get_permalink( $anm_page->ID ) : site_url( '/anmalningar/' );
+
+						if ( $status === 'Föranmälan' ) {
+							$foran_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'registered' ), $anm_base );
+							$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="anmalningar-button">Anmälningar</button></a>';
+						} elseif ( $status === 'Avanmälan' ) {
+							$avan_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'cancelled' ), $anm_base );
+							$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="anmalningar-button">Anmälningar</button></a>';
+						}
+
+						$buttons .= '</span>';
+						
+						$out .= $buttons;
+					}
+					$out .= '</div>'; // Close the div event-item-outer
+				}
+			
+            $out .= '</div>';
+	}
+
+	wp_reset_postdata(); 
+
 
 	// Inline script to handle edit button clicks (only for admins)
 

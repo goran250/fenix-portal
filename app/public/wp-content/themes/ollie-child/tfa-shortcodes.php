@@ -570,14 +570,15 @@ function shortcode_tfa_list( $atts )
 
         $out .= '<div class="tfa-list-box">';
 
-        foreach ( $tfa_posts_sent as $post ) {
-            $tfa_amount = get_post_meta( $post->ID, 'tfa-amount', true ); 
-            $tfa_receiver_id = get_post_meta( $post->ID, 'tfa-receiver', true );
+        foreach ( $tfa_posts_sent as $tfa_post ) {
+            $tfa_amount = get_post_meta( $tfa_post->ID, 'tfa-amount', true ); 
+            $tfa_receiver_id = get_post_meta( $tfa_post->ID, 'tfa-receiver', true );
+            
             $tfa_receiver = get_userdata( $tfa_receiver_id );
-            $edit_url = esc_url( add_query_arg( 'tfa_edit_id', intval( $post->ID ), remove_query_arg( array( 'tfa_reset', 'tfa_post_to_show_id' ) ) ) );
+            $edit_url = esc_url( add_query_arg( 'tfa_edit_id', intval( $tfa_post->ID ), remove_query_arg( array( 'tfa_reset', 'tfa_post_to_show_id' ) ) ) );
             $out .= '<div>
                         <div>Mottagare: ' . esc_html( $tfa_receiver->display_name ) . '</div>
-                        <div>Titel: <a href="' . $edit_url . '" name="tfa_edit">' .  esc_html( get_the_title( $post->ID ) ) . '</a></div>
+                        <div>Titel: <a href="' . $edit_url . '" name="tfa_edit">' .  esc_html( get_the_title( $tfa_post->ID ) ) . '</a></div>
                         <div>Belopp: <strong>' . esc_html( number_format( $tfa_amount, 0, ',', ' ' ))  . ' kr</strong></div>
                      </div>';            
         } 
@@ -594,15 +595,15 @@ function shortcode_tfa_list( $atts )
         $out .= '<p style="float: left; clear: both">Här är dina mottagna TFA:er:</p>';
         
         $out .= '<div class="tfa-list-box">';
-        foreach ( $tfa_posts_received as $post ) {
-            $tfa_amount = get_post_meta( $post->ID, 'tfa-amount', true ); 
-            $tfa_sender_id = get_post_meta( $post->ID, 'tfa-sender', true );
+        foreach ( $tfa_posts_received as $tfa_post ) {
+            $tfa_amount = get_post_meta( $tfa_post->ID, 'tfa-amount', true ); 
+            $tfa_sender_id = get_post_meta( $tfa_post->ID, 'tfa-sender', true );
             $tfa_sender = get_userdata( $tfa_sender_id );
-            $post_to_show_url = esc_url( add_query_arg( 'tfa_post_to_show_id', intval( $post->ID ) ) );
+            $post_to_show_url = esc_url( add_query_arg( 'tfa_post_to_show_id', intval( $tfa_post->ID ) ) );
           
             $out .= '<div>
                         <div>Skickad av: ' . esc_html( $tfa_sender->display_name ) . '</div>
-                        <div>Titel: <a href="' . $post_to_show_url . '" name="tfa_post_to_show">' . esc_html( get_the_title( $post->ID ) ) . '</a></div>
+                        <div>Titel: <a href="' . $post_to_show_url . '" name="tfa_post_to_show">' . esc_html( get_the_title( $tfa_post->ID ) ) . '</a></div>
                         <div>Belopp: <strong>' . esc_html( number_format( $tfa_amount, 0, ',', ' ' ))  . ' kr</strong></div>                    
                      </div>';                     
         }
@@ -615,15 +616,15 @@ function shortcode_tfa_list( $atts )
 
 
     if ( isset( $_GET['tfa_post_to_show_id'] ) ) {
-        $post_to_show_id = intval( wp_unslash( $_GET['tfa_post_to_show_id'] ) );
+        $tfa_post_to_show_id = intval( wp_unslash( $_GET['tfa_post_to_show_id'] ) );
 
-        if ( $post_to_show_id > 0 ) {
-            $post_to_show = get_post( $post_to_show_id );
-            $tfa_sender_id = intval( get_post_meta( $post_to_show_id, 'tfa-sender', true ) );
-            $tfa_receiver_id = intval( get_post_meta( $post_to_show_id, 'tfa-receiver', true ) );
+        if ( $tfa_post_to_show_id > 0 ) {
+            $tfa_post_to_show = get_post( $tfa_post_to_show_id );
+            $tfa_sender_id = intval( get_post_meta( $tfa_post_to_show_id, 'tfa-sender', true ) );
+            $tfa_receiver_id = intval( get_post_meta( $tfa_post_to_show_id, 'tfa-receiver', true ) );
 
             // Access control: only sender (author) or receiver can view details
-            if ( ! $post_to_show || ( intval( $post_to_show->post_author ) !== intval( $currentUser->ID ) && $tfa_receiver_id !== intval( $currentUser->ID ) ) ) {
+            if ( ! $tfa_post_to_show || ( intval( $tfa_post_to_show->post_author ) !== intval( $currentUser->ID ) && $tfa_receiver_id !== intval( $currentUser->ID ) ) ) {
                 return $out;
             }
 
@@ -632,14 +633,14 @@ function shortcode_tfa_list( $atts )
             $out .='<div class="tfa-post-to-show-box">
                         <div>Skickad av: <strong>' . esc_html( $tfa_sender->display_name ) . '</strong></div>
                         <hr class="tfa-separator" />
-                        <div>Titel: <strong>' .  esc_html( $post_to_show->post_title ) . '</strong></div>
+                        <div>Titel: <strong>' .  esc_html( $tfa_post_to_show->post_title ) . '</strong></div>
                         <hr class="tfa-separator" />
                         <label>Lång beskrivning av affären.</label>
-                        <div><strong>' . esc_html( get_post_meta( $post_to_show_id, 'tfa-description', true ) ) . '</strong></div>
+                        <div><strong>' . esc_html( get_post_meta( $tfa_post_to_show_id, 'tfa-description', true ) ) . '</strong></div>
                         <hr class="tfa-separator" />
                         <label>Uppladdade filer.</label>';
 
-            $file_atts = get_post_meta( $post_to_show_id, 'tfa-file', false ); // all values
+            $file_atts = get_post_meta( $tfa_post_to_show_id, 'tfa-file', false ); // all values
             $file_items = array();
     
             if ( !empty( $file_atts ) ) {
@@ -668,7 +669,7 @@ function shortcode_tfa_list( $atts )
             }
 
             $out .=    '<hr class="tfa-separator" />
-                        <div>Belopp: <strong>' . esc_html( number_format( get_post_meta( $post_to_show_id, 'tfa-amount', true ), 0, ',', ' ' ))  . ' kr</strong></div>
+                        <div>Belopp: <strong>' . esc_html( number_format( get_post_meta( $tfa_post_to_show_id, 'tfa-amount', true ), 0, ',', ' ' ))  . ' kr</strong></div>
                     </div>'; // Closing the tfa-post-to-show                        -box
             $out .= '<script>window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });</script>';
 

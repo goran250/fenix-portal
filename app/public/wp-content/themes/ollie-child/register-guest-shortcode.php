@@ -71,6 +71,7 @@ function shortcode_register_guest( $atts )
             $guest_phone = isset( $_POST['guest_phone'] ) ? wp_unslash( $_POST['guest_phone'] ) : '';  
             $guest_expertise = isset( $_POST['guest_expertise'] ) ? wp_unslash( $_POST['guest_expertise'] ) : '';      
             
+
             if (current_user_can('manage_options')) {
                 $is_membership_guest = isset( $_POST['has_applied_for_membership'] ) ? wp_unslash( $_POST['has_applied_for_membership'] ) : 'No';
                 $guest_specific_search = isset( $_POST['guest_specific_search'] ) ? wp_unslash( $_POST['guest_specific_search'] ) : '';
@@ -157,8 +158,10 @@ function shortcode_register_guest( $atts )
                         update_post_meta( $guest_id, 'guest_company', $guest_company );
                         update_post_meta( $guest_id, 'guest_phone', $guest_phone );
                         update_post_meta( $guest_id, 'guest_expertise', $guest_expertise );
-                        update_post_meta( $guest_id, 'is_membership_guest', $is_membership_guest );
-                        update_post_meta( $guest_id, 'guest_specific_search', $guest_specific_search );
+                        if (current_user_can('manage_options')) {
+                            update_post_meta( $guest_id, 'is_membership_guest', $is_membership_guest );
+                            update_post_meta( $guest_id, 'guest_specific_search', $guest_specific_search );
+                        }
                         $messages['success'] = '<strong>Gästen har sparats.</strong><br/><span style="font-size: 14px;">Formuläret är återställt och du kan anmäla en ny gäst.</span>';
                     } 
                     else if ( is_wp_error( $guest_id ) ) {

@@ -129,7 +129,7 @@
                      </div>';
         }
        
-        $event->header_row = 'Möteslista för ' . esc_html( $event->post_title ) . ' den ' . esc_html( date_i18n( 'j F Y', strtotime( $event->event_date ) ) );
+        $event->header_row = 'Möteslista för ' . $event->post_title . ' den ' . date_i18n( 'j F Y', strtotime( $event->event_date ) );
 
         $out .= CreateExcelFile($invited_guests, $membership_guests, $event, $event_status);
 
@@ -276,6 +276,11 @@
             '{{GENERATED_AT}}'   => (string) date_i18n( 'Y-m-d H:i' ),
         );
 
+        // Ensure first row header is always populated even if placeholder is missing in template.
+        if ( ! empty( $event->header_row ) ) {
+            $sheet->setCellValue( 'A1', (string) $event->header_row );
+        }
+
         $max_row = $sheet->getHighestRow();
         $max_col_idx = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString( $sheet->getHighestColumn() );
 
@@ -286,8 +291,9 @@
                 if ( ! is_string( $value ) || $value === '' ) {
                     continue;
                 }
-                if ( isset( $replacements[ $value ] ) ) {
-                    $sheet->setCellValue( $ref, $replacements[ $value ] );
+                $new_value = str_replace( array_keys( $replacements ), array_values( $replacements ), $value );
+                if ( $new_value !== $value ) {
+                    $sheet->setCellValue( $ref, $new_value );
                 }
             }
         }
@@ -345,8 +351,9 @@
             $membership_title_row = $find_row( 'gäster som ansökt om medlemskap:', 1, false );
             $invited_title_row = $find_row( 'gäster:', 1, false );
             $after_invited_anchor_row = $find_row( 'Vill du bli medlem', 1, true );
+            $hardcoded_block_start_row = $find_row( 'natverketfenix.se', 1, true );
 
-            // Members table data starts at fixed row 3.
+            // Members table data starts at fixed row 6.
             $members_data_start_row = 6;
             // Membership and invited tables are anchored by section titles.
             $membership_data_start_row = $membership_title_row ? ( $membership_title_row + 2 ) : 0;
@@ -357,7 +364,7 @@
                 return false;
             }
 
-            $write_table_rows = function( $data_start_row, $next_anchor_row, $column_map, $rows, $empty_rows_before_next_anchor = 0 ) use ( $sheet ) {
+            $write_table_rows = function( $data_start_row, $next_anchor_row, $column_map, $rows, $empty_rows_before_next_anchor = 0, $merge_columns = array() ) use ( $sheet ) {
                 $last_data_col = 0;
                 foreach ( $column_map as $col_idx ) {
                     if ( $col_idx > $last_data_col ) {
@@ -399,13 +406,70 @@
                         $sheet->setCellValue( $ref, isset( $row_values[ $key ] ) ? (string) $row_values[ $key ] : '' );
                         $sheet->getStyle( $ref )->applyFromArray( $border_style );
                     }
+
+                    // Merge requested columns for this row (e.g. C:D and G:H in members table)
+                    foreach ( $merge_columns as $pair ) {
+                        if ( ! is_array( $pair ) || count( $pair ) !== 2 ) {
+                            continue;
+                        }
+                        $start_col = intval( $pair[0] );
+                        $end_col = intval( $pair[1] );
+                        if ( $start_col <= 0 || $end_col <= $start_col ) {
+                            continue;
+                        }
+                        $start_ref = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex( $start_col ) . $excel_row;
+                        $end_ref = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex( $end_col ) . $excel_row;
+                        $range = $start_ref . ':' . $end_ref;
+                        foreach ( $sheet->getMergeCells() as $merged_range ) {
+                            if ( strpos( $merged_range, $start_ref . ':' ) === 0 ) {
+                                $sheet->unmergeCells( $merged_range );
+                            }
+                        }
+                        $sheet->mergeCells( $range );
+                        $sheet->getStyle( $range )->applyFromArray( $border_style );
+                    }
+
                     $sheet->getRowDimension( $excel_row )->setRowHeight( 18);
                     $row_idx++;
                 }
             };
 
+            // Keep two empty rows between hardcoded block and table 2 section title
+            if ( $membership_title_row > 0 ) {
+                $sheet->insertNewRowBefore( $membership_title_row, 2 );
+                $membership_title_row += 2;
+                if ( $invited_title_row > 0 ) {
+                    $invited_title_row += 2;
+                }
+                if ( $after_invited_anchor_row > 0 ) {
+                    $after_invited_anchor_row += 2;
+                }
+
+                $membership_data_start_row = $membership_title_row + 2;
+                $invited_data_start_row = $invited_title_row ? ( $invited_title_row + 2 ) : 0;
+            }
+
+            // Keep exactly 3 empty rows between table 2 and table 3 (before table 3 title section).
+            if ( $invited_title_row > 0 ) {
+                $sheet->insertNewRowBefore( $invited_title_row, 2 );
+                $invited_title_row += 2;
+                if ( $after_invited_anchor_row > 0 ) {
+                    $after_invited_anchor_row += 2;
+                }
+                $invited_data_start_row = $invited_title_row + 2;
+            }
+
+            // Keep exactly 3 empty rows after table 3 and before hardcoded rows.
+            if ( $after_invited_anchor_row > 0 ) {
+                $sheet->insertNewRowBefore( $after_invited_anchor_row, 2 );
+                $after_invited_anchor_row += 2;
+            }
+
             // Write from bottom to top so row insertions don't break earlier anchors
             $invited_next_anchor_row = $after_invited_anchor_row ? $after_invited_anchor_row : ( $sheet->getHighestRow() + 1 );
+            $empty_rows_after_table3 = 3;
+            // Anchor padding tuned so visible blank rows between table 3 and hardcoded block are exactly 3.
+            $anchor_padding_after_table3 = $empty_rows_after_table3 + 2;
             $write_table_rows(
                 $invited_data_start_row,
                 $invited_next_anchor_row,
@@ -417,8 +481,43 @@
                     'author_name' => 8,
                 ),
                 $invited_guest_rows,
-                0
+                0,
+                array(
+                    array( 2, 3 ),
+                    array( 4, 6 ),
+                )
             );
+
+            // Ensure deterministic border cleanup after table 3 (Expertområde D:F):
+            // keep bottom border on last data row, clear all borders in the 3 blank rows below.
+            $table3_rows_written = max( 1, count( $invited_guest_rows ) );
+            $table3_last_data_row = $invited_data_start_row + $table3_rows_written - 1;
+            $gap_start_row = $table3_last_data_row + 1;
+            $gap_end_row = $table3_last_data_row + $empty_rows_after_table3;
+
+            $sheet->getStyle( 'D' . $table3_last_data_row . ':F' . $table3_last_data_row )->applyFromArray(
+                array(
+                    'borders' => array(
+                        'bottom' => array(
+                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                            'color' => array( 'argb' => 'FF000000' ),
+                        ),
+                    ),
+                )
+            );
+
+            for ( $r = $gap_start_row; $r <= $gap_end_row; $r++ ) {
+                $range = 'D' . $r . ':F' . $r;
+                $sheet->getStyle( $range )->applyFromArray(
+                    array(
+                        'borders' => array(
+                            'allBorders' => array(
+                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_NONE,
+                            ),
+                        ),
+                    )
+                );
+            }
 
             $write_table_rows(
                 $membership_data_start_row,
@@ -431,12 +530,16 @@
                     'specific_search'  => 8,
                 ),
                 $membership_guests,
-                3
+                3, // Keep 3-row spacing between table 2 and table 3.
+                array(
+                    array( 2, 3 ),
+                    array( 4, 6 ),
+                )
             );
 
             $write_table_rows(
                 $members_data_start_row,
-                $membership_title_row,
+                $hardcoded_block_start_row ? $hardcoded_block_start_row : $membership_title_row,
                 array(
                     'display_name'    => 1,
                     'company'         => 2,
@@ -446,7 +549,11 @@
                     'specific_search' => 7,
                 ),
                 $members,
-                3
+                2,
+                array(
+                    array( 3, 4 ),
+                    array( 7, 8 ),
+                )
             );
 
             foreach ( $spreadsheet->getWorksheetIterator() as $work_sheet ) {
@@ -501,7 +608,7 @@
                 $confirm_override = isset( $_POST['applications_confirm_regenerate'] ) ? intval( wp_unslash( $_POST['applications_confirm_regenerate'] ) ) : 0;
 
                 if ( ! empty( $excel_state ) && isset( $excel_state['source'] ) && $excel_state['source'] === 'uploaded' && $confirm_override !== 1 ) {
-                    $messages['warnings'][] = 'Filen har manuella ändringar från uppladdad version. Om du skapar en ny mötesfil nu förloras dessa ändringar.';
+                    $messages['warnings'][] = 'Filen har manuella ändringar från en uppladdad version. Om du skapar en ny mötesfil nu, förloras dessa ändringar.';
                     $show_regenerate_confirm = true;
                 } else {
                     $error_message = '';
@@ -559,18 +666,18 @@
             $out .= '</ul></div>';
         }
         if ( ! empty( $messages['warnings'] ) ) {
-            $out .= '<div class="applications-warnings"><ul>';
+            $out .= '<div class="applications-warnings">';
             foreach ( $messages['warnings'] as $msg ) {
-                $out .= '<li>' . esc_html( $msg ) . '</li>';
+                $out .= '<div class="applications-warning">' . esc_html( $msg ) . '</div>';
             }
-            $out .= '</ul></div>';
+            $out .= '</div>';
         }
         if ( ! empty( $messages['success'] ) ) {
-            $out .= '<div class="applications-success"><ul>';
+            $out .= '<div style="margin-top: 30px;">';
             foreach ( $messages['success'] as $msg ) {
-                $out .= '<li>' . esc_html( $msg ) . '</li>';
+                $out .= '<div class="applications-success">' . esc_html( $msg ) . '</div>';
             }
-            $out .= '</ul></div>';
+            $out .= '</div>';
         }
 
         $out .= '<form method="post" class="applications-excel-form">';
@@ -581,7 +688,7 @@
         $out .= '<p>';
         $out .= '<button type="submit" name="applications_generate_excel_submit" class="submit-button" data-tooltip="Skapa en mötesfil i excel format för detta eventet">Skapa mötesfil</button>';
         if ( $show_regenerate_confirm ) {
-            $out .= ' <button type="submit" name="applications_generate_excel_submit" value="1" class="submit-button" data-tooltip="Skapa ny fil och skriv över manuella ändringar">Skapa ändå (förlorar manuella ändringar)</button>';
+            $out .= ' <button type="submit" name="applications_generate_excel_submit" value="1" class="submit-button" data-tooltip="Skapa ny fil och skriv över manuella ändringar">Skapa ändå (manuella ändringar förloras)</button>';
             $out .= '<input type="hidden" name="applications_confirm_regenerate" value="1" />';
         }
         $out .= '</p>';
@@ -591,7 +698,10 @@
         $out .= wp_nonce_field( 'applications_excel_action', 'applications_excel_nonce', true, false );
         $out .= '<input type="hidden" name="event_id" value="' . esc_attr( $event->ID ) . '" />';
         $out .= '<input type="hidden" name="event_status" value="' . esc_attr( $event_status ) . '" />';
-        $out .= '<p><label for="applications_excel_file">Ladda upp redigerad mötesfil:</label><br/><input type="file" id="applications_excel_file" name="applications_excel_file" accept=".xlsx" /> <button type="submit" name="applications_upload_excel_submit" class="submit-button">Ladda upp fil</button></p>';
+        $out .= '<p style="margin-top: 30px;">
+                    <label for="applications_excel_file" style="margin-bottom: -5px;">Ladda upp redigerad mötesfil:</label>
+                    <input type="file" id="applications_excel_file" name="applications_excel_file" accept=".xlsx" /> 
+                    <button type="submit" name="applications_upload_excel_submit" class="submit-button">Ladda upp fil</button></p>';
         $out .= '</form>';
 
         if ( ! empty( $excel_state['path'] ) && file_exists( $excel_state['path'] ) ) {
@@ -604,7 +714,9 @@
                 ),
                 admin_url( 'admin-post.php' )
             );
-            $out .= '<p><a href="' . esc_url( $download_url ) . '" class="applications-download-link">Ladda ner aktuell mötesfil</a></p>';
+            $out .= '<p class="applications-download-link">
+                        <a href="' . esc_url( $download_url ) . '">Ladda ner aktuell mötesfil</a>
+                     </p>';
         }
 
         return $out;

@@ -49,22 +49,27 @@ function shortcode_Register_member( $atts ) {
 				$message = "Hej!\n\nVälkommen till nätverket Fenix medlemsportal.Du är nu antagen som medlem.\n\nVälj ett lösenord via länken nedan:\n" . $password_setup_link;
 				$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 				$mail_error_message = '';
+
 				$wp_mail_failed_handler = function( $wp_error ) use ( &$mail_error_message ) {
 					if ( is_wp_error( $wp_error ) ) {
 						$mail_error_message = $wp_error->get_error_message();
 					}
 				};
+
 				add_action( 'wp_mail_failed', $wp_mail_failed_handler );
+
 				$sent = wp_mail( $target_user->user_email, $subject, $message, $headers );
+				
 				remove_action( 'wp_mail_failed', $wp_mail_failed_handler );
 				$mail_debug_notice = 'Mail debug: wp_mail returned ' . ( $sent ? 'true' : 'false' ) . '.';
 				if ( ! $sent && $mail_error_message ) {
 					$mail_debug_notice .= ' Fel: ' . $mail_error_message;
+
 				}
 				if ( $sent ) {
 					$messages['success'] = 'Meddelandet har skickats till medlemmen.';
-					$messages['errors'][] = "Eftersom mailfunktionen inte fungerar så visas lösenordslänken här: ";
-					$messages['errors'][] = $password_setup_link;
+					// $messages['errors'][] = "Eftersom mailfunktionen inte fungerar så visas lösenordslänken här: ";
+					// $messages['errors'][] = $password_setup_link;
 				} 
 				else {
 					$messages['errors'][] = 'Kunde inte skicka meddelandet.';

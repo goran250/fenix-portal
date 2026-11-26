@@ -619,15 +619,15 @@ function shortcode_events_list( $atts ) {
 
 					if ( $status === 'Föranmälan' ) {
 						$foran_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'registered' ), $anm_base );
-						$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="foranmalan-button">Anmälningar</button></a>';
+						$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="anmalningar-button">Anmälningar</button></a>';
 					} elseif ( $status === 'Avanmälan' ) {
 						$avan_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'cancelled' ), $anm_base );
-						$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="avanmalan-button">Anmälningar</button></a>';
+						$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="anmalningar-button">Anmälningar</button></a>';
 					}
 
 					$buttons .= '</span>';
 					
-					$out .= $buttons;					
+					$out .= $buttons;		
 				}
 				$out .= '</div>'; // Close the div event-item-outer
 			}

@@ -390,6 +390,16 @@ Görans css
   .page-id-321 .tfa-table td.amount {
     width: 90px;
   }
+  
+  .page-id-228 input[name="applications_excel_file"] {
+    display: block;
+    margin: 20px 0 0 0;
+  }
+
+  .page-id-228 p.applications-download-link {
+    margin-top: 20px;
+  }
+
 }
 
 

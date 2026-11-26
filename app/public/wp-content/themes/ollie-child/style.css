@@ -836,15 +836,10 @@ form.wp-block-gutena-forms .wp-block-gutena-form-field {
 }
 
 .gutena-forms-submit-buttons button {
-  padding: 6px 16px!important;
-  border-radius: 6px!important;
-  border: 1px solid #888!important;
-  margin: 20px 0  0 0;
   background-color: #F0F0F0!important;
+  border: 1px solid #888!important;
   outline: none!important;
   outline-offset: 0!important;
-  font-size: 16px;
-  font-weight: 450;
 }
 
 /** End Kontaktsidan */
@@ -894,14 +889,6 @@ form.events-add-form textarea, form.events-edit-form textarea {
   width: 310px;
   margin: 8px 0;
   border: solid 1px #888!important;
-}
-
-form.events-add-form .submit-button, form.events-edit-form .submit-button {
-  margin-top: 20px;
-  padding: 5px 12px!important;
-  border-radius: 6px!important;
-  border: 1px solid #888;
-
 }
 
 .events-list-wrap .edit-button {
@@ -1244,14 +1231,6 @@ div.event-item div {
   margin-top: 8px;
 }
 
-.page-id-730 .submit-button, .page-id-730 .submit-button {
-  margin: 15px 20px 0 0;
-  padding: 5px 12px!important;
-  border-radius: 6px!important;
-  border: 1px solid #888;
-  cursor: pointer;
-}
-
 
 .page-id-730 .guest-delete-button {
     height: 25px;
@@ -1287,11 +1266,24 @@ div.event-item div {
   margin-bottom: 10px;
 }
 
+.page-id-228 p.applications-download-link {
+  margin-top: -5px;
+}
+
+.page-id-228 input[name="applications_excel_file"]  {
+  margin-right: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #888;
+  max-width: 300px;
+}
+
+
+
 /** End applicationssidan */
 
 
-/* Start avanmälan sidan */
-.page-id-861 input[type="text"] {
+/* Start avanmälan sidan och foranmalan sidan*/
+.page-id-861 input[type="text"], .page-id-978 input[type="text"] {
   padding: 8px;
   border: 1px solid #888;
   border-radius: 6px;
@@ -1311,13 +1303,24 @@ input[type="radio"], input[type="radio"] + label {
     clear: both;
 } 
 
-.member-success, .file-success, .tfa-success, .register-guest-success {
+.member-success, .file-success, .tfa-success, .register-guest-success, .applications-success {
   width: fit-content;
   background-color: green;
   color: white;
   padding: 5px 20px;
   border-radius: 6px;
   margin-left: 0px!important;
+}
+
+.applications-warning {
+  width: fit-content;
+  background-color: #e2e208;
+  color: black;
+  padding: 5px 20px;
+  border-radius: 6px;
+  max-width: 550px;
+  margin-left: 0px!important;
+  margin-top: 30px;
 }
 
 .member-errors, .file-errors, .events-errors, .tfa-errors, .register-guest-errors {
@@ -1387,13 +1390,16 @@ ul.user-files-list li {
 }
 
 /** Diverse submit buttons */
+ form.events-add-form .submit-button, form.events-edit-form .submit-button, .page-id-730 .submit-button,
 .register-member-form .submit-button, .edit-member-form .submit-button, .user-files-form .submit-button,
 .page-id-401 .submit-button, .gutena-forms-submit-button button, .send-member-email-form .submit-button,
-.page-id-321 .tfa-form .submit-button, .page-id-861 .avanmalan-form .submit-button {
+.page-id-321 .tfa-form .submit-button, .page-id-861 .avanmalan-form .submit-button, .page-id-978 .submit-button, 
+.page-id-228 .submit-button {
   padding: 5px 12px!important;
   border-radius: 6px!important;
   border: 1px solid #888;
   margin: 20px 30px  0 0;
+  cursor: pointer;
 }
 
 .send-member-email-form .submit-button {
@@ -1430,8 +1436,9 @@ button[data-tooltip]:hover::after, a[data-tooltip]:hover::after {
     page-id-228 = Anmälningarsidan  
     page-id-281 = Kontaktsidan
     page-id-401 = Set password sidan 
-    page-id-861 = avanmälan sidan */
-.page-id-2 main, .page-id-228 main, .page-id-401 main, .page-id-730 main, .page-id-861 main  {
+    page-id-861 = avanmälan sidan
+    page-id-978 = foranmalan sidan */
+.page-id-2 main, .page-id-228 main, .page-id-401 main, .page-id-730 main, .page-id-861 main, .page-id-978 main   {
    max-width: 800px;
    width: 100%;
    margin: 0 auto;

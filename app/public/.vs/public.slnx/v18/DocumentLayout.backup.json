@@ -6,9 +6,6 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-implement-applications-excel-workflow.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\edit-member-shortcode.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:wp-content\\themes\\ollie-child\\edit-member-shortcode.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
@@ -47,6 +44,19 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\applications-shortcode.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:wp-content\\themes\\ollie-child\\applications-shortcode.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-implement-applications-excel-workflow.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\tmp-inspect-template.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tmp-inspect-template.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
     }
   ],
   "DocumentGroupContainers": [
@@ -56,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -84,13 +94,38 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "tmp-inspect-template.php",
+              "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\tmp-inspect-template.php",
+              "RelativeDocumentMoniker": "tmp-inspect-template.php",
+              "ToolTip": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\tmp-inspect-template.php",
+              "RelativeToolTip": "tmp-inspect-template.php",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
+              "WhenOpened": "2026-11-20T15:20:41.304Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "plan-implement-applications-excel-workflow.md",
+              "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-implement-applications-excel-workflow.md",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\.copilot\\plans\\plan-implement-applications-excel-workflow.md",
+              "ToolTip": "C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-implement-applications-excel-workflow.md",
+              "RelativeToolTip": "..\\..\\..\\..\\.copilot\\plans\\plan-implement-applications-excel-workflow.md",
+              "ViewState": "AgIAAAEAAAAAAAAAAABBwAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-11-20T12:27:03.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "applications-shortcode.php",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\applications-shortcode.php",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\applications-shortcode.php",
               "ToolTip": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\applications-shortcode.php",
               "RelativeToolTip": "wp-content\\themes\\ollie-child\\applications-shortcode.php",
-              "ViewState": "AgIAAIIAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANQBAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
               "WhenOpened": "2026-11-20T01:36:13.433Z",
               "EditorCaption": ""
@@ -109,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "password-setup-shortcode.php",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\password-setup-shortcode.php",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\password-setup-shortcode.php",
@@ -121,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "tfa-shortcode.php",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\tfa-shortcode.php",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\tfa-shortcode.php",
@@ -133,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "tfa-shortcodes.php",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\tfa-shortcodes.php",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\tfa-shortcodes.php",
@@ -145,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "uploaded-files-shortcode.php",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\uploaded-files-shortcode.php",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\uploaded-files-shortcode.php",
@@ -157,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "functions.php",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\functions.php",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\functions.php",
@@ -169,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "edit-member-shortcode.php",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\edit-member-shortcode.php",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\edit-member-shortcode.php",
@@ -181,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "style.css",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\style.css",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\style.css",
@@ -193,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "events-shortcode.php",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\events-shortcode.php",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\events-shortcode.php",
@@ -205,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "events-edit.js",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\Local Sites\\fenix-portal\\app\\public\\wp-content\\themes\\ollie-child\\js\\events-edit.js",
               "RelativeDocumentMoniker": "wp-content\\themes\\ollie-child\\js\\events-edit.js",
@@ -217,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "plan-repository-scan-and-initial-investigation.md [Preview]",
               "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md",
@@ -225,6 +260,18 @@
               "RelativeToolTip": "..\\..\\..\\..\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md [Preview]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2026-11-12T13:34:22.186Z",
+              "EditorCaption": " [Preview]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "plan-repository-scan-and-initial-investigation.md [Preview]",
+              "DocumentMoniker": "C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md",
+              "ToolTip": "C:\\Users\\\u00C4GAREN\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md [Preview]",
+              "RelativeToolTip": "..\\..\\..\\..\\.copilot\\plans\\plan-repository-scan-and-initial-investigation.md [Preview]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-11-24T00:26:24.166Z",
               "EditorCaption": " [Preview]"
             },
             {

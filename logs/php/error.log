@@ -1647,3 +1647,102 @@ Stack trace:
   thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 456
 [25-Nov-2026 10:09:17 UTC] PHP Parse error:  syntax error, unexpected token "!", expecting variable or "{" or "$" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 488
 [25-Nov-2026 10:09:17 UTC] PHP Parse error:  syntax error, unexpected token "!", expecting variable or "{" or "$" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 488
+[26-Nov-2026 01:29:28 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 632
+[26-Nov-2026 01:29:28 UTC] PHP Parse error:  syntax error, unexpected token "}" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 632
+[26-Nov-2026 01:57:44 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[26-Nov-2026 01:57:44 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[26-Nov-2026 01:57:44 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[26-Nov-2026 01:57:44 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[26-Nov-2026 13:02:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method PhpOffice\PhpSpreadsheet\Worksheet\Worksheet::isMergeRangeValueCell() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php:423
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(480): {closure:fenix_applications_generate_excel():367}(6, 9, Array, Array, 2, Array)
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(555): fenix_applications_generate_excel(Object(WP_Post), 'cancelled', Array, Array, Array, '')
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(134): CreateExcelFile(Array, Array, Object(WP_Post), 'cancelled')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_applications(Array, '', 'applications')
+#4 [internal function]: do_shortcode_tag(Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(applic...', 'do_shortcode_ta...', '[applications]\n...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('[applications]\n...')
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('[applications]\n...', Array)
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:shortco...')
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:shortco...', Object(WP_Block))
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#19 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#20 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#21 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#22 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 423
+[26-Nov-2026 13:02:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method PhpOffice\PhpSpreadsheet\Worksheet\Worksheet::isMergeRangeValueCell() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php:423
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(480): {closure:fenix_applications_generate_excel():367}(6, 9, Array, Array, 2, Array)
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(555): fenix_applications_generate_excel(Object(WP_Post), 'cancelled', Array, Array, Array, '')
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(134): CreateExcelFile(Array, Array, Object(WP_Post), 'cancelled')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_applications(Array, '', 'applications')
+#4 [internal function]: do_shortcode_tag(Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(applic...', 'do_shortcode_ta...', '[applications]\n...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('[applications]\n...')
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('[applications]\n...', Array)
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:shortco...')
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:shortco...', Object(WP_Block))
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#19 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#20 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#21 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#22 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 423
+[26-Nov-2026 13:02:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method PhpOffice\PhpSpreadsheet\Worksheet\Worksheet::isMergeRangeValueCell() in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php:423
+Stack trace:
+#0 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(480): {closure:fenix_applications_generate_excel():367}(6, 9, Array, Array, 2, Array)
+#1 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(555): fenix_applications_generate_excel(Object(WP_Post), 'cancelled', Array, Array, Array, '')
+#2 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php(134): CreateExcelFile(Array, Array, Object(WP_Post), 'cancelled')
+#3 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(434): shortcode_applications(Array, '', 'applications')
+#4 [internal function]: do_shortcode_tag(Array)
+#5 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(applic...', 'do_shortcode_ta...', '[applications]\n...')
+#6 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-hook.php(353): do_shortcode('[applications]\n...')
+#7 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\plugin.php(206): WP_Hook->apply_filters('[applications]\n...', Array)
+#8 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\post-content.php(50): apply_filters('the_content', '<!-- wp:shortco...')
+#9 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_post_content(Array, '<!-- wp:shortco...', Object(WP_Block))
+#10 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(629): WP_Block->render()
+#11 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#12 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#13 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks\pattern.php(63): do_blocks('<!-- wp:templat...')
+#14 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\class-wp-block.php(665): render_block_core_pattern(Array, '', Object(WP_Block))
+#15 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2514): WP_Block->render()
+#16 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\blocks.php(2597): render_block(Array)
+#17 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\block-template.php(291): do_blocks('<!-- wp:pattern...')
+#18 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#19 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\template-loader.php(132): include('C:\\Users\\\xC3\x84GARE...')
+#20 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-blog-header.php(19): require_once('C:\\Users\\\xC3\x84GARE...')
+#21 C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\index.php(17): require('C:\\Users\\\xC3\x84GARE...')
+#22 {main}
+  thrown in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 423
+[26-Nov-2026 19:32:34 UTC] PHP Warning:  fopen(C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public/wp-content/uploads/applications-files/moteslista-fenix-event-253-cancelled.xlsx): Failed to open stream: Resource temporarily unavailable in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 151
+[26-Nov-2026 19:33:13 UTC] PHP Warning:  fopen(C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public/wp-content/uploads/applications-files/moteslista-fenix-event-253-cancelled.xlsx): Failed to open stream: Resource temporarily unavailable in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 151
+[26-Nov-2026 19:37:57 UTC] PHP Warning:  fopen(C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public/wp-content/uploads/applications-files/moteslista-fenix-event-253-cancelled.xlsx): Failed to open stream: Resource temporarily unavailable in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\vendor\phpoffice\phpspreadsheet\src\PhpSpreadsheet\Writer\BaseWriter.php on line 151
+[26-Nov-2026 22:17:06 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[26-Nov-2026 22:17:06 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[26-Nov-2026 22:17:06 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[26-Nov-2026 22:17:06 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[26-Nov-2026 22:17:43 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[26-Nov-2026 22:17:43 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[26-Nov-2026 22:17:43 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[26-Nov-2026 22:17:43 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[26-Nov-2026 22:18:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[26-Nov-2026 22:18:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
+[26-Nov-2026 22:18:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[26-Nov-2026 22:18:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13

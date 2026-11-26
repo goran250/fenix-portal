@@ -88,6 +88,18 @@ add_action('init', function () {
 		'show_in_rest' => false,
 	) );
 
+    register_post_type('hidden_user', array(
+		'labels' => array(
+			'name' => 'Hidden users',
+			'singular_name' => 'Hidden user',
+		),
+		'public' => false,
+		'show_ui' => true,
+		'map_meta_cap' => true,
+		'capability_type' => array('hidden_users', 'hidden_users'),
+		'supports' => array('title', 'editor', 'author'),
+	));
+
 });
 
 
@@ -189,60 +201,6 @@ add_shortcode('start_page', function () {
 
 
 
-/**
- * Show Company field on user profile and edit screens (editable) and save it to user meta.
- */
-function ollie_user_company_profile_field( $user ) {
-    if ( ! current_user_can( 'edit_users' ) ) {
-        return;
-    }
-
-    $company = get_user_meta( $user->ID, 'company', true );
-
-    wp_nonce_field( 'ollie_save_company', 'ollie_company_nonce' );
-    ?>
-    <h2><?php esc_html_e( 'Company', 'ollie-child' ); ?></h2>
-    <table class="form-table">
-        <tr>
-            <th><label for="company"><?php esc_html_e( 'Company', 'ollie-child' ); ?></label></th>
-            <td>
-                <input type="text" name="company" id="company" value="<?php echo esc_attr( $company ); ?>" class="regular-text" />
-                <p class="description"><?php esc_html_e( 'Company name for this user.', 'ollie-child' ); ?></p>
-            </td>
-        </tr>
-    </table>
-    <?php
-}
-add_action( 'show_user_profile', 'ollie_user_company_profile_field' );
-add_action( 'edit_user_profile', 'ollie_user_company_profile_field' );
-
-function ollie_save_user_company_profile( $user_id ) {
-    if ( ! current_user_can( 'edit_user', $user_id ) ) {
-        return false;
-    }
-
-    if ( empty( $_POST ) ) {
-        return false;
-    }
-
-    if ( ! isset( $_POST['ollie_company_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['ollie_company_nonce'] ), 'ollie_save_company' ) ) {
-        return false;
-    }
-
-    if ( isset( $_POST['company'] ) ) {
-        $company = sanitize_text_field( wp_unslash( $_POST['company'] ) );
-        if ( $company === '' ) {
-            delete_user_meta( $user_id, 'company' );
-        } else {
-            update_user_meta( $user_id, 'company', $company );
-        }
-    }
-}
-add_action( 'personal_options_update', 'ollie_save_user_company_profile' );
-add_action( 'edit_user_profile_update', 'ollie_save_user_company_profile' );
-
-
-
 
 // Shortcode för klickbar telefonlänk
 add_shortcode( 'fenix_phone_link', function() {
@@ -301,93 +259,7 @@ add_action( 'wp_head', function() {
 } );
 
 
-    
 
-// Save company/business custom field from User Registration forms to user meta
-add_action( 'user_registration_after_register_user_action', 'ollie_save_company_from_ur', 10, 3 );
-function ollie_save_company_from_ur( $valid_form_data, $form_id, $user_id ) {
-    if ( empty( $valid_form_data ) || empty( $user_id ) ) {
-        return;
-    }
-
-    // Candidate field keys that may be used for "Företag" in different forms
-    $company_keys = array( 'billing_company', 'shipping_company', 'business_name', 'company', 'company_name', 'företag', 'foretag' );
-
-    foreach ( $company_keys as $key ) {
-        if ( isset( $valid_form_data[ $key ] ) ) {
-            $value = is_object( $valid_form_data[ $key ] ) && isset( $valid_form_data[ $key ]->value ) ? $valid_form_data[ $key ]->value : ( is_scalar( $valid_form_data[ $key ] ) ? $valid_form_data[ $key ] : '' );
-            if ( $value !== '' ) {
-                update_user_meta( $user_id, 'company', sanitize_text_field( $value ) );
-                return; // stop after first match
-            }
-        }
-    }
-
-    // Fallback: some forms (User Registration plugin) store extra fields under meta keys prefixed
-    // with 'user_registration_'. If we didn't find a company key in $valid_form_data, inspect
-    // usermeta for likely company values and copy one to 'company'. This avoids duplicate form
-    // fields being shown while ensuring company is available on the user record.
-    $all_meta = get_user_meta( $user_id );
-    if ( ! empty( $all_meta ) && is_array( $all_meta ) ) {
-        foreach ( $all_meta as $meta_key => $meta_values ) {
-            // skip already stored company
-            if ( $meta_key === 'company' ) {
-                continue;
-            }
-            // look for plugin-stored keys
-            if ( strpos( $meta_key, 'user_registration_' ) === 0 || stripos( $meta_key, 'business' ) !== false || stripos( $meta_key, 'company' ) !== false || stripos( $meta_key, 'företag' ) !== false || stripos( $meta_key, 'foretag' ) !== false ) {
-                $val = is_array( $meta_values ) ? $meta_values[0] : $meta_values;
-                if ( is_array( $val ) ) {
-                    $val = maybe_unserialize( $val );
-                    if ( is_array( $val ) ) {
-                        $val = reset( $val );
-                    }
-                }
-                $val = is_scalar( $val ) ? trim( (string) $val ) : '';
-                if ( $val !== '' ) {
-                    update_user_meta( $user_id, 'company', sanitize_text_field( $val ) );
-                    return;
-                }
-            }
-        }
-    }
-}
-
-// Also migrate UR extra-information to 'company' when a user profile is updated in admin
-add_action( 'personal_options_update', 'ollie_migrate_ur_company_on_update', 20 );
-add_action( 'edit_user_profile_update', 'ollie_migrate_ur_company_on_update', 20 );
-function ollie_migrate_ur_company_on_update( $user_id ) {
-    if ( ! $user_id ) {
-        return;
-    }
-    // If company already set, nothing to do
-    $existing = get_user_meta( $user_id, 'company', true );
-    if ( ! empty( $existing ) ) {
-        return;
-    }
-
-    $all_meta = get_user_meta( $user_id );
-    if ( empty( $all_meta ) || ! is_array( $all_meta ) ) {
-        return;
-    }
-
-    foreach ( $all_meta as $meta_key => $meta_values ) {
-        if ( strpos( $meta_key, 'user_registration_' ) === 0 || stripos( $meta_key, 'business' ) !== false || stripos( $meta_key, 'company' ) !== false || stripos( $meta_key, 'företag' ) !== false || stripos( $meta_key, 'foretag' ) !== false ) {
-            $val = is_array( $meta_values ) ? $meta_values[0] : $meta_values;
-            if ( is_array( $val ) ) {
-                $val = maybe_unserialize( $val );
-                if ( is_array( $val ) ) {
-                    $val = reset( $val );
-                }
-            }
-            $val = is_scalar( $val ) ? trim( (string) $val ) : '';
-            if ( $val !== '' ) {
-                update_user_meta( $user_id, 'company', sanitize_text_field( $val ) );
-                return;
-            }
-        }
-    }
-}
 
 add_action( 'init', function() {
     if ( ! class_exists( 'WP_Roles' ) ) {
@@ -409,168 +281,7 @@ add_action( 'init', function() {
 } );
 
 
-// Show upload field for profile-picture on profile pages
-add_action( 'show_user_profile', 'ollie_profile_picture_field' );
-add_action( 'edit_user_profile', 'ollie_profile_picture_field' );
-// Ensure profile forms support file uploads
-add_action( 'user_edit_form_tag', 'ollie_add_profile_form_enctype' );
-function ollie_add_profile_form_enctype() {
-    echo ' enctype="multipart/form-data"';
-}
-function ollie_profile_picture_field( $user ) {
-    wp_nonce_field( 'ollie_save_profile_picture', 'ollie_profile_picture_nonce' );
-    $att_id = get_user_meta( $user->ID, 'profile_picture', true );
-    $img = $att_id ? wp_get_attachment_image( $att_id, array(96,96) ) : '';
-    ?>
-    <h2><?php esc_html_e( 'Profile picture', 'ollie-child' ); ?></h2>
-    <table class="form-table">
-    <tr>
-      <th><label for="profile_picture"><?php esc_html_e( 'Upload', 'ollie-child' ); ?></label></th>
-      <td>
-        <?php echo $img; ?><br/>
-        <input type="file" name="profile_picture_file" id="profile_picture_file" /><br/>
-        <span class="description"><?php esc_html_e( 'Upload an image to use instead of Gravatar.', 'ollie-child' ); ?></span>
-      </td>
-    </tr>
-    </table>
-    <?php
-}
 
-// Handle saving/upload
-add_action( 'personal_options_update', 'ollie_save_profile_picture' );
-add_action( 'edit_user_profile_update', 'ollie_save_profile_picture' );
-function ollie_save_profile_picture( $user_id ) {
-    if ( ! current_user_can( 'edit_user', $user_id ) ) return;
-    if ( ! isset( $_POST['ollie_profile_picture_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['ollie_profile_picture_nonce'] ), 'ollie_save_profile_picture' ) ) return;
-
-    if ( ! empty( $_FILES['profile_picture_file']['name'] ) ) {
-        require_once ABSPATH . 'wp-admin/includes/file.php';
-        require_once ABSPATH . 'wp-admin/includes/image.php';
-        require_once ABSPATH . 'wp-admin/includes/media.php';
-
-        $file = $_FILES['profile_picture_file'];
-        $overrides = array( 'test_form' => false );
-        $movefile = wp_handle_upload( $file, $overrides );
-        if ( isset( $movefile['file'] ) ) {
-            $filename = $movefile['file'];
-            $filetype = wp_check_filetype( basename( $filename ), null );
-            $attachment = array(
-                'post_mime_type' => $filetype['type'],
-                'post_title'     => sanitize_file_name( basename( $filename ) ),
-                'post_content'   => '',
-                'post_status'    => 'inherit'
-            );
-            $attach_id = wp_insert_attachment( $attachment, $filename );
-            $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
-            wp_update_attachment_metadata( $attach_id, $attach_data );
-
-            // Save attachment ID as user meta and delete previous attachment if any
-            $old_id = get_user_meta( $user_id, 'profile_picture', true );
-            update_user_meta( $user_id, 'profile_picture', intval( $attach_id ) );
-            if ( $old_id && intval( $old_id ) !== intval( $attach_id ) ) {
-                // delete old attachment (force delete files)
-                wp_delete_attachment( intval( $old_id ), true );
-            }
-        }
-    }
-}
-
-// Use uploaded image for get_avatar()
-add_filter( 'get_avatar', 'ollie_get_local_avatar', 10, 5 );
-function ollie_get_local_avatar( $avatar, $id_or_email, $size, $default, $alt = '' ) {
-    $user = false;
-    if ( is_numeric( $id_or_email ) ) {
-        $user = get_user_by( 'id', (int) $id_or_email );
-    } elseif ( is_object( $id_or_email ) && ! empty( $id_or_email->user_id ) ) {
-        $user = get_user_by( 'id', (int) $id_or_email->user_id );
-    } elseif ( is_string( $id_or_email ) ) {
-        $user = get_user_by( 'email', $id_or_email );
-    }
-
-    if ( $user ) {
-        $att_id = get_user_meta( $user->ID, 'profile_picture', true );
-        if ( $att_id ) {
-            $src = wp_get_attachment_image_url( $att_id, array( $size, $size ) );
-            if ( $src ) {
-                $alt = esc_attr( $alt ? $alt : $user->display_name );
-                return "<img src=\"" . esc_url( $src ) . "\" alt=\"{$alt}\" class=\"avatar avatar-{$size} photo\" height=\"{$size}\" width=\"{$size}\" />";
-            }
-        }
-    }
-    return $avatar;
-}
-
-
-// Show upload field for cover photo on profile pages
-add_action( 'show_user_profile', 'ollie_profile_cover_field' );
-add_action( 'edit_user_profile', 'ollie_profile_cover_field' );
-function ollie_profile_cover_field( $user ) {
-    wp_nonce_field( 'ollie_save_cover', 'ollie_cover_nonce' );
-    $att_id = get_user_meta( $user->ID, 'profile_cover', true );
-    $img = $att_id ? wp_get_attachment_image( $att_id, 'medium' ) : '';
-    ?>
-    <h2><?php esc_html_e( 'Cover photo', 'ollie-child' ); ?></h2>
-    <table class="form-table">
-    <tr>
-      <th><label for="profile_cover"><?php esc_html_e( 'Upload', 'ollie-child' ); ?></label></th>
-      <td>
-        <?php echo $img; ?><br/>
-        <input type="file" name="cover_photo_file" id="cover_photo_file" /><br/>
-        <span class="description"><?php esc_html_e( 'Upload a cover image for this user.', 'ollie-child' ); ?></span>
-      </td>
-    </tr>
-    </table>
-    <?php
-}
-
-// Handle saving/upload for cover photo
-add_action( 'personal_options_update', 'ollie_save_profile_cover' );
-add_action( 'edit_user_profile_update', 'ollie_save_profile_cover' );
-function ollie_save_profile_cover( $user_id ) {
-    if ( ! current_user_can( 'edit_user', $user_id ) ) return;
-    if ( ! isset( $_POST['ollie_cover_nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['ollie_cover_nonce'] ), 'ollie_save_cover' ) ) return;
-
-    if ( ! empty( $_FILES['cover_photo_file']['name'] ) ) {
-        require_once ABSPATH . 'wp-admin/includes/file.php';
-        require_once ABSPATH . 'wp-admin/includes/image.php';
-        require_once ABSPATH . 'wp-admin/includes/media.php';
-
-        $file = $_FILES['cover_photo_file'];
-        $overrides = array( 'test_form' => false );
-        $movefile = wp_handle_upload( $file, $overrides );
-        if ( isset( $movefile['file'] ) ) {
-            $filename = $movefile['file'];
-            $filetype = wp_check_filetype( basename( $filename ), null );
-            $attachment = array(
-                'post_mime_type' => $filetype['type'],
-                'post_title'     => sanitize_file_name( basename( $filename ) ),
-                'post_content'   => '',
-                'post_status'    => 'inherit'
-            );
-            $attach_id = wp_insert_attachment( $attachment, $filename );
-            $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
-            wp_update_attachment_metadata( $attach_id, $attach_data );
-
-            // Save attachment ID as user meta for cover and delete previous cover attachment if any
-            $old_cover = get_user_meta( $user_id, 'profile_cover', true );
-            update_user_meta( $user_id, 'profile_cover', intval( $attach_id ) );
-            if ( $old_cover && intval( $old_cover ) !== intval( $attach_id ) ) {
-                wp_delete_attachment( intval( $old_cover ), true );
-            }
-        }
-    }
-}
-
-/**
- * Helper: get user cover image URL
- */
-function ollie_get_user_cover_url( $user_id, $size = 'full' ) {
-    $att_id = get_user_meta( $user_id, 'profile_cover', true );
-    if ( ! $att_id ) {
-        return '';
-    }
-    return wp_get_attachment_image_url( $att_id, $size );
-}
 
 // Load all_members-shortcode implementation if present
 if ( file_exists( get_stylesheet_directory() . '/all-members-shortcode.php' ) ) {

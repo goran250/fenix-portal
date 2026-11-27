@@ -3,7 +3,7 @@
     /**
      * Shows list of members for a given event who are either cancelled (avanmälda)
      * or registered (föranmälda) depending on querystring parameters.
-     * Expected querystring: ?event_id=123&status=cancelled  OR  ?event_id=123&status=registered
+     * Expected querystring: ?event_id=123&status=avanmalan  OR  ?event_id=123&status=foranmalan
      * Swedish synonyms are accepted for status: 'avan', 'foran', 'avanmalda', 'foranmalda', etc.
      */
 
@@ -17,7 +17,7 @@
         $event_status_raw = isset( $_GET['event_status'] ) ? sanitize_text_field( wp_unslash( $_GET['event_status'] ) ) : '';
         $event_status = strtolower( trim( $event_status_raw ) );
 
-        if ( $event_status !== 'cancelled' && $event_status !== 'registered' ) {
+        if ( $event_status !== 'avanmalan' && $event_status !== 'foranmalan' ) {
             return '<div>Ogiltigt statusvärde.</div>';
         }
 
@@ -32,7 +32,7 @@
         
         $event->event_date = get_post_meta( $event->ID, 'event_date', true );
 
-        if ( $event_status === 'cancelled' ) {
+        if ( $event_status === 'avanmalan' ) {
             $user_ids = get_post_meta( $event->ID, 'event_cancellations', true );
             $heading = 'Avanmälningar';
         } else {
@@ -65,7 +65,7 @@
         }
         else {
             $out .= '<div>'; 
-                if ( $event_status === 'cancelled' ) { 
+                if ( $event_status === 'avanmalan' ) { 
                     $out .= '<h4><strong>Inga avanmälda medlemmar hittades.</strong></h4>';
                 } else {
                     $out .= '<h4><strong>Inga föranmälda medlemmar hittades.</strong></h4>';
@@ -167,7 +167,7 @@
         $members = get_users( array( 'fields' => 'all' ) );
         $rows = array();
 
-        if ( ! empty( $members ) && $event_status === 'registered' ) {
+        if ( ! empty( $members ) && $event_status === 'foranmalan' ) {
             $registrations = get_post_meta( $event->ID, 'event_registrations', true );
             if ( ! is_array( $registrations ) ) {
                 $registrations = array();
@@ -183,14 +183,14 @@
                     'company'          => get_user_meta( $member->ID, 'company', true ),
                     'isGoodAt'         => get_user_meta( $member->ID, 'isGoodAt', true ),
                     'specific_search'  => get_user_meta( $member->ID, 'specific_search', true ),
-                    'event_status'     => 'registered',
+                    'event_status'     => 'foranmalan',
                     'replacer_name'    => '',
                     'absence_reason'   => '',
                 );
             }
         }
 
-        if ( ! empty( $members ) && $event_status === 'cancelled' ) {
+        if ( ! empty( $members ) && $event_status === 'avanmalan' ) {
             $cancellations = get_post_meta( $event->ID, 'event_cancellations', true );
             if ( ! is_array( $cancellations ) ) {
                 $cancellations = array();
@@ -232,7 +232,7 @@
                     'company'          => get_user_meta( $member->ID, 'company', true ),
                     'isGoodAt'         => get_user_meta( $member->ID, 'isGoodAt', true ),
                     'specific_search'  => get_user_meta( $member->ID, 'specific_search', true ),
-                    'event_status'     => $is_cancelled ? 'cancelled' : '',
+                    'event_status'     => $is_cancelled ? 'avanmalan' : '',
                     'replacer_name'    => $replacer_name,
                     'absence_reason'   => $absence_reason,
                 );
@@ -267,7 +267,7 @@
     function fenix_applications_apply_header_placeholders( $sheet, $event, $event_status ) {
         $event_date = get_post_meta( $event->ID , 'event_date', true );
         $event_location = get_post_meta( $event->ID, 'event_location', true );
-        $status_label = ( $event_status === 'cancelled' ) ? 'Avanmälningar' : 'Föranmälningar';
+        $status_label = ( $event_status === 'avanmalan' ) ? 'Avanmälningar' : 'Föranmälningar';
 
         $replacements = array(
             '{{EVENT_HEADER_ROW}}' => (string)  $event->header_row,
@@ -659,11 +659,11 @@
         }
 
         if ( ! empty( $messages['errors'] ) ) {
-            $out .= '<div class="applications-errors"><ul>';
+            $out .= '<div class="applications-errors">';
             foreach ( $messages['errors'] as $msg ) {
-                $out .= '<li>' . esc_html( $msg ) . '</li>';
+                $out .= '<div class="applications-error">' . esc_html( $msg ) . '</div>';
             }
-            $out .= '</ul></div>';
+            $out .= '</div>';
         }
         if ( ! empty( $messages['warnings'] ) ) {
             $out .= '<div class="applications-warnings">';
@@ -698,13 +698,15 @@
         $out .= wp_nonce_field( 'applications_excel_action', 'applications_excel_nonce', true, false );
         $out .= '<input type="hidden" name="event_id" value="' . esc_attr( $event->ID ) . '" />';
         $out .= '<input type="hidden" name="event_status" value="' . esc_attr( $event_status ) . '" />';
-        $out .= '<p style="margin-top: 30px;">
-                    <label for="applications_excel_file" style="margin-bottom: -5px;">Ladda upp redigerad mötesfil:</label>
-                    <input type="file" id="applications_excel_file" name="applications_excel_file" accept=".xlsx" /> 
-                    <button type="submit" name="applications_upload_excel_submit" class="submit-button">Ladda upp fil</button></p>';
-        $out .= '</form>';
+       
 
         if ( ! empty( $excel_state['path'] ) && file_exists( $excel_state['path'] ) ) {
+            $out .= '<p style="margin-top: 30px;">
+                        <label for="applications_excel_file" style="margin-bottom: -5px;">Ladda upp redigerad mötesfil:</label>
+                        <input type="file" id="applications_excel_file" name="applications_excel_file" accept=".xlsx" /> 
+                        <button type="submit" name="applications_upload_excel_submit" class="submit-button">Ladda upp fil</button></p>';
+            $out .= '</form>';
+
             $download_url = add_query_arg(
                 array(
                     'action'       => 'fenix_download_applications_excel',
@@ -714,10 +716,15 @@
                 ),
                 admin_url( 'admin-post.php' )
             );
+
             $out .= '<p class="applications-download-link">
                         <a href="' . esc_url( $download_url ) . '">Ladda ner aktuell mötesfil</a>
                      </p>';
         }
+        else {
+            $out .= '</form>';
+        }
+        
 
         return $out;
     }
@@ -731,7 +738,7 @@
         $event_status = isset( $_GET['event_status'] ) ? sanitize_key( wp_unslash( $_GET['event_status'] ) ) : '';
         $nonce = isset( $_GET['_wpnonce'] ) ? wp_unslash( $_GET['_wpnonce'] ) : '';
 
-        if ( $event_id <= 0 || ( $event_status !== 'registered' && $event_status !== 'cancelled' ) ) {
+        if ( $event_id <= 0 || ( $event_status !== 'foranmalan' && $event_status !== 'avanmalan' ) ) {
             wp_die( 'Ogiltig nedladdningsförfrågan.' );
         }
 
@@ -760,6 +767,7 @@
         header( 'Content-Length: ' . filesize( $file_path ) );
         header( 'X-Content-Type-Options: nosniff' );
         readfile( $file_path );
+
         exit;
     }
     add_action( 'admin_post_fenix_download_applications_excel', 'fenix_download_applications_excel_handler' );

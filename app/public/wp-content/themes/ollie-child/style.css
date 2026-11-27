@@ -853,7 +853,7 @@ form.events-add-form,  form.events-edit-form  {
   float: left;
   margin-left: 0px!important;
   margin-bottom: 30px;
-  width: 860px;
+  width: 920px;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 6px;
@@ -991,8 +991,8 @@ div.event-item {
   align-items:flex-start;
   border: 1px solid #ccc;
   border-top: 2px solid #E98E1D;
-  padding: 14px 20px;
-  min-height: 273px;
+  padding: 14px 20px 10px;
+  min-height: 288px;
   margin-bottom: 15px;
   border-radius: 6px;
   background-color: white;
@@ -1020,7 +1020,7 @@ div.event-item-right img {
 }
 
 div.event-item div { 
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 
@@ -1323,7 +1323,7 @@ input[type="radio"], input[type="radio"] + label {
   margin-top: 30px;
 }
 
-.member-errors, .file-errors, .events-errors, .tfa-errors, .register-guest-errors {
+.member-errors, .file-errors, .events-errors, .tfa-errors, .register-guest-errors, .applications-error {
     color: #d60000;
 }
 
@@ -1468,9 +1468,15 @@ button[data-tooltip]:hover::after, a[data-tooltip]:hover::after {
    width: 100%;
    margin: 0 auto;
 }
-/** page-id-146 = Events sidan 
-    page-id-280 = Om fenix-sidan*/
-.page-id-146 main, .page-id-280 main  {
+/** page-id-146 = Events sidan */
+.page-id-146 main {
+    width: 100%;
+    max-width: 1005px;
+    margin: 0 auto;
+}
+
+/** page-id-280 = Om fenix-sidan*/
+.page-id-280 main  {
     width: 100%;
     max-width: 1260px;
     margin: 0 auto;

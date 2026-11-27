@@ -1746,3 +1746,66 @@ Stack trace:
 [26-Nov-2026 22:18:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 13
 [26-Nov-2026 22:18:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
 [26-Nov-2026 22:18:48 UTC] PHP Warning:  Undefined array key "event_id" in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\foranmalan_shortcode.php on line 13
+[27-Nov-2026 08:39:22 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[27-Nov-2026 08:39:22 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 57
+[27-Nov-2026 08:39:22 UTC] PHP Warning:  Undefined variable $currentUser in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[27-Nov-2026 08:39:22 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\avanmalan_shortcode.php on line 77
+[27-Nov-2026 09:22:39 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 773
+[27-Nov-2026 09:22:48 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 773
+[27-Nov-2026 09:25:32 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 773
+[27-Nov-2026 09:26:04 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 773
+[27-Nov-2026 09:35:47 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 774
+[27-Nov-2026 09:36:38 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 774
+[27-Nov-2026 09:36:53 UTC] PHP Warning:  Undefined variable $out in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\applications-shortcode.php on line 774
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:04:37 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 580
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:44 UTC] PHP Warning:  Undefined variable $event_status in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 582
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Undefined variable $event_ID in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Undefined variable $event_ID in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Undefined variable $event_ID in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 581
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:09:56 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:10:50 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:10:50 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:10:50 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:10:50 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:10:50 UTC] PHP Warning:  Undefined variable $event in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 10:10:50 UTC] PHP Warning:  Attempt to read property "ID" on null in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-content\themes\ollie-child\events-shortcode.php on line 583
+[27-Nov-2026 13:14:34 UTC] PHP Warning:  Array to string conversion in C:\Users\ÄGAREN\Local Sites\fenix-portal\app\public\wp-includes\formatting.php on line 1128

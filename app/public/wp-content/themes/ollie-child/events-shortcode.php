@@ -317,10 +317,10 @@ function shortcode_events_list( $atts ) {
 					<input class="event-nbrOfParticipants" name="event_nbrOfParticipants" type="text" />
 				</div>
 				<div style="float:left; margin: 20px 0 0 0; width: 135px;">				    
-					<input type="radio" id="event_status_add_1" name="event_status" value="Föranmälan" />
+					<input type="radio" id="event_status_add_1" name="event_status" value="Foranmalan" />
 					<label style="display: inline;" for="event_status_add_1">Föranmälan:</label>
 					
-					<input style="clear:both;" type="radio" id="event_status_add_2" name="event_status" value="Avanmälan" checked/>
+					<input style="clear:both;" type="radio" id="event_status_add_2" name="event_status" value="Avanmalan" checked/>
 					<label style="display: inline;" for="event_status_add_2">Avanmälan:</label>
 				</div>
 				<div style="float:left; margin-right: 20px;">
@@ -375,9 +375,9 @@ function shortcode_events_list( $atts ) {
 						<input class="event-nbrOfParticipants" name="event_nbrOfParticipants_edit" type="text" value="' . esc_attr( isset( $es['event_nbrOfParticipants_edit'] ) ? $es['event_nbrOfParticipants_edit'] : '' ) . '" />
 					</div>
 					<div style="float:left; margin: 20px 0 0 0; width: 135px;">						
-						<input type="radio" id="event_status_edit_1" name="event_status_edit" value="Föranmälan" ' . ( isset( $es['event_status_edit'] ) && $es['event_status_edit'] === 'Föranmälan' ? 'checked' : '' ) . ' />
+						<input type="radio" id="event_status_edit_1" name="event_status_edit" value="Foranmalan" ' . ( isset( $es['event_status_edit'] ) && $es['event_status_edit'] === 'Foranmalan' ? 'checked' : '' ) . ' />
 						<label style="display: inline;" for="event_status_edit_1">Föranmälan:</label>						
-						<input style="clear:both;" type="radio" id="event_status_edit_2" name="event_status_edit" value="Avanmälan" ' . ( isset( $es['event_status_edit'] ) && $es['event_status_edit'] === 'Avanmälan' ? 'checked' : '' ) . ' />
+						<input style="clear:both;" type="radio" id="event_status_edit_2" name="event_status_edit" value="Avanmalan" ' . ( isset( $es['event_status_edit'] ) && $es['event_status_edit'] === 'Avanmalan' ? 'checked' : '' ) . ' />
 						<label style="display: inline;" for="event_status_edit_2">Avanmälan:</label>
 					</div>
 					<div style="float:left; margin-right: 20px;">
@@ -495,6 +495,7 @@ function shortcode_events_list( $atts ) {
 				$upcoming_events->the_post();
 				$event_id = get_the_ID();
 				$name = get_the_title();	
+				$event_status = get_post_meta( $event_id, 'event_status', true );
 				$date = get_post_meta( $event_id, 'event_date', true );
 				$time = get_post_meta( $event_id, 'event_time', true );
 				$location = get_post_meta( $event_id, 'event_location', true );					
@@ -532,49 +533,68 @@ function shortcode_events_list( $atts ) {
 				$out .= '<div>Max ' . esc_html( $maxNbrOfParticipants ) . ' deltagare</div>';
 
 				// Add Avanmälan or Föranmälan link or status text depending on user state
-				if ( is_user_logged_in() ) {
-					$user_id = get_current_user_id();
-					$cancelled = get_post_meta( $event_id, 'event_cancellations', true );
-					if ( ! is_array( $cancelled ) ) 
-						$cancelled = array();
+				$user_id = get_current_user_id();
+				$cancelled = get_post_meta( $event_id, 'event_cancellations', true );
+				if ( ! is_array( $cancelled ) ) 
+					$cancelled = array();
 
-					$registered = get_post_meta( $event_id, 'event_registrations', true );
-					if ( ! is_array( $registered ) ) 
-						$registered = array();
+				$registered = get_post_meta( $event_id, 'event_registrations', true );
+				if ( ! is_array( $registered ) ) 
+					$registered = array();
 
-					if ( in_array( $user_id, $cancelled, true ) ) {
-						$out .= '<div style="margin-bottom: 10px;">Du har avanmält dig</div>';
-					} 
-					else if ( in_array( $user_id, $registered, true ) ) {
-						$out .= '<div style="margin-bottom: 10px;">Du har anmält dig</div>';
-					} 
-					else {
-						if ( $status === 'Avanmälan' ) {
-							$avan_url = get_page_by_path( 'avanmalan' );
-							$base = $avan_url ? get_permalink( $avan_url->ID ) : site_url( '/avanmalan/' );
-							$avan_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
-
-							$out .= '<div style="margin-bottom: 10px;" >
-										<a class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
-									</div>';
-						}
-						if ( $status === 'Föranmälan' ) {
-							$foran_url = get_page_by_path( 'foranmalan' );
-							$base = $foran_url ? get_permalink( $foran_url->ID ) : site_url( '/foranmalan/' );
-							$foran_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
-							
-							$out .= '<div style="margin-bottom: 10px;" >
-										<a class="foranmalan-link" href="' . esc_url( $foran_url ) . '">Föranmälan</a>									
-									</div>';
-						}
-					}
-
-					$register_guest_page = get_page_by_path( 'register_guest' );
-					$register_guest_base = $register_guest_page ? get_permalink( $register_guest_page->ID ) : site_url( '/register_guest/' );
-					$register_guest_link = add_query_arg( array( 'event_id' => $event_id ), $register_guest_base );
-					$out .= '<div><a href="' . esc_url( $register_guest_link ) . '">Anmäl en gäst</a></div>';
+				if ( in_array( $user_id, $cancelled, true ) ) {
+					$out .= '<div style="margin-bottom: 10px;">Du har avanmält dig</div>';
 				} 
-			
+				else if ( in_array( $user_id, $registered, true ) ) {
+					$out .= '<div style="margin-bottom: 10px;">Du har anmält dig</div>';
+				} 
+				else {
+					if ( $status === 'Avanmalan' ) {
+						$avan_url = get_page_by_path( 'avanmalan' );
+						$base = $avan_url ? get_permalink( $avan_url->ID ) : site_url( '/avanmalan/' );
+						$avan_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
+
+						$out .= '<div style="margin-bottom: 10px;" >
+									<a class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
+								</div>';
+					}
+					if ( $status === 'Foranmalan' ) {
+						$foran_url = get_page_by_path( 'foranmalan' );
+						$base = $foran_url ? get_permalink( $foran_url->ID ) : site_url( '/foranmalan/' );
+						$foran_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
+						
+						$out .= '<div style="margin-bottom: 10px;" >
+									<a class="foranmalan-link" href="' . esc_url( $foran_url ) . '">Föranmälan</a>									
+								</div>';
+					}
+				}
+				// Add Anmäl gäst link
+				$register_guest_page = get_page_by_path( 'register_guest' );
+				$register_guest_base = $register_guest_page ? get_permalink( $register_guest_page->ID ) : site_url( '/register_guest/' );
+				$register_guest_link = add_query_arg( array( 'event_id' => $event_id ), $register_guest_base );
+				$out .= '<div><a href="' . esc_url( $register_guest_link ) . '">Anmäl en gäst</a></div>';
+
+				// Add "Ladda ner mötesfil" link			
+				// Finns det en option_key så finns det en fil att ladda ner
+				$option_key = get_option( 'fenix_applications_excel_' . intval( $event_id ) . '_' . sanitize_key( $status ), '' );
+				
+				if ( $option_key != '' ) {
+					$download_url = add_query_arg(
+						array(
+							'action'       => 'download_applications_excel',
+							'event_id'     => intval( $event_id ),
+							'event_status' => sanitize_key( $status ),
+							'_wpnonce'     => wp_create_nonce( 'download_excel_' . intval( $event_id ) . '_' . sanitize_key( $status ) ),
+						),
+						admin_url( 'admin-post.php' )
+					);
+
+					$out .= '<div>
+								<a href="' . esc_url( $download_url ) . '">Ladda ner mötesfil</a>
+							</div>';
+				}
+
+
 				$out .= '</div>'; // .event-item-left
 
 				// right column
@@ -617,11 +637,11 @@ function shortcode_events_list( $atts ) {
 					$anm_page = get_page_by_path( 'anmalningar' );
 					$anm_base = $anm_page ? get_permalink( $anm_page->ID ) : site_url( '/anmalningar/' );
 
-					if ( $status === 'Föranmälan' ) {
-						$foran_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'registered' ), $anm_base );
+					if ( $status === 'Foranmalan' ) {
+						$foran_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => $status  ), $anm_base );
 						$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="anmalningar-button">Anmälningar</button></a>';
-					} elseif ( $status === 'Avanmälan' ) {
-						$avan_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'cancelled' ), $anm_base );
+					} elseif ( $status === 'Avanmalan' ) {
+						$avan_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => $status ), $anm_base );
 						$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="anmalningar-button">Anmälningar</button></a>';
 					}
 
@@ -705,7 +725,7 @@ function shortcode_events_list( $atts ) {
 							$out .= '<div style="margin-bottom: 10px;">Du har anmält dig</div>';
 						} 
 						else {
-							if ( $status === 'Avanmälan' ) {
+							if ( $status === 'Avanmalan' ) {
 								$avan_url = get_page_by_path( 'avanmalan' );
 								$base = $avan_url ? get_permalink( $avan_url->ID ) : site_url( '/avanmalan/' );
 								$avan_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
@@ -714,7 +734,7 @@ function shortcode_events_list( $atts ) {
 											<a class="avanmalan-link" href="' . esc_url( $avan_url ) . '">Avanmälan</a>
 										</div>';
 							}
-							if ( $status === 'Föranmälan' ) {
+							if ( $status === 'Foranmalan' ) {
 								$foran_url = get_page_by_path( 'foranmalan' );
 								$base = $foran_url ? get_permalink( $foran_url->ID ) : site_url( '/foranmalan/' );
 								$foran_url = esc_url( add_query_arg( array( 'event_id' => $event_id ), $base ) );
@@ -725,10 +745,31 @@ function shortcode_events_list( $atts ) {
 							}
 						}
 
+						// Add "Anmäl en gäst" link		
 						$register_guest_page = get_page_by_path( 'register_guest' );
 						$register_guest_base = $register_guest_page ? get_permalink( $register_guest_page->ID ) : site_url( '/register_guest/' );
 						$register_guest_link = add_query_arg( array( 'event_id' => $event_id ), $register_guest_base );
 						$out .= '<div><a href="' . esc_url( $register_guest_link ) . '">Anmäl en gäst</a></div>';
+
+						// Add "Ladda ner mötesfil" link			
+						// Finns det en option_key så finns det en fil att ladda ner.
+						$option_key = get_option( 'fenix_applications_excel_' . intval( $event_id ) . '_' . sanitize_key( $status ), '' );                        
+
+						if ( $option_key != '' ) {
+							$download_url = add_query_arg(
+								array(
+									'action'       => 'download_applications_excel',
+									'event_id'     => intval( $event_id ),
+									'event_status' => sanitize_key( $status ),
+									'_wpnonce'     => wp_create_nonce( 'download_excel_' . intval( $event_id ) . '_' . sanitize_key( $status ) ),
+								),
+								admin_url( 'admin-post.php' )
+							);
+
+							$out .= '<div>
+										<a href="' . esc_url( $download_url ) . '">Ladda ner mötesfil</a>
+									</div>';
+						}
 					} 
 				
 					$out .= '</div>'; // .event-item-left
@@ -773,11 +814,11 @@ function shortcode_events_list( $atts ) {
 						$anm_page = get_page_by_path( 'anmalningar' );
 						$anm_base = $anm_page ? get_permalink( $anm_page->ID ) : site_url( '/anmalningar/' );
 
-						if ( $status === 'Föranmälan' ) {
-							$foran_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'registered' ), $anm_base );
+						if ( $status === 'Foranmalan' ) {
+							$foran_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => $status ), $anm_base );
 							$buttons .= '<a href="' . esc_url( $foran_link ) . '"><button class="anmalningar-button">Anmälningar</button></a>';
-						} elseif ( $status === 'Avanmälan' ) {
-							$avan_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => 'cancelled' ), $anm_base );
+						} elseif ( $status === 'Avanmalan' ) {
+							$avan_link = add_query_arg( array( 'event_id' => $event_id, 'event_status' => $status ), $anm_base );
 							$buttons .= '<a href="' . esc_url( $avan_link ) . '"><button class="anmalningar-button">Anmälningar</button></a>';
 						}
 
@@ -803,3 +844,48 @@ function shortcode_events_list( $atts ) {
 	return $out;
 }
 add_shortcode( 'events_list', 'shortcode_events_list' );
+
+
+function download_applications_excel_handler() {
+	if ( ! is_user_logged_in() ) {
+		wp_die( 'Du måste vara inloggad för att ladda ner filen.' );
+	}
+
+	$event_id = isset( $_GET['event_id'] ) ? intval( wp_unslash( $_GET['event_id'] ) ) : 0;
+	$event_status = isset( $_GET['event_status'] ) ? sanitize_key( wp_unslash( $_GET['event_status'] ) ) : '';
+	$nonce = isset( $_GET['_wpnonce'] ) ? wp_unslash( $_GET['_wpnonce'] ) : '';
+
+	if ( $event_id <= 0 || ( $event_status !== 'foranmalan' && $event_status !== 'avanmalan' ) ) {
+		wp_die( 'Ogiltig nedladdningsförfrågan.' );
+	}
+
+	if ( ! wp_verify_nonce( $nonce, 'download_excel_' . $event_id . '_' . $event_status ) ) {
+		wp_die( 'Ogiltig formulärförfrågan.' );
+	}
+
+	$option_key = 'fenix_applications_excel_' . intval( $event_id ) . '_' . sanitize_key( $event_status );
+	$excel_state = get_option( $option_key, array() );
+
+	if ( empty( $excel_state['path'] ) || ! file_exists( $excel_state['path'] ) ) {
+		wp_die( 'Filen kunde inte hittas.' );
+	}
+
+	$file_path = $excel_state['path'];
+	$download_name = basename( $file_path );
+
+	if ( ob_get_length() ) {
+		ob_end_clean();
+	}
+
+	nocache_headers();
+	header( 'Content-Description: File Transfer' );
+	header( 'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' );
+	header( 'Content-Disposition: attachment; filename="' . $download_name . '"' );
+	header( 'Content-Length: ' . filesize( $file_path ) );
+	header( 'X-Content-Type-Options: nosniff' );
+	readfile( $file_path );
+
+	exit;
+}
+add_action( 'admin_post_download_applications_excel', 'download_applications_excel_handler' );
+

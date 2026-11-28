@@ -14,7 +14,7 @@
         const location = this.getAttribute('data-event-location');
         const description = this.getAttribute('data-event-description');
         const nbr = this.getAttribute('data-event-nbr');
-        const notif = this.getAttribute('data-event-notification');
+        const status = this.getAttribute('data-event-status') || '';
         const pictureLabel = this.getAttribute('data-event-picture-label') || '';
         const pictureValue = this.getAttribute('data-event-picture-value') || '';
         var f;
@@ -70,8 +70,8 @@
           }
         }
         hiddenExisting.value = pictureValue;
-        var radios = editForm.querySelectorAll('input[name="event_notification_edit"]');
-        radios.forEach(function(r){ r.checked = (r.value === notif); });
+        var radios = editForm.querySelectorAll('input[name="event_status_edit"]');
+        radios.forEach(function(r){ r.checked = (r.value === status); });
         editForm.style.display = 'block';
 
         var successLabel = document.getElementById('events-success-edit');
